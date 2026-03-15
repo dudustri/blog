@@ -158,7 +158,7 @@ export default function ContactPage() {
             <div className="flex gap-3 text-sm items-center">
               <span className="text-gray-400 w-16 flex-shrink-0">Resume</span>
               <a
-                href="/images/suspdog2.jpg"
+                href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/suspdog2.jpg`}
                 download="suspdog.jpg"
                 className="inline-flex items-center gap-1.5 px-4 py-2 border border-black rounded-lg text-xs font-medium hover:bg-black hover:text-white transition-all duration-200"
               >
