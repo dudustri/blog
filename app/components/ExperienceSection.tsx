@@ -42,6 +42,8 @@ function highlightKeywords(text: string) {
   });
 }
 
+
+// TODO: build a hard match based on the tech stuff / skill / knowledge I used in the jobs or improve the description for automatic matching.
 function matchesTech(job: Experience, tech: string): boolean {
   const pattern = new RegExp(buildKeywordPattern(tech), "i");
   return pattern.test(job.description) || pattern.test(job.title);
