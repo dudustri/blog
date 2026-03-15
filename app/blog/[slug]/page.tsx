@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { posts } from "@/app/data/blog";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 // Renders a block of content.
 // Supported block types (each separated by \n\n in the JSON):
 //   # Heading       → <h2>
@@ -35,7 +37,7 @@ function renderContent(content: string) {
         // eslint-disable-next-line @next/next/no-img-element
         <img
           key={i}
-          src={imgMatch[2]}
+          src={`${BASE}${imgMatch[2]}`}
           alt={imgMatch[1]}
           className="w-full rounded-xl object-cover my-2"
           style={{ maxHeight: 600 }}
@@ -105,7 +107,7 @@ export default async function BlogPost({
       {headImage ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={headImage}
+          src={`${BASE}${headImage}`}
           alt=""
           className="w-full rounded-2xl object-cover mb-8"
           style={{ maxHeight: 480 }}
@@ -129,7 +131,7 @@ export default async function BlogPost({
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={i}
-              src={src}
+              src={`${BASE}${src}`}
               alt=""
               className="w-full rounded-xl object-cover"
               style={{
