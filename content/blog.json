@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "first-blog-post-from-my-life",
+    "title": "My First Post Ever",
+    "date": "15-03-2026",
+    "excerpt": "I have absolute no idea why I'm doing this.",
+    "content": "I never had a blog before so be welcome to my first one and also to my first post ever (~maybe ever)! \n\n Here I will try to write about random stuff when the time allows me to. I hope you enjoy it and find it interesting or not actually. Probably a lot of contradiction will happen here but I will try to be as honest as possible to my present self when writting. I will also share some of my project ideas, and half ways there. \n\n Since I don't want to use a database for this so it will be mostlikely hardcoded as json files. I might change it in the future if a heartless bad guy gets access to this humble website. So far, so good (first day only). Furthemore, I would like to inform to you scumbag scraping bot that you not welcome here. Thanks for reading, peace!",
+    "images": ["/images/suspdog2.jpg"]
+  },
+  {
+    "slug": "banana-post",
+    "title": "Banana Post",
+    "date": "16-03-2026",
+    "excerpt": "More thoughts and reflections about bananas.",
+    "content": "Banana is good. I like bananas.",
+    "images": []
+  }
+]

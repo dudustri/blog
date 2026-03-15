@@ -1,0 +1,135 @@
+{
+  "techStack": [
+    "C", "C++", "Java", "C#",
+    "Python",
+    "SQL", "NoSQL", "ORMs",
+    "TypeScript", "Node",
+    "Golang", "Rust",
+    "Git", "GitHub Actions",
+    "Docker", "Kubernetes",
+    "Linux", "Bash", "Make",
+    "CI/CD", "AWS", "GCP"
+  ],
+  "education": [
+    {
+      "school": "IT University of Copenhagen",
+      "degree": "MSc in Software Design",
+      "period": "Aug 2022 – Jan 2025",
+      "description": "Individual specialization track focusing on distributed systems, operating systems, and DevOps."
+    },
+    {
+      "school": "Federal University of Rio Grande do Sul",
+      "degree": "BSc in Energy Engineering",
+      "period": "Jan 2014 – Aug 2019",
+      "description": ""
+    },
+    {
+      "school": "Federal University of Santa Catarina",
+      "degree": "BSc in Energy Engineering",
+      "period": "Jul 2012 – Dec 2013",
+      "description": ""
+    }
+  ],
+  "experience": [
+    {
+      "id": "res-group",
+      "company": "RES Group - Digital Solutions",
+      "title": "Software Engineer",
+      "period": "Jun 2025 – Present",
+      "website": "https://www.res-group.com",
+      "description": "Development and maintenance of wind and solar plants data acquisition software using C, Python, and C# for backend and JS/TS for frontend, supporting devices such as turbines, inverters, and sensors, vendor-specific and industrial protocols (e.g., Siemens, Vestas, Gamesa, Modbus). Architecture and implementation of production-ready control systems such as dynamic yaw and inverter optimization. License management, high-performance decryption, and PostgreSQL/MySQL interface in C. Redis real-time data storage and fast retrieval with non-volatile persistence. CI/CD workflow, infrastructure architecture, and shell/python scripting for environment setup, edge deployment, and operations tooling."
+    },
+    {
+      "id": "bodil-hw-sw",
+      "company": "Bodil Energy",
+      "title": "Hardware & Software Engineer",
+      "period": "Jun 2024 – Jun 2025",
+      "website": "https://www.bodil.energy",
+      "description": "Responsible for transitioning the prototype and its firmware into a product. New features such as Over-the-Air (OTA) updates and Power/Energy Metering. Definition of technical requirements for hardware, firmware, and software. Hardware design coordination. Scalable data-collection multithreading system development using MQTT and Rust to handle high frequency real-time data from field devices. Service manager engine architecture design (AWS & GCP) and implementation using TypeScript, Bun, Docker and K8s to ensure responsiveness and availability to grid balance signals. IBM/Andel Flex Platform integration for FCR-D market regulation."
+    },
+    {
+      "id": "bodil-systems",
+      "company": "Bodil Energy",
+      "title": "Systems Engineer",
+      "period": "Nov 2022 – Jun 2024",
+      "website": "https://www.bodil.energy",
+      "description": "Firmware development using C, TypeScript and Node for API and Python for the energy simulation engine. Use of ESP32 with ESP IDF for Bluetooth, WiFi, LTE/NB-IoT, and peer-to-peer communication, alongside parsers, protocols, and machine interface. Aggregator implementation for data handling and implemented a server-side state holder to validate and manage connections between the database, simulation service, and IoT devices."
+    },
+    {
+      "id": "numerous",
+      "company": "Numerous",
+      "title": "Backend Developer",
+      "period": "Feb 2023 – Jul 2024",
+      "website": "https://numerous.com",
+      "description": "Development focusing on CLI, API, backend-related code, pipeline maintenance, tests, and code quality enforcement. Docker and Kubernetes for containerization and orchestration, Python, Golang, and Typescript as languages. REST, GraphQL and gRPC APIs. Cloud services from GCP and AWS. Test-driven development (TDD)."
+    },
+    {
+      "id": "novus",
+      "company": "Novus Automation",
+      "title": "Software Developer",
+      "period": "Mar 2022 – Feb 2023",
+      "website": "https://www.novusautomation.com/en/",
+      "description": "Development and maintenance of configuration and monitoring software products for desktop, web and mobile using C++, Java, and Dart/Flutter. API tests using JavaScript and Postman. Scrum methodology application and software version control using Git/Gitlab and Sourcetree. MQTT and LoRaWAN applications (IoT)."
+    },
+    {
+      "id": "vitta",
+      "company": "Vitta",
+      "title": "Simulation Engineer",
+      "period": "Feb 2021 – Mar 2022",
+      "website": "https://vittaresidencial.com.br",
+      "description": "Computational simulation head's engineer and in charge of the internal methodology development to measure the building's energy performance."
+    },
+    {
+      "id": "petinelli-engineer",
+      "company": "Petinelli",
+      "title": "Energy Engineer",
+      "period": "Jul 2019 – Dec 2020",
+      "website": "https://www.petinelli.com.br",
+      "description": "Design: HVAC, electrical, automation, photovoltaic, and lighting systems. Thermal and energy building performance analysis. Computational simulations. Technical and economical diagnosis of energy efficiency measures. Commissioning process."
+    },
+    {
+      "id": "petinelli-assistant",
+      "company": "Petinelli",
+      "title": "Student Assistant",
+      "period": "Jun 2017 – Jun 2019",
+      "website": "https://www.petinelli.com.br",
+      "description": "LEED certification process and energy conservation measures application based on design reviews. Renewable energy systems design. Technical and economic feasibility reports."
+    }
+  ],
+  "languages": [
+    { "name": "Portuguese", "level": "Native" },
+    { "name": "English", "level": "Fluent" },
+    { "name": "Spanish", "level": "Elementary" },
+    { "name": "Danish", "level": "Beginner" }
+  ],
+  "extra": [
+    {
+      "category": "Teaching",
+      "items": [
+        "PCPP Teaching Assistant – Practical concurrent and parallel programming course assistant at IT University of Copenhagen (2024)"
+      ]
+    },
+    {
+      "category": "Awards",
+      "items": [
+        "Innovation Prize – Vitta (2022)"
+      ]
+    },
+    {
+      "category": "Software & Technology",
+      "items": [
+        "Software Courses – C++, JavaScript, Dart, SQL, Git, Computer architecture, and Scrum at Alura (2022)",
+        "Linux Lab – ITU"
+      ]
+    },
+    {
+      "category": "Energy & HVAC",
+      "items": [
+        "HVAC Engineering – Electrical and mechanical design, refrigeration cycle analysis, O&M techniques at ASBRAV (2019)",
+        "Industrial Refrigeration Systems – UFRGS (2019)",
+        "Indirect Cooling Systems – ABRAVA / ASHRAE (2019)",
+        "Internal Combustion Engines – UFSC (2014)"
+      ]
+    }
+  ]
+}

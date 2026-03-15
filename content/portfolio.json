@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "personal-blog",
+    "title": "Personal Blog & Portfolio",
+    "description": "This very site — a personal blog and portfolio built with Next.js, Tailwind CSS, and TypeScript.",
+    "tech": ["Next.js", "TypeScript", "Tailwind CSS", "Bun"],
+    "image": null,
+    "content": "# Personal Blog & Portfolio\n\nThis is the source of the site you are looking at right now.\n\n## Stack\n\nBuilt with Next.js 16, TypeScript, Tailwind CSS v4, and Bun as the runtime.\n\n## Features\n\n- Blog with individual post pages\n- Resume with career timeline\n- Portfolio showcase with project tiles\n- Static generation for all content pages"
+  }
+]
