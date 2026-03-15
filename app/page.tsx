@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const cards = [
   { href: "/resume", label: "Resume", desc: "Skills, experience & education" },
@@ -12,6 +12,8 @@ const cards = [
 
 export default function Home() {
   const [dark, setDark] = useState(false);
+  const [photoToast, setPhotoToast] = useState(false);
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const check = () => setDark(document.documentElement.classList.contains("dark"));
@@ -69,7 +71,7 @@ export default function Home() {
       </div>
 
       {/* Hero */}
-      <section className="pt-16 pb-14 flex flex-col md:flex-row md:items-start md:justify-between gap-10">
+      <section className="pt-16 pb-14 flex flex-col md:flex-row md:items-start gap-10">
         <div className="flex-1">
           <p
             className="text-xs font-semibold uppercase tracking-[0.2em] mb-4"
@@ -86,7 +88,7 @@ export default function Home() {
             Eduardo Sfreddo Trindade
           </h1>
           <p className="text-gray-500 leading-relaxed max-w-sm text-[15px]">
-            Software engineering, cloud systems, and DevOps — with a background in power systems,
+            Software engineering, cloud systems, and DevOps with a background in power systems,
             industrial plants, and HVAC.
           </p>
           <div className="flex gap-4 mt-8">
@@ -110,13 +112,39 @@ export default function Home() {
         </div>
 
         {/* Avatar */}
-        <div className="flex-shrink-0">
-          <div
-            className="w-28 h-28 md:w-36 md:h-36 rounded-full flex items-center justify-center select-none"
-            style={{ background: "linear-gradient(135deg, #1e3a5f, #3e6b89)" }}
-          >
-            <span className="text-2xl md:text-3xl font-bold tracking-tight text-white">EST</span>
-          </div>
+        <div className="relative flex-shrink-0 md:-ml-10 md:mt-6">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/avatar.jpg`}
+            alt="Eduardo Sfreddo Trindade"
+            className="w-40 h-40 md:w-52 md:h-52 rounded-3xl object-cover select-none cursor-default"
+            onMouseEnter={() => {
+              if (toastTimer.current) clearTimeout(toastTimer.current);
+              setPhotoToast(true);
+              toastTimer.current = setTimeout(() => setPhotoToast(false), 5000);
+            }}
+          />
+
+          {/* Photo toast — top-right of the photo */}
+          {photoToast && (
+            <div className="absolute top-1/2 -translate-y-1/2 left-full ml-3 z-50 bg-black text-white text-xs px-4 py-3 rounded-xl shadow-lg w-56 leading-relaxed">
+              Nej, this is not AI generated (:
+              <br />
+              <br />
+              This photo was taken by Daniel from DSH Media in a Novo Nordisk event at ITU.
+              <br />
+              <br />
+              Check their website at{" "}
+              <a
+                href="https://dsh-media.dk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-gray-300"
+              >
+                dsh-media.dk
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
