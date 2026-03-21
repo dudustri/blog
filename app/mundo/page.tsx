@@ -152,9 +152,9 @@ export default function MundoPage() {
       {/* Legend */}
       <div className="absolute bottom-20 left-6 z-10 flex flex-col gap-1.5">
         {([
-          { color: 'rgba(34, 197, 94, 0.42)',   label: 'Visited',  key: 'visited'  as const },
-          { color: 'rgba(250, 204, 21, 0.42)',  label: 'Planning', key: 'planning' as const },
-          { color: 'rgba(120, 120, 120, 0.38)', label: 'Not yet',  key: null                },
+          { color: 'rgba(251, 113, 133, 0.55)',  label: 'Visited',  key: 'visited'  as const },
+          { color: 'rgba(167, 139, 250, 0.50)', label: 'Planning', key: 'planning' as const },
+          { color: 'rgba(80, 85, 115, 0.50)',   label: 'Not yet',  key: null                },
         ]).map(({ color, label, key }) => (
           <button
             key={label}
