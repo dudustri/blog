@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { countries, wantToGoCountries } from '@/app/data/mundo';
+import { countries, wantToGoCountries, COLOR_VISITED, COLOR_WANT_TO_GO, COLOR_DEFAULT, COLOR_SELECTED } from '@/app/data/mundo';
 import MundoGlobe from '@/app/components/MundoGlobe';
 
 type Continent = { name: string; lat: number; lng: number };
@@ -25,8 +25,7 @@ const SPIN_LEVELS = [
   { speed: 400,  nextLabel: null                       }, // maximum insanity
 ];
 
-const BTN           = 'text-left text-sm font-semibold tracking-wide transition-colors text-white/35 hover:text-white/70';
-const SELECTED_COLOR = 'rgba(59, 130, 246, 0.75)'; // blue — manual click (rainbow handles random)
+const BTN = 'text-left text-sm font-semibold tracking-wide transition-colors text-white/35 hover:text-white/70';
 
 // Pre-sorted so list renders don't re-sort on every render
 const VISITED_SORTED   = [...countries].sort();
@@ -99,7 +98,7 @@ export default function MundoPage() {
         visitedCountries={countries}
         wantToGoCountries={wantToGoCountries}
         selectedCountry={selection?.name ?? null}
-        selectedCountryColor={SELECTED_COLOR}
+        selectedCountryColor={COLOR_SELECTED}
         isRainbow={selection?.source === 'random'}
         spinSpeed={SPIN_LEVELS[spinLevel].speed}
         pickRandomTrigger={pickNonce}
@@ -147,7 +146,7 @@ export default function MundoPage() {
                     Where Next?
                   </button>
                   <span className="absolute left-full ml-4 w-44 text-xs text-white/35 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none leading-snug">
-                    wherever it lands, that&apos;s where you should go. this is called destiny, where the gambler and the traveller spirit essences made a baby and that baby is you right now. just do it!!
+                    wherever it lands, that&apos;s where you should go. this is called destiny, where the gambler and the traveller spirit essences had a baby and that baby is you right now. just do it!!
                   </span>
                 </div>
               )}
@@ -163,9 +162,9 @@ export default function MundoPage() {
       {/* Legend */}
       <div className="absolute bottom-20 left-6 z-10 flex flex-col gap-1.5">
         {([
-          { color: 'rgba(251, 113, 133, 0.55)',  label: 'Visited',  key: 'visited'  as const },
-          { color: 'rgba(167, 139, 250, 0.50)', label: 'Planning', key: 'planning' as const },
-          { color: 'rgba(80, 85, 115, 0.50)',   label: 'Not yet',  key: null                },
+          { color: COLOR_VISITED,    label: 'Visited',  key: 'visited'  as const },
+          { color: COLOR_WANT_TO_GO, label: 'Planning', key: 'planning' as const },
+          { color: COLOR_DEFAULT,    label: 'Not yet',  key: null                },
         ]).map(({ color, label, key }) => (
           <button
             key={label}
