@@ -69,7 +69,7 @@ export default async function BlogPost({
   const headImage = "headImage" in post ? (post.headImage as string) : null;
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10">
+    <div className="w-full max-w-6xl mx-auto px-6 py-10">
       <style>{`
         @keyframes fadeDecay {
           0%   { opacity: 1; }
@@ -114,7 +114,7 @@ export default async function BlogPost({
         />
       ) : (
         <div
-          className="w-full rounded-2xl mb-8"
+          className="w-full mb-8"
           style={{ height: 80, background: "#3e6b89" }}
         />
       )}
