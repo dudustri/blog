@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 const navLinks = [
   { href: "/", label: "Home", exact: true },
   { href: "/resume", label: "Resume" },
+  { href: "/mundo", label: "Mundo" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
@@ -37,10 +38,14 @@ export default function Header() {
     }
   };
 
+  const isMundo = pathname.startsWith('/mundo');
+
   return (
-    <header className="border-b border-gray-100">
+    <header className={`sticky top-0 z-50 border-b transition-colors ${
+      isMundo ? 'border-white/10 bg-transparent backdrop-blur-sm' : 'border-gray-100 bg-white'
+    }`}>
       <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-        <Link href="/" className="font-semibold tracking-tight text-black">
+        <Link href="/" className={`font-semibold tracking-tight ${isMundo ? 'text-white' : 'text-black'}`}>
           Eduardo S. Trindade
         </Link>
         <nav className="flex items-center gap-5">
@@ -52,8 +57,12 @@ export default function Header() {
                 href={href}
                 className={`text-sm transition-colors ${
                   active
-                    ? "text-black font-medium underline underline-offset-4"
-                    : "text-gray-400 hover:text-black"
+                    ? isMundo
+                      ? 'text-white font-medium underline underline-offset-4'
+                      : 'text-black font-medium underline underline-offset-4'
+                    : isMundo
+                      ? 'text-white/50 hover:text-white'
+                      : 'text-gray-400 hover:text-black'
                 }`}
               >
                 {label}
@@ -61,11 +70,12 @@ export default function Header() {
             );
           })}
 
-          {/* Dark mode toggle */}
+          {/* Dark mode toggle — invisible placeholder on Mundo page to preserve layout */}
           <button
-            onClick={toggleDark}
+            onClick={isMundo ? undefined : toggleDark}
             aria-label="Toggle dark mode"
-            className="ml-1 text-gray-400 hover:text-black transition-colors"
+            aria-hidden={isMundo}
+            className={`ml-1 transition-colors ${isMundo ? 'invisible' : 'text-gray-400 hover:text-black'}`}
             style={{ fontSize: 16, lineHeight: 1, padding: "2px 0" }}
           >
             {dark ? "○" : "●"}
