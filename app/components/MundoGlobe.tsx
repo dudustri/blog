@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { COLOR_VISITED, COLOR_WANT_TO_GO, COLOR_DEFAULT } from '@/app/data/mundo';
 
 const BASE        = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 const GEOJSON_URL = `${BASE}/world_map_units.geojson`;
@@ -9,17 +10,21 @@ const EARTH_IMG   = `${BASE}/earth-night.jpg`;
 const ALT_BASE  = 0.005;
 const ALT_HOVER = 0.027;
 
-// Natural Earth map units splits Belgium into regions — normalise them back to one country
+// Natural Earth map units splits some countries into sub-regions — normalise them back
 const REGION_TO_COUNTRY: Record<string, string> = {
-  'Flemish Region':          'Belgium',
-  'Walloon Region':          'Belgium',
-  'Brussels Capital Region': 'Belgium',
+  // Belgium
+  'Flemish Region':                       'Belgium',
+  'Walloon Region':                       'Belgium',
+  'Brussels Capital Region':              'Belgium',
+  // Bosnia and Herzegovina
+  'Federation of Bosnia and Herzegovina': 'Bosnia and Herzegovina',
+  'Republika Srpska':                     'Bosnia and Herzegovina',
+  'Brčko District':                       'Bosnia and Herzegovina',
+  // Serbia (Vojvodina appears as a separate unit in some Natural Earth versions)
+  'Vojvodina':                            'Serbia',
 };
 
-// Country cap colours — kept in one place so they stay in sync across all color callbacks
-const COLOR_VISITED    = 'rgba(251, 113, 133, 0.55)';   // coral/rose — warm, places lived
-const COLOR_WANT_TO_GO = 'rgba(167, 139, 250, 0.50)';  // soft violet — dreamy, aspirational
-const COLOR_DEFAULT    = 'rgba(80, 85, 115, 0.50)';    // blue-grey — matches the space backdrop
+// Colours imported from @/app/data/mundo — single source of truth shared with the legend
 
 type GeoFeature = {
   properties: { name: string; iso_a2: string };
@@ -70,7 +75,7 @@ interface Props {
   spinSpeed?: number;
   pickRandomTrigger?: number;
   onCountryClick?: (name: string | null, iso: string | null) => void;
-  onPickedRandom?: (pick: { name: string; lat: number; lng: number }) => void;
+  onPickedRandom?: (pick: { name: string; iso: string | null; lat: number; lng: number; span: number }) => void;
   focusTarget?: { lat: number; lng: number } | null;
 }
 
@@ -171,6 +176,8 @@ export default function MundoGlobe({
     const { lat, lng } = centroidOf(f);
     const rawName = f.properties.name;
     const name    = REGION_TO_COUNTRY[rawName] ?? rawName;
+    const isoRaw  = f.properties.iso_a2;
+    const iso     = /^[A-Za-z]{2}$/.test(isoRaw) ? isoRaw : null;
 
     // Stop spin immediately and flush residual rotational velocity.
     // OrbitControls stores accumulated delta in sphericalDelta; at 400 RPM it's large
@@ -197,7 +204,7 @@ export default function MundoGlobe({
       z: r * Math.sin(phi) * Math.sin(theta),
     };
 
-    onPickedRandomRef.current?.({ name, lat, lng });
+    onPickedRandomRef.current?.({ name, iso, lat, lng, span });
   }, [pickRandomTrigger]);
 
   useEffect(() => {
