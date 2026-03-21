@@ -9,6 +9,13 @@ const EARTH_IMG   = `${BASE}/earth-night.jpg`;
 const ALT_BASE  = 0.005;
 const ALT_HOVER = 0.027;
 
+// Natural Earth map units splits Belgium into regions — normalise them back to one country
+const REGION_TO_COUNTRY: Record<string, string> = {
+  'Flemish Region':          'Belgium',
+  'Walloon Region':          'Belgium',
+  'Brussels Capital Region': 'Belgium',
+};
+
 // Country cap colours — kept in one place so they stay in sync across all color callbacks
 const COLOR_VISITED    = 'rgba(251, 113, 133, 0.55)';   // coral/rose — warm, places lived
 const COLOR_WANT_TO_GO = 'rgba(167, 139, 250, 0.50)';  // soft violet — dreamy, aspirational
@@ -126,7 +133,8 @@ export default function MundoGlobe({
       g.polygonsTransitionDuration(0);
       const h = rainbowHueRef.current;
       g.polygonCapColor((d: object) => {
-        const name = (d as GeoFeature).properties.name;
+        const rawName = (d as GeoFeature).properties.name;
+        const name    = REGION_TO_COUNTRY[rawName] ?? rawName;
         if (name === selectedRef.current) return `hsl(${h}, 100%, 60%)`;
         if (visitedSet.has(name))   return COLOR_VISITED;
         if (wantToGoSet.has(name))  return COLOR_WANT_TO_GO;
@@ -135,7 +143,8 @@ export default function MundoGlobe({
     } else {
       g.polygonsTransitionDuration(300);
       g.polygonCapColor((d: object) => {
-        const name = (d as GeoFeature).properties.name;
+        const rawName = (d as GeoFeature).properties.name;
+        const name    = REGION_TO_COUNTRY[rawName] ?? rawName;
         if (name === selectedRef.current) return selectedColorRef.current;
         if (visitedSet.has(name))   return COLOR_VISITED;
         if (wantToGoSet.has(name))  return COLOR_WANT_TO_GO;
@@ -144,7 +153,7 @@ export default function MundoGlobe({
     }
     g.polygonAltitude((d: object) =>
       d === hoveredRef.current ||
-      (d as GeoFeature).properties.name === selectedRef.current
+      (REGION_TO_COUNTRY[(d as GeoFeature).properties.name] ?? (d as GeoFeature).properties.name) === selectedRef.current
         ? ALT_HOVER : ALT_BASE
     );
   }, [selectedCountry]);
@@ -296,7 +305,8 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
           globe
             .polygonsData(filtered)
             .polygonCapColor((d: object) => {
-              const name = (d as GeoFeature).properties.name;
+              const rawName = (d as GeoFeature).properties.name;
+        const name    = REGION_TO_COUNTRY[rawName] ?? rawName;
               if (name === selectedRef.current) return selectedColorRef.current;
               if (visited.has(name))   return COLOR_VISITED;
               if (wantToGo.has(name))  return COLOR_WANT_TO_GO;
@@ -308,14 +318,12 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
 
           const altFn = (d: object) =>
             d === hoveredRef.current ||
-            (d as GeoFeature).properties.name === selectedRef.current
+            (REGION_TO_COUNTRY[(d as GeoFeature).properties.name] ?? (d as GeoFeature).properties.name) === selectedRef.current
               ? ALT_HOVER : ALT_BASE;
 
-          // Raycast only against the globe object (excludes background sphere etc.).
-          // Walk up the parent chain of each hit to find its __globeObjType:
-          //   - 'polygon' → valid hit; check it's on the near side then return feature
-          //   - anything else ('globe', 'atmosphere' …) → globe surface was hit first,
-          //     meaning the click landed on ocean/sea — stop and return null.
+          // Raycast against the globe, collecting ALL polygon hits then picking the
+          // smallest one by geographic span. This ensures small countries (Luxembourg,
+          // Vatican, Monaco…) win over large neighbours whose meshes may overlap them.
           function featureAt(e: MouseEvent): GeoFeature | null {
             const rect = renderer.domElement.getBoundingClientRect();
             mouse.x = ((e.clientX - rect.left) / rect.width)  *  2 - 1;
@@ -323,22 +331,26 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
             raycaster.setFromCamera(mouse, camera);
             const { x: cx, y: cy, z: cz } = camera.position;
 
+            const candidates: GeoFeature[] = [];
+
             for (const hit of raycaster.intersectObjects([globe as any], true)) {
-              // Walk up to the nearest ancestor that has __globeObjType
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               let obj: any = hit.object;
               while (obj && obj.__globeObjType === undefined) obj = obj.parent;
 
-              if (!obj) continue;                              // unknown — skip
-              if (obj.__globeObjType !== 'polygon') break;    // globe sphere hit first — ocean
+              if (!obj) continue;
+              if (obj.__globeObjType !== 'polygon') break;    // globe surface hit first — ocean
 
               const { x, y, z } = hit.point;
               if (x * cx + y * cy + z * cz < 0) break;       // far-side polygon — stop
 
               const f = obj.__data?.data as GeoFeature | undefined;
-              if (f) return f;
+              if (f) candidates.push(f);
             }
-            return null;
+
+            if (!candidates.length) return null;
+            // Return the geographically smallest hit — wins over large overlapping neighbours
+            return candidates.reduce((best, f) => spanOf(f) < spanOf(best) ? f : best);
           }
 
           const onMouseMove = (e: MouseEvent) => {
@@ -351,7 +363,9 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
 
           const onClick = (e: MouseEvent) => {
             const feature = featureAt(e);
-            onClickRef.current?.(feature?.properties.name ?? null, feature?.properties.iso_a2 ?? null);
+            const rawName = feature?.properties.name ?? null;
+            const name    = rawName ? (REGION_TO_COUNTRY[rawName] ?? rawName) : null;
+            onClickRef.current?.(name, feature?.properties.iso_a2 ?? null);
           };
 
           renderer.domElement.addEventListener('mousemove', onMouseMove);
@@ -384,7 +398,8 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
           const visitedSet  = new Set(visitedRef.current);
           const wantToGoSet = new Set(wantToGoRef.current);
           globeRef.current.polygonCapColor((d: object) => {
-            const name = (d as GeoFeature).properties.name;
+            const rawName = (d as GeoFeature).properties.name;
+        const name    = REGION_TO_COUNTRY[rawName] ?? rawName;
             if (name === selectedRef.current) return `hsl(${h}, 100%, 60%)`;
             if (visitedSet.has(name))   return COLOR_VISITED;
             if (wantToGoSet.has(name))  return COLOR_WANT_TO_GO;
