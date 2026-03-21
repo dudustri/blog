@@ -10,9 +10,9 @@ const ALT_BASE  = 0.005;
 const ALT_HOVER = 0.027;
 
 // Country cap colours — kept in one place so they stay in sync across all color callbacks
-const COLOR_VISITED    = 'rgba(34, 197, 94, 0.42)';
-const COLOR_WANT_TO_GO = 'rgba(250, 204, 21, 0.42)';   // muted gold — planning/aspirational, distinct from green & blue
-const COLOR_DEFAULT    = 'rgba(120, 120, 120, 0.38)';
+const COLOR_VISITED    = 'rgba(251, 113, 133, 0.55)';   // coral/rose — warm, places lived
+const COLOR_WANT_TO_GO = 'rgba(167, 139, 250, 0.50)';  // soft violet — dreamy, aspirational
+const COLOR_DEFAULT    = 'rgba(80, 85, 115, 0.50)';    // blue-grey — matches the space backdrop
 
 type GeoFeature = {
   properties: { name: string; iso_a2: string };
