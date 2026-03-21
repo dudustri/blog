@@ -1,7 +1,12 @@
 @import "tailwindcss";
 
+
 html {
-  scrollbar-gutter: stable;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {

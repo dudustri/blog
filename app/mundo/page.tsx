@@ -253,9 +253,14 @@ export default function MundoPage() {
   const inGame = gamePhase !== 'idle';
 
   useEffect(() => {
-    const prevBg = document.body.style.background;
-    document.body.style.background = '#000005';
-    return () => { document.body.style.background = prevBg; };
+    const prevBg           = document.body.style.background;
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+    document.body.style.background          = '#000005';
+    document.documentElement.style.overflow = 'hidden';
+    return () => {
+      document.body.style.background          = prevBg;
+      document.documentElement.style.overflow = prevHtmlOverflow;
+    };
   }, []);
 
   // Focus input whenever a new guessing round starts
