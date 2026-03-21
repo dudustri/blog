@@ -3,7 +3,7 @@ import { posts } from "@/app/data/blog";
 
 export default function BlogPage() {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
+    <div className="w-full max-w-6xl mx-auto px-6 py-10">
       <h1 className="text-3xl font-bold tracking-tight mb-10">Blog</h1>
       <div className="divide-y divide-gray-100">
         {posts.map((post) => (
