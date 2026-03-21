@@ -25,7 +25,12 @@ const SPIN_LEVELS = [
   { speed: 400,  nextLabel: null                       }, // maximum insanity
 ];
 
-const BTN = 'text-left text-sm font-semibold tracking-wide transition-colors text-white/35 hover:text-white/70';
+const BTN           = 'text-left text-sm font-semibold tracking-wide transition-colors text-white/35 hover:text-white/70';
+const SELECTED_COLOR = 'rgba(59, 130, 246, 0.75)'; // blue — manual click (rainbow handles random)
+
+// Pre-sorted so list renders don't re-sort on every render
+const VISITED_SORTED   = [...countries].sort();
+const PLANNING_SORTED  = [...wantToGoCountries].sort();
 
 // Derive flag emoji from ISO 3166-1 alpha-2 code
 function isoToFlag(iso: string): string {
@@ -35,18 +40,26 @@ function isoToFlag(iso: string): string {
 }
 
 // ISO codes for listed countries (needed for list display; clicked countries get iso from GeoJSON)
+// NOTE: when adding a country to countries.json or wantToGo.json, add it here too (or to NAME_FLAG for regional flags)
 const NAME_ISO: Record<string, string> = {
   Brazil: 'BR', Denmark: 'DK', Italy: 'IT', Poland: 'PL', Portugal: 'PT',
   Norway: 'NO', Vietnam: 'VN', Indonesia: 'ID', Thailand: 'TH', Cambodia: 'KH',
   France: 'FR', Germany: 'DE', Lithuania: 'LT', Estonia: 'EE', Latvia: 'LV',
   Bulgaria: 'BG', Hungary: 'HU', Czechia: 'CZ', Austria: 'AT', Switzerland: 'CH',
-  England: 'GB', Singapore: 'SG',
-  Mexico: 'MX', Guatemala: 'GT', Kazakhstan: 'KZ', Georgia: 'GE', Japan: 'JP',
-  Peru: 'PE', Bolivia: 'BO', Chile: 'CL', Argentina: 'AR', Mongolia: 'MN',
-  Kyrgyzstan: 'KG', 'Faroe Islands': 'FO', Iceland: 'IS', Yemen: 'YE',
+  Singapore: 'SG', Sweden: 'SE', Uruguay: 'UY', Mexico: 'MX', Guatemala: 'GT', Kazakhstan: 'KZ', Georgia: 'GE',
+  Japan: 'JP', Peru: 'PE', Bolivia: 'BO', Chile: 'CL', Argentina: 'AR',
+  Mongolia: 'MN', Kyrgyzstan: 'KG', 'Faroe Islands': 'FO', Iceland: 'IS',
+  Yemen: 'YE', Tanzania: 'TZ',
+};
+
+// Regional flags not covered by ISO 3166-1 alpha-2
+const NAME_FLAG: Record<string, string> = {
+  England: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+  Scotland: '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
 };
 
 function flagFor(name: string, iso?: string | null): string {
+  if (NAME_FLAG[name]) return NAME_FLAG[name];
   const code = iso ?? NAME_ISO[name];
   return code ? isoToFlag(code) : '';
 }
@@ -57,8 +70,6 @@ export default function MundoPage() {
   const [spinLevel, setSpinLevel]     = useState(0);
   const [pickNonce, setPickNonce]     = useState(0);
   const [openList, setOpenList]       = useState<'visited' | 'planning' | null>(null);
-
-  const selectedColor = 'rgba(59, 130, 246, 0.75)';  // blue — manual click (rainbow handles random)
 
   useEffect(() => {
     const prevBg = document.body.style.background;
@@ -72,7 +83,7 @@ export default function MundoPage() {
   }
 
   function handlePickedRandom({ name, lat, lng }: { name: string; lat: number; lng: number }) {
-    setSelection({ name, iso: NAME_ISO[name] ?? null, source: 'random' });
+    setSelection({ name, iso: NAME_ISO[name] ?? null, source: 'random' }); // flagFor checks NAME_FLAG first so NAME_FLAG countries still display correctly
     setFocusTarget({ name, lat, lng });
     setSpinLevel(0);
   }
@@ -88,7 +99,7 @@ export default function MundoPage() {
         visitedCountries={countries}
         wantToGoCountries={wantToGoCountries}
         selectedCountry={selection?.name ?? null}
-        selectedCountryColor={selectedColor}
+        selectedCountryColor={SELECTED_COLOR}
         isRainbow={selection?.source === 'random'}
         spinSpeed={SPIN_LEVELS[spinLevel].speed}
         pickRandomTrigger={pickNonce}
@@ -177,13 +188,15 @@ export default function MundoPage() {
             <span className="text-xs text-white/30 tracking-wide mb-1">
               {openList === 'visited' ? 'Visited' : 'Planning'}
             </span>
-            {(openList === 'visited' ? [...countries] : [...wantToGoCountries])
-              .sort()
-              .map(c => (
-                <span key={c} className="text-sm font-semibold tracking-wide text-white/60">
-                  {flagFor(c) && <span className="mr-1.5">{flagFor(c)}</span>}{c}
-                </span>
-              ))}
+            {(openList === 'visited' ? VISITED_SORTED : PLANNING_SORTED)
+              .map(c => {
+                const flag = flagFor(c);
+                return (
+                  <span key={c} className="text-sm font-semibold tracking-wide text-white/60">
+                    {c}{flag && <span className="ml-1.5">{flag}</span>}
+                  </span>
+                );
+              })}
           </>
         ) : (
           <span className="text-3xl font-bold tracking-tight text-white">
