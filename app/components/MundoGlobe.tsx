@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { COLOR_VISITED, COLOR_WANT_TO_GO, COLOR_DEFAULT } from '@/app/data/mundo';
 
 const BASE        = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 const GEOJSON_URL = `${BASE}/world_map_units.geojson`;
@@ -16,10 +17,7 @@ const REGION_TO_COUNTRY: Record<string, string> = {
   'Brussels Capital Region': 'Belgium',
 };
 
-// Country cap colours — kept in one place so they stay in sync across all color callbacks
-const COLOR_VISITED    = 'rgba(251, 113, 133, 0.55)';   // coral/rose — warm, places lived
-const COLOR_WANT_TO_GO = 'rgba(167, 139, 250, 0.50)';  // soft violet — dreamy, aspirational
-const COLOR_DEFAULT    = 'rgba(80, 85, 115, 0.50)';    // blue-grey — matches the space backdrop
+// Colours imported from @/app/data/mundo — single source of truth shared with the legend
 
 type GeoFeature = {
   properties: { name: string; iso_a2: string };
