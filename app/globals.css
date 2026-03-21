@@ -34,6 +34,19 @@ html.dark .hover\:text-black:hover  { color: #e5e5e5 !important; }
 html.dark .hover\:bg-black:hover    { background-color: #3e6b89 !important; }
 html.dark .hover\:text-white:hover  { color: #ffffff !important; }
 
+@keyframes rainbow-hue {
+  0%   { color: hsl(0,   100%, 65%); }
+  16%  { color: hsl(60,  100%, 60%); }
+  33%  { color: hsl(120, 100%, 55%); }
+  50%  { color: hsl(180, 100%, 55%); }
+  66%  { color: hsl(240, 100%, 70%); }
+  83%  { color: hsl(300, 100%, 65%); }
+  100% { color: hsl(360, 100%, 65%); }
+}
+.rainbow-text {
+  animation: rainbow-hue 2s linear infinite;
+}
+
 @keyframes fadeDecay {
   0%   { opacity: 1; }
   100% { opacity: 0; }

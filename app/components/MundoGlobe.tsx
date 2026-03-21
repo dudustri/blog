@@ -2,19 +2,39 @@
 
 import { useEffect, useRef } from 'react';
 
-const BASE       = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+const BASE        = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 const GEOJSON_URL = `${BASE}/world_map_units.geojson`;
 const EARTH_IMG   = `${BASE}/earth-night.jpg`;
-const SKY_IMG     = `${BASE}/night-sky.png`;
 
 const ALT_BASE  = 0.005;
 const ALT_HOVER = 0.027;
+
+// Country cap colours — kept in one place so they stay in sync across all color callbacks
+const COLOR_VISITED    = 'rgba(34, 197, 94, 0.42)';
+const COLOR_WANT_TO_GO = 'rgba(250, 204, 21, 0.42)';   // muted gold — planning/aspirational, distinct from green & blue
+const COLOR_DEFAULT    = 'rgba(120, 120, 120, 0.38)';
 
 type GeoFeature = {
   properties: { name: string; iso_a2: string };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   geometry: { type: string; coordinates: any };
 };
+
+function spanOf(f: GeoFeature): number {
+  const { type, coordinates } = f.geometry;
+  let points: number[][];
+  if (type === 'Polygon') {
+    points = coordinates[0] as number[][];
+  } else {
+    points = (coordinates as number[][][][]).flatMap(p => p.flatMap(r => r));
+  }
+  const lngs = points.map((c: number[]) => c[0]);
+  const lats  = points.map((c: number[]) => c[1]);
+  return Math.max(
+    Math.max(...lngs) - Math.min(...lngs),
+    Math.max(...lats) - Math.min(...lats),
+  );
+}
 
 function centroidOf(f: GeoFeature): { lat: number; lng: number } {
   const { type, coordinates } = f.geometry;
@@ -36,19 +56,23 @@ function centroidOf(f: GeoFeature): { lat: number; lng: number } {
 
 interface Props {
   visitedCountries: string[];
+  wantToGoCountries?: string[];
   selectedCountry?: string | null;
   selectedCountryColor?: string;
+  isRainbow?: boolean;
   spinSpeed?: number;
   pickRandomTrigger?: number;
-  onCountryClick?: (name: string | null) => void;
+  onCountryClick?: (name: string | null, iso: string | null) => void;
   onPickedRandom?: (pick: { name: string; lat: number; lng: number }) => void;
   focusTarget?: { lat: number; lng: number } | null;
 }
 
-export default function WorldGlobe({
+export default function MundoGlobe({
   visitedCountries,
+  wantToGoCountries = [],
   selectedCountry,
   selectedCountryColor = 'rgba(59, 130, 246, 0.75)',
+  isRainbow = false,
   spinSpeed = 1.5,
   pickRandomTrigger,
   onCountryClick,
@@ -60,19 +84,26 @@ export default function WorldGlobe({
   const onClickRef        = useRef(onCountryClick);
   const onPickedRandomRef = useRef(onPickedRandom);
   const selectedColorRef  = useRef(selectedCountryColor);
+  const isRainbowRef      = useRef(isRainbow);
+  const rainbowHueRef     = useRef(0);
   const selectedRef       = useRef(selectedCountry ?? null);
   const visitedRef        = useRef(visitedCountries);
-  const featuresRef       = useRef<GeoFeature[]>([]);
+  const wantToGoRef       = useRef(wantToGoCountries);
+  const featuresRef           = useRef<GeoFeature[]>([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const hoveredRef        = useRef<any>(null);
+  const hoveredRef            = useRef<any>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const globeRef          = useRef<any>(null);
+  const globeRef              = useRef<any>(null);
+  // Set by pickRandomTrigger to tell focusTarget effect not to overwrite pendingFocusRef
+  const randomPickPendingRef  = useRef(false);
 
   useEffect(() => { onClickRef.current        = onCountryClick; });
   useEffect(() => { onPickedRandomRef.current = onPickedRandom; });
   useEffect(() => { selectedColorRef.current  = selectedCountryColor; });
+  useEffect(() => { isRainbowRef.current      = isRainbow; });
   useEffect(() => { selectedRef.current       = selectedCountry ?? null; });
   useEffect(() => { visitedRef.current        = visitedCountries; });
+  useEffect(() => { wantToGoRef.current       = wantToGoCountries; });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const cameraRef       = useRef<any>(null);
@@ -88,12 +119,29 @@ export default function WorldGlobe({
   useEffect(() => {
     const g = globeRef.current;
     if (!g) return;
-    const visitedSet = new Set(visitedRef.current);
-    g.polygonCapColor((d: object) => {
-      const name = (d as GeoFeature).properties.name;
-      if (name === selectedRef.current) return selectedColorRef.current;
-      return visitedSet.has(name) ? 'rgba(34, 197, 94, 0.55)' : 'rgba(120, 120, 120, 0.55)';
-    });
+    const visitedSet   = new Set(visitedRef.current);
+    const wantToGoSet  = new Set(wantToGoRef.current);
+    if (isRainbowRef.current) {
+      // Kill the transition so three-globe can't lerp from purple → rainbow (that's the flash)
+      g.polygonsTransitionDuration(0);
+      const h = rainbowHueRef.current;
+      g.polygonCapColor((d: object) => {
+        const name = (d as GeoFeature).properties.name;
+        if (name === selectedRef.current) return `hsl(${h}, 100%, 60%)`;
+        if (visitedSet.has(name))   return COLOR_VISITED;
+        if (wantToGoSet.has(name))  return COLOR_WANT_TO_GO;
+        return COLOR_DEFAULT;
+      });
+    } else {
+      g.polygonsTransitionDuration(300);
+      g.polygonCapColor((d: object) => {
+        const name = (d as GeoFeature).properties.name;
+        if (name === selectedRef.current) return selectedColorRef.current;
+        if (visitedSet.has(name))   return COLOR_VISITED;
+        if (wantToGoSet.has(name))  return COLOR_WANT_TO_GO;
+        return COLOR_DEFAULT;
+      });
+    }
     g.polygonAltitude((d: object) =>
       d === hoveredRef.current ||
       (d as GeoFeature).properties.name === selectedRef.current
@@ -107,20 +155,54 @@ export default function WorldGlobe({
     if (!features.length) return;
     const f = features[Math.floor(Math.random() * features.length)];
     const { lat, lng } = centroidOf(f);
-    onPickedRandomRef.current?.({ name: f.properties.name, lat, lng });
+    const name = f.properties.name;
+
+    // Stop spin immediately and flush residual rotational velocity.
+    // OrbitControls stores accumulated delta in sphericalDelta; at 400 RPM it's large
+    // and decays slowly with dampingFactor=0.1 (~40 frames). Disabling damping for one
+    // update() call zeros it out instantly. The camera jerk is overridden by the lerp below.
+    const c = controlsRef.current;
+    if (c) {
+      c.autoRotate = false;
+      c.enableDamping = false;
+      c.update();
+      c.enableDamping = true;
+    }
+
+    // Smaller countries get a closer camera — span < 2° → 1.2×, span > 60° → 3.5×
+    const span  = spanOf(f);
+    const t     = Math.min(1, Math.max(0, span / 60));
+    const phi   = (90 - lat) * Math.PI / 180;
+    const theta = (90 - lng) * Math.PI / 180;
+    const r     = globeRRef.current * (1.2 + t * 2.3);
+    randomPickPendingRef.current = true; // tell focusTarget effect not to overwrite this
+    pendingFocusRef.current = {
+      x: r * Math.sin(phi) * Math.cos(theta),
+      y: r * Math.cos(phi),
+      z: r * Math.sin(phi) * Math.sin(theta),
+    };
+
+    onPickedRandomRef.current?.({ name, lat, lng });
   }, [pickRandomTrigger]);
 
   useEffect(() => {
     if (focusTarget === undefined) return;
     if (!focusTarget) {
+      randomPickPendingRef.current = false;
       pendingFocusRef.current = null;
       if (controlsRef.current) controlsRef.current.autoRotate = true;
+      return;
+    }
+    // pickRandomTrigger already computed a size-aware pendingFocusRef — don't overwrite it
+    if (randomPickPendingRef.current) {
+      randomPickPendingRef.current = false;
+      if (controlsRef.current) controlsRef.current.autoRotate = false;
       return;
     }
     const { lat, lng } = focusTarget;
     const phi   = (90 - lat) * Math.PI / 180;
     const theta = (90 - lng) * Math.PI / 180;
-    const r     = globeRRef.current * 2.5;
+    const r     = globeRRef.current * 3.5;
     pendingFocusRef.current = {
       x: r * Math.sin(phi) * Math.cos(theta),
       y: r * Math.cos(phi),
@@ -161,16 +243,7 @@ export default function WorldGlobe({
       const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 10000);
       cameraRef.current = camera;
 
-      // Night-sky background sphere — full texture, dimmed to blend with CSS gradient
-      const bgMat = new THREE.MeshBasicMaterial({
-        map: new THREE.TextureLoader().load(SKY_IMG),
-        side: THREE.BackSide,
-        transparent: true,
-        opacity: 0.45,
-      });
-      scene.add(new THREE.Mesh(new THREE.SphereGeometry(500, 64, 64), bgMat));
-
-      scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
+scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
       const dirLight = new THREE.DirectionalLight(0xffffff, Math.PI * 0.55);
       dirLight.position.set(5, 3, 5);
       scene.add(dirLight);
@@ -193,8 +266,7 @@ export default function WorldGlobe({
 
       const globeR = globe.getGlobeRadius();
       globeRRef.current = globeR;
-      // Start zoomed out so the full globe is visible with some breathing room
-      camera.position.z = globeR * 7;
+      camera.position.z = globeR * 4.5;
 
       controls = new OrbitControls(camera, renderer.domElement);
       controls.enableDamping   = true;
@@ -210,7 +282,8 @@ export default function WorldGlobe({
 
       controls.addEventListener('start', () => { pendingFocusRef.current = null; });
 
-      const visited = new Set(visitedCountries);
+      const visited  = new Set(visitedCountries);
+      const wantToGo = new Set(wantToGoCountries);
 
       fetch(GEOJSON_URL)
         .then(r => r.json())
@@ -225,7 +298,9 @@ export default function WorldGlobe({
             .polygonCapColor((d: object) => {
               const name = (d as GeoFeature).properties.name;
               if (name === selectedRef.current) return selectedColorRef.current;
-              return visited.has(name) ? 'rgba(34, 197, 94, 0.55)' : 'rgba(120, 120, 120, 0.55)';
+              if (visited.has(name))   return COLOR_VISITED;
+              if (wantToGo.has(name))  return COLOR_WANT_TO_GO;
+              return COLOR_DEFAULT;
             });
 
           const raycaster = new THREE.Raycaster();
@@ -276,7 +351,7 @@ export default function WorldGlobe({
 
           const onClick = (e: MouseEvent) => {
             const feature = featureAt(e);
-            onClickRef.current?.(feature?.properties.name ?? null);
+            onClickRef.current?.(feature?.properties.name ?? null, feature?.properties.iso_a2 ?? null);
           };
 
           renderer.domElement.addEventListener('mousemove', onMouseMove);
@@ -301,6 +376,22 @@ export default function WorldGlobe({
       const animate = () => {
         if (!mounted) return;
         animId = requestAnimationFrame(animate);
+
+        // Animate rainbow colour every frame — including during camera flight
+        if (isRainbowRef.current && globeRef.current) {
+          rainbowHueRef.current = (rainbowHueRef.current + 1.2) % 360;
+          const h = rainbowHueRef.current;
+          const visitedSet  = new Set(visitedRef.current);
+          const wantToGoSet = new Set(wantToGoRef.current);
+          globeRef.current.polygonCapColor((d: object) => {
+            const name = (d as GeoFeature).properties.name;
+            if (name === selectedRef.current) return `hsl(${h}, 100%, 60%)`;
+            if (visitedSet.has(name))   return COLOR_VISITED;
+            if (wantToGoSet.has(name))  return COLOR_WANT_TO_GO;
+            return COLOR_DEFAULT;
+          });
+        }
+
         const target = pendingFocusRef.current;
         if (target) {
           const p = camera.position;
@@ -315,6 +406,7 @@ export default function WorldGlobe({
           renderer.render(scene, camera);
           return;
         }
+
         controls.update();
         renderer.render(scene, camera);
       };
