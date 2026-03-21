@@ -103,14 +103,19 @@ export default function MundoGlobe({
   const globeRef              = useRef<any>(null);
   // Set by pickRandomTrigger to tell focusTarget effect not to overwrite pendingFocusRef
   const randomPickPendingRef  = useRef(false);
+  // Cached sets for rainbow loop — rebuilt only when the lists change
+  const visitedSetRef         = useRef(new Set(visitedCountries));
+  const wantToGoSetRef        = useRef(new Set(wantToGoCountries));
+  // Cached bounding rect for featureAt — updated via ResizeObserver
+  const domRectRef            = useRef<DOMRect | null>(null);
 
   useEffect(() => { onClickRef.current        = onCountryClick; });
   useEffect(() => { onPickedRandomRef.current = onPickedRandom; });
   useEffect(() => { selectedColorRef.current  = selectedCountryColor; });
   useEffect(() => { isRainbowRef.current      = isRainbow; });
   useEffect(() => { selectedRef.current       = selectedCountry ?? null; });
-  useEffect(() => { visitedRef.current        = visitedCountries; });
-  useEffect(() => { wantToGoRef.current       = wantToGoCountries; });
+  useEffect(() => { visitedRef.current    = visitedCountries;  visitedSetRef.current  = new Set(visitedCountries);  });
+  useEffect(() => { wantToGoRef.current   = wantToGoCountries; wantToGoSetRef.current = new Set(wantToGoCountries); });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const cameraRef       = useRef<any>(null);
@@ -164,7 +169,8 @@ export default function MundoGlobe({
     if (!features.length) return;
     const f = features[Math.floor(Math.random() * features.length)];
     const { lat, lng } = centroidOf(f);
-    const name = f.properties.name;
+    const rawName = f.properties.name;
+    const name    = REGION_TO_COUNTRY[rawName] ?? rawName;
 
     // Stop spin immediately and flush residual rotational velocity.
     // OrbitControls stores accumulated delta in sphericalDelta; at 400 RPM it's large
@@ -260,7 +266,7 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
       const globe = new ThreeGlobe({ waitForGlobeReady: true })
         .globeImageUrl(EARTH_IMG)
         .polygonAltitude(ALT_BASE)
-        .polygonSideColor(() => 'rgba(0, 80, 0, 0.15)')
+        .polygonSideColor(() => 'rgba(30, 30, 50, 0.3)')
         .polygonStrokeColor(() => '#111')
         .polygonsTransitionDuration(300);
 
@@ -284,7 +290,6 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
       controls.zoomSpeed       = 0.5;
       controls.enablePan       = false;
       controls.autoRotate      = true;
-      controls.autoRotateSpeed = 1.5;
       controls.minDistance     = globeR * 1.1;
       controls.maxDistance     = globeR * 12;
       controlsRef.current = controls;
@@ -301,12 +306,14 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
 
           const filtered = features.filter(f => f.properties.iso_a2 !== 'AQ');
           featuresRef.current = filtered;
+          // Pre-compute span per feature so featureAt doesn't recalculate on every mousemove
+          const spanCache = new Map<GeoFeature, number>(filtered.map(f => [f, spanOf(f)]));
 
           globe
             .polygonsData(filtered)
             .polygonCapColor((d: object) => {
               const rawName = (d as GeoFeature).properties.name;
-        const name    = REGION_TO_COUNTRY[rawName] ?? rawName;
+              const name    = REGION_TO_COUNTRY[rawName] ?? rawName;
               if (name === selectedRef.current) return selectedColorRef.current;
               if (visited.has(name))   return COLOR_VISITED;
               if (wantToGo.has(name))  return COLOR_WANT_TO_GO;
@@ -325,7 +332,7 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
           // smallest one by geographic span. This ensures small countries (Luxembourg,
           // Vatican, Monaco…) win over large neighbours whose meshes may overlap them.
           function featureAt(e: MouseEvent): GeoFeature | null {
-            const rect = renderer.domElement.getBoundingClientRect();
+            const rect = domRectRef.current ?? renderer.domElement.getBoundingClientRect();
             mouse.x = ((e.clientX - rect.left) / rect.width)  *  2 - 1;
             mouse.y = ((e.clientY - rect.top)  / rect.height) * -2 + 1;
             raycaster.setFromCamera(mouse, camera);
@@ -350,7 +357,7 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
 
             if (!candidates.length) return null;
             // Return the geographically smallest hit — wins over large overlapping neighbours
-            return candidates.reduce((best, f) => spanOf(f) < spanOf(best) ? f : best);
+            return candidates.reduce((best, f) => (spanCache.get(f) ?? 0) < (spanCache.get(best) ?? 0) ? f : best);
           }
 
           const onMouseMove = (e: MouseEvent) => {
@@ -376,16 +383,22 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
           };
         });
 
+      // Update cached rect and renderer/camera on any size change
       const onResize = () => {
         const nw = container.clientWidth;
         const nh = container.clientHeight;
         if (!nw || !nh) return;
-        camera.aspect = nw / nh;
+        domRectRef.current  = renderer.domElement.getBoundingClientRect();
+        camera.aspect       = nw / nh;
         camera.updateProjectionMatrix();
         renderer.setSize(nw, nh);
       };
+      // Seed initial rect once the canvas is in the DOM
+      domRectRef.current = renderer.domElement.getBoundingClientRect();
+      const ro = new ResizeObserver(onResize);
+      ro.observe(container);
       window.addEventListener('resize', onResize);
-      resizeCleanup = () => window.removeEventListener('resize', onResize);
+      resizeCleanup = () => { ro.disconnect(); window.removeEventListener('resize', onResize); };
 
       const animate = () => {
         if (!mounted) return;
@@ -394,15 +407,15 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
         // Animate rainbow colour every frame — including during camera flight
         if (isRainbowRef.current && globeRef.current) {
           rainbowHueRef.current = (rainbowHueRef.current + 1.2) % 360;
-          const h = rainbowHueRef.current;
-          const visitedSet  = new Set(visitedRef.current);
-          const wantToGoSet = new Set(wantToGoRef.current);
+          const h           = rainbowHueRef.current;
+          const visitedSet  = visitedSetRef.current;
+          const wantToGoSet = wantToGoSetRef.current;
           globeRef.current.polygonCapColor((d: object) => {
             const rawName = (d as GeoFeature).properties.name;
-        const name    = REGION_TO_COUNTRY[rawName] ?? rawName;
+            const name    = REGION_TO_COUNTRY[rawName] ?? rawName;
             if (name === selectedRef.current) return `hsl(${h}, 100%, 60%)`;
-            if (visitedSet.has(name))   return COLOR_VISITED;
-            if (wantToGoSet.has(name))  return COLOR_WANT_TO_GO;
+            if (visitedSet.has(name))         return COLOR_VISITED;
+            if (wantToGoSet.has(name))        return COLOR_WANT_TO_GO;
             return COLOR_DEFAULT;
           });
         }
