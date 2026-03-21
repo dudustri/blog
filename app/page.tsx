@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const cards = [
   { href: "/resume", label: "Resume", desc: "Skills, experience & education" },
@@ -14,7 +14,6 @@ const cards = [
 export default function Home() {
   const [dark, setDark] = useState(false);
   const [photoToast, setPhotoToast] = useState(false);
-  const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const check = () => setDark(document.documentElement.classList.contains("dark"));
@@ -118,12 +117,8 @@ export default function Home() {
           <img
             src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/avatar.jpg`}
             alt="Eduardo Sfreddo Trindade"
-            className="w-40 h-40 md:w-52 md:h-52 rounded-3xl object-cover select-none cursor-default"
-            onMouseEnter={() => {
-              if (toastTimer.current) clearTimeout(toastTimer.current);
-              setPhotoToast(true);
-              toastTimer.current = setTimeout(() => setPhotoToast(false), 5000);
-            }}
+            className="w-40 h-40 md:w-52 md:h-52 rounded-3xl object-cover select-none cursor-pointer"
+            onClick={() => setPhotoToast(v => !v)}
           />
 
           {/* Photo toast — top-right of the photo */}
