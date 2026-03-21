@@ -70,11 +70,12 @@ export default function Header() {
             );
           })}
 
-          {/* Dark mode toggle */}
+          {/* Dark mode toggle — invisible placeholder on Mundo page to preserve layout */}
           <button
-            onClick={toggleDark}
+            onClick={isMundo ? undefined : toggleDark}
             aria-label="Toggle dark mode"
-            className={`ml-1 transition-colors ${isMundo ? 'text-white/50 hover:text-white' : 'text-gray-400 hover:text-black'}`}
+            aria-hidden={isMundo}
+            className={`ml-1 transition-colors ${isMundo ? 'invisible' : 'text-gray-400 hover:text-black'}`}
             style={{ fontSize: 16, lineHeight: 1, padding: "2px 0" }}
           >
             {dark ? "○" : "●"}

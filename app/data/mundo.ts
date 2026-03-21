@@ -1,3 +1,5 @@
-import data from "@/content/countries.json";
+import visited from "@/content/countries.json";
+import wantToGo from "@/content/wantToGo.json";
 
-export const countries = data;
+export const countries = visited;
+export const wantToGoCountries = wantToGo;
