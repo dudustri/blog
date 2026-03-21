@@ -10,11 +10,18 @@ const EARTH_IMG   = `${BASE}/earth-night.jpg`;
 const ALT_BASE  = 0.005;
 const ALT_HOVER = 0.027;
 
-// Natural Earth map units splits Belgium into regions — normalise them back to one country
+// Natural Earth map units splits some countries into sub-regions — normalise them back
 const REGION_TO_COUNTRY: Record<string, string> = {
-  'Flemish Region':          'Belgium',
-  'Walloon Region':          'Belgium',
-  'Brussels Capital Region': 'Belgium',
+  // Belgium
+  'Flemish Region':                       'Belgium',
+  'Walloon Region':                       'Belgium',
+  'Brussels Capital Region':              'Belgium',
+  // Bosnia and Herzegovina
+  'Federation of Bosnia and Herzegovina': 'Bosnia and Herzegovina',
+  'Republika Srpska':                     'Bosnia and Herzegovina',
+  'Brčko District':                       'Bosnia and Herzegovina',
+  // Serbia (Vojvodina appears as a separate unit in some Natural Earth versions)
+  'Vojvodina':                            'Serbia',
 };
 
 // Colours imported from @/app/data/mundo — single source of truth shared with the legend
@@ -68,7 +75,7 @@ interface Props {
   spinSpeed?: number;
   pickRandomTrigger?: number;
   onCountryClick?: (name: string | null, iso: string | null) => void;
-  onPickedRandom?: (pick: { name: string; lat: number; lng: number }) => void;
+  onPickedRandom?: (pick: { name: string; iso: string | null; lat: number; lng: number; span: number }) => void;
   focusTarget?: { lat: number; lng: number } | null;
 }
 
@@ -169,6 +176,8 @@ export default function MundoGlobe({
     const { lat, lng } = centroidOf(f);
     const rawName = f.properties.name;
     const name    = REGION_TO_COUNTRY[rawName] ?? rawName;
+    const isoRaw  = f.properties.iso_a2;
+    const iso     = /^[A-Za-z]{2}$/.test(isoRaw) ? isoRaw : null;
 
     // Stop spin immediately and flush residual rotational velocity.
     // OrbitControls stores accumulated delta in sphericalDelta; at 400 RPM it's large
@@ -195,7 +204,7 @@ export default function MundoGlobe({
       z: r * Math.sin(phi) * Math.sin(theta),
     };
 
-    onPickedRandomRef.current?.({ name, lat, lng });
+    onPickedRandomRef.current?.({ name, iso, lat, lng, span });
   }, [pickRandomTrigger]);
 
   useEffect(() => {
