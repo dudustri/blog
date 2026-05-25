@@ -10,12 +10,11 @@ const FAKE_CONTACT: ContactInfo = { email: "nottodaybot@gmail.com", phone: "+45 
 
 const WORKER_URL = "https://snowy-mountain-0ccb.eduardostrindade.workers.dev";
 const TURNSTILE_SITE_KEY = "0x4AAAAAADVl8aWps34OCYpt";
-const WEB3FORMS_KEY = "08e7b664-4d4b-4196-8d22-1dcf02702bd8";
 
 const inputClass =
   "w-full border-b border-gray-200 py-3 bg-transparent outline-none text-sm placeholder-gray-400 transition-colors duration-200 focus:border-black";
 
-type FormState = "idle" | "sending" | "success" | "error";
+type FormState = "idle" | "verifying" | "sending" | "success" | "error";
 
 declare global {
   interface Window {
@@ -36,15 +35,19 @@ export default function ContactPage() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [formState, setFormState] = useState<FormState>("idle");
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [showTurnstile, setShowTurnstile] = useState(false);
 
   const turnstileRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
-  const turnstileReady = useRef(false);
+  const isSendingRef = useRef(false);
 
-  const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  useEffect(() => () => { if (toastTimer.current) clearTimeout(toastTimer.current); }, []);
+  // Refs so sendMessage always reads latest form values
+  const nameRef = useRef(name);
+  const emailRef = useRef(email);
+  const messageRef = useRef(message);
+  useEffect(() => { nameRef.current = name; }, [name]);
+  useEffect(() => { emailRef.current = email; }, [email]);
+  useEffect(() => { messageRef.current = message; }, [message]);
 
   const handleUnlock = async () => {
     setChecking(true);
@@ -58,42 +61,19 @@ export default function ContactPage() {
     setChecking(false);
   };
 
-  const handleTurnstileLoad = () => {
-    turnstileReady.current = true;
-  };
-
-  const renderTurnstile = () => {
-    if (turnstileRef.current && window.turnstile && !widgetIdRef.current) {
-      widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
-        sitekey: TURNSTILE_SITE_KEY,
-        callback: (token: string) => setTurnstileToken(token),
-        "expired-callback": () => setTurnstileToken(null),
-        "error-callback": () => setTurnstileToken(null),
-        theme: "light",
-      });
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!showTurnstile) {
-      setShowTurnstile(true);
-      setTimeout(renderTurnstile, 50);
-      return;
-    }
-    if (!turnstileToken) return;
+  const sendMessage = async (token: string) => {
+    if (isSendingRef.current) return;
+    isSendingRef.current = true;
     setFormState("sending");
-
     try {
       const res = await fetch(WORKER_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          name,
-          email,
-          message,
-          turnstileToken,
+          name: nameRef.current,
+          email: emailRef.current,
+          message: messageRef.current,
+          turnstileToken: token,
         }),
       });
       const data = await res.json();
@@ -102,23 +82,45 @@ export default function ContactPage() {
         setName("");
         setEmail("");
         setMessage("");
-        setTurnstileToken(null);
+        setShowTurnstile(false);
+        widgetIdRef.current = null;
+        isSendingRef.current = false;
       } else {
         setFormState("error");
-        if (widgetIdRef.current) window.turnstile.reset(widgetIdRef.current);
+        isSendingRef.current = false;
+        setShowTurnstile(false);
+        widgetIdRef.current = null;
       }
     } catch {
       setFormState("error");
-      if (widgetIdRef.current) window.turnstile.reset(widgetIdRef.current);
+      isSendingRef.current = false;
+      setShowTurnstile(false);
+      widgetIdRef.current = null;
     }
+  };
+
+  const renderTurnstile = () => {
+    if (turnstileRef.current && window.turnstile && !widgetIdRef.current) {
+      widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: (token: string) => sendMessage(token),
+        "expired-callback": () => setFormState("idle"),
+        "error-callback": () => setFormState("error"),
+        theme: "light",
+      });
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setShowTurnstile(true);
+    setFormState("verifying");
+    setTimeout(renderTurnstile, 50);
   };
 
   return (
     <>
-      <Script
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-        onLoad={handleTurnstileLoad}
-      />
+      <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" />
 
       <div className="max-w-2xl mx-auto px-6 py-10">
         {/* Header */}
@@ -154,6 +156,7 @@ export default function ContactPage() {
                   placeholder="Your name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  disabled={formState === "verifying" || formState === "sending"}
                   required
                 />
               </div>
@@ -164,6 +167,7 @@ export default function ContactPage() {
                   placeholder="Your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  disabled={formState === "verifying" || formState === "sending"}
                   required
                 />
               </div>
@@ -174,11 +178,12 @@ export default function ContactPage() {
                   rows={5}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
+                  disabled={formState === "verifying" || formState === "sending"}
                   required
                 />
               </div>
 
-              {/* Turnstile widget — shown only after first submit click */}
+              {/* Turnstile widget — appears after submit, auto-sends on verify */}
               {showTurnstile && (
                 <div ref={turnstileRef} className="flex justify-center" />
               )}
@@ -189,10 +194,10 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                disabled={formState === "sending" || (showTurnstile && !turnstileToken)}
+                disabled={formState === "verifying" || formState === "sending"}
                 className="w-full py-3 bg-black text-white text-sm font-medium rounded-lg hover:opacity-80 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                {formState === "sending" ? "Sending…" : showTurnstile && !turnstileToken ? "Complete the check above ↑" : "Send message →"}
+                {formState === "sending" ? "Sending…" : formState === "verifying" ? "Verifying…" : "Send message →"}
               </button>
             </form>
           )}
