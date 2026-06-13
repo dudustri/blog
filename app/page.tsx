@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const cards = [
   { href: "/resume", label: "Resume", desc: "Skills, experience & education" },
   { href: "/portfolio", label: "Portfolio", desc: "Projects I've built or aiming to build" },
-  { href: "/mundo", label: "Mundo", desc: "Places where I have been hanging around "},
+  { href: "/mundo", label: "Mundo", desc: "Places I have been hanging around "},
   { href: "/sports", label: "Sports", desc: "Activities, pizzas earned and stats" },
   { href: "/blog", label: "Blog", desc: "Random thoughts & cool things" },
   { href: "/contact", label: "Contact", desc: "Get in touch" },
