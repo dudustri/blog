@@ -1,15 +1,34 @@
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { posts } from "@/app/data/blog";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
+// Named visual effects usable as a content block (see renderContent).
+//   fade → image that fades away once on load (the original "suspdog" decay)
+const EFFECTS: Record<string, CSSProperties> = {
+  fade: { animation: "fadeDecay 4s ease-in forwards" },
+};
+
+// Renders inline markup within a paragraph.
+// Supported: **bold** → <strong>
+function renderInline(text: string) {
+  return text.split(/(\*\*.*?\*\*)/g).map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
+      return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
+}
+
 // Renders a block of content.
 // Supported block types (each separated by \n\n in the JSON):
-//   # Heading       → <h2>
-//   ## Subheading   → <h3>
-//   ![alt](src)     → inline image
-//   anything else   → paragraph
+//   # Heading        → <h2>
+//   ## Subheading    → <h3>
+//   ##effect src     → image with a named effect, e.g. "##fade /images/suspdog2.jpg"
+//   ![alt](src)      → inline image
+//   anything else    → paragraph (supports inline **bold**)
 function renderContent(content: string) {
   return content.split("\n\n").map((block, i) => {
     const trimmed = block.trim();
@@ -30,24 +49,58 @@ function renderContent(content: string) {
       );
     }
 
-    // Inline image: ![alt text](src)
-    const imgMatch = trimmed.match(/^!\[(.*?)\]\((.*?)\)$/);
-    if (imgMatch) {
+    // Effect image: ##<effect> <src>   e.g. "##fade /images/suspdog2.jpg"
+    // Two sequential # immediately followed by the effect name (no space, so it
+    // doesn't collide with "## Subheading"). The src supports the same optional
+    // #position hash as inline images.
+    const effectMatch = trimmed.match(/^##(\w+)\s+(\S+)$/);
+    if (effectMatch && EFFECTS[effectMatch[1]]) {
+      const [, effect, raw] = effectMatch;
+      const [src, pos] = raw.split("#");
+      const objectPosition = pos
+        ? /%$/.test(pos)
+          ? `center ${pos}`
+          : pos
+        : undefined;
       return (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           key={i}
-          src={`${BASE}${imgMatch[2]}`}
+          src={`${BASE}${src}`}
+          alt=""
+          className="w-full rounded-xl object-cover my-8"
+          style={{ maxHeight: 600, objectPosition, ...EFFECTS[effect] }}
+        />
+      );
+    }
+
+    // Inline image: ![alt text](src)
+    // Optional crop position via a #hash on the src, e.g. ![alt](/img.jpg#top)
+    //   #top | #bottom | #center  → object-position keyword
+    //   #30% (or #50%)            → vertical object-position (top..bottom)
+    const imgMatch = trimmed.match(/^!\[(.*?)\]\((.*?)\)$/);
+    if (imgMatch) {
+      const [src, pos] = imgMatch[2].split("#");
+      const objectPosition = pos
+        ? /%$/.test(pos)
+          ? `center ${pos}`
+          : pos
+        : undefined;
+      return (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          key={i}
+          src={`${BASE}${src}`}
           alt={imgMatch[1]}
-          className="w-full rounded-xl object-cover my-2"
-          style={{ maxHeight: 600 }}
+          className="w-full rounded-xl object-cover my-8"
+          style={{ maxHeight: 600, objectPosition }}
         />
       );
     }
 
     return (
-      <p key={i} className="text-gray-700 leading-relaxed">
-        {trimmed}
+      <p key={i} className="text-gray-700 leading-relaxed text-justify indent-8">
+        {renderInline(trimmed)}
       </p>
     );
   });
@@ -63,10 +116,31 @@ export default async function BlogPost({
   if (idx === -1) notFound();
 
   const post = posts[idx];
-  const prevPost = idx > 0 ? posts[idx - 1] : null;
-  const nextPost = idx < posts.length - 1 ? posts[idx + 1] : null;
 
-  const headImage = "headImage" in post ? (post.headImage as string) : null;
+  // Skip over draft posts when finding prev/next neighbours.
+  const isPublished = (p: (typeof posts)[number]) =>
+    !("draft" in p && p.draft);
+  let prevPost: (typeof posts)[number] | null = null;
+  for (let i = idx - 1; i >= 0; i--) {
+    if (isPublished(posts[i])) { prevPost = posts[i]; break; }
+  }
+  let nextPost: (typeof posts)[number] | null = null;
+  for (let i = idx + 1; i < posts.length; i++) {
+    if (isPublished(posts[i])) { nextPost = posts[i]; break; }
+  }
+
+  const headImageRaw =
+    "headImage" in post ? (post.headImage as string) : null;
+  // Optional crop position via a #hash on the src, e.g. "/img.jpg#15%"
+  //   #top | #bottom | #center → keyword; #15% → vertical position (top..bottom)
+  const [headImage, headPos] = headImageRaw
+    ? headImageRaw.split("#")
+    : [null, undefined];
+  const headObjectPosition = headPos
+    ? /%$/.test(headPos)
+      ? `center ${headPos}`
+      : headPos
+    : undefined;
 
   return (
     <div className="w-full max-w-6xl mx-auto px-6 py-10">
@@ -110,7 +184,7 @@ export default async function BlogPost({
           src={`${BASE}${headImage}`}
           alt=""
           className="w-full rounded-2xl object-cover mb-8"
-          style={{ maxHeight: 480 }}
+          style={{ maxHeight: 480, objectPosition: headObjectPosition }}
         />
       ) : (
         <div
@@ -123,25 +197,6 @@ export default async function BlogPost({
       <p className="text-gray-400 text-sm mb-8">{post.date}</p>
 
       <div className="space-y-4">{renderContent(post.content)}</div>
-
-      {/* Bottom images — fade away once */}
-      {post.images && post.images.length > 0 && (
-        <div className="mt-10 space-y-6">
-          {post.images.map((src, i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              key={i}
-              src={`${BASE}${src}`}
-              alt=""
-              className="w-full rounded-xl object-cover"
-              style={{
-                maxHeight: 600,
-                animation: "fadeDecay 4s ease-in forwards",
-              }}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 }
