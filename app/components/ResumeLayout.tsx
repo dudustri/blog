@@ -11,9 +11,12 @@ export default function ResumeLayout() {
   const [activeTech, setActiveTech] = useState<string | null>(null);
 
   return (
-    <div className="flex gap-8 lg:gap-12">
-      {/* Left sticky timeline — spans all sections */}
-      <aside className="hidden md:block w-44 flex-shrink-0">
+    <div className="relative">
+      {/* Career timeline — its own div, pinned to the extreme left and sitting
+          entirely outside the content column (right-full + margin) so it never
+          changes the centred content's width. Shown only when the left margin
+          is wide enough to hold it. */}
+      <aside className="hidden xl:block absolute right-full top-0 bottom-0 mr-8 lg:mr-12 w-44">
         <ResumeSidebar
           experience={experience}
           clickedJobId={selectedJob?.id ?? ""}
@@ -22,7 +25,7 @@ export default function ResumeLayout() {
       </aside>
 
       {/* All content sections — same left edge throughout */}
-      <div className="flex-1 min-w-0 space-y-14">
+      <div className="min-w-0 space-y-14">
 
         {/* Tech Stack */}
         <section id="techstack">
