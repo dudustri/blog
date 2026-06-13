@@ -6,7 +6,7 @@ export default function BlogPage() {
     <div className="w-full max-w-6xl mx-auto px-6 py-10">
       <h1 className="text-3xl font-bold tracking-tight mb-10">Blog</h1>
       <div className="divide-y divide-gray-100">
-        {posts.map((post) => (
+        {posts.filter((post) => !post.draft).map((post) => (
           <article key={post.slug} className="py-6 first:pt-0">
             <Link href={`/blog/${post.slug}`} className="group block">
               <div className="flex items-baseline justify-between gap-4 mb-1">
