@@ -1,0 +1,5294 @@
+[
+  {
+    "id": "s-18888330035",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.6,
+    "movingTimeSec": 1785,
+    "elevationM": 16,
+    "date": "2026-06-12"
+  },
+  {
+    "id": "s-18870512749",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4625,
+    "elevationM": 0,
+    "date": "2026-06-10"
+  },
+  {
+    "id": "s-18854821046",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4324,
+    "elevationM": 0,
+    "date": "2026-06-09"
+  },
+  {
+    "id": "s-18847905783",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.6,
+    "movingTimeSec": 1867,
+    "elevationM": 15,
+    "date": "2026-06-09"
+  },
+  {
+    "id": "s-18841333120",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3946,
+    "elevationM": 0,
+    "date": "2026-06-08"
+  },
+  {
+    "id": "s-18840399859",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4655,
+    "elevationM": 0,
+    "date": "2026-06-07"
+  },
+  {
+    "id": "s-18840382722",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 5,
+    "movingTimeSec": 1993,
+    "elevationM": 9,
+    "date": "2026-06-07"
+  },
+  {
+    "id": "s-18840382422",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 5.8,
+    "movingTimeSec": 1824,
+    "elevationM": 16,
+    "date": "2026-06-05"
+  },
+  {
+    "id": "s-18840373708",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3808,
+    "elevationM": 0,
+    "date": "2026-06-03"
+  },
+  {
+    "id": "s-18760087032",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4525,
+    "elevationM": 0,
+    "date": "2026-06-02"
+  },
+  {
+    "id": "s-18753173659",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 6.1,
+    "movingTimeSec": 1874,
+    "elevationM": 11,
+    "date": "2026-06-02"
+  },
+  {
+    "id": "s-18746617313",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4475,
+    "elevationM": 0,
+    "date": "2026-06-01"
+  },
+  {
+    "id": "s-18691506365",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4913,
+    "elevationM": 0,
+    "date": "2026-05-28"
+  },
+  {
+    "id": "s-18672669474",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.6,
+    "movingTimeSec": 1821,
+    "elevationM": 14,
+    "date": "2026-05-27"
+  },
+  {
+    "id": "s-18664089800",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5171,
+    "elevationM": 0,
+    "date": "2026-05-26"
+  },
+  {
+    "id": "s-18651752790",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 10.2,
+    "movingTimeSec": 3246,
+    "elevationM": 28,
+    "date": "2026-05-25"
+  },
+  {
+    "id": "s-18606210605",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.6,
+    "movingTimeSec": 1736,
+    "elevationM": 16,
+    "date": "2026-05-22"
+  },
+  {
+    "id": "s-18606205642",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3702,
+    "elevationM": 0,
+    "date": "2026-05-20"
+  },
+  {
+    "id": "s-18565490918",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.6,
+    "movingTimeSec": 1817,
+    "elevationM": 15,
+    "date": "2026-05-19"
+  },
+  {
+    "id": "s-18560610139",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3827,
+    "elevationM": 0,
+    "date": "2026-05-18"
+  },
+  {
+    "id": "s-18554078385",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6055,
+    "elevationM": 0,
+    "date": "2026-05-17"
+  },
+  {
+    "id": "s-18494860255",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3617,
+    "elevationM": 0,
+    "date": "2026-05-13"
+  },
+  {
+    "id": "s-18474394731",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.6,
+    "movingTimeSec": 1866,
+    "elevationM": 15,
+    "date": "2026-05-12"
+  },
+  {
+    "id": "s-18469212985",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4925,
+    "elevationM": 0,
+    "date": "2026-05-11"
+  },
+  {
+    "id": "s-18423299878",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1999,
+    "elevationM": 13,
+    "date": "2026-05-08"
+  },
+  {
+    "id": "s-18414205059",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3673,
+    "elevationM": 0,
+    "date": "2026-05-07"
+  },
+  {
+    "id": "s-18406374352",
+    "name": "Morning Hike",
+    "type": "Hike",
+    "distanceKm": 2.5,
+    "movingTimeSec": 3422,
+    "elevationM": 421,
+    "date": "2026-04-27"
+  },
+  {
+    "id": "s-18406370205",
+    "name": "Morning Hike",
+    "type": "Hike",
+    "distanceKm": 13.4,
+    "movingTimeSec": 15252,
+    "elevationM": 726,
+    "date": "2026-04-26"
+  },
+  {
+    "id": "s-18406328820",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 2.3,
+    "movingTimeSec": 2190,
+    "elevationM": 7,
+    "date": "2026-04-25"
+  },
+  {
+    "id": "s-18406328822",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 2.6,
+    "movingTimeSec": 2522,
+    "elevationM": 113,
+    "date": "2026-04-25"
+  },
+  {
+    "id": "s-18406324642",
+    "name": "Morning Hike",
+    "type": "Hike",
+    "distanceKm": 5.2,
+    "movingTimeSec": 4669,
+    "elevationM": 103,
+    "date": "2026-04-25"
+  },
+  {
+    "id": "s-18191954621",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2180,
+    "elevationM": 0,
+    "date": "2026-04-15"
+  },
+  {
+    "id": "s-18040534302",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 884,
+    "elevationM": 0,
+    "date": "2026-04-08"
+  },
+  {
+    "id": "s-17928806685",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4717,
+    "elevationM": 0,
+    "date": "2026-03-31"
+  },
+  {
+    "id": "s-17917668626",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4073,
+    "elevationM": 0,
+    "date": "2026-03-30"
+  },
+  {
+    "id": "s-17904481279",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4632,
+    "elevationM": 0,
+    "date": "2026-03-29"
+  },
+  {
+    "id": "s-17863472304",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3416,
+    "elevationM": 0,
+    "date": "2026-03-25"
+  },
+  {
+    "id": "s-17863466856",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4015,
+    "elevationM": 0,
+    "date": "2026-03-24"
+  },
+  {
+    "id": "s-17832512188",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4036,
+    "elevationM": 0,
+    "date": "2026-03-23"
+  },
+  {
+    "id": "s-17831245601",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4491,
+    "elevationM": 0,
+    "date": "2026-03-20"
+  },
+  {
+    "id": "s-17831245604",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5195,
+    "elevationM": 0,
+    "date": "2026-03-19"
+  },
+  {
+    "id": "s-17758585123",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4701,
+    "elevationM": 0,
+    "date": "2026-03-17"
+  },
+  {
+    "id": "s-17744428531",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3873,
+    "elevationM": 0,
+    "date": "2026-03-16"
+  },
+  {
+    "id": "s-17722096086",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5084,
+    "elevationM": 0,
+    "date": "2026-03-13"
+  },
+  {
+    "id": "s-17722089730",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5816,
+    "elevationM": 0,
+    "date": "2026-03-12"
+  },
+  {
+    "id": "s-17722063561",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5648,
+    "elevationM": 0,
+    "date": "2026-03-10"
+  },
+  {
+    "id": "s-17664721888",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4957,
+    "elevationM": 0,
+    "date": "2026-03-09"
+  },
+  {
+    "id": "s-17627405892",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4533,
+    "elevationM": 0,
+    "date": "2026-03-06"
+  },
+  {
+    "id": "s-17617085079",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4085,
+    "elevationM": 0,
+    "date": "2026-03-05"
+  },
+  {
+    "id": "s-17605139012",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4876,
+    "elevationM": 0,
+    "date": "2026-03-04"
+  },
+  {
+    "id": "s-17584313271",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4581,
+    "elevationM": 0,
+    "date": "2026-03-02"
+  },
+  {
+    "id": "s-17584309396",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3755,
+    "elevationM": 0,
+    "date": "2026-02-26"
+  },
+  {
+    "id": "s-17526727662",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4305,
+    "elevationM": 0,
+    "date": "2026-02-25"
+  },
+  {
+    "id": "s-17504213749",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.6,
+    "movingTimeSec": 1692,
+    "elevationM": 11,
+    "date": "2026-02-24"
+  },
+  {
+    "id": "s-17504213713",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5084,
+    "elevationM": 0,
+    "date": "2026-02-23"
+  },
+  {
+    "id": "s-17490986430",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4166,
+    "elevationM": 0,
+    "date": "2026-02-21"
+  },
+  {
+    "id": "s-17454966118",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4447,
+    "elevationM": 0,
+    "date": "2026-02-18"
+  },
+  {
+    "id": "s-17440075566",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.9,
+    "movingTimeSec": 1944,
+    "elevationM": 12,
+    "date": "2026-02-18"
+  },
+  {
+    "id": "s-17422249817",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3828,
+    "elevationM": 0,
+    "date": "2026-02-16"
+  },
+  {
+    "id": "s-17405609768",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 6.8,
+    "movingTimeSec": 2112,
+    "elevationM": 7,
+    "date": "2026-02-15"
+  },
+  {
+    "id": "s-17385224452",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 6,
+    "movingTimeSec": 1908,
+    "elevationM": 16,
+    "date": "2026-02-13"
+  },
+  {
+    "id": "s-17362599681",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3993,
+    "elevationM": 0,
+    "date": "2026-02-10"
+  },
+  {
+    "id": "s-17347544303",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 3.3,
+    "movingTimeSec": 1117,
+    "elevationM": 0,
+    "date": "2026-02-09"
+  },
+  {
+    "id": "s-17347544261",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5401,
+    "elevationM": 0,
+    "date": "2026-02-09"
+  },
+  {
+    "id": "s-17347540950",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3697,
+    "elevationM": 0,
+    "date": "2026-01-28"
+  },
+  {
+    "id": "s-17204875843",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1844,
+    "elevationM": 9,
+    "date": "2026-01-28"
+  },
+  {
+    "id": "s-17198600677",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 3.2,
+    "movingTimeSec": 1107,
+    "elevationM": 0,
+    "date": "2026-01-27"
+  },
+  {
+    "id": "s-17198600889",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3628,
+    "elevationM": 0,
+    "date": "2026-01-27"
+  },
+  {
+    "id": "s-17198638631",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6943,
+    "elevationM": 0,
+    "date": "2026-01-26"
+  },
+  {
+    "id": "s-17161877565",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2886,
+    "elevationM": 0,
+    "date": "2026-01-23"
+  },
+  {
+    "id": "s-17131702487",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 3.5,
+    "movingTimeSec": 1269,
+    "elevationM": 0,
+    "date": "2026-01-21"
+  },
+  {
+    "id": "s-17131702504",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3833,
+    "elevationM": 0,
+    "date": "2026-01-21"
+  },
+  {
+    "id": "s-17131696943",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 5.2,
+    "movingTimeSec": 1811,
+    "elevationM": 0,
+    "date": "2026-01-20"
+  },
+  {
+    "id": "s-17131697129",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4459,
+    "elevationM": 0,
+    "date": "2026-01-20"
+  },
+  {
+    "id": "s-17108190380",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 3,
+    "movingTimeSec": 1029,
+    "elevationM": 0,
+    "date": "2026-01-19"
+  },
+  {
+    "id": "s-17108190441",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4092,
+    "elevationM": 0,
+    "date": "2026-01-19"
+  },
+  {
+    "id": "s-17108185101",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 5.1,
+    "movingTimeSec": 1980,
+    "elevationM": 0,
+    "date": "2026-01-16"
+  },
+  {
+    "id": "s-17108185093",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3155,
+    "elevationM": 0,
+    "date": "2026-01-16"
+  },
+  {
+    "id": "s-17071556374",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2777,
+    "elevationM": 0,
+    "date": "2026-01-15"
+  },
+  {
+    "id": "s-17057530089",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3230,
+    "elevationM": 0,
+    "date": "2026-01-14"
+  },
+  {
+    "id": "s-17057523889",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4879,
+    "elevationM": 0,
+    "date": "2026-01-13"
+  },
+  {
+    "id": "s-17027347292",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 3.1,
+    "movingTimeSec": 1162,
+    "elevationM": 0,
+    "date": "2026-01-12"
+  },
+  {
+    "id": "s-17027345893",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3236,
+    "elevationM": 0,
+    "date": "2026-01-12"
+  },
+  {
+    "id": "s-17019826395",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4166,
+    "elevationM": 0,
+    "date": "2026-01-11"
+  },
+  {
+    "id": "s-16894344123",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3727,
+    "elevationM": 0,
+    "date": "2025-12-30"
+  },
+  {
+    "id": "s-16879042164",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2859,
+    "elevationM": 0,
+    "date": "2025-12-29"
+  },
+  {
+    "id": "s-16864084337",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3785,
+    "elevationM": 0,
+    "date": "2025-12-27"
+  },
+  {
+    "id": "s-16847713604",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3959,
+    "elevationM": 0,
+    "date": "2025-12-26"
+  },
+  {
+    "id": "s-16847129661",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 9.1,
+    "movingTimeSec": 2937,
+    "elevationM": 12,
+    "date": "2025-12-26"
+  },
+  {
+    "id": "s-16820652204",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 9.1,
+    "movingTimeSec": 2847,
+    "elevationM": 14,
+    "date": "2025-12-23"
+  },
+  {
+    "id": "s-16820651568",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5175,
+    "elevationM": 0,
+    "date": "2025-12-22"
+  },
+  {
+    "id": "s-16812722854",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3612,
+    "elevationM": 0,
+    "date": "2025-12-19"
+  },
+  {
+    "id": "s-16780203501",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2945,
+    "elevationM": 0,
+    "date": "2025-12-18"
+  },
+  {
+    "id": "s-16772658717",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4239,
+    "elevationM": 0,
+    "date": "2025-12-17"
+  },
+  {
+    "id": "s-16769035001",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3830,
+    "elevationM": 0,
+    "date": "2025-12-16"
+  },
+  {
+    "id": "s-16756049836",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4100,
+    "elevationM": 0,
+    "date": "2025-12-15"
+  },
+  {
+    "id": "s-16724432908",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4019,
+    "elevationM": 0,
+    "date": "2025-12-12"
+  },
+  {
+    "id": "s-16722129674",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.8,
+    "movingTimeSec": 1738,
+    "elevationM": 8,
+    "date": "2025-12-12"
+  },
+  {
+    "id": "s-16717213007",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2977,
+    "elevationM": 0,
+    "date": "2025-12-11"
+  },
+  {
+    "id": "s-16712485606",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.8,
+    "movingTimeSec": 1781,
+    "elevationM": 13,
+    "date": "2025-12-11"
+  },
+  {
+    "id": "s-16707693928",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4185,
+    "elevationM": 0,
+    "date": "2025-12-10"
+  },
+  {
+    "id": "s-16697906856",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4218,
+    "elevationM": 0,
+    "date": "2025-12-09"
+  },
+  {
+    "id": "s-16694679291",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.5,
+    "movingTimeSec": 1606,
+    "elevationM": 9,
+    "date": "2025-12-09"
+  },
+  {
+    "id": "s-16694679286",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4506,
+    "elevationM": 0,
+    "date": "2025-12-08"
+  },
+  {
+    "id": "s-16647674360",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1734,
+    "elevationM": 12,
+    "date": "2025-12-04"
+  },
+  {
+    "id": "s-16643148298",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 12.3,
+    "movingTimeSec": 4011,
+    "elevationM": 19,
+    "date": "2025-12-03"
+  },
+  {
+    "id": "s-16628160840",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1749,
+    "elevationM": 13,
+    "date": "2025-12-02"
+  },
+  {
+    "id": "s-16625567742",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4673,
+    "elevationM": 0,
+    "date": "2025-12-01"
+  },
+  {
+    "id": "s-16594937494",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5733,
+    "elevationM": 0,
+    "date": "2025-11-28"
+  },
+  {
+    "id": "s-16586826546",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4637,
+    "elevationM": 0,
+    "date": "2025-11-27"
+  },
+  {
+    "id": "s-16580621928",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.5,
+    "movingTimeSec": 1684,
+    "elevationM": 17,
+    "date": "2025-11-27"
+  },
+  {
+    "id": "s-16576643778",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4983,
+    "elevationM": 0,
+    "date": "2025-11-26"
+  },
+  {
+    "id": "s-16570321724",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4593,
+    "elevationM": 0,
+    "date": "2025-11-25"
+  },
+  {
+    "id": "s-16523804446",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1770,
+    "elevationM": 9,
+    "date": "2025-11-21"
+  },
+  {
+    "id": "s-16523804357",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2714,
+    "elevationM": 0,
+    "date": "2025-11-20"
+  },
+  {
+    "id": "s-16509513757",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3642,
+    "elevationM": 0,
+    "date": "2025-11-19"
+  },
+  {
+    "id": "s-16506221940",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 5.8,
+    "movingTimeSec": 1701,
+    "elevationM": 15,
+    "date": "2025-11-19"
+  },
+  {
+    "id": "s-16501997505",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4434,
+    "elevationM": 0,
+    "date": "2025-11-18"
+  },
+  {
+    "id": "s-16488739416",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3752,
+    "elevationM": 0,
+    "date": "2025-11-17"
+  },
+  {
+    "id": "s-16488735536",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 5,
+    "movingTimeSec": 1632,
+    "elevationM": 2,
+    "date": "2025-11-16"
+  },
+  {
+    "id": "s-16455756708",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1764,
+    "elevationM": 12,
+    "date": "2025-11-14"
+  },
+  {
+    "id": "s-16455756697",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3579,
+    "elevationM": 0,
+    "date": "2025-11-13"
+  },
+  {
+    "id": "s-16446760113",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1614,
+    "elevationM": 13,
+    "date": "2025-11-13"
+  },
+  {
+    "id": "s-16442654045",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4306,
+    "elevationM": 0,
+    "date": "2025-11-12"
+  },
+  {
+    "id": "s-16442654060",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5472,
+    "elevationM": 0,
+    "date": "2025-11-11"
+  },
+  {
+    "id": "s-16425993641",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1750,
+    "elevationM": 10,
+    "date": "2025-11-11"
+  },
+  {
+    "id": "s-16420972268",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3973,
+    "elevationM": 0,
+    "date": "2025-11-10"
+  },
+  {
+    "id": "s-16381678747",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1698,
+    "elevationM": 11,
+    "date": "2025-11-06"
+  },
+  {
+    "id": "s-16368596051",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4183,
+    "elevationM": 0,
+    "date": "2025-11-05"
+  },
+  {
+    "id": "s-16350696087",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1677,
+    "elevationM": 10,
+    "date": "2025-11-04"
+  },
+  {
+    "id": "s-16349310417",
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3681,
+    "elevationM": 0,
+    "date": "2025-11-04"
+  },
+  {
+    "id": "s-16349310561",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5189,
+    "elevationM": 0,
+    "date": "2025-11-03"
+  },
+  {
+    "id": "s-16318957808",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 9.1,
+    "movingTimeSec": 2828,
+    "elevationM": 11,
+    "date": "2025-11-01"
+  },
+  {
+    "id": "s-16315687634",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4948,
+    "elevationM": 0,
+    "date": "2025-10-30"
+  },
+  {
+    "id": "s-16304850059",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3634,
+    "elevationM": 0,
+    "date": "2025-10-29"
+  },
+  {
+    "id": "s-16290574855",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 5.1,
+    "movingTimeSec": 1613,
+    "elevationM": 0,
+    "date": "2025-10-28"
+  },
+  {
+    "id": "s-16290574877",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3711,
+    "elevationM": 0,
+    "date": "2025-10-28"
+  },
+  {
+    "id": "s-16290569659",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4758,
+    "elevationM": 0,
+    "date": "2025-10-27"
+  },
+  {
+    "id": "s-16268748742",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4974,
+    "elevationM": 0,
+    "date": "2025-10-26"
+  },
+  {
+    "id": "s-16264136414",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1624,
+    "elevationM": 8,
+    "date": "2025-10-26"
+  },
+  {
+    "id": "s-16254651477",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4132,
+    "elevationM": 0,
+    "date": "2025-10-25"
+  },
+  {
+    "id": "s-16225286063",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 5,
+    "movingTimeSec": 1867,
+    "elevationM": 0,
+    "date": "2025-10-22"
+  },
+  {
+    "id": "s-16224979302",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2714,
+    "elevationM": 0,
+    "date": "2025-10-22"
+  },
+  {
+    "id": "s-16218901034",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4454,
+    "elevationM": 0,
+    "date": "2025-10-21"
+  },
+  {
+    "id": "s-16218898240",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5121,
+    "elevationM": 0,
+    "date": "2025-10-20"
+  },
+  {
+    "id": "s-16195511254",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4234,
+    "elevationM": 0,
+    "date": "2025-10-19"
+  },
+  {
+    "id": "s-16172435177",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4270,
+    "elevationM": 0,
+    "date": "2025-10-17"
+  },
+  {
+    "id": "s-16170148461",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3709,
+    "elevationM": 0,
+    "date": "2025-10-16"
+  },
+  {
+    "id": "s-16153738465",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3975,
+    "elevationM": 0,
+    "date": "2025-10-15"
+  },
+  {
+    "id": "s-16145370459",
+    "name": "Lunch Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3676,
+    "elevationM": 0,
+    "date": "2025-10-14"
+  },
+  {
+    "id": "s-16135344038",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6175,
+    "elevationM": 0,
+    "date": "2025-10-13"
+  },
+  {
+    "id": "s-16119014365",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 9.5,
+    "movingTimeSec": 2868,
+    "elevationM": 11,
+    "date": "2025-10-12"
+  },
+  {
+    "id": "s-16108348276",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4154,
+    "elevationM": 0,
+    "date": "2025-10-11"
+  },
+  {
+    "id": "s-16094487361",
+    "name": "Lunch Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3855,
+    "elevationM": 0,
+    "date": "2025-10-10"
+  },
+  {
+    "id": "s-16083825915",
+    "name": "Lunch Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3726,
+    "elevationM": 0,
+    "date": "2025-10-09"
+  },
+  {
+    "id": "s-16083825920",
+    "name": "Lunch Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3663,
+    "elevationM": 0,
+    "date": "2025-10-08"
+  },
+  {
+    "id": "s-16067563381",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4885,
+    "elevationM": 0,
+    "date": "2025-10-07"
+  },
+  {
+    "id": "s-16067559549",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4055,
+    "elevationM": 0,
+    "date": "2025-10-06"
+  },
+  {
+    "id": "s-16045466346",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 13.5,
+    "movingTimeSec": 4323,
+    "elevationM": 119,
+    "date": "2025-10-05"
+  },
+  {
+    "id": "s-16022870655",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4945,
+    "elevationM": 0,
+    "date": "2025-10-03"
+  },
+  {
+    "id": "s-16012587976",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4427,
+    "elevationM": 0,
+    "date": "2025-10-02"
+  },
+  {
+    "id": "s-16006129765",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4374,
+    "elevationM": 0,
+    "date": "2025-10-01"
+  },
+  {
+    "id": "s-15995845380",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4008,
+    "elevationM": 0,
+    "date": "2025-09-30"
+  },
+  {
+    "id": "s-15984935928",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1629,
+    "elevationM": 13,
+    "date": "2025-09-30"
+  },
+  {
+    "id": "s-15984936016",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4197,
+    "elevationM": 0,
+    "date": "2025-09-29"
+  },
+  {
+    "id": "s-15967331996",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5242,
+    "elevationM": 0,
+    "date": "2025-09-28"
+  },
+  {
+    "id": "s-15954217213",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 10,
+    "movingTimeSec": 3045,
+    "elevationM": 65,
+    "date": "2025-09-27"
+  },
+  {
+    "id": "s-15954217473",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4354,
+    "elevationM": 0,
+    "date": "2025-09-26"
+  },
+  {
+    "id": "s-15943842103",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5290,
+    "elevationM": 0,
+    "date": "2025-09-25"
+  },
+  {
+    "id": "s-15924154322",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4210,
+    "elevationM": 0,
+    "date": "2025-09-24"
+  },
+  {
+    "id": "s-15914661340",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4294,
+    "elevationM": 0,
+    "date": "2025-09-23"
+  },
+  {
+    "id": "s-15906237594",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4034,
+    "elevationM": 0,
+    "date": "2025-09-22"
+  },
+  {
+    "id": "s-15892042156",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4347,
+    "elevationM": 0,
+    "date": "2025-09-21"
+  },
+  {
+    "id": "s-15879317718",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5081,
+    "elevationM": 0,
+    "date": "2025-09-20"
+  },
+  {
+    "id": "s-15863548623",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.8,
+    "movingTimeSec": 1633,
+    "elevationM": 16,
+    "date": "2025-09-19"
+  },
+  {
+    "id": "s-15858009868",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4696,
+    "elevationM": 0,
+    "date": "2025-09-18"
+  },
+  {
+    "id": "s-15848012382",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5114,
+    "elevationM": 0,
+    "date": "2025-09-17"
+  },
+  {
+    "id": "s-15841135363",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.8,
+    "movingTimeSec": 1730,
+    "elevationM": 19,
+    "date": "2025-09-17"
+  },
+  {
+    "id": "s-15823868435",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4920,
+    "elevationM": 0,
+    "date": "2025-09-15"
+  },
+  {
+    "id": "s-15807772780",
+    "name": "Copenhagen Half Marathon",
+    "type": "Run",
+    "distanceKm": 21.7,
+    "movingTimeSec": 6327,
+    "elevationM": 57,
+    "date": "2025-09-14"
+  },
+  {
+    "id": "s-15800202331",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3527,
+    "elevationM": 0,
+    "date": "2025-09-13"
+  },
+  {
+    "id": "s-15788659497",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5336,
+    "elevationM": 0,
+    "date": "2025-09-12"
+  },
+  {
+    "id": "s-15780464402",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4247,
+    "elevationM": 0,
+    "date": "2025-09-11"
+  },
+  {
+    "id": "s-15771948971",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3113,
+    "elevationM": 0,
+    "date": "2025-09-10"
+  },
+  {
+    "id": "s-15763284295",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1753,
+    "elevationM": 15,
+    "date": "2025-09-10"
+  },
+  {
+    "id": "s-15754928889",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3614,
+    "elevationM": 0,
+    "date": "2025-09-09"
+  },
+  {
+    "id": "s-15753822300",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 8.5,
+    "movingTimeSec": 2433,
+    "elevationM": 6,
+    "date": "2025-09-09"
+  },
+  {
+    "id": "s-15742744413",
+    "name": "Afternoon Ride",
+    "type": "Ride",
+    "distanceKm": 44.4,
+    "movingTimeSec": 6513,
+    "elevationM": 213,
+    "date": "2025-09-08"
+  },
+  {
+    "id": "s-15715098294",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 17.8,
+    "movingTimeSec": 6155,
+    "elevationM": 190,
+    "date": "2025-09-06"
+  },
+  {
+    "id": "s-15709934220",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4737,
+    "elevationM": 0,
+    "date": "2025-09-05"
+  },
+  {
+    "id": "s-15709930647",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4557,
+    "elevationM": 0,
+    "date": "2025-09-04"
+  },
+  {
+    "id": "s-15693074535",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.8,
+    "movingTimeSec": 1769,
+    "elevationM": 14,
+    "date": "2025-09-04"
+  },
+  {
+    "id": "s-15687128389",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5281,
+    "elevationM": 0,
+    "date": "2025-09-03"
+  },
+  {
+    "id": "s-15675282226",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3628,
+    "elevationM": 0,
+    "date": "2025-09-02"
+  },
+  {
+    "id": "s-15670917370",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.8,
+    "movingTimeSec": 1655,
+    "elevationM": 11,
+    "date": "2025-09-02"
+  },
+  {
+    "id": "s-15670912310",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3901,
+    "elevationM": 0,
+    "date": "2025-09-01"
+  },
+  {
+    "id": "s-15649544811",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 12.2,
+    "movingTimeSec": 3639,
+    "elevationM": 36,
+    "date": "2025-08-31"
+  },
+  {
+    "id": "s-15647033702",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5257,
+    "elevationM": 0,
+    "date": "2025-08-30"
+  },
+  {
+    "id": "s-15629958202",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4082,
+    "elevationM": 0,
+    "date": "2025-08-29"
+  },
+  {
+    "id": "s-15625564376",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.8,
+    "movingTimeSec": 1635,
+    "elevationM": 15,
+    "date": "2025-08-29"
+  },
+  {
+    "id": "s-15623832715",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4367,
+    "elevationM": 0,
+    "date": "2025-08-28"
+  },
+  {
+    "id": "s-15603232164",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.9,
+    "movingTimeSec": 1612,
+    "elevationM": 11,
+    "date": "2025-08-27"
+  },
+  {
+    "id": "s-15597569601",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3687,
+    "elevationM": 0,
+    "date": "2025-08-26"
+  },
+  {
+    "id": "s-15590661690",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4279,
+    "elevationM": 0,
+    "date": "2025-08-25"
+  },
+  {
+    "id": "s-15574686093",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 5.4,
+    "movingTimeSec": 1639,
+    "elevationM": 19,
+    "date": "2025-08-24"
+  },
+  {
+    "id": "s-15574683083",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5500,
+    "elevationM": 0,
+    "date": "2025-08-24"
+  },
+  {
+    "id": "s-15562100146",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 8.2,
+    "movingTimeSec": 2284,
+    "elevationM": 20,
+    "date": "2025-08-23"
+  },
+  {
+    "id": "s-15562097193",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4061,
+    "elevationM": 0,
+    "date": "2025-08-22"
+  },
+  {
+    "id": "s-15535169241",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 10,
+    "movingTimeSec": 3128,
+    "elevationM": 18,
+    "date": "2025-08-21"
+  },
+  {
+    "id": "s-15528735361",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3736,
+    "elevationM": 0,
+    "date": "2025-08-20"
+  },
+  {
+    "id": "s-15528730580",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 7.1,
+    "movingTimeSec": 2165,
+    "elevationM": 6,
+    "date": "2025-08-20"
+  },
+  {
+    "id": "s-15517249192",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4805,
+    "elevationM": 0,
+    "date": "2025-08-19"
+  },
+  {
+    "id": "s-15505131365",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5671,
+    "elevationM": 0,
+    "date": "2025-08-18"
+  },
+  {
+    "id": "s-15494289548",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 13,
+    "movingTimeSec": 4024,
+    "elevationM": 12,
+    "date": "2025-08-17"
+  },
+  {
+    "id": "s-15458640654",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 10.9,
+    "movingTimeSec": 3460,
+    "elevationM": 12,
+    "date": "2025-08-14"
+  },
+  {
+    "id": "s-15456720017",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1777,
+    "elevationM": 14,
+    "date": "2025-08-14"
+  },
+  {
+    "id": "s-15448924746",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3324,
+    "elevationM": 0,
+    "date": "2025-08-13"
+  },
+  {
+    "id": "s-15437391354",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3613,
+    "elevationM": 0,
+    "date": "2025-08-12"
+  },
+  {
+    "id": "s-15437387160",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 1.3,
+    "movingTimeSec": 327,
+    "elevationM": 10,
+    "date": "2025-08-12"
+  },
+  {
+    "id": "s-15425702009",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4965,
+    "elevationM": 0,
+    "date": "2025-08-11"
+  },
+  {
+    "id": "s-15415104234",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3706,
+    "elevationM": 0,
+    "date": "2025-08-10"
+  },
+  {
+    "id": "s-15410445524",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 10.5,
+    "movingTimeSec": 3355,
+    "elevationM": 13,
+    "date": "2025-08-10"
+  },
+  {
+    "id": "s-15403889448",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 3,
+    "movingTimeSec": 958,
+    "elevationM": 6,
+    "date": "2025-08-09"
+  },
+  {
+    "id": "s-15390130341",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4285,
+    "elevationM": 0,
+    "date": "2025-08-08"
+  },
+  {
+    "id": "s-15386506010",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3634,
+    "elevationM": 0,
+    "date": "2025-08-07"
+  },
+  {
+    "id": "s-15363793780",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1690,
+    "elevationM": 19,
+    "date": "2025-08-06"
+  },
+  {
+    "id": "s-15361022801",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3786,
+    "elevationM": 0,
+    "date": "2025-08-05"
+  },
+  {
+    "id": "s-15355061258",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 7.2,
+    "movingTimeSec": 2118,
+    "elevationM": 10,
+    "date": "2025-08-05"
+  },
+  {
+    "id": "s-15348790236",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3991,
+    "elevationM": 0,
+    "date": "2025-08-04"
+  },
+  {
+    "id": "s-15348719239",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4905,
+    "elevationM": 0,
+    "date": "2025-08-03"
+  },
+  {
+    "id": "s-15317420861",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4348,
+    "elevationM": 0,
+    "date": "2025-08-01"
+  },
+  {
+    "id": "s-15309598576",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.8,
+    "movingTimeSec": 1628,
+    "elevationM": 12,
+    "date": "2025-08-01"
+  },
+  {
+    "id": "s-15301925385",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3387,
+    "elevationM": 0,
+    "date": "2025-07-31"
+  },
+  {
+    "id": "s-15294055876",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2951,
+    "elevationM": 0,
+    "date": "2025-07-30"
+  },
+  {
+    "id": "s-15286447119",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.8,
+    "movingTimeSec": 1755,
+    "elevationM": 8,
+    "date": "2025-07-30"
+  },
+  {
+    "id": "s-15283132072",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5692,
+    "elevationM": 0,
+    "date": "2025-07-29"
+  },
+  {
+    "id": "s-15268318412",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4605,
+    "elevationM": 0,
+    "date": "2025-07-28"
+  },
+  {
+    "id": "s-15262397783",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 8.3,
+    "movingTimeSec": 2375,
+    "elevationM": 21,
+    "date": "2025-07-28"
+  },
+  {
+    "id": "s-15258409414",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5319,
+    "elevationM": 0,
+    "date": "2025-07-26"
+  },
+  {
+    "id": "s-15219535333",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5,
+    "movingTimeSec": 1542,
+    "elevationM": 14,
+    "date": "2025-07-24"
+  },
+  {
+    "id": "s-15213724908",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3867,
+    "elevationM": 0,
+    "date": "2025-07-23"
+  },
+  {
+    "id": "s-15201485274",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4832,
+    "elevationM": 0,
+    "date": "2025-07-22"
+  },
+  {
+    "id": "s-15201463735",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.4,
+    "movingTimeSec": 1620,
+    "elevationM": 8,
+    "date": "2025-07-22"
+  },
+  {
+    "id": "s-15190112499",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 3,
+    "movingTimeSec": 1052,
+    "elevationM": 0,
+    "date": "2025-07-21"
+  },
+  {
+    "id": "s-15190113019",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5154,
+    "elevationM": 0,
+    "date": "2025-07-21"
+  },
+  {
+    "id": "s-15176107342",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 4.1,
+    "movingTimeSec": 4743,
+    "elevationM": 13,
+    "date": "2025-07-19"
+  },
+  {
+    "id": "s-15176101258",
+    "name": "Morning Hike",
+    "type": "Hike",
+    "distanceKm": 4.3,
+    "movingTimeSec": 4972,
+    "elevationM": 663,
+    "date": "2025-07-19"
+  },
+  {
+    "id": "s-15155648666",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 2.9,
+    "movingTimeSec": 2499,
+    "elevationM": 98,
+    "date": "2025-07-18"
+  },
+  {
+    "id": "s-15155643631",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 2.1,
+    "movingTimeSec": 1745,
+    "elevationM": 57,
+    "date": "2025-07-18"
+  },
+  {
+    "id": "s-15155643689",
+    "name": "Lunch Hike",
+    "type": "Hike",
+    "distanceKm": 4.4,
+    "movingTimeSec": 4113,
+    "elevationM": 105,
+    "date": "2025-07-18"
+  },
+  {
+    "id": "s-15155638337",
+    "name": "Lunch Hike",
+    "type": "Hike",
+    "distanceKm": 6.4,
+    "movingTimeSec": 7204,
+    "elevationM": 166,
+    "date": "2025-07-17"
+  },
+  {
+    "id": "s-15155628306",
+    "name": "Morning Hike",
+    "type": "Hike",
+    "distanceKm": 6.1,
+    "movingTimeSec": 8389,
+    "elevationM": 16,
+    "date": "2025-07-16"
+  },
+  {
+    "id": "s-15124955114",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 3.5,
+    "movingTimeSec": 4526,
+    "elevationM": 59,
+    "date": "2025-07-15"
+  },
+  {
+    "id": "s-15124947286",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 1.6,
+    "movingTimeSec": 1943,
+    "elevationM": 0,
+    "date": "2025-07-15"
+  },
+  {
+    "id": "s-15124939021",
+    "name": "Morning Hike",
+    "type": "Hike",
+    "distanceKm": 1.3,
+    "movingTimeSec": 1422,
+    "elevationM": 79,
+    "date": "2025-07-15"
+  },
+  {
+    "id": "s-15124939150",
+    "name": "Morning Hike",
+    "type": "Hike",
+    "distanceKm": 3.3,
+    "movingTimeSec": 3660,
+    "elevationM": 259,
+    "date": "2025-07-15"
+  },
+  {
+    "id": "s-15124931724",
+    "name": "Evening Hike",
+    "type": "Hike",
+    "distanceKm": 0.8,
+    "movingTimeSec": 1054,
+    "elevationM": 141,
+    "date": "2025-07-14"
+  },
+  {
+    "id": "s-15110226004",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 2.7,
+    "movingTimeSec": 2811,
+    "elevationM": 31,
+    "date": "2025-07-13"
+  },
+  {
+    "id": "s-15110222729",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 2.2,
+    "movingTimeSec": 2948,
+    "elevationM": 1,
+    "date": "2025-07-13"
+  },
+  {
+    "id": "s-15110215679",
+    "name": "Lunch Hike",
+    "type": "Hike",
+    "distanceKm": 3.7,
+    "movingTimeSec": 4616,
+    "elevationM": 332,
+    "date": "2025-07-13"
+  },
+  {
+    "id": "s-15110212781",
+    "name": "Morning Hike",
+    "type": "Hike",
+    "distanceKm": 4,
+    "movingTimeSec": 5055,
+    "elevationM": 293,
+    "date": "2025-07-13"
+  },
+  {
+    "id": "s-15110205856",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 3.6,
+    "movingTimeSec": 3885,
+    "elevationM": 201,
+    "date": "2025-07-12"
+  },
+  {
+    "id": "s-15078221899",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4451,
+    "elevationM": 0,
+    "date": "2025-07-10"
+  },
+  {
+    "id": "s-15067990858",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.6,
+    "movingTimeSec": 1680,
+    "elevationM": 13,
+    "date": "2025-07-10"
+  },
+  {
+    "id": "s-15062362356",
+    "name": "Night Run",
+    "type": "Run",
+    "distanceKm": 7,
+    "movingTimeSec": 2293,
+    "elevationM": 0,
+    "date": "2025-07-09"
+  },
+  {
+    "id": "s-15062359087",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4543,
+    "elevationM": 0,
+    "date": "2025-07-09"
+  },
+  {
+    "id": "s-15057441683",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5504,
+    "elevationM": 0,
+    "date": "2025-07-08"
+  },
+  {
+    "id": "s-15039118243",
+    "name": "Night Run",
+    "type": "Run",
+    "distanceKm": 6,
+    "movingTimeSec": 1965,
+    "elevationM": 0,
+    "date": "2025-07-07"
+  },
+  {
+    "id": "s-15039114450",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3675,
+    "elevationM": 0,
+    "date": "2025-07-07"
+  },
+  {
+    "id": "s-15028542193",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3750,
+    "elevationM": 0,
+    "date": "2025-07-06"
+  },
+  {
+    "id": "s-15013077832",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.3,
+    "movingTimeSec": 1588,
+    "elevationM": 6,
+    "date": "2025-07-05"
+  },
+  {
+    "id": "s-15007243760",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5006,
+    "elevationM": 0,
+    "date": "2025-07-04"
+  },
+  {
+    "id": "s-14996608737",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6313,
+    "elevationM": 0,
+    "date": "2025-07-03"
+  },
+  {
+    "id": "s-14988182913",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6044,
+    "elevationM": 0,
+    "date": "2025-07-02"
+  },
+  {
+    "id": "s-14976265031",
+    "name": "It wasn’t meant to be so long but the sun was amazing",
+    "type": "Run",
+    "distanceKm": 21.3,
+    "movingTimeSec": 7039,
+    "elevationM": 51,
+    "date": "2025-07-01"
+  },
+  {
+    "id": "s-14969684795",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4868,
+    "elevationM": 0,
+    "date": "2025-06-30"
+  },
+  {
+    "id": "s-14956448130",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1753,
+    "elevationM": 33,
+    "date": "2025-06-29"
+  },
+  {
+    "id": "s-14934431238",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3619,
+    "elevationM": 0,
+    "date": "2025-06-27"
+  },
+  {
+    "id": "s-14926051489",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5001,
+    "elevationM": 0,
+    "date": "2025-06-26"
+  },
+  {
+    "id": "s-14926051486",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.5,
+    "movingTimeSec": 1717,
+    "elevationM": 14,
+    "date": "2025-06-26"
+  },
+  {
+    "id": "s-14914222599",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 6.3,
+    "movingTimeSec": 2020,
+    "elevationM": 21,
+    "date": "2025-06-25"
+  },
+  {
+    "id": "s-14914215552",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3836,
+    "elevationM": 0,
+    "date": "2025-06-25"
+  },
+  {
+    "id": "s-14903792429",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 6,
+    "movingTimeSec": 1827,
+    "elevationM": 0,
+    "date": "2025-06-24"
+  },
+  {
+    "id": "s-14903792681",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4113,
+    "elevationM": 0,
+    "date": "2025-06-24"
+  },
+  {
+    "id": "s-14893063326",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4294,
+    "elevationM": 0,
+    "date": "2025-06-23"
+  },
+  {
+    "id": "s-14885095197",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3713,
+    "elevationM": 0,
+    "date": "2025-06-22"
+  },
+  {
+    "id": "s-14859132622",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.9,
+    "movingTimeSec": 1696,
+    "elevationM": 15,
+    "date": "2025-06-20"
+  },
+  {
+    "id": "s-14859127351",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3010,
+    "elevationM": 0,
+    "date": "2025-06-19"
+  },
+  {
+    "id": "s-14850387488",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.8,
+    "movingTimeSec": 1791,
+    "elevationM": 19,
+    "date": "2025-06-19"
+  },
+  {
+    "id": "s-14841969255",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3898,
+    "elevationM": 0,
+    "date": "2025-06-18"
+  },
+  {
+    "id": "s-14841268986",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 7.1,
+    "movingTimeSec": 2186,
+    "elevationM": 18,
+    "date": "2025-06-18"
+  },
+  {
+    "id": "s-14832259900",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5310,
+    "elevationM": 0,
+    "date": "2025-06-17"
+  },
+  {
+    "id": "s-14826341922",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4744,
+    "elevationM": 0,
+    "date": "2025-06-16"
+  },
+  {
+    "id": "s-14810432120",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4623,
+    "elevationM": 0,
+    "date": "2025-06-15"
+  },
+  {
+    "id": "s-14770136512",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4802,
+    "elevationM": 0,
+    "date": "2025-06-11"
+  },
+  {
+    "id": "s-14762460866",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5239,
+    "elevationM": 0,
+    "date": "2025-06-10"
+  },
+  {
+    "id": "s-14721347171",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5574,
+    "elevationM": 0,
+    "date": "2025-06-06"
+  },
+  {
+    "id": "s-14703689904",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 5.7,
+    "movingTimeSec": 1660,
+    "elevationM": 9,
+    "date": "2025-06-05"
+  },
+  {
+    "id": "s-14697258018",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 5.4,
+    "movingTimeSec": 1781,
+    "elevationM": 5,
+    "date": "2025-06-04"
+  },
+  {
+    "id": "s-14697249787",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4191,
+    "elevationM": 0,
+    "date": "2025-06-04"
+  },
+  {
+    "id": "s-14685958524",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5324,
+    "elevationM": 0,
+    "date": "2025-06-03"
+  },
+  {
+    "id": "s-14667511292",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4918,
+    "elevationM": 0,
+    "date": "2025-06-01"
+  },
+  {
+    "id": "s-14656425175",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5669,
+    "elevationM": 0,
+    "date": "2025-05-31"
+  },
+  {
+    "id": "s-14646085354",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4553,
+    "elevationM": 0,
+    "date": "2025-05-30"
+  },
+  {
+    "id": "s-14646082123",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 2,
+    "movingTimeSec": 2248,
+    "elevationM": 122,
+    "date": "2025-05-25"
+  },
+  {
+    "id": "s-14566427052",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 9.4,
+    "movingTimeSec": 2827,
+    "elevationM": 2,
+    "date": "2025-05-22"
+  },
+  {
+    "id": "s-14555594920",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6141,
+    "elevationM": 0,
+    "date": "2025-05-21"
+  },
+  {
+    "id": "s-14510243182",
+    "name": "Göteborgs Varvet",
+    "type": "Run",
+    "distanceKm": 21.6,
+    "movingTimeSec": 7159,
+    "elevationM": 156,
+    "date": "2025-05-17"
+  },
+  {
+    "id": "s-14492598747",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3751,
+    "elevationM": 0,
+    "date": "2025-05-15"
+  },
+  {
+    "id": "s-14492595529",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4040,
+    "elevationM": 0,
+    "date": "2025-05-14"
+  },
+  {
+    "id": "s-14479879856",
+    "name": "Testing the knee 😎",
+    "type": "Run",
+    "distanceKm": 6.3,
+    "movingTimeSec": 1974,
+    "elevationM": 16,
+    "date": "2025-05-14"
+  },
+  {
+    "id": "s-14479875612",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5822,
+    "elevationM": 0,
+    "date": "2025-05-13"
+  },
+  {
+    "id": "s-14463300026",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6754,
+    "elevationM": 0,
+    "date": "2025-05-12"
+  },
+  {
+    "id": "s-14442852368",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4088,
+    "elevationM": 0,
+    "date": "2025-05-10"
+  },
+  {
+    "id": "s-14429262005",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5400,
+    "elevationM": 0,
+    "date": "2025-05-09"
+  },
+  {
+    "id": "s-14412639394",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4736,
+    "elevationM": 0,
+    "date": "2025-05-07"
+  },
+  {
+    "id": "s-14388010950",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4816,
+    "elevationM": 0,
+    "date": "2025-05-05"
+  },
+  {
+    "id": "s-14371501009",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4502,
+    "elevationM": 0,
+    "date": "2025-05-03"
+  },
+  {
+    "id": "s-14360969528",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4403,
+    "elevationM": 0,
+    "date": "2025-05-02"
+  },
+  {
+    "id": "s-14326682891",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3507,
+    "elevationM": 0,
+    "date": "2025-04-29"
+  },
+  {
+    "id": "s-14315302657",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5037,
+    "elevationM": 0,
+    "date": "2025-04-28"
+  },
+  {
+    "id": "s-14302369372",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 14.6,
+    "movingTimeSec": 4733,
+    "elevationM": 107,
+    "date": "2025-04-27"
+  },
+  {
+    "id": "s-14295990959",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3950,
+    "elevationM": 0,
+    "date": "2025-04-26"
+  },
+  {
+    "id": "s-14284339241",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 10.7,
+    "movingTimeSec": 3581,
+    "elevationM": 64,
+    "date": "2025-04-25"
+  },
+  {
+    "id": "s-14274371631",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3902,
+    "elevationM": 0,
+    "date": "2025-04-24"
+  },
+  {
+    "id": "s-14264743645",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 12.1,
+    "movingTimeSec": 3941,
+    "elevationM": 34,
+    "date": "2025-04-23"
+  },
+  {
+    "id": "s-14264735351",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4595,
+    "elevationM": 0,
+    "date": "2025-04-22"
+  },
+  {
+    "id": "s-14246495858",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3980,
+    "elevationM": 0,
+    "date": "2025-04-21"
+  },
+  {
+    "id": "s-14241773159",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5346,
+    "elevationM": 0,
+    "date": "2025-04-20"
+  },
+  {
+    "id": "s-14220500248",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 9.8,
+    "movingTimeSec": 2901,
+    "elevationM": 37,
+    "date": "2025-04-19"
+  },
+  {
+    "id": "s-14197384587",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 10.7,
+    "movingTimeSec": 3495,
+    "elevationM": 39,
+    "date": "2025-04-16"
+  },
+  {
+    "id": "s-14186408004",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4275,
+    "elevationM": 0,
+    "date": "2025-04-15"
+  },
+  {
+    "id": "s-14176229163",
+    "name": "Intervals M&K",
+    "type": "Run",
+    "distanceKm": 8.6,
+    "movingTimeSec": 2420,
+    "elevationM": 42,
+    "date": "2025-04-14"
+  },
+  {
+    "id": "s-14176221375",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4536,
+    "elevationM": 0,
+    "date": "2025-04-12"
+  },
+  {
+    "id": "s-14152244164",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4991,
+    "elevationM": 0,
+    "date": "2025-04-11"
+  },
+  {
+    "id": "s-14140683568",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4766,
+    "elevationM": 0,
+    "date": "2025-04-10"
+  },
+  {
+    "id": "s-14129143237",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 10.2,
+    "movingTimeSec": 3274,
+    "elevationM": 30,
+    "date": "2025-04-09"
+  },
+  {
+    "id": "s-14123488057",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4499,
+    "elevationM": 0,
+    "date": "2025-04-08"
+  },
+  {
+    "id": "s-14108677829",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 5.8,
+    "movingTimeSec": 1820,
+    "elevationM": 50,
+    "date": "2025-04-07"
+  },
+  {
+    "id": "s-14107517053",
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3870,
+    "elevationM": 0,
+    "date": "2025-04-07"
+  },
+  {
+    "id": "s-14084986781",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 7,
+    "movingTimeSec": 2267,
+    "elevationM": 38,
+    "date": "2025-04-05"
+  },
+  {
+    "id": "s-14074889217",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 10.1,
+    "movingTimeSec": 3510,
+    "elevationM": 5,
+    "date": "2025-04-04"
+  },
+  {
+    "id": "s-14061907583",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4164,
+    "elevationM": 0,
+    "date": "2025-04-02"
+  },
+  {
+    "id": "s-14050594449",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3725,
+    "elevationM": 0,
+    "date": "2025-04-01"
+  },
+  {
+    "id": "s-13960349211",
+    "name": "Morning Hike",
+    "type": "Hike",
+    "distanceKm": 8.6,
+    "movingTimeSec": 13058,
+    "elevationM": 1862,
+    "date": "2025-03-21"
+  },
+  {
+    "id": "s-13959959084",
+    "name": "Morning Swim",
+    "type": "Swim",
+    "distanceKm": 0.2,
+    "movingTimeSec": 6284,
+    "elevationM": 0,
+    "date": "2025-03-20"
+  },
+  {
+    "id": "s-13923875870",
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4470,
+    "elevationM": 0,
+    "date": "2025-03-19"
+  },
+  {
+    "id": "s-13923873341",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3163,
+    "elevationM": 0,
+    "date": "2025-03-17"
+  },
+  {
+    "id": "s-13904485447",
+    "name": "Morning Swim",
+    "type": "Swim",
+    "distanceKm": 1.5,
+    "movingTimeSec": 5077,
+    "elevationM": 0,
+    "date": "2025-03-17"
+  },
+  {
+    "id": "s-13900023334",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6691,
+    "elevationM": 0,
+    "date": "2025-03-16"
+  },
+  {
+    "id": "s-13900016015",
+    "name": "Afternoon Swim",
+    "type": "Swim",
+    "distanceKm": 1.5,
+    "movingTimeSec": 4257,
+    "elevationM": 5,
+    "date": "2025-03-16"
+  },
+  {
+    "id": "s-13894620829",
+    "name": "Lunch Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2921,
+    "elevationM": 0,
+    "date": "2025-03-16"
+  },
+  {
+    "id": "s-13861153650",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 3.3,
+    "movingTimeSec": 3328,
+    "elevationM": 224,
+    "date": "2025-03-12"
+  },
+  {
+    "id": "s-13851067694",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5844,
+    "elevationM": 0,
+    "date": "2025-03-11"
+  },
+  {
+    "id": "s-13829536805",
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5912,
+    "elevationM": 0,
+    "date": "2025-03-09"
+  },
+  {
+    "id": "s-13792396388",
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4746,
+    "elevationM": 0,
+    "date": "2025-03-05"
+  },
+  {
+    "id": "s-13782928348",
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6266,
+    "elevationM": 0,
+    "date": "2025-03-04"
+  },
+  {
+    "id": "s-13714295569",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5290,
+    "elevationM": 0,
+    "date": "2025-02-24"
+  },
+  {
+    "id": "s-13714292453",
+    "name": "Lunch Hike",
+    "type": "Hike",
+    "distanceKm": 4.9,
+    "movingTimeSec": 5226,
+    "elevationM": 198,
+    "date": "2025-02-24"
+  },
+  {
+    "id": "s-13714288086",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4001,
+    "elevationM": 0,
+    "date": "2025-02-23"
+  },
+  {
+    "id": "s-13687040202",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5761,
+    "elevationM": 0,
+    "date": "2025-02-21"
+  },
+  {
+    "id": "s-13653161909",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4729,
+    "elevationM": 0,
+    "date": "2025-02-17"
+  },
+  {
+    "id": "s-13638444237",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 3,
+    "movingTimeSec": 892,
+    "elevationM": 0,
+    "date": "2025-02-16"
+  },
+  {
+    "id": "s-13638443975",
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3943,
+    "elevationM": 0,
+    "date": "2025-02-16"
+  },
+  {
+    "id": "s-13616870240",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 14.7,
+    "movingTimeSec": 4847,
+    "elevationM": 26,
+    "date": "2025-02-13"
+  },
+  {
+    "id": "s-13597597064",
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 7072,
+    "elevationM": 0,
+    "date": "2025-02-11"
+  },
+  {
+    "id": "s-13593737791",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4193,
+    "elevationM": 0,
+    "date": "2025-02-10"
+  },
+  {
+    "id": "s-13586442496",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4215,
+    "elevationM": 0,
+    "date": "2025-02-09"
+  },
+  {
+    "id": "s-13571140323",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 20,
+    "movingTimeSec": 6818,
+    "elevationM": 56,
+    "date": "2025-02-08"
+  },
+  {
+    "id": "s-13568125953",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4394,
+    "elevationM": 0,
+    "date": "2025-02-07"
+  },
+  {
+    "id": "s-13559472257",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 2,
+    "movingTimeSec": 3282,
+    "elevationM": 0,
+    "date": "2025-02-06"
+  },
+  {
+    "id": "s-13550639722",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4851,
+    "elevationM": 0,
+    "date": "2025-02-05"
+  },
+  {
+    "id": "s-13549085123",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 7.8,
+    "movingTimeSec": 2600,
+    "elevationM": 24,
+    "date": "2025-02-05"
+  },
+  {
+    "id": "s-13540670533",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 1.9,
+    "movingTimeSec": 3245,
+    "elevationM": 0,
+    "date": "2025-02-04"
+  },
+  {
+    "id": "s-13531134539",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5561,
+    "elevationM": 0,
+    "date": "2025-02-03"
+  },
+  {
+    "id": "s-13520853038",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5184,
+    "elevationM": 0,
+    "date": "2025-02-02"
+  },
+  {
+    "id": "s-13516282600",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 5.2,
+    "movingTimeSec": 1671,
+    "elevationM": 5,
+    "date": "2025-02-02"
+  },
+  {
+    "id": "s-13513061952",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4266,
+    "elevationM": 0,
+    "date": "2025-02-01"
+  },
+  {
+    "id": "s-13509135001",
+    "name": "Lunch Run",
+    "type": "Run",
+    "distanceKm": 7.2,
+    "movingTimeSec": 2444,
+    "elevationM": 14,
+    "date": "2025-02-01"
+  },
+  {
+    "id": "s-13504494597",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5118,
+    "elevationM": 0,
+    "date": "2025-01-31"
+  },
+  {
+    "id": "s-13496566843",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 2.2,
+    "movingTimeSec": 3261,
+    "elevationM": 0,
+    "date": "2025-01-30"
+  },
+  {
+    "id": "s-13485938692",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 10.1,
+    "movingTimeSec": 3174,
+    "elevationM": 20,
+    "date": "2025-01-29"
+  },
+  {
+    "id": "s-13479004066",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4892,
+    "elevationM": 0,
+    "date": "2025-01-28"
+  },
+  {
+    "id": "s-13469851443",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4409,
+    "elevationM": 0,
+    "date": "2025-01-27"
+  },
+  {
+    "id": "s-13458685090",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 10.4,
+    "movingTimeSec": 3278,
+    "elevationM": 9,
+    "date": "2025-01-26"
+  },
+  {
+    "id": "s-13452751270",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4886,
+    "elevationM": 0,
+    "date": "2025-01-25"
+  },
+  {
+    "id": "s-13441677027",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3979,
+    "elevationM": 0,
+    "date": "2025-01-24"
+  },
+  {
+    "id": "s-13435646250",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4391,
+    "elevationM": 0,
+    "date": "2025-01-23"
+  },
+  {
+    "id": "s-13425395407",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 11.9,
+    "movingTimeSec": 3862,
+    "elevationM": 28,
+    "date": "2025-01-22"
+  },
+  {
+    "id": "s-13417684340",
+    "name": "Afternoon Walk",
+    "type": "Walk",
+    "distanceKm": 6.5,
+    "movingTimeSec": 5043,
+    "elevationM": 0,
+    "date": "2025-01-21"
+  },
+  {
+    "id": "s-13409353401",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5650,
+    "elevationM": 0,
+    "date": "2025-01-20"
+  },
+  {
+    "id": "s-13396887884",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 8.2,
+    "movingTimeSec": 2574,
+    "elevationM": 7,
+    "date": "2025-01-19"
+  },
+  {
+    "id": "s-13392529843",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4205,
+    "elevationM": 0,
+    "date": "2025-01-18"
+  },
+  {
+    "id": "s-13381958843",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4781,
+    "elevationM": 0,
+    "date": "2025-01-17"
+  },
+  {
+    "id": "s-13373953349",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4954,
+    "elevationM": 0,
+    "date": "2025-01-16"
+  },
+  {
+    "id": "s-13367998510",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4561,
+    "elevationM": 0,
+    "date": "2025-01-15"
+  },
+  {
+    "id": "s-13356449963",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 1.8,
+    "movingTimeSec": 2207,
+    "elevationM": 0,
+    "date": "2025-01-14"
+  },
+  {
+    "id": "s-13356449902",
+    "name": "Afternoon Workout",
+    "type": "Workout",
+    "distanceKm": 6.8,
+    "movingTimeSec": 5563,
+    "elevationM": 0,
+    "date": "2025-01-14"
+  },
+  {
+    "id": "s-13347636889",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4196,
+    "elevationM": 0,
+    "date": "2025-01-13"
+  },
+  {
+    "id": "s-13335224432",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3943,
+    "elevationM": 0,
+    "date": "2025-01-12"
+  },
+  {
+    "id": "s-13261126645",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 12,
+    "movingTimeSec": 4161,
+    "elevationM": 26,
+    "date": "2025-01-04"
+  },
+  {
+    "id": "s-13258301427",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4994,
+    "elevationM": 0,
+    "date": "2025-01-03"
+  },
+  {
+    "id": "s-13232116643",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4709,
+    "elevationM": 0,
+    "date": "2024-12-31"
+  },
+  {
+    "id": "s-13219306116",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3903,
+    "elevationM": 0,
+    "date": "2024-12-29"
+  },
+  {
+    "id": "s-13211864573",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2824,
+    "elevationM": 0,
+    "date": "2024-12-28"
+  },
+  {
+    "id": "s-13204137824",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4151,
+    "elevationM": 0,
+    "date": "2024-12-27"
+  },
+  {
+    "id": "s-13201515970",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 7.7,
+    "movingTimeSec": 2520,
+    "elevationM": 6,
+    "date": "2024-12-27"
+  },
+  {
+    "id": "s-13196394836",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4483,
+    "elevationM": 0,
+    "date": "2024-12-26"
+  },
+  {
+    "id": "s-13189326299",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4525,
+    "elevationM": 0,
+    "date": "2024-12-25"
+  },
+  {
+    "id": "s-13184254676",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4574,
+    "elevationM": 0,
+    "date": "2024-12-24"
+  },
+  {
+    "id": "s-13177393070",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4016,
+    "elevationM": 0,
+    "date": "2024-12-23"
+  },
+  {
+    "id": "s-13171357963",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3924,
+    "elevationM": 0,
+    "date": "2024-12-22"
+  },
+  {
+    "id": "s-13169573829",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 9.2,
+    "movingTimeSec": 3141,
+    "elevationM": 6,
+    "date": "2024-12-22"
+  },
+  {
+    "id": "s-13163589113",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5075,
+    "elevationM": 0,
+    "date": "2024-12-21"
+  },
+  {
+    "id": "s-13162889582",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 7.8,
+    "movingTimeSec": 2673,
+    "elevationM": 11,
+    "date": "2024-12-20"
+  },
+  {
+    "id": "s-13138091707",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3955,
+    "elevationM": 0,
+    "date": "2024-12-17"
+  },
+  {
+    "id": "s-13130965207",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3544,
+    "elevationM": 0,
+    "date": "2024-12-16"
+  },
+  {
+    "id": "s-13116727478",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5552,
+    "elevationM": 0,
+    "date": "2024-12-14"
+  },
+  {
+    "id": "s-13102052715",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4885,
+    "elevationM": 0,
+    "date": "2024-12-12"
+  },
+  {
+    "id": "s-13100528438",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 1.8,
+    "movingTimeSec": 523,
+    "elevationM": 0,
+    "date": "2024-12-12"
+  },
+  {
+    "id": "s-13094232321",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 5,
+    "movingTimeSec": 1715,
+    "elevationM": 1,
+    "date": "2024-12-11"
+  },
+  {
+    "id": "s-13065323977",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 6.4,
+    "movingTimeSec": 2086,
+    "elevationM": 14,
+    "date": "2024-12-07"
+  },
+  {
+    "id": "s-13061746499",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3519,
+    "elevationM": 0,
+    "date": "2024-12-06"
+  },
+  {
+    "id": "s-13048780208",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 9661,
+    "elevationM": 0,
+    "date": "2024-12-04"
+  },
+  {
+    "id": "s-13012491566",
+    "name": "Evening Hike",
+    "type": "Hike",
+    "distanceKm": 3.7,
+    "movingTimeSec": 4165,
+    "elevationM": 219,
+    "date": "2024-11-29"
+  },
+  {
+    "id": "s-12998338038",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4960,
+    "elevationM": 0,
+    "date": "2024-11-27"
+  },
+  {
+    "id": "s-12985281441",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 3.6,
+    "movingTimeSec": 1077,
+    "elevationM": 2,
+    "date": "2024-11-26"
+  },
+  {
+    "id": "s-12976286915",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4153,
+    "elevationM": 0,
+    "date": "2024-11-24"
+  },
+  {
+    "id": "s-12954485086",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3916,
+    "elevationM": 0,
+    "date": "2024-11-21"
+  },
+  {
+    "id": "s-12947807621",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2365,
+    "elevationM": 0,
+    "date": "2024-11-20"
+  },
+  {
+    "id": "s-12940222646",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3580,
+    "elevationM": 0,
+    "date": "2024-11-19"
+  },
+  {
+    "id": "s-12927153552",
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3611,
+    "elevationM": 0,
+    "date": "2024-11-18"
+  },
+  {
+    "id": "s-12895220755",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3022,
+    "elevationM": 0,
+    "date": "2024-11-13"
+  },
+  {
+    "id": "s-12886453940",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 1.5,
+    "movingTimeSec": 2423,
+    "elevationM": 0,
+    "date": "2024-11-12"
+  },
+  {
+    "id": "s-12871648852",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4969,
+    "elevationM": 0,
+    "date": "2024-11-10"
+  },
+  {
+    "id": "s-12862891829",
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5420,
+    "elevationM": 0,
+    "date": "2024-11-09"
+  },
+  {
+    "id": "s-12855232349",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3709,
+    "elevationM": 0,
+    "date": "2024-11-08"
+  },
+  {
+    "id": "s-12848557984",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6195,
+    "elevationM": 0,
+    "date": "2024-11-07"
+  },
+  {
+    "id": "s-12832903275",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4214,
+    "elevationM": 0,
+    "date": "2024-11-05"
+  },
+  {
+    "id": "s-12824424588",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4782,
+    "elevationM": 0,
+    "date": "2024-11-04"
+  },
+  {
+    "id": "s-12808323338",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5291,
+    "elevationM": 0,
+    "date": "2024-11-02"
+  },
+  {
+    "id": "s-12792628894",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4264,
+    "elevationM": 0,
+    "date": "2024-10-31"
+  },
+  {
+    "id": "s-12785224499",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6625,
+    "elevationM": 0,
+    "date": "2024-10-30"
+  },
+  {
+    "id": "s-12776164352",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 1.3,
+    "movingTimeSec": 2142,
+    "elevationM": 0,
+    "date": "2024-10-29"
+  },
+  {
+    "id": "s-12768368580",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5986,
+    "elevationM": 0,
+    "date": "2024-10-28"
+  },
+  {
+    "id": "s-12760648418",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5340,
+    "elevationM": 0,
+    "date": "2024-10-27"
+  },
+  {
+    "id": "s-12744211285",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4554,
+    "elevationM": 0,
+    "date": "2024-10-25"
+  },
+  {
+    "id": "s-12737216961",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4628,
+    "elevationM": 0,
+    "date": "2024-10-24"
+  },
+  {
+    "id": "s-12720838261",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3792,
+    "elevationM": 0,
+    "date": "2024-10-22"
+  },
+  {
+    "id": "s-12720837775",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3647,
+    "elevationM": 0,
+    "date": "2024-10-21"
+  },
+  {
+    "id": "s-12714305273",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5386,
+    "elevationM": 0,
+    "date": "2024-10-20"
+  },
+  {
+    "id": "s-12695780403",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4919,
+    "elevationM": 0,
+    "date": "2024-10-19"
+  },
+  {
+    "id": "s-12680701331",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6732,
+    "elevationM": 0,
+    "date": "2024-10-17"
+  },
+  {
+    "id": "s-12672855145",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3799,
+    "elevationM": 0,
+    "date": "2024-10-16"
+  },
+  {
+    "id": "s-12656289280",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3835,
+    "elevationM": 0,
+    "date": "2024-10-14"
+  },
+  {
+    "id": "s-12656289281",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6584,
+    "elevationM": 0,
+    "date": "2024-10-13"
+  },
+  {
+    "id": "s-12640490214",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4521,
+    "elevationM": 0,
+    "date": "2024-10-12"
+  },
+  {
+    "id": "s-12623831280",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 2,
+    "movingTimeSec": 3037,
+    "elevationM": 0,
+    "date": "2024-10-10"
+  },
+  {
+    "id": "s-12616931792",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5963,
+    "elevationM": 0,
+    "date": "2024-10-09"
+  },
+  {
+    "id": "s-12608751685",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3300,
+    "elevationM": 0,
+    "date": "2024-10-08"
+  },
+  {
+    "id": "s-12608199524",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 1.5,
+    "movingTimeSec": 2679,
+    "elevationM": 0,
+    "date": "2024-10-08"
+  },
+  {
+    "id": "s-12608199739",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 8390,
+    "elevationM": 0,
+    "date": "2024-10-07"
+  },
+  {
+    "id": "s-12579790286",
+    "name": "Lunch Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4915,
+    "elevationM": 0,
+    "date": "2024-10-05"
+  },
+  {
+    "id": "s-12567054842",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 1.5,
+    "movingTimeSec": 2621,
+    "elevationM": 0,
+    "date": "2024-10-03"
+  },
+  {
+    "id": "s-12567054806",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3288,
+    "elevationM": 0,
+    "date": "2024-10-02"
+  },
+  {
+    "id": "s-12550798051",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 1.5,
+    "movingTimeSec": 2697,
+    "elevationM": 0,
+    "date": "2024-10-01"
+  },
+  {
+    "id": "s-12543010663",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5453,
+    "elevationM": 0,
+    "date": "2024-09-30"
+  },
+  {
+    "id": "s-12535957406",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5686,
+    "elevationM": 0,
+    "date": "2024-09-29"
+  },
+  {
+    "id": "s-12510749175",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 2.1,
+    "movingTimeSec": 3345,
+    "elevationM": 0,
+    "date": "2024-09-26"
+  },
+  {
+    "id": "s-12510749612",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2691,
+    "elevationM": 0,
+    "date": "2024-09-26"
+  },
+  {
+    "id": "s-12504042118",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6605,
+    "elevationM": 0,
+    "date": "2024-09-25"
+  },
+  {
+    "id": "s-12494668649",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 1.3,
+    "movingTimeSec": 2386,
+    "elevationM": 0,
+    "date": "2024-09-24"
+  },
+  {
+    "id": "s-12487233759",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4106,
+    "elevationM": 0,
+    "date": "2024-09-23"
+  },
+  {
+    "id": "s-12479344867",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5083,
+    "elevationM": 0,
+    "date": "2024-09-22"
+  },
+  {
+    "id": "s-12464759074",
+    "name": "Morning Swim",
+    "type": "Swim",
+    "distanceKm": 2.3,
+    "movingTimeSec": 3535,
+    "elevationM": 0,
+    "date": "2024-09-21"
+  },
+  {
+    "id": "s-12461580872",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6486,
+    "elevationM": 0,
+    "date": "2024-09-20"
+  },
+  {
+    "id": "s-12453517111",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 2,
+    "movingTimeSec": 3339,
+    "elevationM": 0,
+    "date": "2024-09-19"
+  },
+  {
+    "id": "s-12445347520",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4958,
+    "elevationM": 0,
+    "date": "2024-09-18"
+  },
+  {
+    "id": "s-12435868991",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 2,
+    "movingTimeSec": 3478,
+    "elevationM": 0,
+    "date": "2024-09-17"
+  },
+  {
+    "id": "s-12427726922",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 7623,
+    "elevationM": 0,
+    "date": "2024-09-16"
+  },
+  {
+    "id": "s-12420375506",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3013,
+    "elevationM": 0,
+    "date": "2024-09-15"
+  },
+  {
+    "id": "s-12408947733",
+    "name": "Afternoon Ride",
+    "type": "Ride",
+    "distanceKm": 80.1,
+    "movingTimeSec": 11192,
+    "elevationM": 244,
+    "date": "2024-09-14"
+  },
+  {
+    "id": "s-12408945954",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4246,
+    "elevationM": 0,
+    "date": "2024-09-13"
+  },
+  {
+    "id": "s-12394925964",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4012,
+    "elevationM": 0,
+    "date": "2024-09-12"
+  },
+  {
+    "id": "s-12389986230",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5992,
+    "elevationM": 0,
+    "date": "2024-09-09"
+  },
+  {
+    "id": "s-12361170325",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 6.2,
+    "movingTimeSec": 6117,
+    "elevationM": 121,
+    "date": "2024-09-08"
+  },
+  {
+    "id": "s-12353194594",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3959,
+    "elevationM": 0,
+    "date": "2024-09-07"
+  },
+  {
+    "id": "s-12351771266",
+    "name": "Afternoon Ride",
+    "type": "Ride",
+    "distanceKm": 40.4,
+    "movingTimeSec": 5551,
+    "elevationM": 81,
+    "date": "2024-09-07"
+  },
+  {
+    "id": "s-12351770643",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5503,
+    "elevationM": 0,
+    "date": "2024-09-06"
+  },
+  {
+    "id": "s-12327561605",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4520,
+    "elevationM": 0,
+    "date": "2024-09-04"
+  },
+  {
+    "id": "s-12310438651",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5797,
+    "elevationM": 0,
+    "date": "2024-09-02"
+  },
+  {
+    "id": "s-12302916876",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3729,
+    "elevationM": 0,
+    "date": "2024-09-01"
+  },
+  {
+    "id": "s-12292701069",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3493,
+    "elevationM": 0,
+    "date": "2024-08-31"
+  },
+  {
+    "id": "s-12284296978",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3188,
+    "elevationM": 0,
+    "date": "2024-08-30"
+  },
+  {
+    "id": "s-12267625691",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4368,
+    "elevationM": 0,
+    "date": "2024-08-28"
+  },
+  {
+    "id": "s-12259350589",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4847,
+    "elevationM": 0,
+    "date": "2024-08-27"
+  },
+  {
+    "id": "s-12252237812",
+    "name": "Morning Swim",
+    "type": "Swim",
+    "distanceKm": 1,
+    "movingTimeSec": 1513,
+    "elevationM": 0,
+    "date": "2024-08-27"
+  },
+  {
+    "id": "s-12249626777",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4752,
+    "elevationM": 0,
+    "date": "2024-08-26"
+  },
+  {
+    "id": "s-12239188724",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5325,
+    "elevationM": 0,
+    "date": "2024-08-25"
+  },
+  {
+    "id": "s-12230551487",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 5.2,
+    "movingTimeSec": 1561,
+    "elevationM": 9,
+    "date": "2024-08-24"
+  },
+  {
+    "id": "s-12225173773",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3012,
+    "elevationM": 0,
+    "date": "2024-08-23"
+  },
+  {
+    "id": "s-12225173268",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6499,
+    "elevationM": 0,
+    "date": "2024-08-22"
+  },
+  {
+    "id": "s-12199543137",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5331,
+    "elevationM": 0,
+    "date": "2024-08-20"
+  },
+  {
+    "id": "s-12190928749",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3350,
+    "elevationM": 0,
+    "date": "2024-08-19"
+  },
+  {
+    "id": "s-12182817427",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5334,
+    "elevationM": 0,
+    "date": "2024-08-18"
+  },
+  {
+    "id": "s-12173978709",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5835,
+    "elevationM": 0,
+    "date": "2024-08-17"
+  },
+  {
+    "id": "s-12173979800",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5301,
+    "elevationM": 0,
+    "date": "2024-08-15"
+  },
+  {
+    "id": "s-12139061425",
+    "name": "Afternoon Ride",
+    "type": "Ride",
+    "distanceKm": 42.5,
+    "movingTimeSec": 6204,
+    "elevationM": 102,
+    "date": "2024-08-13"
+  },
+  {
+    "id": "s-12130618645",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6058,
+    "elevationM": 0,
+    "date": "2024-08-12"
+  },
+  {
+    "id": "s-12123761883",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3492,
+    "elevationM": 0,
+    "date": "2024-08-11"
+  },
+  {
+    "id": "s-12108964854",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 16.3,
+    "movingTimeSec": 5411,
+    "elevationM": 63,
+    "date": "2024-08-10"
+  },
+  {
+    "id": "s-12106257798",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5105,
+    "elevationM": 0,
+    "date": "2024-08-09"
+  },
+  {
+    "id": "s-12097066628",
+    "name": "Evening Ride",
+    "type": "Ride",
+    "distanceKm": 44.6,
+    "movingTimeSec": 5806,
+    "elevationM": 206,
+    "date": "2024-08-08"
+  },
+  {
+    "id": "s-12087725742",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 7.7,
+    "movingTimeSec": 2533,
+    "elevationM": 24,
+    "date": "2024-08-07"
+  },
+  {
+    "id": "s-12086328451",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 6.5,
+    "movingTimeSec": 2157,
+    "elevationM": 11,
+    "date": "2024-08-06"
+  },
+  {
+    "id": "s-12071015916",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5614,
+    "elevationM": 0,
+    "date": "2024-08-05"
+  },
+  {
+    "id": "s-12055127774",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 11372,
+    "elevationM": 0,
+    "date": "2024-08-03"
+  },
+  {
+    "id": "s-12040882760",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 4.8,
+    "movingTimeSec": 1447,
+    "elevationM": 26,
+    "date": "2024-08-02"
+  },
+  {
+    "id": "s-12039062084",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3939,
+    "elevationM": 0,
+    "date": "2024-08-01"
+  },
+  {
+    "id": "s-12028943614",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 12.5,
+    "movingTimeSec": 3999,
+    "elevationM": 36,
+    "date": "2024-07-31"
+  },
+  {
+    "id": "s-12022052673",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4087,
+    "elevationM": 0,
+    "date": "2024-07-30"
+  },
+  {
+    "id": "s-12012995245",
+    "name": "Evening Ride",
+    "type": "Ride",
+    "distanceKm": 52.9,
+    "movingTimeSec": 7620,
+    "elevationM": 119,
+    "date": "2024-07-29"
+  },
+  {
+    "id": "s-12006220027",
+    "name": "Lunch Ride",
+    "type": "Ride",
+    "distanceKm": 40.3,
+    "movingTimeSec": 5196,
+    "elevationM": 114,
+    "date": "2024-07-28"
+  },
+  {
+    "id": "s-12006219979",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3638,
+    "elevationM": 0,
+    "date": "2024-07-27"
+  },
+  {
+    "id": "s-12006220054",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4972,
+    "elevationM": 0,
+    "date": "2024-07-25"
+  },
+  {
+    "id": "s-12006220168",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 6.2,
+    "movingTimeSec": 2055,
+    "elevationM": 22,
+    "date": "2024-07-24"
+  },
+  {
+    "id": "s-12006220396",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2870,
+    "elevationM": 0,
+    "date": "2024-07-23"
+  },
+  {
+    "id": "s-12006220463",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 5.3,
+    "movingTimeSec": 1784,
+    "elevationM": 7,
+    "date": "2024-07-22"
+  },
+  {
+    "id": "s-12006220539",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4408,
+    "elevationM": 0,
+    "date": "2024-07-22"
+  },
+  {
+    "id": "s-12006220535",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3930,
+    "elevationM": 0,
+    "date": "2024-07-21"
+  },
+  {
+    "id": "s-12006220474",
+    "name": "Afternoon Ride",
+    "type": "Ride",
+    "distanceKm": 21.8,
+    "movingTimeSec": 3048,
+    "elevationM": 76,
+    "date": "2024-07-20"
+  },
+  {
+    "id": "s-12006220420",
+    "name": "Lunch Ride",
+    "type": "Ride",
+    "distanceKm": 22.5,
+    "movingTimeSec": 3161,
+    "elevationM": 75,
+    "date": "2024-07-20"
+  },
+  {
+    "id": "s-12006220398",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 7.3,
+    "movingTimeSec": 2242,
+    "elevationM": 7,
+    "date": "2024-07-19"
+  },
+  {
+    "id": "s-12006220459",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6047,
+    "elevationM": 0,
+    "date": "2024-07-18"
+  },
+  {
+    "id": "s-12006220407",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4924,
+    "elevationM": 0,
+    "date": "2024-07-17"
+  },
+  {
+    "id": "s-12006220470",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 6290,
+    "elevationM": 0,
+    "date": "2024-07-16"
+  },
+  {
+    "id": "s-12006220342",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 7247,
+    "elevationM": 0,
+    "date": "2024-07-15"
+  },
+  {
+    "id": "s-12006220370",
+    "name": "Evening Hike",
+    "type": "Hike",
+    "distanceKm": 5.7,
+    "movingTimeSec": 6537,
+    "elevationM": 5,
+    "date": "2024-07-08"
+  },
+  {
+    "id": "s-12006220631",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 9.6,
+    "movingTimeSec": 10935,
+    "elevationM": 376,
+    "date": "2024-07-08"
+  },
+  {
+    "id": "s-12006220422",
+    "name": "Lunch Hike",
+    "type": "Hike",
+    "distanceKm": 4,
+    "movingTimeSec": 4433,
+    "elevationM": 487,
+    "date": "2024-07-08"
+  },
+  {
+    "id": "s-12006220497",
+    "name": "Afternoon Hike",
+    "type": "Hike",
+    "distanceKm": 4.1,
+    "movingTimeSec": 4762,
+    "elevationM": 141,
+    "date": "2024-07-07"
+  },
+  {
+    "id": "s-12006220647",
+    "name": "Lunch Hike",
+    "type": "Hike",
+    "distanceKm": 7.8,
+    "movingTimeSec": 8661,
+    "elevationM": 476,
+    "date": "2024-07-06"
+  },
+  {
+    "id": "s-12006220390",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3334,
+    "elevationM": 0,
+    "date": "2024-07-04"
+  },
+  {
+    "id": "s-12006220541",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4590,
+    "elevationM": 0,
+    "date": "2024-07-03"
+  },
+  {
+    "id": "s-12006220560",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 10.1,
+    "movingTimeSec": 3386,
+    "elevationM": 12,
+    "date": "2024-07-01"
+  },
+  {
+    "id": "s-12006220554",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 7,
+    "movingTimeSec": 2069,
+    "elevationM": 10,
+    "date": "2024-06-29"
+  },
+  {
+    "id": "s-12006220546",
+    "name": "Lunch Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4987,
+    "elevationM": 0,
+    "date": "2024-06-29"
+  },
+  {
+    "id": "s-12006220411",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 7.2,
+    "movingTimeSec": 2218,
+    "elevationM": 12,
+    "date": "2024-06-24"
+  },
+  {
+    "id": "s-12006220465",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2901,
+    "elevationM": 0,
+    "date": "2024-06-23"
+  },
+  {
+    "id": "s-12006220455",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4470,
+    "elevationM": 0,
+    "date": "2024-06-22"
+  },
+  {
+    "id": "s-12006220451",
+    "name": "Morning Swim",
+    "type": "Swim",
+    "distanceKm": 1.2,
+    "movingTimeSec": 2106,
+    "elevationM": 0,
+    "date": "2024-06-21"
+  },
+  {
+    "id": "s-12006220592",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2158,
+    "elevationM": 0,
+    "date": "2024-06-20"
+  },
+  {
+    "id": "s-12006220490",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 15.2,
+    "movingTimeSec": 5261,
+    "elevationM": 24,
+    "date": "2024-06-19"
+  },
+  {
+    "id": "s-12006220596",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4551,
+    "elevationM": 0,
+    "date": "2024-06-18"
+  },
+  {
+    "id": "s-12006220479",
+    "name": "Afternoon Ride",
+    "type": "Ride",
+    "distanceKm": 15.6,
+    "movingTimeSec": 3100,
+    "elevationM": 34,
+    "date": "2024-06-16"
+  },
+  {
+    "id": "s-12006220563",
+    "name": "Lunch Ride",
+    "type": "Ride",
+    "distanceKm": 20.5,
+    "movingTimeSec": 4783,
+    "elevationM": 95,
+    "date": "2024-06-16"
+  },
+  {
+    "id": "s-12006220413",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 8.1,
+    "movingTimeSec": 2749,
+    "elevationM": 18,
+    "date": "2024-06-15"
+  },
+  {
+    "id": "s-12006220536",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4214,
+    "elevationM": 0,
+    "date": "2024-06-15"
+  },
+  {
+    "id": "s-12006220537",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2805,
+    "elevationM": 0,
+    "date": "2024-06-14"
+  },
+  {
+    "id": "s-12006220478",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 6.8,
+    "movingTimeSec": 2342,
+    "elevationM": 9,
+    "date": "2024-06-13"
+  },
+  {
+    "id": "s-12006220258",
+    "name": "Night Ride",
+    "type": "Ride",
+    "distanceKm": 0,
+    "movingTimeSec": 1332,
+    "elevationM": 0,
+    "date": "2024-06-12"
+  },
+  {
+    "id": "s-12006220264",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5063,
+    "elevationM": 0,
+    "date": "2024-06-12"
+  },
+  {
+    "id": "s-12006220527",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 1.8,
+    "movingTimeSec": 2973,
+    "elevationM": 0,
+    "date": "2024-06-11"
+  },
+  {
+    "id": "s-12006220394",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3073,
+    "elevationM": 0,
+    "date": "2024-06-10"
+  },
+  {
+    "id": "s-12006220325",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3108,
+    "elevationM": 0,
+    "date": "2024-06-09"
+  },
+  {
+    "id": "s-12006220483",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 10,
+    "movingTimeSec": 3257,
+    "elevationM": 36,
+    "date": "2024-06-09"
+  },
+  {
+    "id": "s-12006220472",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 8184,
+    "elevationM": 0,
+    "date": "2024-06-07"
+  },
+  {
+    "id": "s-12006220386",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 1.3,
+    "movingTimeSec": 2179,
+    "elevationM": 0,
+    "date": "2024-06-06"
+  },
+  {
+    "id": "s-12006220332",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3018,
+    "elevationM": 0,
+    "date": "2024-06-05"
+  },
+  {
+    "id": "s-12006220284",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 7.5,
+    "movingTimeSec": 2449,
+    "elevationM": 11,
+    "date": "2024-06-05"
+  },
+  {
+    "id": "s-12006220324",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 1.3,
+    "movingTimeSec": 1831,
+    "elevationM": 0,
+    "date": "2024-06-04"
+  },
+  {
+    "id": "s-12006220322",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2623,
+    "elevationM": 0,
+    "date": "2024-06-02"
+  },
+  {
+    "id": "s-12006220529",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2195,
+    "elevationM": 0,
+    "date": "2024-06-01"
+  },
+  {
+    "id": "s-12006220417",
+    "name": "Afternoon Kayaking",
+    "type": "Kayaking",
+    "distanceKm": 4.8,
+    "movingTimeSec": 3627,
+    "elevationM": 15,
+    "date": "2024-05-31"
+  },
+  {
+    "id": "s-12006220275",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 6.9,
+    "movingTimeSec": 2294,
+    "elevationM": 4,
+    "date": "2024-05-31"
+  },
+  {
+    "id": "s-12006220397",
+    "name": "Afternoon Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 3843,
+    "elevationM": 0,
+    "date": "2024-05-30"
+  },
+  {
+    "id": "s-12006220338",
+    "name": "Evening Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 4391,
+    "elevationM": 0,
+    "date": "2024-05-29"
+  },
+  {
+    "id": "s-12006220274",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 1.1,
+    "movingTimeSec": 2080,
+    "elevationM": 0,
+    "date": "2024-05-28"
+  },
+  {
+    "id": "s-12006220346",
+    "name": "Evening Run",
+    "type": "Run",
+    "distanceKm": 10.1,
+    "movingTimeSec": 3804,
+    "elevationM": 4,
+    "date": "2024-05-27"
+  },
+  {
+    "id": "s-12006220262",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 2753,
+    "elevationM": 0,
+    "date": "2024-05-26"
+  },
+  {
+    "id": "s-12006220349",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 10.2,
+    "movingTimeSec": 3231,
+    "elevationM": 13,
+    "date": "2024-05-25"
+  },
+  {
+    "id": "s-12006220265",
+    "name": "Night Weight Training",
+    "type": "WeightTraining",
+    "distanceKm": 0,
+    "movingTimeSec": 5414,
+    "elevationM": 0,
+    "date": "2024-05-24"
+  },
+  {
+    "id": "s-12006220405",
+    "name": "Afternoon Ride",
+    "type": "Ride",
+    "distanceKm": 4,
+    "movingTimeSec": 906,
+    "elevationM": 5,
+    "date": "2024-05-22"
+  },
+  {
+    "id": "s-12006220341",
+    "name": "Lunch Ride",
+    "type": "Ride",
+    "distanceKm": 3.7,
+    "movingTimeSec": 939,
+    "elevationM": 11,
+    "date": "2024-05-22"
+  },
+  {
+    "id": "s-12006220387",
+    "name": "Evening Swim",
+    "type": "Swim",
+    "distanceKm": 1.5,
+    "movingTimeSec": 2838,
+    "elevationM": 0,
+    "date": "2024-05-21"
+  },
+  {
+    "id": "s-12006220353",
+    "name": "Morning Run",
+    "type": "Run",
+    "distanceKm": 10.4,
+    "movingTimeSec": 3323,
+    "elevationM": 9,
+    "date": "2024-05-20"
+  },
+  {
+    "id": "s-12006220345",
+    "name": "Afternoon Run",
+    "type": "Run",
+    "distanceKm": 7.9,
+    "movingTimeSec": 2850,
+    "elevationM": 13,
+    "date": "2024-05-17"
+  },
+  {
+    "id": "s-12006220336",
+    "name": "Evening Ride",
+    "type": "Ride",
+    "distanceKm": 5.4,
+    "movingTimeSec": 1223,
+    "elevationM": 15,
+    "date": "2024-05-16"
+  }
+]
