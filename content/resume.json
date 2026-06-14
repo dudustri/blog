@@ -38,9 +38,16 @@
       "period": "Jun 2025 – Present",
       "website": "https://www.res-group.com",
       "description": "Development and maintenance of wind and solar plants data acquisition software using C, Python, and C# for backend and JS/TS for frontend, supporting devices such as turbines, inverters, and sensors, vendor-specific and industrial protocols (e.g., Siemens, Vestas, Gamesa, Modbus). Architecture and implementation of production-ready control systems such as dynamic yaw and inverter optimization. License management, high-performance decryption, and PostgreSQL/MySQL interface in C. Redis real-time data storage and fast retrieval with non-volatile persistence. CI/CD workflow, infrastructure architecture, and shell/python scripting for environment setup, edge deployment, and operations tooling.",
-      "details": "Owns development and maintenance of the data-acquisition platform for utility-scale wind and solar plants, written in C and Python on the backend with C# services and a JavaScript/TypeScript frontend. Integrates a wide range of field devices — turbines, inverters and meteorological sensors — across vendor-specific and industrial protocols such as Siemens, Vestas, Gamesa and Modbus. Designed and shipped production-ready control systems, including dynamic yaw control and inverter optimization, that run unattended at the edge. Implemented license management, high-performance decryption and a PostgreSQL/MySQL data interface directly in C, backed by a Redis layer for real-time storage and fast retrieval with non-volatile persistence. Built and maintained the CI/CD workflow, the edge-deployment infrastructure and the shell/Python tooling used for environment setup and day-to-day operations.",
+      "details": "Owns the data-acquisition platform for utility-scale wind and solar plants — the backend that pulls telemetry off field hardware across many vendor and industrial protocols and turns it into production-ready control.",
+      "highlights": [
+        "Maintains and extends the acquisition backend in C, Python and C#, with a JS/TS frontend, across turbines, inverters and meteorological sensors.",
+        "Integrates vendor-specific and industrial protocols such as Siemens, Vestas, Gamesa and Modbus.",
+        "Designed production-ready control systems such as dynamic yaw and inverter optimization running unattended at the edge.",
+        "Implemented license management, high-performance decryption and a PostgreSQL/MySQL interface directly in C, backed by Redis for real-time storage and non-volatile persistence.",
+        "Built the CI/CD workflow, edge-deployment infrastructure and shell/Python operations tooling."
+      ],
       "stack": ["C", "C#", "Python", "TypeScript", "Node", "SQL", "Redis", "Docker", "CI/CD", "Bash", "Linux", "Git", "Modbus"],
-      "reviewTodo": "review this extra content"
+      "reviewTodo": "scaffold — details/highlights AI-drafted, refine with real specifics"
     },
     {
       "id": "bodil-hw-sw",
@@ -49,9 +56,20 @@
       "period": "Jun 2024 – Jun 2025",
       "website": "https://www.bodil.energy",
       "description": "Responsible for transitioning the prototype and its firmware into a product. New features such as Over-the-Air (OTA) updates and Power/Energy Metering. Definition of technical requirements for hardware, firmware, and software. Hardware design coordination. Scalable data-collection multithreading system development using MQTT and Rust to handle high frequency real-time data from field devices. Service manager engine architecture design (AWS & GCP) and implementation using TypeScript, Bun, Docker and K8s to ensure responsiveness and availability to grid balance signals. IBM/Andel Flex Platform integration for FCR-D market regulation.",
-      "details": "Led the transition of an early hardware prototype and its firmware into a shippable product, defining the technical requirements across hardware, firmware and software and coordinating the hardware design. Delivered key product capabilities such as Over-the-Air (OTA) firmware updates and on-device power/energy metering. Built a scalable, multithreaded data-collection system in Rust over MQTT to ingest high-frequency real-time data from field devices. Architected and implemented the service-manager engine on AWS and GCP using TypeScript, Bun, Docker and Kubernetes, prioritising responsiveness and availability so the fleet could react to grid-balancing signals in time. Integrated with the IBM/Andel Flex platform to participate in the FCR-D frequency-regulation market.",
+      "details": "Building on the first-generation device, this role drove the second generation of the platform — internally Distributed System Orchestration for the Flexibility Market (BEAM v2). The focus shifted from a single device to orchestrating a responsive fleet that can react to grid-balancing signals and bid into flexibility markets in real time, while taking the prototype all the way to a shippable product.",
+      "highlights": [
+        "Owned the prototype-to-product transition: defined hardware, firmware and software requirements and coordinated the hardware design.",
+        "Shipped Over-the-Air (OTA) firmware updates and on-device power/energy metering.",
+        "Built a scalable, multithreaded data-collection system in Rust over MQTT for high-frequency real-time field data.",
+        "Architected the service-manager engine on AWS and GCP using TypeScript, Bun, Docker and Kubernetes, tuned for responsiveness and availability under grid-balancing signals.",
+        "Integrated the IBM/Andel Flex platform to participate in the FCR-D frequency-regulation market."
+      ],
+      "team": "Worked across the hardware, firmware and cloud teams, and with the market-integration side, to take the device fleet from prototype to a product participating in FCR-D. (scaffold — refine with the real team details.)",
+      "projects": [
+        { "slug": "beam-v2-distributed-orchestration", "title": "Distributed System Orchestration for Flexibility Market — BEAM v2" }
+      ],
       "stack": ["Rust", "TypeScript", "Node", "Bun", "Docker", "Kubernetes", "AWS", "GCP", "MQTT", "CI/CD", "Git"],
-      "reviewTodo": "review this extra content"
+      "reviewTodo": "scaffold — details/highlights/team AI-drafted, refine with real specifics"
     },
     {
       "id": "bodil-systems",
@@ -60,9 +78,19 @@
       "period": "Nov 2022 – Jun 2024",
       "website": "https://www.bodil.energy",
       "description": "Firmware development using C, TypeScript and Node for API and Python for the energy simulation engine. Use of ESP32 with ESP IDF for Bluetooth, WiFi, LTE/NB-IoT, and peer-to-peer communication, alongside parsers, protocols, and machine interface. Aggregator implementation for data handling and implemented a server-side state holder to validate and manage connections between the database, simulation service, and IoT devices.",
-      "details": "Firmware and backend development for the early Bodil energy device: C for the firmware, TypeScript/Node for the API and Python for the energy-simulation engine. Worked on ESP32 with ESP-IDF, bringing up Bluetooth, WiFi and LTE/NB-IoT connectivity and peer-to-peer communication, together with the parsers, protocols and machine interface around them. Built an aggregator for data handling and a server-side state holder that validates and manages the connections between the database, the simulation service and the IoT devices in the field.",
+      "details": "This work formed the first generation of the platform — internally the Smart Grid Interface (BEAM v1) — the bridge between the in-home energy device and the cloud. The focus was getting reliable telemetry and control off constrained ESP32 hardware and into a backend that could simulate and act on it.",
+      "highlights": [
+        "Brought up the ESP32 (ESP-IDF) connectivity stack: Bluetooth provisioning, WiFi and LTE/NB-IoT fallback, plus peer-to-peer device communication.",
+        "Wrote the firmware-side parsers and machine interface, and the protocol layer framing messages between device and backend.",
+        "Built the data aggregator and a server-side state holder that keep the database, the simulation service and the field devices consistent.",
+        "Stood up the Python energy-simulation engine behind a TypeScript/Node API."
+      ],
+      "team": "Small cross-functional hardware/software team — collaborated closely with the firmware, backend and energy-modelling people, alongside the hardware engineers defining the device. (scaffold — refine with the real team details.)",
+      "projects": [
+        { "slug": "beam-v1-smart-grid-interface", "title": "Smart Grid Interface — BEAM v1" }
+      ],
       "stack": ["C", "TypeScript", "Node", "Python", "ESP32", "ESP-IDF", "MQTT", "Git"],
-      "reviewTodo": "review this extra content"
+      "reviewTodo": "scaffold — details/highlights/team AI-drafted, refine with real specifics"
     },
     {
       "id": "numerous",
@@ -71,9 +99,15 @@
       "period": "Feb 2023 – Jul 2024",
       "website": "https://numerous.com",
       "description": "Development focusing on CLI, API, backend-related code, pipeline maintenance, tests, and code quality enforcement. Docker and Kubernetes for containerization and orchestration, Python, Golang, and Typescript as languages. REST, GraphQL and gRPC APIs. Cloud services from GCP and AWS. Test-driven development (TDD).",
-      "details": "Backend development across CLI, API and supporting services, with ongoing responsibility for pipeline maintenance, automated tests and code-quality enforcement. Containerised and orchestrated workloads with Docker and Kubernetes, writing services in Python, Golang and TypeScript. Built and consumed REST, GraphQL and gRPC APIs deployed on GCP and AWS. Practised test-driven development (TDD) throughout to keep the codebase reliable and reviewable.",
+      "details": "Backend work across CLI, API and supporting services, with ongoing ownership of the pipelines, automated tests and code-quality enforcement that keep the codebase reliable and reviewable.",
+      "highlights": [
+        "Wrote services in Python, Golang and TypeScript, containerised and orchestrated with Docker and Kubernetes.",
+        "Built and consumed REST, GraphQL and gRPC APIs deployed on GCP and AWS.",
+        "Maintained the CI/CD pipelines and enforced code-quality standards across the team.",
+        "Practised test-driven development (TDD) throughout."
+      ],
       "stack": ["Python", "Golang", "TypeScript", "Docker", "Kubernetes", "GCP", "AWS", "REST", "GraphQL", "gRPC", "CI/CD", "Git"],
-      "reviewTodo": "review this extra content"
+      "reviewTodo": "scaffold — details/highlights AI-drafted, refine with real specifics"
     },
     {
       "id": "novus",
@@ -82,9 +116,15 @@
       "period": "Mar 2022 – Feb 2023",
       "website": "https://www.novusautomation.com/en/",
       "description": "Development and maintenance of configuration and monitoring software products for desktop, web and mobile using C++, Java, and Dart/Flutter. API tests using JavaScript and Postman. Scrum methodology application and software version control using Git/Gitlab and Sourcetree. MQTT and LoRaWAN applications (IoT).",
-      "details": "Development and maintenance of configuration and monitoring software for desktop, web and mobile, built with C++, Java and Dart/Flutter. Wrote API tests in JavaScript and Postman, working within a Scrum process and using Git/GitLab and Sourcetree for version control. Implemented MQTT and LoRaWAN connectivity for the company's IoT product line.",
+      "details": "Development and maintenance of configuration and monitoring software for desktop, web and mobile, delivered within a Scrum team for the company's IoT product line.",
+      "highlights": [
+        "Built and maintained products with C++, Java and Dart/Flutter across desktop, web and mobile.",
+        "Wrote API tests with JavaScript and Postman.",
+        "Implemented MQTT and LoRaWAN connectivity for the IoT product line.",
+        "Worked in Scrum, using Git/GitLab and Sourcetree for version control."
+      ],
       "stack": ["C++", "Java", "Dart", "Flutter", "JavaScript", "MQTT", "LoRaWAN", "Git", "Scrum"],
-      "reviewTodo": "review this extra content"
+      "reviewTodo": "scaffold — details/highlights AI-drafted, refine with real specifics"
     },
     {
       "id": "vitta",
@@ -93,9 +133,14 @@
       "period": "Feb 2021 – Mar 2022",
       "website": "https://vittaresidencial.com.br",
       "description": "Computational simulation head's engineer and in charge of the internal methodology development to measure the building's energy performance.",
-      "details": "Head engineer for computational simulation, responsible for developing the internal methodology used to measure the energy performance of buildings. Defined the modelling approach, ran the simulations and translated the results into actionable performance metrics for the residential projects.",
+      "details": "Head engineer for computational simulation, owning the internal methodology used to measure building energy performance for the residential projects.",
+      "highlights": [
+        "Defined the modelling approach and ran the building energy-performance simulations.",
+        "Developed the internal methodology used to measure and benchmark performance.",
+        "Translated simulation results into actionable performance metrics for residential projects."
+      ],
       "stack": ["EnergyPlus", "OpenStudio", "Excel"],
-      "reviewTodo": "review this extra content"
+      "reviewTodo": "scaffold — details/highlights AI-drafted, refine with real specifics"
     },
     {
       "id": "petinelli-engineer",
@@ -104,9 +149,15 @@
       "period": "Jul 2019 – Dec 2020",
       "website": "https://www.petinelli.com",
       "description": "Design: HVAC, electrical, automation, photovoltaic, and lighting systems. Thermal and energy building performance analysis. Computational simulations. Technical and economical diagnosis of energy efficiency measures. Commissioning process.",
-      "details": "Engineering design across HVAC, electrical, automation, photovoltaic and lighting systems, supported by thermal and energy building-performance analysis and computational simulations. Produced technical and economic diagnoses of energy-efficiency measures and supported the commissioning process from design through hand-over.",
+      "details": "Engineering design and building-performance analysis across mechanical and electrical systems, from concept through commissioning.",
+      "highlights": [
+        "Designed HVAC, electrical, automation, photovoltaic and lighting systems.",
+        "Ran thermal and energy building-performance analysis and computational simulations.",
+        "Produced technical and economic diagnoses of energy-efficiency measures.",
+        "Supported the commissioning process from design through hand-over."
+      ],
       "stack": ["EnergyPlus", "AutoCAD", "Excel"],
-      "reviewTodo": "review this extra content"
+      "reviewTodo": "scaffold — details/highlights AI-drafted, refine with real specifics"
     },
     {
       "id": "petinelli-assistant",
@@ -115,9 +166,14 @@
       "period": "Jun 2017 – Jun 2019",
       "website": "https://www.petinelli.com",
       "description": "LEED certification process and energy conservation measures application based on design reviews. Renewable energy systems design. Technical and economic feasibility reports.",
-      "details": "Supported the LEED certification process and the application of energy-conservation measures based on design reviews. Contributed to renewable-energy system design and prepared technical and economic feasibility reports.",
+      "details": "Supported certification and energy-efficiency work based on design reviews, alongside renewable-energy system design.",
+      "highlights": [
+        "Supported the LEED certification process and the application of energy-conservation measures from design reviews.",
+        "Contributed to renewable-energy system design.",
+        "Prepared technical and economic feasibility reports."
+      ],
       "stack": ["AutoCAD", "Excel"],
-      "reviewTodo": "review this extra content"
+      "reviewTodo": "scaffold — details/highlights AI-drafted, refine with real specifics"
     }
   ],
   "languages": [
