@@ -85,7 +85,7 @@ export default function Home() {
           >
             Software &amp; Energy Engineer
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6 whitespace-nowrap">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6 md:whitespace-nowrap">
             Eduardo Sfreddo Trindade
           </h1>
           <p className="text-gray-500 leading-relaxed max-w-sm text-[15px]">
@@ -124,7 +124,7 @@ export default function Home() {
 
           {/* Photo toast — top-right of the photo */}
           {photoToast && (
-            <div className="absolute top-1/2 -translate-y-1/2 left-full ml-3 z-50 bg-black text-white text-xs px-4 py-3 rounded-xl shadow-lg w-56 leading-relaxed">
+            <div className="absolute z-50 bg-black text-white text-xs px-4 py-3 rounded-xl shadow-lg leading-relaxed top-full left-0 mt-3 w-[min(20rem,80vw)] md:top-1/2 md:left-full md:mt-0 md:ml-3 md:-translate-y-1/2 md:w-56">
               Nej, this is not AI generated (:
               <br />
               <br />
