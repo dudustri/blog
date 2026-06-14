@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import type { Experience } from "@/app/data/resume";
 
 const BLUE = "#3e6b89";
@@ -139,10 +140,65 @@ export default function ExperienceSection({
               <p className="text-gray-400 text-sm whitespace-nowrap">{selectedJob.period}</p>
             </div>
             <p className="text-gray-500 text-sm mb-6">{selectedJob.title}</p>
-            {/* TODO: review this extra content — `details` and `stack` were AI-drafted (see content/resume.json). */}
+
+            {/* Description — always shown first */}
             <p className="text-gray-700 text-sm leading-relaxed">
-              {highlightKeywords(selectedJob.details ?? selectedJob.description)}
+              {highlightKeywords(selectedJob.description)}
             </p>
+
+            {/* Complementary deep-dive (curated jobs only) */}
+            {selectedJob.details ? (
+              <p className="text-gray-700 text-sm leading-relaxed mt-4">
+                {highlightKeywords(selectedJob.details)}
+              </p>
+            ) : null}
+
+            {/* Highlights */}
+            {selectedJob.highlights?.length ? (
+              <ul className="mt-4 space-y-2">
+                {selectedJob.highlights.map((h, i) => (
+                  <li key={i} className="flex gap-2.5 text-gray-700 text-sm leading-relaxed">
+                    <span
+                      className="flex-shrink-0 inline-block rounded-full"
+                      style={{ width: 4, height: 4, marginTop: 8, background: BLUE }}
+                    />
+                    <span>{highlightKeywords(h)}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+
+            {/* Team */}
+            {selectedJob.team ? (
+              <div className="mt-6">
+                <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">
+                  Team
+                </p>
+                <p className="text-gray-700 text-sm leading-relaxed">{selectedJob.team}</p>
+              </div>
+            ) : null}
+
+            {/* Related portfolio projects */}
+            {selectedJob.projects?.length ? (
+              <div className="mt-6">
+                <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">
+                  Related projects
+                </p>
+                <div className="flex flex-col gap-1.5">
+                  {selectedJob.projects.map((p) => (
+                    <Link
+                      key={p.slug}
+                      href={`/portfolio/${p.slug}`}
+                      onClick={onModalClose}
+                      className="text-sm hover:underline"
+                      style={{ color: BLUE, fontWeight: 500 }}
+                    >
+                      {p.title} →
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : null}
 
             {selectedJob.stack?.length ? (
               <div style={{ marginTop: 28, paddingTop: 20, borderTop: "1px solid #ececec" }}>
