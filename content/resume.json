@@ -37,7 +37,10 @@
       "title": "Software Engineer",
       "period": "Jun 2025 – Present",
       "website": "https://www.res-group.com",
-      "description": "Development and maintenance of wind and solar plants data acquisition software using C, Python, and C# for backend and JS/TS for frontend, supporting devices such as turbines, inverters, and sensors, vendor-specific and industrial protocols (e.g., Siemens, Vestas, Gamesa, Modbus). Architecture and implementation of production-ready control systems such as dynamic yaw and inverter optimization. License management, high-performance decryption, and PostgreSQL/MySQL interface in C. Redis real-time data storage and fast retrieval with non-volatile persistence. CI/CD workflow, infrastructure architecture, and shell/python scripting for environment setup, edge deployment, and operations tooling."
+      "description": "Development and maintenance of wind and solar plants data acquisition software using C, Python, and C# for backend and JS/TS for frontend, supporting devices such as turbines, inverters, and sensors, vendor-specific and industrial protocols (e.g., Siemens, Vestas, Gamesa, Modbus). Architecture and implementation of production-ready control systems such as dynamic yaw and inverter optimization. License management, high-performance decryption, and PostgreSQL/MySQL interface in C. Redis real-time data storage and fast retrieval with non-volatile persistence. CI/CD workflow, infrastructure architecture, and shell/python scripting for environment setup, edge deployment, and operations tooling.",
+      "details": "Owns development and maintenance of the data-acquisition platform for utility-scale wind and solar plants, written in C and Python on the backend with C# services and a JavaScript/TypeScript frontend. Integrates a wide range of field devices — turbines, inverters and meteorological sensors — across vendor-specific and industrial protocols such as Siemens, Vestas, Gamesa and Modbus. Designed and shipped production-ready control systems, including dynamic yaw control and inverter optimization, that run unattended at the edge. Implemented license management, high-performance decryption and a PostgreSQL/MySQL data interface directly in C, backed by a Redis layer for real-time storage and fast retrieval with non-volatile persistence. Built and maintained the CI/CD workflow, the edge-deployment infrastructure and the shell/Python tooling used for environment setup and day-to-day operations.",
+      "stack": ["C", "C#", "Python", "TypeScript", "Node", "SQL", "Redis", "Docker", "CI/CD", "Bash", "Linux", "Git", "Modbus"],
+      "reviewTodo": "review this extra content"
     },
     {
       "id": "bodil-hw-sw",
@@ -45,7 +48,10 @@
       "title": "Hardware & Software Engineer",
       "period": "Jun 2024 – Jun 2025",
       "website": "https://www.bodil.energy",
-      "description": "Responsible for transitioning the prototype and its firmware into a product. New features such as Over-the-Air (OTA) updates and Power/Energy Metering. Definition of technical requirements for hardware, firmware, and software. Hardware design coordination. Scalable data-collection multithreading system development using MQTT and Rust to handle high frequency real-time data from field devices. Service manager engine architecture design (AWS & GCP) and implementation using TypeScript, Bun, Docker and K8s to ensure responsiveness and availability to grid balance signals. IBM/Andel Flex Platform integration for FCR-D market regulation."
+      "description": "Responsible for transitioning the prototype and its firmware into a product. New features such as Over-the-Air (OTA) updates and Power/Energy Metering. Definition of technical requirements for hardware, firmware, and software. Hardware design coordination. Scalable data-collection multithreading system development using MQTT and Rust to handle high frequency real-time data from field devices. Service manager engine architecture design (AWS & GCP) and implementation using TypeScript, Bun, Docker and K8s to ensure responsiveness and availability to grid balance signals. IBM/Andel Flex Platform integration for FCR-D market regulation.",
+      "details": "Led the transition of an early hardware prototype and its firmware into a shippable product, defining the technical requirements across hardware, firmware and software and coordinating the hardware design. Delivered key product capabilities such as Over-the-Air (OTA) firmware updates and on-device power/energy metering. Built a scalable, multithreaded data-collection system in Rust over MQTT to ingest high-frequency real-time data from field devices. Architected and implemented the service-manager engine on AWS and GCP using TypeScript, Bun, Docker and Kubernetes, prioritising responsiveness and availability so the fleet could react to grid-balancing signals in time. Integrated with the IBM/Andel Flex platform to participate in the FCR-D frequency-regulation market.",
+      "stack": ["Rust", "TypeScript", "Node", "Bun", "Docker", "Kubernetes", "AWS", "GCP", "MQTT", "CI/CD", "Git"],
+      "reviewTodo": "review this extra content"
     },
     {
       "id": "bodil-systems",
@@ -53,7 +59,10 @@
       "title": "Systems Engineer",
       "period": "Nov 2022 – Jun 2024",
       "website": "https://www.bodil.energy",
-      "description": "Firmware development using C, TypeScript and Node for API and Python for the energy simulation engine. Use of ESP32 with ESP IDF for Bluetooth, WiFi, LTE/NB-IoT, and peer-to-peer communication, alongside parsers, protocols, and machine interface. Aggregator implementation for data handling and implemented a server-side state holder to validate and manage connections between the database, simulation service, and IoT devices."
+      "description": "Firmware development using C, TypeScript and Node for API and Python for the energy simulation engine. Use of ESP32 with ESP IDF for Bluetooth, WiFi, LTE/NB-IoT, and peer-to-peer communication, alongside parsers, protocols, and machine interface. Aggregator implementation for data handling and implemented a server-side state holder to validate and manage connections between the database, simulation service, and IoT devices.",
+      "details": "Firmware and backend development for the early Bodil energy device: C for the firmware, TypeScript/Node for the API and Python for the energy-simulation engine. Worked on ESP32 with ESP-IDF, bringing up Bluetooth, WiFi and LTE/NB-IoT connectivity and peer-to-peer communication, together with the parsers, protocols and machine interface around them. Built an aggregator for data handling and a server-side state holder that validates and manages the connections between the database, the simulation service and the IoT devices in the field.",
+      "stack": ["C", "TypeScript", "Node", "Python", "ESP32", "ESP-IDF", "MQTT", "Git"],
+      "reviewTodo": "review this extra content"
     },
     {
       "id": "numerous",
@@ -61,7 +70,10 @@
       "title": "Backend Developer",
       "period": "Feb 2023 – Jul 2024",
       "website": "https://numerous.com",
-      "description": "Development focusing on CLI, API, backend-related code, pipeline maintenance, tests, and code quality enforcement. Docker and Kubernetes for containerization and orchestration, Python, Golang, and Typescript as languages. REST, GraphQL and gRPC APIs. Cloud services from GCP and AWS. Test-driven development (TDD)."
+      "description": "Development focusing on CLI, API, backend-related code, pipeline maintenance, tests, and code quality enforcement. Docker and Kubernetes for containerization and orchestration, Python, Golang, and Typescript as languages. REST, GraphQL and gRPC APIs. Cloud services from GCP and AWS. Test-driven development (TDD).",
+      "details": "Backend development across CLI, API and supporting services, with ongoing responsibility for pipeline maintenance, automated tests and code-quality enforcement. Containerised and orchestrated workloads with Docker and Kubernetes, writing services in Python, Golang and TypeScript. Built and consumed REST, GraphQL and gRPC APIs deployed on GCP and AWS. Practised test-driven development (TDD) throughout to keep the codebase reliable and reviewable.",
+      "stack": ["Python", "Golang", "TypeScript", "Docker", "Kubernetes", "GCP", "AWS", "REST", "GraphQL", "gRPC", "CI/CD", "Git"],
+      "reviewTodo": "review this extra content"
     },
     {
       "id": "novus",
@@ -69,7 +81,10 @@
       "title": "Software Developer",
       "period": "Mar 2022 – Feb 2023",
       "website": "https://www.novusautomation.com/en/",
-      "description": "Development and maintenance of configuration and monitoring software products for desktop, web and mobile using C++, Java, and Dart/Flutter. API tests using JavaScript and Postman. Scrum methodology application and software version control using Git/Gitlab and Sourcetree. MQTT and LoRaWAN applications (IoT)."
+      "description": "Development and maintenance of configuration and monitoring software products for desktop, web and mobile using C++, Java, and Dart/Flutter. API tests using JavaScript and Postman. Scrum methodology application and software version control using Git/Gitlab and Sourcetree. MQTT and LoRaWAN applications (IoT).",
+      "details": "Development and maintenance of configuration and monitoring software for desktop, web and mobile, built with C++, Java and Dart/Flutter. Wrote API tests in JavaScript and Postman, working within a Scrum process and using Git/GitLab and Sourcetree for version control. Implemented MQTT and LoRaWAN connectivity for the company's IoT product line.",
+      "stack": ["C++", "Java", "Dart", "Flutter", "JavaScript", "MQTT", "LoRaWAN", "Git", "Scrum"],
+      "reviewTodo": "review this extra content"
     },
     {
       "id": "vitta",
@@ -77,7 +92,10 @@
       "title": "Simulation Engineer",
       "period": "Feb 2021 – Mar 2022",
       "website": "https://vittaresidencial.com.br",
-      "description": "Computational simulation head's engineer and in charge of the internal methodology development to measure the building's energy performance."
+      "description": "Computational simulation head's engineer and in charge of the internal methodology development to measure the building's energy performance.",
+      "details": "Head engineer for computational simulation, responsible for developing the internal methodology used to measure the energy performance of buildings. Defined the modelling approach, ran the simulations and translated the results into actionable performance metrics for the residential projects.",
+      "stack": ["EnergyPlus", "OpenStudio", "Excel"],
+      "reviewTodo": "review this extra content"
     },
     {
       "id": "petinelli-engineer",
@@ -85,7 +103,10 @@
       "title": "Energy Engineer",
       "period": "Jul 2019 – Dec 2020",
       "website": "https://www.petinelli.com",
-      "description": "Design: HVAC, electrical, automation, photovoltaic, and lighting systems. Thermal and energy building performance analysis. Computational simulations. Technical and economical diagnosis of energy efficiency measures. Commissioning process."
+      "description": "Design: HVAC, electrical, automation, photovoltaic, and lighting systems. Thermal and energy building performance analysis. Computational simulations. Technical and economical diagnosis of energy efficiency measures. Commissioning process.",
+      "details": "Engineering design across HVAC, electrical, automation, photovoltaic and lighting systems, supported by thermal and energy building-performance analysis and computational simulations. Produced technical and economic diagnoses of energy-efficiency measures and supported the commissioning process from design through hand-over.",
+      "stack": ["EnergyPlus", "AutoCAD", "Excel"],
+      "reviewTodo": "review this extra content"
     },
     {
       "id": "petinelli-assistant",
@@ -93,7 +114,10 @@
       "title": "Student Assistant",
       "period": "Jun 2017 – Jun 2019",
       "website": "https://www.petinelli.com",
-      "description": "LEED certification process and energy conservation measures application based on design reviews. Renewable energy systems design. Technical and economic feasibility reports."
+      "description": "LEED certification process and energy conservation measures application based on design reviews. Renewable energy systems design. Technical and economic feasibility reports.",
+      "details": "Supported the LEED certification process and the application of energy-conservation measures based on design reviews. Contributed to renewable-energy system design and prepared technical and economic feasibility reports.",
+      "stack": ["AutoCAD", "Excel"],
+      "reviewTodo": "review this extra content"
     }
   ],
   "languages": [
