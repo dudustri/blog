@@ -108,18 +108,17 @@ export default function ExperienceSection({
 
       {selectedJob && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
           style={{ background: "rgba(0,0,0,0.45)", backdropFilter: "blur(2px)" }}
           onClick={onModalClose}
         >
           <div
-            className="bg-white rounded-2xl w-full"
+            className="bg-white rounded-2xl w-full p-6 sm:p-10"
             style={{
               maxWidth: 860,
               maxHeight: "85vh",
               overflowY: "auto",
               boxShadow: "0 24px 64px rgba(0,0,0,0.22)",
-              padding: "40px 48px",
             }}
             onClick={(e) => e.stopPropagation()}
           >

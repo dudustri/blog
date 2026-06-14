@@ -89,7 +89,7 @@ export default function SportsPage() {
       {/* View switch + shared filters */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         {/* Pizzas Earned ↔ Activities */}
-        <div className="inline-flex rounded-lg border border-gray-200 p-0.5">
+        <div className="inline-flex rounded-lg border border-gray-200 overflow-hidden">
           {(
             [
               ["pizzas", "Pizzas Earned"],
@@ -101,7 +101,7 @@ export default function SportsPage() {
               <button
                 key={key}
                 onClick={() => setView(key)}
-                className={`min-w-[8rem] text-center px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                className={`min-w-[8rem] text-center px-3.5 py-1.5 text-sm font-medium transition-colors ${
                   isOn ? "bg-black text-white" : "text-gray-500 hover:text-black"
                 }`}
               >
@@ -114,14 +114,14 @@ export default function SportsPage() {
         {/* Filters (year/month apply to both views; aggregation is plot-only) */}
         <div className="flex flex-wrap items-center gap-3">
           {view === "pizzas" && (
-            <div className="inline-flex rounded-lg border border-gray-200 p-0.5">
+            <div className="inline-flex rounded-lg border border-gray-200 overflow-hidden">
               {(["daily", "monthly"] as const).map((mode) => {
                 const isOn = aggregation === mode;
                 return (
                   <button
                     key={mode}
                     onClick={() => setAggregation(mode)}
-                    className={`px-3.5 py-1.5 rounded-lg text-sm font-medium capitalize transition-colors ${
+                    className={`px-3.5 py-1.5 text-sm font-medium capitalize transition-colors ${
                       isOn
                         ? "bg-black text-white"
                         : "text-gray-500 hover:text-black"
@@ -249,10 +249,10 @@ export default function SportsPage() {
                   {list.map((a) => (
                     <li
                       key={a.id}
-                      className="py-3 flex items-center justify-between gap-4 group"
+                      className="py-3 flex items-start justify-between gap-4 group"
                     >
                       <div className="min-w-0">
-                        <p className="font-medium text-sm truncate group-hover:underline">
+                        <p className="font-medium text-sm break-words group-hover:underline">
                           {a.name}
                         </p>
                         <p className="text-xs text-gray-400 mt-0.5">
