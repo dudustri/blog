@@ -395,7 +395,7 @@ export default function MundoPage() {
       />
 
       {/* Continent list */}
-      <nav className="absolute left-6 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-3">
+      <nav className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-3">
         {CONTINENTS.map(c => (
           <button
             key={c.name}
@@ -408,7 +408,7 @@ export default function MundoPage() {
       </nav>
 
       {/* Spin controls */}
-      <div className="absolute left-6 z-10 flex flex-col gap-2" style={{ top: 'calc(50% + 5rem)' }}>
+      <div className="absolute left-4 sm:left-6 z-10 flex flex-col gap-2" style={{ top: 'calc(50% + 5rem)' }}>
         <div className="border-t border-white/15 w-14" />
         <div className="flex flex-col gap-3">
           {inGame ? (
@@ -453,7 +453,7 @@ export default function MundoPage() {
 
       {/* Legend — hidden during game */}
       {!inGame && (
-        <div className="absolute bottom-20 left-6 z-10 flex flex-col gap-1.5">
+        <div className="absolute bottom-6 sm:bottom-20 left-4 sm:left-6 z-10 flex flex-col gap-1.5">
           {([
             { color: COLOR_VISITED,    label: 'Visited',  key: 'visited'  as const },
             { color: COLOR_WANT_TO_GO, label: 'Planning', key: 'planning' as const },
@@ -475,7 +475,7 @@ export default function MundoPage() {
       )}
 
       {/* Bottom right — country label / list / game UI */}
-      <div className="absolute bottom-20 right-6 z-10 flex flex-col items-end gap-2">
+      <div className="absolute bottom-6 sm:bottom-20 right-4 sm:right-6 z-10 flex flex-col items-end gap-2 max-w-[60vw]">
 
         {inGame && (
           <div className="flex flex-col items-end gap-2">
@@ -606,15 +606,17 @@ export default function MundoPage() {
                 <span className="text-xs text-white/30 tracking-wide mb-1">
                   {openList === 'visited' ? 'Visited' : 'Planning'}
                 </span>
-                {(openList === 'visited' ? VISITED_SORTED : PLANNING_SORTED)
-                  .map(c => {
-                    const flag = flagFor(c);
-                    return (
-                      <span key={c} className="text-sm font-semibold tracking-wide text-white/60">
-                        {c}{flag && <span className="ml-1.5">{flag}</span>}
-                      </span>
-                    );
-                  })}
+                <div className="flex flex-col items-end gap-1 max-h-[60vh] overflow-y-auto pointer-events-auto">
+                  {(openList === 'visited' ? VISITED_SORTED : PLANNING_SORTED)
+                    .map(c => {
+                      const flag = flagFor(c);
+                      return (
+                        <span key={c} className="text-sm font-semibold tracking-wide text-white/60">
+                          {c}{flag && <span className="ml-1.5">{flag}</span>}
+                        </span>
+                      );
+                    })}
+                </div>
               </>
             ) : (
               <span className="text-3xl font-bold tracking-tight text-white">
