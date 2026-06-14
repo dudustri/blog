@@ -43,10 +43,10 @@ function highlightKeywords(text: string) {
 }
 
 
-// TODO: build a hard match based on the tech stuff / skill / knowledge I used in the jobs or improve the description for automatic matching.
+// Hard match against the job's curated `stack` (hardcoded in content/resume.json),
+// instead of grepping the free-text description.
 function matchesTech(job: Experience, tech: string): boolean {
-  const pattern = new RegExp(buildKeywordPattern(tech), "i");
-  return pattern.test(job.description) || pattern.test(job.title);
+  return job.stack?.includes(tech) ?? false;
 }
 
 type Props = {
@@ -139,9 +139,36 @@ export default function ExperienceSection({
               <p className="text-gray-400 text-sm whitespace-nowrap">{selectedJob.period}</p>
             </div>
             <p className="text-gray-500 text-sm mb-6">{selectedJob.title}</p>
+            {/* TODO: review this extra content — `details` and `stack` were AI-drafted (see content/resume.json). */}
             <p className="text-gray-700 text-sm leading-relaxed">
-              {highlightKeywords(selectedJob.description)}
+              {highlightKeywords(selectedJob.details ?? selectedJob.description)}
             </p>
+
+            {selectedJob.stack?.length ? (
+              <div style={{ marginTop: 28, paddingTop: 20, borderTop: "1px solid #ececec" }}>
+                <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+                  Tech &amp; tools used
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {selectedJob.stack.map((tech) => {
+                    const active = tech === activeTech;
+                    return (
+                      <span
+                        key={tech}
+                        className="px-2.5 py-1 text-xs rounded border"
+                        style={{
+                          borderColor: active ? BLUE : `${BLUE}33`,
+                          background: active ? BLUE : `${BLUE}0d`,
+                          color: active ? "#fff" : BLUE,
+                        }}
+                      >
+                        {tech}
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
       )}
