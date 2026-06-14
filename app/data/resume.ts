@@ -10,6 +10,8 @@ export type Experience = {
   title: string;
   period: string;
   website?: string;
+  // Path under /public (no basePath prefix), e.g. "/company_logos/foo.jpg".
+  logo?: string;
   description: string;
   // Complementary deep-dive shown under the description in the modal (not a
   // paraphrase of it). Optional — only curated jobs have it.

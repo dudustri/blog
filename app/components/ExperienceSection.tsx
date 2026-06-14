@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Experience } from "@/app/data/resume";
 
 const BLUE = "#3e6b89";
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const KEYWORDS = [
   "C++", "C#", " C ", "Python", "TypeScript", "JavaScript", "Node",
@@ -123,23 +124,36 @@ export default function ExperienceSection({
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-baseline justify-between gap-6 mb-1">
-              {selectedJob.website ? (
-                <a
-                  href={selectedJob.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ fontWeight: 700, fontSize: 20, color: BLUE }}
-                  className="hover:underline"
-                >
-                  {selectedJob.company}
-                </a>
-              ) : (
-                <p style={{ fontWeight: 700, fontSize: 20, color: BLUE }}>{selectedJob.company}</p>
-              )}
-              <p className="text-gray-400 text-sm whitespace-nowrap">{selectedJob.period}</p>
+            <div className="flex items-start gap-4 mb-6">
+              {selectedJob.logo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={`${BASE}${selectedJob.logo}`}
+                  alt={selectedJob.company}
+                  className="flex-shrink-0 rounded-lg object-cover"
+                  style={{ width: 56, height: 56 }}
+                />
+              ) : null}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-baseline justify-between gap-6 mb-1">
+                  {selectedJob.website ? (
+                    <a
+                      href={selectedJob.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ fontWeight: 700, fontSize: 20, color: BLUE }}
+                      className="hover:underline"
+                    >
+                      {selectedJob.company}
+                    </a>
+                  ) : (
+                    <p style={{ fontWeight: 700, fontSize: 20, color: BLUE }}>{selectedJob.company}</p>
+                  )}
+                  <p className="text-gray-400 text-sm whitespace-nowrap">{selectedJob.period}</p>
+                </div>
+                <p className="text-gray-500 text-sm">{selectedJob.title}</p>
+              </div>
             </div>
-            <p className="text-gray-500 text-sm mb-6">{selectedJob.title}</p>
 
             {/* Description — always shown first */}
             <p className="text-gray-700 text-sm leading-relaxed">
