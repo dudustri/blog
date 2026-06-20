@@ -139,14 +139,17 @@
       "period": "Feb 2021 – Mar 2022",
       "website": "https://vittaresidencial.com.br",
       "description": "Computational simulation head's engineer and in charge of the internal methodology development to measure the building's energy performance.",
-      "details": "Head engineer for computational simulation, owning the internal methodology used to measure building energy performance for the residential projects.",
+      "details": "As the head engineer for the building simulations, I owned the internal methodology we used to measure thermal, lighting and acoustic performance, and I gave the final sign-off that each design met the Brazilian standard NBR 15575. The role went beyond confirming whether a building performed. A large part of it was making it perform. When a design fell short, I identified what to change, from the orientation, materials and colours to the shading, landscaping, windows and openings, so it could meet the energy efficiency, thermal comfort and ventilation targets. As one of the five largest residential developers in Brazil, the company had an almost endless pipeline of buildings and a substantial workload. It was also where I first used programming professionally. I built a Python tool to run the analysis, and that experience is what gave me the taste for software I have followed ever since. The methodology we developed went on to win the company's Innovation Prize.",
       "highlights": [
-        "Defined the modelling approach and ran the building energy-performance simulations.",
-        "Developed the internal methodology used to measure and benchmark performance.",
-        "Translated simulation results into actionable performance metrics for residential projects."
+        "Brought building-performance simulation in-house — work previously outsourced entirely to third parties — and authored the internal methodology spanning thermal, lighting and acoustic performance, cutting costs at scale.",
+        "Gave the final sign-off on each design, verifying thermal performance against the Brazilian standard NBR 15575 through EnergyPlus simulation.",
+        "Simulated daylighting in Dialux against the weather and solar standards for each building's location.",
+        "Managed acoustic validation end to end — commissioning a third-party firm's simulations and the contracts behind them, then confirming results with on-site (in loco) measurement.",
+        "Led, with the data-analysis department, a Python tool that turned raw simulation output into concrete compliance data. It brought a single analysis down from six or seven hours to about one, roughly an 85% cut, and we kept refining it through the NBR 15575 revision.",
+        "Drove design changes to meet energy-efficiency, thermal-comfort and ventilation targets — orientation, colours, materials, shading, landscape resources, and window/aperture design."
       ],
-      "stack": ["EnergyPlus", "OpenStudio", "Excel"],
-      "reviewTodo": "scaffold — details/highlights AI-drafted, refine with real specifics"
+      "stack": ["EnergyPlus", "OpenStudio", "Revit", "Dialux", "Python", "NBR 15575", "Excel"],
+      "reviewTodo": "grounded in CV — confirm direct team/reports"
     },
     {
       "id": "petinelli-engineer",
@@ -156,15 +159,18 @@
       "period": "Jul 2019 – Dec 2020",
       "website": "https://www.petinelli.com",
       "description": "Design: HVAC, electrical, automation, photovoltaic, and lighting systems. Thermal and energy building performance analysis. Computational simulations. Technical and economical diagnosis of energy efficiency measures. Commissioning process.",
-      "details": "Engineering design and building-performance analysis across mechanical and electrical systems, from concept through commissioning.",
+      "details": "The projects ran across every kind of building, from commercial and residential to hotels and industrial sites. I reviewed the design of the HVAC, electrical, automation, photovoltaic, lighting and hydraulic systems, and studied how each building performed through thermoenergetic simulations grounded in the ASHRAE standards. From there I diagnosed the energy efficiency measures, looked at lighting efficiency and light pollution reduction, and prepared the documentation behind the sustainability certifications. I was part of the team that took several projects all the way to LEED Platinum, which is the highest level the rating awards. The work also ran through to commissioning, where the finished building was checked against on-site measurements and the design documents.",
       "highlights": [
-        "Designed HVAC, electrical, automation, photovoltaic and lighting systems.",
-        "Ran thermal and energy building-performance analysis and computational simulations.",
-        "Produced technical and economic diagnoses of energy-efficiency measures.",
-        "Supported the commissioning process from design through hand-over."
+        "Analysed and compared HVAC strategies across building types and usage profiles — VRF systems, centralized chilled-water plants with chillers — and the corresponding air-quality and ventilation levels (ASHRAE 62.1).",
+        "Designed photovoltaic solar systems and their inverter sizing, alongside building automation systems.",
+        "Reviewed lighting for efficiency and light-pollution reduction, sizing both natural (DIVA) and artificial (Dialux) lighting.",
+        "Balanced water-distribution networks, including pump sizing and hydraulic balance.",
+        "Ran thermal and energy simulations and thermal-zone dimensioning from blueprints and floorplans (OpenStudio, EnergyPlus).",
+        "Translated each efficiency, lighting and water measure into the LEED credits and documentation needed to claim them.",
+        "Supported commissioning from on-site measurements cross-checked against the design documents."
       ],
-      "stack": ["EnergyPlus", "AutoCAD", "Excel"],
-      "reviewTodo": "scaffold — details/highlights AI-drafted, refine with real specifics"
+      "stack": ["EnergyPlus", "OpenStudio", "Revit", "DIVA", "Dialux", "ASHRAE 90.1", "ASHRAE 62.1", "ASHRAE 55", "AutoCAD", "Excel"],
+      "reviewTodo": "grounded in CV — confirm team details"
     },
     {
       "id": "petinelli-assistant",
@@ -174,14 +180,16 @@
       "period": "Jun 2017 – Jun 2019",
       "website": "https://www.petinelli.com",
       "description": "LEED certification process and energy conservation measures application based on design reviews. Renewable energy systems design. Technical and economic feasibility reports.",
-      "details": "Supported certification and energy-efficiency work based on design reviews, alongside renewable-energy system design.",
+      "details": "This was where my energy engineering career started. I supported the LEED certification work and the energy conservation measures that came out of the design reviews, which included the lighting power density reviews and the lighting controls. It was also around this time that I began working with building energy simulation in EnergyPlus.",
       "highlights": [
-        "Supported the LEED certification process and the application of energy-conservation measures from design reviews.",
-        "Contributed to renewable-energy system design.",
-        "Prepared technical and economic feasibility reports."
+        "Supported the LEED certification process and applied energy-conservation measures derived from design reviews.",
+        "Reviewed lighting power density and specified lighting-control strategies against ASHRAE 90.1.",
+        "Designed renewable-energy systems.",
+        "Began working with whole-building energy simulation in EnergyPlus.",
+        "Prepared technical and economic feasibility reports to justify proposed measures."
       ],
-      "stack": ["AutoCAD", "Excel"],
-      "reviewTodo": "scaffold — details/highlights AI-drafted, refine with real specifics"
+      "stack": ["EnergyPlus", "OpenStudio", "Revit", "ASHRAE 90.1", "ASHRAE 62.1", "ASHRAE 55", "AutoCAD", "Excel"],
+      "reviewTodo": "grounded in CV — confirm any team/mentor details"
     }
   ],
   "languages": [
