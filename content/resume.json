@@ -103,7 +103,7 @@
       "period": "Feb 2023 – Jul 2024",
       "website": "https://numerous.com",
       "description": "Development focusing on CLI, API, backend-related code, pipeline maintenance, tests, and code quality enforcement. Docker and Kubernetes for containerization and orchestration, Python, Golang, and Typescript as languages. REST, GraphQL and gRPC APIs. Cloud services from GCP and AWS. Test-driven development (TDD).",
-      "details": "Backend work across CLI, API and supporting services, with ongoing ownership of the pipelines, automated tests and code-quality enforcement that keep the codebase reliable and reviewable.",
+      "details": "Numerous is a web platform for turning Python apps into shareable, production-ready products without anyone having to manage infrastructure. Developers push their apps through a CLI, with support for frameworks like Streamlit, Dash, Panel, Marimo and Docker, and the platform handles the serverless deployment and scaling, user accounts and organizations with fine-grained permissions, payments and subscriptions, white-labeling, analytics and file storage. I worked on the backend across the CLI, the API and the supporting services, and owned much of the pipelines, tests and code-quality checks that kept the codebase reliable and reviewable.",
       "highlights": [
         "Wrote services in Python, Golang and TypeScript, containerised and orchestrated with Docker and Kubernetes.",
         "Built and consumed REST, GraphQL and gRPC APIs deployed on GCP and AWS.",
@@ -111,7 +111,7 @@
         "Practised test-driven development (TDD) throughout."
       ],
       "stack": ["Python", "Golang", "TypeScript", "Docker", "Kubernetes", "GCP", "AWS", "REST", "GraphQL", "gRPC", "CI/CD", "Git"],
-      "reviewTodo": "scaffold — details/highlights AI-drafted, refine with real specifics"
+      "reviewTodo": "details grounded in numerous.com; highlights from CV description, confirm specifics"
     },
     {
       "id": "novus",
@@ -121,15 +121,18 @@
       "period": "Mar 2022 – Feb 2023",
       "website": "https://www.novusautomation.com/en/",
       "description": "Development and maintenance of configuration and monitoring software products for desktop, web and mobile using C++, Java, and Dart/Flutter. API tests using JavaScript and Postman. Scrum methodology application and software version control using Git/Gitlab and Sourcetree. MQTT and LoRaWAN applications (IoT).",
-      "details": "Development and maintenance of configuration and monitoring software for desktop, web and mobile, delivered within a Scrum team for the company's IoT product line.",
+      "details": "Novus builds industrial instrumentation and software, and I worked across its configuration and monitoring product line, which talks to a broad range of hardware from controllers, sensors, transmitters and data loggers to many other data acquisition and communication devices. Most of my time went to NXperience, the desktop configuration, data collection and analysis software, where I maintained and extended the C++ code with a focus on data reading and communication with Novus devices through their internal procedures and standards such as register addresses and industrial protocols, most often Modbus. I also maintained and added features to NXperience Mobile, the native Java app for configuring devices and collecting data from loggers like the LogBox over WiFi and Bluetooth, testing everything on real phones and on Android Studio emulators.\n\nI worked closely on the LoRaWAN implementation for the Telik Trafo Lite, an IoT temperature transmitter for distribution transformers, building out the packages behind its wireless communication. I also gave maintenance to the FieldLogger Configurator, the software for Novus FieldLogger dataloggers that communicates over USB, Modbus TCP and Modbus RTU, and near the end I had a quick passage in Flutter on the desktop and mobile versions of QuickTune, the configuration tool for Novus controllers and indicators. For every fix I had access to the real devices I needed, which was essential for reproducing bugs, writing tests and checking the corrections on actual hardware. I took the mobile apps through publishing to the stores and meeting all their requirements, and I did some work on customer usage metrics, collecting them into a centralized company database and defining cronjobs and SQL procedures to generate analytics.",
       "highlights": [
         "Built and maintained products with C++, Java and Dart/Flutter across desktop, web and mobile.",
+        "Implemented the LoRaWAN communication for the Telik Trafo Lite and worked on MQTT connectivity across the IoT product line.",
+        "Reproduced, fixed and verified bugs directly on the real Novus hardware, with access to the full device range for testing.",
+        "Published the mobile apps to the app stores and met all the store requirements.",
+        "Built customer usage analytics into a centralized company database, defining SQL procedures and scheduled cronjobs.",
         "Wrote API tests with JavaScript and Postman.",
-        "Implemented MQTT and LoRaWAN connectivity for the IoT product line.",
         "Worked in Scrum, using Git/GitLab and Sourcetree for version control."
       ],
-      "stack": ["C++", "Java", "Dart", "Flutter", "JavaScript", "MQTT", "LoRaWAN", "Git", "Scrum"],
-      "reviewTodo": "scaffold — details/highlights AI-drafted, refine with real specifics"
+      "stack": ["C++", "Java", "Dart", "Flutter", "JavaScript", "SQL", "Modbus", "LoRaWAN", "MQTT", "Bluetooth", "Git", "Scrum"],
+      "reviewTodo": "details grounded in user input + novusautomation.com product pages"
     },
     {
       "id": "vitta",
@@ -159,7 +162,7 @@
       "period": "Jul 2019 – Dec 2020",
       "website": "https://www.petinelli.com",
       "description": "Design: HVAC, electrical, automation, photovoltaic, and lighting systems. Thermal and energy building performance analysis. Computational simulations. Technical and economical diagnosis of energy efficiency measures. Commissioning process.",
-      "details": "The projects ran across every kind of building, from commercial and residential to hotels and industrial sites. I reviewed the design of the HVAC, electrical, automation, photovoltaic, lighting and hydraulic systems, and studied how each building performed through thermoenergetic simulations grounded in the ASHRAE standards. From there I diagnosed the energy efficiency measures, looked at lighting efficiency and light pollution reduction, and prepared the documentation behind the sustainability certifications. I was part of the team that took several projects all the way to LEED Platinum, which is the highest level the rating awards. The work also ran through to commissioning, where the finished building was checked against on-site measurements and the design documents.",
+      "details": "The projects ran across every kind of building, from commercial and residential to hotels and industrial sites. I reviewed the design of the HVAC, electrical, automation, photovoltaic, lighting and hydraulic systems, and studied how each building performed through thermoenergetic simulations grounded in the ASHRAE standards. From there I diagnosed the energy efficiency measures, looked at lighting efficiency and light pollution reduction, and prepared the documentation behind the sustainability certifications. I was part of the team that took several projects all the way to LEED Platinum, which is the highest level the rating awards. The work also ran through to commissioning, where I developed the commissioning plans for the buildings and checked the finished result against on-site measurements and the design documents.",
       "highlights": [
         "Analysed and compared HVAC strategies across building types and usage profiles — VRF systems, centralized chilled-water plants with chillers — and the corresponding air-quality and ventilation levels (ASHRAE 62.1).",
         "Designed photovoltaic solar systems and their inverter sizing, alongside building automation systems.",
@@ -167,7 +170,7 @@
         "Balanced water-distribution networks, including pump sizing and hydraulic balance.",
         "Ran thermal and energy simulations and thermal-zone dimensioning from blueprints and floorplans (OpenStudio, EnergyPlus).",
         "Translated each efficiency, lighting and water measure into the LEED credits and documentation needed to claim them.",
-        "Supported commissioning from on-site measurements cross-checked against the design documents."
+        "Developed the building commissioning plans and supported commissioning from on-site measurements cross-checked against the design documents."
       ],
       "stack": ["EnergyPlus", "OpenStudio", "Revit", "DIVA", "Dialux", "ASHRAE 90.1", "ASHRAE 62.1", "ASHRAE 55", "AutoCAD", "Excel"],
       "reviewTodo": "grounded in CV — confirm team details"

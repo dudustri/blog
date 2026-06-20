@@ -76,32 +76,48 @@ export default function ExperienceSection({
     return () => observer.disconnect();
   }, []);
 
-  const hoverBg = dark ? "#252525" : "#f9fafb";
+  // Hover: a theme-adaptive neutral overlay (darkens on light, lightens on dark), no border/ring.
+  const hoverBg = dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.04)";
 
   return (
     <>
-      <div className="space-y-8">
+      <div className={`space-y-8${selectedJob ? " pointer-events-none select-none" : ""}`}>
         {experience.map((job) => {
           const matched = !activeTech || matchesTech(job, activeTech);
           return (
             <div
               key={job.id}
               id={job.id}
-              className="scroll-mt-24 cursor-pointer rounded-xl p-3 -mx-3"
+              className="group scroll-mt-24 cursor-pointer rounded-xl p-5 -mx-5"
               style={{
                 opacity: matched ? 1 : 0.2,
                 borderLeft: matched && activeTech ? `3px solid ${BLUE}` : "3px solid transparent",
-                transition: "opacity 0.3s ease, border-color 0.3s ease",
+                transition:
+                  "opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease",
               }}
               onMouseEnter={(e) => { if (matched) (e.currentTarget as HTMLElement).style.backgroundColor = hoverBg; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = ""; }}
-              onClick={() => onJobSelect(job)}
+              onClick={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = ""; onJobSelect(job); }}
             >
-              <div className="flex items-baseline justify-between gap-4 mb-0.5">
-                <p className="font-semibold">{job.company}</p>
-                <p className="text-gray-400 text-sm whitespace-nowrap">{job.period}</p>
+              <div className="flex items-start mb-2">
+                {job.logo ? (
+                  <div className="flex-shrink-0 w-0 overflow-hidden transition-all duration-300 ease-out group-hover:w-10 group-hover:mr-3">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`${BASE}${job.logo}`}
+                      alt={job.company}
+                      className="w-10 h-10 rounded-lg object-cover opacity-0 -translate-x-1 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0"
+                    />
+                  </div>
+                ) : null}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-baseline justify-between gap-4 mb-0.5">
+                    <p className="font-semibold">{job.company}</p>
+                    <p className="text-gray-400 text-sm whitespace-nowrap">{job.period}</p>
+                  </div>
+                  <p className="text-gray-500 text-sm">{job.title}</p>
+                </div>
               </div>
-              <p className="text-gray-500 text-sm mb-2">{job.title}</p>
               <p className="text-gray-600 text-sm leading-relaxed text-justify">{job.description}</p>
             </div>
           );
@@ -110,7 +126,7 @@ export default function ExperienceSection({
 
       {selectedJob && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 select-none cursor-default"
           style={{ background: "rgba(0,0,0,0.45)", backdropFilter: "blur(2px)" }}
           onClick={onModalClose}
         >
@@ -160,12 +176,14 @@ export default function ExperienceSection({
               {highlightKeywords(selectedJob.description)}
             </p>
 
-            {/* Complementary deep-dive (curated jobs only) */}
-            {selectedJob.details ? (
-              <p className="text-gray-700 text-sm leading-relaxed mt-4 text-justify">
-                {highlightKeywords(selectedJob.details)}
-              </p>
-            ) : null}
+            {/* Complementary deep-dive (curated jobs only). Blank lines split it into paragraphs. */}
+            {selectedJob.details
+              ? selectedJob.details.split(/\n\s*\n/).map((para, i) => (
+                  <p key={i} className="text-gray-700 text-sm leading-relaxed mt-4 text-justify">
+                    {highlightKeywords(para)}
+                  </p>
+                ))
+              : null}
 
             {/* Highlights */}
             {selectedJob.highlights?.length ? (
