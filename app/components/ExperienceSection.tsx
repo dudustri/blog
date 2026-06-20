@@ -102,7 +102,7 @@ export default function ExperienceSection({
                 <p className="text-gray-400 text-sm whitespace-nowrap">{job.period}</p>
               </div>
               <p className="text-gray-500 text-sm mb-2">{job.title}</p>
-              <p className="text-gray-600 text-sm leading-relaxed">{job.description}</p>
+              <p className="text-gray-600 text-sm leading-relaxed text-justify">{job.description}</p>
             </div>
           );
         })}
@@ -156,13 +156,13 @@ export default function ExperienceSection({
             </div>
 
             {/* Description — always shown first */}
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p className="text-gray-700 text-sm leading-relaxed text-justify">
               {highlightKeywords(selectedJob.description)}
             </p>
 
             {/* Complementary deep-dive (curated jobs only) */}
             {selectedJob.details ? (
-              <p className="text-gray-700 text-sm leading-relaxed mt-4">
+              <p className="text-gray-700 text-sm leading-relaxed mt-4 text-justify">
                 {highlightKeywords(selectedJob.details)}
               </p>
             ) : null}
