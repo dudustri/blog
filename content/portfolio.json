@@ -3,7 +3,12 @@
     "slug": "personal-blog",
     "title": "Personal Blog & Portfolio",
     "description": "This very site — a personal blog and portfolio built with Next.js, Tailwind CSS, and TypeScript.",
-    "tech": ["Next.js", "TypeScript", "Tailwind CSS", "Bun"],
+    "tech": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Bun"
+    ],
     "image": null,
     "content": "# Personal Blog & Portfolio\n\nThis is the source of the site you are looking at right now.\n\n## Stack\n\nBuilt with Next.js 16, TypeScript, Tailwind CSS v4, and Bun as the runtime.\n\n## Features\n\n- Blog with individual post pages\n- Resume with career timeline\n- Portfolio showcase with project tiles\n- Static generation for all content pages"
   },
@@ -11,16 +16,35 @@
     "slug": "beam-v1-smart-grid-interface",
     "title": "Smart Grid Interface — BEAM v1",
     "description": "First generation of Bodil's in-home energy platform — the bridge between a constrained ESP32 device and a cloud backend that can simulate and act on its data.",
-    "tech": ["C", "ESP32", "ESP-IDF", "TypeScript", "Node", "Python", "MQTT"],
+    "tech": [
+      "C",
+      "ESP32",
+      "ESP-IDF",
+      "TypeScript",
+      "Node",
+      "Python",
+      "MQTT"
+    ],
     "image": null,
-    "content": "# Smart Grid Interface — BEAM v1\n\nScaffold — to be expanded.\n\nThe first generation of Bodil's platform: getting reliable telemetry and control off constrained ESP32 hardware and into a backend that could simulate and act on it.\n\n## Device & firmware\n\nESP32 (ESP-IDF) connectivity stack — Bluetooth provisioning, WiFi and LTE/NB-IoT fallback, and peer-to-peer device communication — plus the firmware-side parsers, protocol layer and machine interface.\n\n## Backend\n\nA data aggregator and a server-side state holder that keep the database, the Python energy-simulation engine and the field devices consistent, exposed through a TypeScript/Node API.\n\n## Role\n\nSystems Engineer at Bodil Energy (Nov 2022 – Jun 2024). See the Resume page for the full context."
+    "content": "",
+    "wip": true
   },
   {
     "slug": "beam-v2-distributed-orchestration",
     "title": "Distributed System Orchestration for Flexibility Market — BEAM v2",
     "description": "Second generation of Bodil's platform — taking the device from prototype to product and orchestrating a fleet that bids into grid-balancing (FCR-D) in real time.",
-    "tech": ["Rust", "TypeScript", "Bun", "Docker", "Kubernetes", "AWS", "GCP", "MQTT"],
+    "tech": [
+      "Rust",
+      "TypeScript",
+      "Bun",
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "GCP",
+      "MQTT"
+    ],
     "image": null,
-    "content": "# Distributed System Orchestration for Flexibility Market — BEAM v2\n\nScaffold — to be expanded.\n\nBuilding on BEAM v1, the second generation took the prototype to a shippable product and connected the device fleet to real flexibility markets — shifting the focus from a single device to orchestrating a responsive fleet.\n\n## Product transition\n\nDefined hardware, firmware and software requirements and coordinated the hardware design; shipped Over-the-Air (OTA) firmware updates and on-device power/energy metering.\n\n## Data & orchestration\n\nA scalable, multithreaded data-collection system in Rust over MQTT for high-frequency real-time field data, and a service-manager engine on AWS and GCP (TypeScript, Bun, Docker, Kubernetes) tuned for responsiveness and availability under grid-balancing signals.\n\n## Market integration\n\nIntegrated the IBM/Andel Flex platform to participate in the FCR-D frequency-regulation market.\n\n## Role\n\nHardware & Software Engineer at Bodil Energy (Jun 2024 – Jun 2025). See the Resume page for the full context."
+    "content": "",
+    "wip": true
   }
 ]

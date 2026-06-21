@@ -3,12 +3,14 @@
 import { useState } from "react";
 import ResumeSidebar from "./ResumeSidebar";
 import ExperienceSection from "./ExperienceSection";
-import { experience, techStack, education, languages, extra } from "@/app/data/resume";
+import DetailModal, { type Detail } from "./DetailModal";
+import { experience, techStack, education, languages, extra, others } from "@/app/data/resume";
 import type { Experience } from "@/app/data/resume";
 
 export default function ResumeLayout() {
   const [selectedJob, setSelectedJob] = useState<Experience | null>(null);
   const [activeTech, setActiveTech] = useState<string | null>(null);
+  const [detail, setDetail] = useState<Detail | null>(null);
 
   return (
     <div className="relative">
@@ -39,7 +41,7 @@ export default function ResumeLayout() {
                 <button
                   key={tech}
                   onClick={() => setActiveTech(active ? null : tech)}
-                  className="px-3 py-1 text-sm rounded border transition-all duration-200"
+                  className="px-3 py-1 text-sm rounded border transition-all duration-200 cursor-pointer"
                   style={{
                     borderColor: active ? "#3e6b89" : undefined,
                     background: active ? "#3e6b89" : undefined,
@@ -72,9 +74,22 @@ export default function ResumeLayout() {
           <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-5">
             Education
           </h2>
-          <div className="space-y-5">
+          <div className="space-y-0">
             {education.map((edu) => (
-              <div key={edu.school}>
+              <div
+                key={edu.school}
+                className="resume-card p-5 -mx-5"
+                onClick={() =>
+                  setDetail({
+                    title: edu.school,
+                    subtitle: edu.degree,
+                    meta: edu.period,
+                    description: edu.description || undefined,
+                    courses: edu.courses,
+                    gradeScale: edu.gradeScale,
+                  })
+                }
+              >
                 <div className="flex items-baseline justify-between gap-4">
                   <p className="font-medium">{edu.school}</p>
                   <p className="text-gray-400 text-sm whitespace-nowrap">{edu.period}</p>
@@ -105,29 +120,59 @@ export default function ResumeLayout() {
 
         {/* Extra */}
         <section id="extra">
-          <div className="space-y-10">
+          <div className="space-y-8">
             {extra.map((group) => (
               <div key={group.category}>
                 <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">
                   {group.category}
                 </p>
-                <ul className="space-y-1.5 text-sm text-gray-600">
+                <div className="space-y-1">
                   {group.items.map((item) => (
-                    <li key={item} className="flex items-baseline gap-2.5">
+                    <div
+                      key={item.title}
+                      className="resume-card flex items-baseline gap-2.5 text-sm text-gray-600 px-3 py-2 -mx-3"
+                      onClick={() =>
+                        setDetail({
+                          title: item.title,
+                          subtitle: group.category,
+                          details: item.details,
+                        })
+                      }
+                    >
                       <span
                         className="flex-shrink-0 inline-block rounded-full bg-gray-300"
                         style={{ width: 4, height: 4, marginBottom: 1 }}
                       />
-                      {item}
-                    </li>
+                      {item.title}
+                    </div>
                   ))}
-                </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Others — affiliations, no popup */}
+        <section id="others">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-5">
+            Others
+          </h2>
+          <div className="space-y-1.5 text-sm text-gray-600 select-none cursor-default">
+            {others.map((item) => (
+              <div key={item} className="flex items-baseline gap-2.5">
+                <span
+                  className="flex-shrink-0 inline-block rounded-full bg-gray-300"
+                  style={{ width: 4, height: 4, marginBottom: 1 }}
+                />
+                {item}
               </div>
             ))}
           </div>
         </section>
 
       </div>
+
+      <DetailModal detail={detail} onClose={() => setDetail(null)} />
     </div>
   );
 }
