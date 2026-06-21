@@ -62,8 +62,8 @@ export default function Header() {
                 className={`text-sm transition-colors ${
                   active
                     ? isMundo
-                      ? 'text-white font-medium underline underline-offset-4'
-                      : 'text-black font-medium underline underline-offset-4'
+                      ? 'text-white font-medium'
+                      : 'text-black font-medium'
                     : isMundo
                       ? 'text-white/50 hover:text-white'
                       : 'text-gray-400 hover:text-black'

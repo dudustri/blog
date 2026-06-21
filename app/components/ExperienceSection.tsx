@@ -1,52 +1,33 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import DetailModal, { type Detail } from "./DetailModal";
 import type { Experience } from "@/app/data/resume";
 
 const BLUE = "#3e6b89";
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-const KEYWORDS = [
-  "C++", "C#", " C ", "Python", "TypeScript", "JavaScript", "Node",
-  "Golang", "Rust", "Docker", "Kubernetes", "K8s", "AWS", "GCP",
-  "REST", "GraphQL", "gRPC", "MQTT", "ESP32", "ESP IDF", "Redis",
-  "PostgreSQL", "MySQL", "CI/CD", "TDD", "OTA", "Git", "GitHub Actions",
-  "Linux", "Bash", "Flutter", "Dart", "LoRaWAN", "Modbus", "Scrum",
-  "IoT", "HVAC", "LEED", "FCR-D", "Bun", "Make", "Cloud",
-];
-
-// Builds a case-insensitive regex pattern for a keyword.
-// Trims surrounding spaces (handles " C ").
-// Single-letter alpha keywords (e.g. "C") get a negative lookahead so they
-// don't match "C++" or "C#" while still matching "C," / "C." / "C " etc.
-function buildKeywordPattern(keyword: string): string {
-  const k = keyword.trim();
-  const esc = k.replace(/[+#.*?()[\]{}|\\]/g, "\\$&");
-  if (/^[A-Za-z]$/.test(k)) {
-    return `\\b${esc}(?![\\w+#])`;
-  }
-  const pre = /^\w/.test(k) ? "\\b" : "";
-  const suf = /\w$/.test(k) ? "\\b" : "(?!\\w)";
-  return `${pre}${esc}${suf}`;
-}
-
-function highlightKeywords(text: string) {
-  const pattern = new RegExp(`(${KEYWORDS.map(buildKeywordPattern).join("|")})`, "gi");
-  const parts = text.split(pattern);
-  return parts.map((part, i) => {
-    const isKeyword = KEYWORDS.some((k) => k.trim().toLowerCase() === part.toLowerCase());
-    return isKeyword ? (
-      <span key={i} style={{ color: BLUE, fontWeight: 500 }}>{part}</span>
-    ) : (
-      <span key={i}>{part}</span>
-    );
-  });
-}
-
-
-// TODO: build a hard match based on the tech stuff / skill / knowledge I used in the jobs or improve the description for automatic matching.
+// Hard match against the job's curated `stack` (hardcoded in content/resume.json),
+// instead of grepping the free-text description.
 function matchesTech(job: Experience, tech: string): boolean {
-  const pattern = new RegExp(buildKeywordPattern(tech), "i");
-  return pattern.test(job.description) || pattern.test(job.title);
+  return job.stack?.includes(tech) ?? false;
+}
+
+// Maps an Experience record to the generic Detail the shared popup renders.
+function jobToDetail(job: Experience, activeTech: string | null): Detail {
+  return {
+    title: job.company,
+    subtitle: job.title,
+    meta: job.period,
+    logo: job.logo,
+    website: job.website,
+    description: job.description,
+    details: job.details,
+    highlights: job.highlights,
+    projects: job.projects,
+    stack: job.stack,
+    activeTech,
+  };
 }
 
 type Props = {
@@ -74,77 +55,58 @@ export default function ExperienceSection({
     return () => observer.disconnect();
   }, []);
 
-  const hoverBg = dark ? "#252525" : "#f9fafb";
+  // Hover: a theme-adaptive neutral overlay (darkens on light, lightens on dark), no border/ring.
+  const hoverBg = dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.04)";
 
   return (
     <>
-      <div className="space-y-8">
+      <div className={`space-y-0${selectedJob ? " pointer-events-none select-none" : ""}`}>
         {experience.map((job) => {
           const matched = !activeTech || matchesTech(job, activeTech);
           return (
             <div
               key={job.id}
               id={job.id}
-              className="scroll-mt-24 cursor-pointer rounded-xl p-3 -mx-3"
+              className="group scroll-mt-24 cursor-pointer rounded-xl p-5 -mx-5"
               style={{
                 opacity: matched ? 1 : 0.2,
                 borderLeft: matched && activeTech ? `3px solid ${BLUE}` : "3px solid transparent",
-                transition: "opacity 0.3s ease, border-color 0.3s ease",
+                transition:
+                  "opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease",
               }}
               onMouseEnter={(e) => { if (matched) (e.currentTarget as HTMLElement).style.backgroundColor = hoverBg; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = ""; }}
-              onClick={() => onJobSelect(job)}
+              onClick={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = ""; onJobSelect(job); }}
             >
-              <div className="flex items-baseline justify-between gap-4 mb-0.5">
-                <p className="font-semibold">{job.company}</p>
-                <p className="text-gray-400 text-sm whitespace-nowrap">{job.period}</p>
+              <div className="flex items-start mb-2">
+                {job.logo ? (
+                  <div className="flex-shrink-0 w-0 overflow-hidden transition-all duration-300 ease-out group-hover:w-10 group-hover:mr-3">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`${BASE}${job.logo}`}
+                      alt={job.company}
+                      className="w-10 h-10 rounded-lg object-cover opacity-0 -translate-x-1 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0"
+                    />
+                  </div>
+                ) : null}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-baseline justify-between gap-4 mb-0.5">
+                    <p className="font-semibold">{job.company}</p>
+                    <p className="text-gray-400 text-sm whitespace-nowrap">{job.period}</p>
+                  </div>
+                  <p className="text-gray-500 text-sm">{job.title}</p>
+                </div>
               </div>
-              <p className="text-gray-500 text-sm mb-2">{job.title}</p>
-              <p className="text-gray-600 text-sm leading-relaxed">{job.description}</p>
+              <p className="text-gray-600 text-sm leading-relaxed text-justify">{job.description}</p>
             </div>
           );
         })}
       </div>
 
-      {selectedJob && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
-          style={{ background: "rgba(0,0,0,0.45)", backdropFilter: "blur(2px)" }}
-          onClick={onModalClose}
-        >
-          <div
-            className="bg-white rounded-2xl w-full p-6 sm:p-10"
-            style={{
-              maxWidth: 860,
-              maxHeight: "85vh",
-              overflowY: "auto",
-              boxShadow: "0 24px 64px rgba(0,0,0,0.22)",
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-baseline justify-between gap-6 mb-1">
-              {selectedJob.website ? (
-                <a
-                  href={selectedJob.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ fontWeight: 700, fontSize: 20, color: BLUE }}
-                  className="hover:underline"
-                >
-                  {selectedJob.company}
-                </a>
-              ) : (
-                <p style={{ fontWeight: 700, fontSize: 20, color: BLUE }}>{selectedJob.company}</p>
-              )}
-              <p className="text-gray-400 text-sm whitespace-nowrap">{selectedJob.period}</p>
-            </div>
-            <p className="text-gray-500 text-sm mb-6">{selectedJob.title}</p>
-            <p className="text-gray-700 text-sm leading-relaxed">
-              {highlightKeywords(selectedJob.description)}
-            </p>
-          </div>
-        </div>
-      )}
+      <DetailModal
+        detail={selectedJob ? jobToDetail(selectedJob, activeTech) : null}
+        onClose={onModalClose}
+      />
     </>
   );
 }

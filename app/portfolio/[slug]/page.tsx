@@ -52,7 +52,18 @@ export default async function ProjectPage({
           </span>
         ))}
       </div>
-      <div className="space-y-4">{renderContent(project.content)}</div>
+      {project.wip ? (
+        <div className="rounded-xl border border-dashed border-gray-300 px-6 py-10 text-center">
+          <span className="inline-block text-[11px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded bg-amber-100 text-amber-700 mb-3">
+            To be done
+          </span>
+          <p className="text-gray-500 text-sm">
+            This project write-up is still to be done. See the Resume page for the full context for now.
+          </p>
+        </div>
+      ) : (
+        <div className="space-y-4">{renderContent(project.content)}</div>
+      )}
     </div>
   );
 }

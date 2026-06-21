@@ -1,4 +1,5 @@
 {
+  "summary": "Energy and software engineer who builds across the full stack, from C on edge devices to cloud backends. Quick to learn, and at my best where software meets the physical world.",
   "techStack": [
     "C", "C++", "Java", "C#",
     "Python",
@@ -15,85 +16,264 @@
       "school": "IT University of Copenhagen",
       "degree": "MSc in Software Design",
       "period": "Aug 2022 – Jan 2025",
-      "description": "Individual specialization track focusing on distributed systems, operating systems, and DevOps."
+      "description": "Individual specialization track focusing on distributed systems, operating systems, and DevOps.",
+      "gradeScale": "Danish 7-point scale (12 highest, 02 the minimum pass).",
+      "courses": [
+        { "name": "Introductory Programming", "summary": "An introduction to programming covering imperative and object oriented programming, variables, control flow, functions, data structures and basic problem solving.", "hours": "15 ECTS", "grade": "10" },
+        { "name": "Algorithms and Data Structures", "summary": "Core data structures such as lists, trees, hash tables and graphs, the main algorithms over them, and the analysis of correctness and running time.", "hours": "7.5 ECTS", "grade": "7" },
+        { "name": "Discrete Mathematics", "summary": "The logic, set theory, combinatorics, relations, graph theory and proof techniques that underpin computer science.", "hours": "7.5 ECTS", "grade": "10" },
+        { "name": "Introduction to Database Systems", "summary": "Relational data modelling, the relational model and SQL, normalization, and the basics of how a database system stores and queries data.", "hours": "7.5 ECTS", "grade": "7" },
+        { "name": "Software Engineering", "summary": "The methods and practices of building software in teams, from requirements and design through testing and quality assurance.", "hours": "7.5 ECTS", "grade": "10" },
+        { "name": "Feasibility of a Swarm Robotics Approach to Container Shipping", "summary": "A project investigating whether a swarm robotics approach could be applied to container shipping logistics, including modelling and evaluation.", "hours": "7.5 ECTS", "grade": "12" },
+        { "name": "Operating Systems and C", "summary": "How operating systems work, covering processes and threads, scheduling, memory management and concurrency, with low level systems programming in C.", "hours": "7.5 ECTS", "grade": "7" },
+        { "name": "Practical Concurrent and Parallel Programming", "summary": "Writing correct concurrent and parallel programs, covering threads, locks and synchronization, data races, and parallel performance in practice.", "hours": "7.5 ECTS", "grade": "12" },
+        { "name": "Distributed Systems", "summary": "The design of distributed systems, covering communication, time and ordering, consistency and replication, consensus and fault tolerance.", "hours": "7.5 ECTS", "grade": "10" },
+        { "name": "Functional Programming", "summary": "Programming in a functional style with immutable data, recursion, higher order functions, algebraic data types and pattern matching.", "hours": "7.5 ECTS", "grade": "10" },
+        { "name": "DevOps, Software Evolution and Software Maintenance", "summary": "Continuous integration and delivery, automation and monitoring, and the practices for evolving and maintaining software systems over time.", "hours": "7.5 ECTS", "grade": "Passed" },
+        { "name": "Thesis – Energy Consumption in Web Applications", "summary": "A master's thesis comparing the energy consumption of different languages, frameworks and related technologies in web applications, with measurement and analysis.", "hours": "30 ECTS", "grade": "12" }
+      ]
     },
     {
       "school": "Federal University of Rio Grande do Sul",
       "degree": "BSc in Energy Engineering",
       "period": "Jan 2014 – Aug 2019",
-      "description": ""
+      "description": "A multidisciplinary degree about the generation, conversion and use of energy, from electrical power systems and machines to thermodynamics, fluid mechanics and renewable sources, built on a strong maths and physics foundation.",
+      "gradeScale": "Concept grades A to D (A excellent, B good, C regular, D fail).",
+      "courses": [
+        { "name": "Statistics for Engineering", "summary": "Random variables and frequency distributions, central tendency and variability, probability and probability distributions, sampling, confidence intervals, hypothesis tests, regression and correlation.", "hours": "60 h", "grade": "B" },
+        { "name": "Introduction to Energy Engineering", "summary": "The structure and organization of the programme, the engineering education system, and the fields where energy engineering is applied.", "hours": "30 h", "grade": "B" },
+        { "name": "General Physics – Electromagnetism", "summary": "Electrostatics, electrodynamics, magnetism and electromagnetism.", "hours": "90 h", "grade": "C" },
+        { "name": "Descriptive Geometry II-A", "summary": "Graphic representation of form and position, current methods of representation, dislocations, auxiliary views and sections.", "hours": "30 h", "grade": "A" },
+        { "name": "Differential Equations II", "summary": "Ordinary and linear differential equations, Fourier series, Legendre polynomials and Bessel functions, and partial differential equations as boundary problems of classical physics.", "hours": "90 h", "grade": "B" },
+        { "name": "Technical Drawing I-A", "summary": "Fundamental drawing technique, multiple orthogonal projections, reading and choosing views, axonometric projections and conceptual drawing.", "hours": "60 h", "grade": "B" },
+        { "name": "Applied Mechanics I", "summary": "Force systems and equivalent systems, rigid body equilibrium, distributed forces and centroids, trusses and structures, internal stresses in beams, friction and moments of inertia.", "hours": "60 h", "grade": "C" },
+        { "name": "Technical Drawing II-A", "summary": "Extended orthogonal views, primary and secondary auxiliary views, sections and cuts, dimensioning and drawing standards.", "hours": "60 h", "grade": "B" },
+        { "name": "Physics IV-C", "summary": "Interference, diffraction and polarization of light, and an introduction to quantum mechanics, relativity and atomic and nuclear physics.", "hours": "90 h", "grade": "B" },
+        { "name": "Applied Mathematics II", "summary": "Fourier series and the Fourier integral, the Fourier and Laplace transforms, and vector analysis.", "hours": "90 h", "grade": "C" },
+        { "name": "Thermodynamics A", "summary": "The first and second laws, pure substances, ideal gas processes, psychrometry and thermodynamic cycles.", "hours": "90 h", "grade": "A" },
+        { "name": "Numerical Calculus", "summary": "Numerical systems, root finding, numerical linear algebra, interpolation, numerical differentiation and integration, curve fitting and numerical solutions of differential equations.", "hours": "90 h", "grade": "C" },
+        { "name": "Fuel", "summary": "Fundamentals of organic chemistry and the fossil and renewable fuel processes and their life cycle.", "hours": "60 h", "grade": "C" },
+        { "name": "Fluid Mechanics A", "summary": "Fluid statics and kinetics, the continuity and Navier-Stokes equations, ideal and viscous flow, boundary layers, laminar and turbulent flow in pipes, flow resistance and aerodynamic profiles.", "hours": "90 h", "grade": "B" },
+        { "name": "Electrical and Magnetic Materials", "summary": "Materials science fundamentals and the properties and applications of conductor, semiconductor, insulating and magnetic materials, with testing and standards.", "hours": "75 h", "grade": "B" },
+        { "name": "Fundamentals of Combustion", "summary": "Combustion and thermochemistry, chemical kinetics, conservation equations for reactive systems, premixed and diffusion laminar flames and pollutant emissions.", "hours": "45 h", "grade": "C" },
+        { "name": "Operational Research for Engineering I", "summary": "The operational research approach, modelling optimization problems, linear programming and mathematical methods to support decision-making and production analysis.", "hours": "60 h", "grade": "A" },
+        { "name": "Electric Circuits I-C", "summary": "Analysis of resistive circuits and quadrupoles and of first and second order circuits in the time domain.", "hours": "60 h", "grade": "B" },
+        { "name": "Heat and Mass Transfer I", "summary": "Steady and transient heat conduction in one and two dimensions, forced and natural convection, and radiation exchange between surfaces.", "hours": "90 h", "grade": "C" },
+        { "name": "Electric Circuits II-C", "summary": "Phasor analysis and electric power, magnetic coupling and transformers, polyphase circuits, and the Fourier and Laplace transforms applied to circuits.", "hours": "60 h", "grade": "A" },
+        { "name": "Laboratory of Electric Circuits", "summary": "Measurement concepts and equipment, simulation tools, and practical work on resistive and reactive circuits, frequency response, power measurement and transformers.", "hours": "30 h", "grade": "C" },
+        { "name": "Mechanical Measurements", "summary": "Instrumentation and error analysis for thermal, pressure, velocity, flow, electrical, rotation and other measurements, plus light, sound and vibration and data gathering.", "hours": "60 h", "grade": "B" },
+        { "name": "Wind Energy", "summary": "Wind turbines and blade aerodynamics, the mechanical and electrical systems, wind atlases and resource assessment, and the selection of turbines and design of a wind farm.", "hours": "60 h", "grade": "B" },
+        { "name": "Financial Mathematics-A", "summary": "Capitalization and discounts, fixed and variable incomes, internal rate of return, cash flow equivalence, amortization and investment analysis.", "hours": "60 h", "grade": "A" },
+        { "name": "Fundamentals of Occupational Safety Engineering", "summary": "Work accidents and risk activities such as electric shock and high voltage, industrial risks, risk management and quantification, and accident frequencies and consequences.", "hours": "30 h", "grade": "B" },
+        { "name": "Fundamentals of Nuclear Engineering", "summary": "Atomic and nuclear physics for engineers, the interaction of radiation with matter, cross sections, nuclear fission, chain reactions, criticality and reactor types.", "hours": "60 h", "grade": "B" },
+        { "name": "Power Systems Analysis", "summary": "Per unit calculation and three phase systems, modelling of generators, transformers and lines, the admittance and impedance matrices, power flow and symmetrical and asymmetrical fault analysis.", "hours": "60 h", "grade": "B" },
+        { "name": "Simulation of Energy Systems", "summary": "Modelling of pumps, heat exchangers, steam generators and steam and gas turbines, and the computer simulation and optimization of coupled energy systems.", "hours": "60 h", "grade": "A" },
+        { "name": "Electromechanical Energy Conversion II", "summary": "Magnetic circuits and transformers, energy conversion in magnetic systems, and the steady state and transient operation of DC, synchronous and induction machines.", "hours": "90 h", "grade": "B" },
+        { "name": "Solar Thermal Energy", "summary": "Solar geometry and radiation, instrumentation and estimation of solar radiation, solar collectors and panels and their efficiency, thermal storage and the design of solar heating systems.", "hours": "60 h", "grade": "A" },
+        { "name": "Occupational Hygiene and Safety-A", "summary": "Workplace hygiene and the prevention of work related illness, biological, physical, chemical and mechanical agents, air quality control and Brazilian standards.", "hours": "30 h", "grade": "C" },
+        { "name": "Energy Planning", "summary": "The structure of the energy industry, tools and concepts of energy planning, demand forecasting, supply planning for renewables and non-renewables, and operational planning of power systems.", "hours": "60 h", "grade": "B" },
+        { "name": "Electricity Transmission Systems", "summary": "Voltage selection and electrical calculation, steady state operation of transmission lines, mechanical calculations, and the fundamentals of HVDC and FACTS devices.", "hours": "60 h", "grade": "C" },
+        { "name": "Photovoltaic Solar Energy", "summary": "Semiconductors and the P-N junction, photovoltaic cells and the effects of radiation and temperature, cell and module structures and fabrication, and standard testing of modules.", "hours": "60 h", "grade": "A" },
+        { "name": "Environmental Management", "summary": "Environmental issues in the company context, cleaner production and eco-design, standards and certifications, ISO 14000 and the planning of environmental management systems.", "hours": "30 h", "grade": "C" },
+        { "name": "C Language for Engineering", "summary": "The C language, functions and control flow, data types and structures, pointers and pointer arithmetic, the standard libraries and computer interface applications.", "hours": "45 h", "grade": "B" },
+        { "name": "Systems and Signals", "summary": "Modelling and analysis of linear and sampled systems, time domain representation, Fourier, Laplace and Z transforms, filters and feedback systems.", "hours": "90 h", "grade": "B" },
+        { "name": "Electric Distribution Systems", "summary": "Distribution grid architecture and equipment, distributed generation and active grids, demand forecasting, reliability and operation, and smart grids and microgrids.", "hours": "60 h", "grade": "B" },
+        { "name": "Electric Power Production", "summary": "Electricity generation and sustainable development, hydroelectric, thermoelectric and alternative generation, and the technical and economic aspects of integrating generation with the grid.", "hours": "60 h", "grade": "B" },
+        { "name": "Electrical Installations", "summary": "Design of residential, commercial and industrial installations, lighting design, power factor, lightning protection and demand calculation.", "hours": "60 h", "grade": "B" },
+        { "name": "Fundamental Electronics I-B", "summary": "Diodes and waveform generators, field effect and junction transistors and their biasing, single and multistage amplifiers, operational amplifiers and feedback.", "hours": "60 h", "grade": "B" },
+        { "name": "Protection and Stability of Electric Power Systems", "summary": "The methodology and algorithms of power system protection, transient stability, the equal area criterion and multimachine systems.", "hours": "60 h", "grade": "C" },
+        { "name": "Air Conditioning II", "summary": "Psychrometrics, natural and mechanical ventilation, air diffusion and duct systems, cooling and heating systems, cold storage and the refrigeration cycle and equipment.", "hours": "60 h", "grade": "B" },
+        { "name": "Heat Transfer and Computational Fluid Mechanics", "summary": "An introduction to CFD, the mathematical formulation of heat exchange with phase change, the finite volume method and the simulation of diffusive and convective problems.", "hours": "60 h", "grade": "C" },
+        { "name": "Control Systems I-B", "summary": "Dynamic system identification and modelling, the fundamental problems of control, and the theory, tuning and root locus design of PID controllers.", "hours": "60 h", "grade": "C" },
+        { "name": "Energy Analysis in Buildings", "summary": "The building heat balance and its heat and mass transfer phenomena, ventilation and infiltration, thermal structure, and building energy simulation and use strategies.", "hours": "60 h", "grade": "A" },
+        { "name": "Project in Energy I to VIII", "summary": "A sequence of energy engineering project courses running through the programme.", "hours": "240 h", "grade": "A to C" },
+        { "name": "Final Project – Energy Engineering", "summary": "The capstone thesis on the demand response impact of low voltage consumers on distribution network performance, using power flow simulations stored in a database and an algorithm to compute the economic impact.", "hours": "15 h", "grade": "B" }
+      ]
     },
     {
       "school": "Federal University of Santa Catarina",
       "degree": "BSc in Energy Engineering",
       "period": "Jul 2012 – Dec 2013",
-      "description": ""
+      "description": "The first half of the degree, building the maths, physics, chemistry and core engineering foundations before I transferred to UFRGS.",
+      "gradeScale": "Scale from 0 to 10 (6.0 the minimum pass).",
+      "courses": [
+        { "name": "Calculus I", "summary": "Real numbers, inequalities and elementary functions, limits and continuity, derivatives and their applications, and definite and indefinite integrals.", "hours": "72 h", "grade": "7.5" },
+        { "name": "Calculus II", "summary": "Integration methods and applications, improper integrals, multivariable functions, partial derivatives and their applications, and multiple integrals.", "hours": "72 h", "grade": "9.5" },
+        { "name": "Analytical Geometry", "summary": "Matrices, determinants and linear systems, vectors and vector algebra, the geometry of the straight line and plane, and quadric surfaces.", "hours": "72 h", "grade": "8.0" },
+        { "name": "Linear Algebra", "summary": "Vector spaces, linear transformations and change of basis, inner products and orthogonal transformations, eigenvalues and eigenvectors, and matrix diagonalization.", "hours": "72 h", "grade": "8.5" },
+        { "name": "Calculus III", "summary": "Surface and curvilinear integrals, the Stokes and Gauss divergence theorems, first and higher order differential equations, and the Laplace transform.", "hours": "72 h", "grade": "7.0" },
+        { "name": "Physics A", "summary": "Unit systems, uniform and accelerated motion in two and three dimensions, Newton's laws, work and energy and its conservation, momentum and impulse, collisions and rotation.", "hours": "72 h", "grade": "8.0" },
+        { "name": "Physics B", "summary": "Fluid statics and dynamics, heat and temperature, the first and second laws of thermodynamics, the kinetic theory of gases, gravitation, oscillations and mechanical and acoustic waves.", "hours": "72 h", "grade": "8.5" },
+        { "name": "Physics C", "summary": "Electric charge and field, Coulomb's and Gauss's laws, potential and capacitors, current and circuits, the magnetic field, Ampere's and Faraday's laws, inductance and physical optics.", "hours": "72 h", "grade": "7.0" },
+        { "name": "General Chemistry", "summary": "Atomic structure and the periodic table, chemical bonding, solutions, stoichiometry, acids and bases, chemical kinetics and equilibrium, and electrochemistry.", "hours": "72 h", "grade": "8.5" },
+        { "name": "Computer Programming I", "summary": "Algorithms, pseudocode and flowcharts, variables and constants, input and output, control flow, data structures such as arrays and records, modularization, and a structured high level language in the lab.", "hours": "72 h", "grade": "9.5" },
+        { "name": "Introduction to Energy Engineering", "summary": "The role of the engineer in the technological and social context, the curriculum and standards, visits to labs and companies, and the design, optimization, modelling and simulation tools energy engineers use.", "hours": "72 h", "grade": "9.0" },
+        { "name": "Natural Resources for Energy", "summary": "The Brazilian and world energy panorama, energy and fuel reserves, and the technologies behind fossil fuels, biomass, biogas, wind, solar, geothermal, ocean, hydrogen and nuclear energy.", "hours": "72 h", "grade": "8.5" },
+        { "name": "Geology", "summary": "Geology and the environment, the internal structure of the Earth, plate tectonics, minerals and rocks, the geological time column, mineral deposits, and the hydrological cycle and surface processes.", "hours": "72 h", "grade": "6.5" },
+        { "name": "Fundamentals of Biotechnology", "summary": "Organic compounds and biochemistry, enzymes and fermentation, bioreactors, microbiology, and environmental and industrial biotechnology.", "hours": "72 h", "grade": "9.0" },
+        { "name": "Fundamentals of Materials", "summary": "How chemical bonds shape material properties, crystalline structures and defects, the mechanical properties and failure of metals, and the processing of metals, ceramics, plastics and composites.", "hours": "72 h", "grade": "9.5" },
+        { "name": "Renewable Energies and Sustainability", "summary": "Renewable and non-renewable resources, how natural resources are characterized and used, and new technologies for energy production such as biomass and fuels.", "hours": "72 h", "grade": "7.5" },
+        { "name": "Chemistry Lab", "summary": "Lab safety and equipment, substance purification and preparation, qualitative and quantitative chemical analysis, chemical equilibrium and thermochemistry.", "hours": "72 h", "grade": "8.0" },
+        { "name": "Thermodynamics I", "summary": "Basic concepts and thermodynamic properties, work and heat, and the first law of thermodynamics for a control volume.", "hours": "72 h", "grade": "6.5" }
+      ]
     }
   ],
   "experience": [
     {
       "id": "res-group",
+      "logo": "/company_logos/res_logo.png",
       "company": "RES Group - Digital Solutions",
       "title": "Software Engineer",
       "period": "Jun 2025 – Present",
       "website": "https://www.res-group.com",
-      "description": "Development and maintenance of wind and solar plants data acquisition software using C, Python, and C# for backend and JS/TS for frontend, supporting devices such as turbines, inverters, and sensors, vendor-specific and industrial protocols (e.g., Siemens, Vestas, Gamesa, Modbus). Architecture and implementation of production-ready control systems such as dynamic yaw and inverter optimization. License management, high-performance decryption, and PostgreSQL/MySQL interface in C. Redis real-time data storage and fast retrieval with non-volatile persistence. CI/CD workflow, infrastructure architecture, and shell/python scripting for environment setup, edge deployment, and operations tooling."
+      "description": "Development and maintenance of wind and solar plants data acquisition software using C, Python, and C# for backend and JS/TS for frontend, supporting devices such as turbines, inverters, and sensors, vendor-specific and industrial protocols (e.g., Siemens, Vestas, Gamesa, Modbus). Architecture and implementation of production-ready control systems such as dynamic yaw and inverter optimization. License management, high-performance decryption, and PostgreSQL/MySQL interface in C. Redis real-time data storage and fast retrieval with non-volatile persistence. CI/CD workflow, infrastructure architecture, and shell/python scripting for environment setup, edge deployment, and operations tooling.",
+      "details": "RES is the largest independent renewable energy company, and I worked in its Digital Solutions department, whose products run on a broad range of wind and solar sites. Across the data acquisition and controls teams, on the data acquisition side I worked on the backend that acquired high frequency data from field devices across many vendor and industrial protocols and stored it at the edge, where the models also ran, with the data pulled up to the central servers and to Azure when needed.\n\nMuch of that work sat behind AnemoLive and HelioLive, the wind and solar products that are mostly about data acquisition, collecting and serving high frequency plant data for predictive maintenance and better operational decisions, with AnemoLive running on thousands of turbines. On the controls side I worked on Dynamic Yaw, a software layer over the turbine controllers that improved how a whole wind farm yaws into the wind, using collective control so turbines share wind direction with their neighbours and wake steering so upstream turbines steer their wakes away from the ones behind them, for a 1 to 3% uplift in energy production while cutting yaw wear. I also worked on Optivert, an intelligent temperature management system for solar inverters that spots and mitigates overheating and can raise output by up to 20% on hot days.",
+      "highlights": [
+        "Maintained and extended the acquisition backend in C, Python and C#, with a JS/TS frontend, across turbines, inverters and related sensors.",
+        "Integrated vendor-specific protocols such as Siemens, Vestas, Gamesa and GE, and industry-standard ones such as Modbus.",
+        "Designed production-ready control systems such as dynamic yaw and inverter optimization running unattended at the edge.",
+        "Implemented license management, high-performance decryption and a PostgreSQL/MySQL interface directly in C, backed by Redis for real-time storage and non-volatile persistence.",
+        "Built the CI/CD workflow, edge-deployment infrastructure and shell/Python operations tooling.",
+        "Refactored the C blob decryption library under the hood into modular packages and built a proper interface so it could also connect to and query PostgreSQL, not just MySQL, which the new Siemens turbine StickBox required with its different database.",
+        "Decoupled the license procedures into their own standalone C package.",
+        "Restructured the repository to split shared code into a common library that other projects could reuse without pulling in heavy unused dependencies, cutting the controls image size by around 70%."
+      ],
+      "stack": ["C", "C#", "Python", "TypeScript", "Node", "SQL", "Redis", "Docker", "Azure", "CI/CD", "Bash", "Linux", "Git", "Modbus"]
     },
     {
       "id": "bodil-hw-sw",
+      "logo": "/company_logos/bodil_logo.jpeg",
       "company": "Bodil Energy",
       "title": "Hardware & Software Engineer",
       "period": "Jun 2024 – Jun 2025",
       "website": "https://www.bodil.energy",
-      "description": "Responsible for transitioning the prototype and its firmware into a product. New features such as Over-the-Air (OTA) updates and Power/Energy Metering. Definition of technical requirements for hardware, firmware, and software. Hardware design coordination. Scalable data-collection multithreading system development using MQTT and Rust to handle high frequency real-time data from field devices. Service manager engine architecture design (AWS & GCP) and implementation using TypeScript, Bun, Docker and K8s to ensure responsiveness and availability to grid balance signals. IBM/Andel Flex Platform integration for FCR-D market regulation."
+      "description": "Responsible for transitioning the prototype and its firmware into a product. New features such as Over-the-Air (OTA) updates and Power/Energy Metering. Definition of technical requirements for hardware, firmware, and software. Hardware design coordination. Scalable data-collection multithreading system development using MQTT and Rust to handle high frequency real-time data from field devices. Service manager engine architecture design (AWS & GCP) and implementation using TypeScript, Bun, Docker and K8s to ensure responsiveness and availability to grid balance signals. IBM/Andel Flex Platform integration for FCR-D market regulation.",
+      "details": "Bodil is a Danish home-energy startup whose BEAM product lets households help balance the grid and earn passive income, and I worked only on the BEAM project. Building on the first-generation device, this role drove the second generation of the platform, internally Distributed System Orchestration for the Flexibility Market (BEAM v2). The focus shifted from a single device to orchestrating a responsive fleet that reacts to grid-balancing signals and bids into the flexibility markets in real time, taking the prototype all the way to a shippable product that earns households from grid services.",
+      "highlights": [
+        "Owned the prototype-to-product transition: defined hardware, firmware and software requirements and coordinated the hardware design.",
+        "Shipped Over-the-Air (OTA) firmware updates and on-device power/energy metering.",
+        "Built a scalable, multithreaded data-collection system in Rust over MQTT for high-frequency real-time field data.",
+        "Architected the service-manager engine on AWS and GCP using TypeScript, Bun, Docker and Kubernetes, tuned for responsiveness and availability under grid-balancing signals.",
+        "Integrated the IBM/Andel Flex platform to participate in the FCR-D frequency-regulation market."
+      ],
+      "projects": [
+        { "slug": "beam-v2-distributed-orchestration", "title": "Distributed System Orchestration for Flexibility Market — BEAM v2" }
+      ],
+      "stack": ["Rust", "TypeScript", "Node", "Bun", "Docker", "Kubernetes", "AWS", "GCP", "MQTT", "CI/CD", "Git"]
     },
     {
       "id": "bodil-systems",
+      "logo": "/company_logos/bodil_logo.jpeg",
       "company": "Bodil Energy",
       "title": "Systems Engineer",
       "period": "Nov 2022 – Jun 2024",
       "website": "https://www.bodil.energy",
-      "description": "Firmware development using C, TypeScript and Node for API and Python for the energy simulation engine. Use of ESP32 with ESP IDF for Bluetooth, WiFi, LTE/NB-IoT, and peer-to-peer communication, alongside parsers, protocols, and machine interface. Aggregator implementation for data handling and implemented a server-side state holder to validate and manage connections between the database, simulation service, and IoT devices."
+      "description": "Firmware development using C, TypeScript and Node for API and Python for the energy simulation engine. Use of ESP32 with ESP IDF for Bluetooth, WiFi, LTE/NB-IoT, and peer-to-peer communication, alongside parsers, protocols, and machine interface. Aggregator implementation for data handling and implemented a server-side state holder to validate and manage connections between the database, simulation service, and IoT devices.",
+      "details": "This role built the first generation of the BEAM platform, internally the Smart Grid Interface (BEAM v1). The first try used that smart grid interface to control heat pumps based on external signals, and I coordinated the hardware PCB design for it. We tested the reaction time empirically in loco across many different heat pump brands, and it turned out heat pumps were not suitable for the fast reactions the FCR-D signal needs, which led the project to pivot to a broader concept that no longer relied on them. Underneath it all the hard part was getting reliable telemetry and control off constrained ESP32 hardware and into a backend that could simulate and act on it.",
+      "highlights": [
+        "Brought up the ESP32 (ESP-IDF) connectivity stack: Bluetooth provisioning, WiFi and LTE/NB-IoT fallback, plus peer-to-peer device communication.",
+        "Wrote the firmware-side parsers and machine interface, and the protocol layer framing messages between device and backend.",
+        "Built the data aggregator and a server-side state holder that keep the database, the simulation service and the field devices consistent.",
+        "Stood up the Python energy-simulation engine behind a TypeScript/Node API."
+      ],
+      "projects": [
+        { "slug": "beam-v1-smart-grid-interface", "title": "Smart Grid Interface — BEAM v1" }
+      ],
+      "stack": ["C", "TypeScript", "Node", "Python", "ESP32", "ESP-IDF", "MQTT", "Git"]
     },
     {
       "id": "numerous",
+      "logo": "/company_logos/numerous_logo.jpeg",
       "company": "Numerous",
       "title": "Backend Developer",
       "period": "Feb 2023 – Jul 2024",
       "website": "https://numerous.com",
-      "description": "Development focusing on CLI, API, backend-related code, pipeline maintenance, tests, and code quality enforcement. Docker and Kubernetes for containerization and orchestration, Python, Golang, and Typescript as languages. REST, GraphQL and gRPC APIs. Cloud services from GCP and AWS. Test-driven development (TDD)."
+      "description": "Development focusing on CLI, API, backend-related code, pipeline maintenance, tests, and code quality enforcement. Docker and Kubernetes for containerization and orchestration, Python, Golang, and Typescript as languages. REST, GraphQL and gRPC APIs. Cloud services from GCP and AWS. Test-driven development (TDD).",
+      "details": "Numerous is a web platform for turning Python apps into shareable, production-ready products without anyone having to manage infrastructure. Developers push their apps through a CLI, with support for frameworks like Streamlit, Dash, Panel, Marimo and Docker, and the platform handles the serverless deployment and scaling, user accounts and organizations with fine-grained permissions, payments and subscriptions, white-labeling, analytics and file storage. I worked on the backend across the CLI, the API and the supporting services, and owned much of the pipelines, tests and code-quality checks that kept the codebase reliable and reviewable.",
+      "highlights": [
+        "Wrote services in Python, Golang and TypeScript, containerized and orchestrated with Docker and Kubernetes.",
+        "Built and consumed REST, GraphQL and gRPC APIs deployed on GCP and AWS.",
+        "Maintained the CI/CD pipelines and enforced code-quality standards across the team.",
+        "Practised test-driven development (TDD) throughout."
+      ],
+      "stack": ["Python", "Golang", "TypeScript", "Docker", "Kubernetes", "GCP", "AWS", "REST", "GraphQL", "gRPC", "CI/CD", "Git"]
     },
     {
       "id": "novus",
+      "logo": "/company_logos/novus_logo.jpg",
       "company": "Novus Automation",
       "title": "Software Developer",
       "period": "Mar 2022 – Feb 2023",
       "website": "https://www.novusautomation.com/en/",
-      "description": "Development and maintenance of configuration and monitoring software products for desktop, web and mobile using C++, Java, and Dart/Flutter. API tests using JavaScript and Postman. Scrum methodology application and software version control using Git/Gitlab and Sourcetree. MQTT and LoRaWAN applications (IoT)."
+      "description": "Development and maintenance of configuration and monitoring software products for desktop, web and mobile using C++, Java, and Dart/Flutter. API tests using JavaScript and Postman. Scrum methodology application and software version control using Git/Gitlab and Sourcetree. MQTT and LoRaWAN applications (IoT).",
+      "details": "Novus builds industrial instrumentation and software, and I worked across its configuration and monitoring product line, which talks to a broad range of hardware from controllers, sensors, transmitters and data loggers to many other data acquisition and communication devices. Most of my time went to NXperience, the desktop configuration, data collection and analysis software, where I maintained and extended the C++ code with a focus on data reading and communication with Novus devices through their internal procedures and standards such as register addresses and industrial protocols, most often Modbus. I also maintained and added features to NXperience Mobile, the native Java app for configuring devices and collecting data from loggers like the LogBox over WiFi and Bluetooth, testing everything on real phones and on Android Studio emulators.\n\nI worked closely on the LoRaWAN implementation for the Telik Trafo Lite, an IoT temperature transmitter for distribution transformers, building out the packages behind its wireless communication. I also gave maintenance to the FieldLogger Configurator, the software for Novus FieldLogger dataloggers that communicates over USB, Modbus TCP and Modbus RTU, and near the end I had a quick passage in Flutter on the desktop and mobile versions of QuickTune, the configuration tool for Novus controllers and indicators. For every fix I had access to the real devices I needed, which was essential for reproducing bugs, writing tests and checking the corrections on actual hardware. I took the mobile apps through publishing to the stores and meeting all their requirements, and I did some work on customer usage metrics, collecting them into a centralized company database and defining cronjobs and SQL procedures to generate analytics.",
+      "highlights": [
+        "Built and maintained products with C++, Java and Dart/Flutter across desktop, web and mobile.",
+        "Implemented the LoRaWAN communication for the Telik Trafo Lite and worked on MQTT connectivity across the IoT product line.",
+        "Reproduced, fixed and verified bugs directly on the real Novus hardware, with access to the full device range for testing.",
+        "Published the mobile apps to the app stores and met all the store requirements.",
+        "Built customer usage analytics into a centralized company database, defining SQL procedures and scheduled cronjobs.",
+        "Wrote API tests with JavaScript and Postman.",
+        "Worked in Scrum, using Git/GitLab and Sourcetree for version control."
+      ],
+      "stack": ["C++", "Java", "Dart", "Flutter", "JavaScript", "SQL", "Modbus", "LoRaWAN", "MQTT", "Bluetooth", "Git", "Scrum"]
     },
     {
       "id": "vitta",
+      "logo": "/company_logos/vitta_logo.png",
       "company": "Vitta",
       "title": "Simulation Engineer",
       "period": "Feb 2021 – Mar 2022",
       "website": "https://vittaresidencial.com.br",
-      "description": "Computational simulation head's engineer and in charge of the internal methodology development to measure the building's energy performance."
+      "description": "Computational simulation head's engineer and in charge of the internal methodology development to measure the building's energy performance.",
+      "details": "As the head engineer for the building simulations, I owned the internal methodology we used to measure thermal, lighting and acoustic performance, and I gave the final sign-off that each design met the Brazilian standard NBR 15575. The role went beyond confirming whether a building performed. A large part of it was making it perform. When a design fell short, I identified what to change, from the orientation, materials and colours to the shading, landscaping, windows and openings, so it could meet the energy efficiency, thermal comfort and ventilation targets. As one of the five largest residential developers in Brazil, the company had an almost endless pipeline of buildings and a substantial workload. It was also where I first used programming professionally. I built a Python tool to run the analysis, and that experience is what gave me the taste for software I have followed ever since. The methodology we developed went on to win the company's Innovation Prize.",
+      "highlights": [
+        "Brought building-performance simulation in-house — work previously outsourced entirely to third parties — and authored the internal methodology spanning thermal, lighting and acoustic performance, cutting costs at scale.",
+        "Gave the final sign-off on each design, verifying thermal performance against the Brazilian standard NBR 15575 through EnergyPlus simulation.",
+        "Simulated daylighting in Dialux against the weather and solar standards for each building's location.",
+        "Managed acoustic validation end to end — commissioning a third-party firm's simulations and the contracts behind them, then confirming results with on-site (in loco) measurement.",
+        "Led, with the data-analysis department, a Python tool that turned raw simulation output into concrete compliance data. It brought a single analysis down from six or seven hours to about one, roughly an 85% cut, and we kept refining it through the NBR 15575 revision.",
+        "Drove design changes to meet energy-efficiency, thermal-comfort and ventilation targets — orientation, colours, materials, shading, landscape resources, and window/aperture design."
+      ],
+      "stack": ["EnergyPlus", "OpenStudio", "Revit", "Dialux", "Python", "NBR 15575", "Excel"]
     },
     {
       "id": "petinelli-engineer",
+      "logo": "/company_logos/petinelli_logo.png",
       "company": "Petinelli",
       "title": "Energy Engineer",
       "period": "Jul 2019 – Dec 2020",
       "website": "https://www.petinelli.com",
-      "description": "Design: HVAC, electrical, automation, photovoltaic, and lighting systems. Thermal and energy building performance analysis. Computational simulations. Technical and economical diagnosis of energy efficiency measures. Commissioning process."
+      "description": "Design: HVAC, electrical, automation, photovoltaic, and lighting systems. Thermal and energy building performance analysis. Computational simulations. Technical and economical diagnosis of energy efficiency measures. Commissioning process.",
+      "details": "The projects ran across every kind of building, from commercial and residential to hotels and industrial sites. I reviewed the design of the HVAC, electrical, automation, photovoltaic, lighting and hydraulic systems, and studied how each building performed through thermoenergetic simulations grounded in the ASHRAE standards. From there I diagnosed the energy efficiency measures, looked at lighting efficiency and light pollution reduction, and prepared the documentation behind the sustainability certifications. I was part of the team that took several projects all the way to LEED Platinum, which is the highest level the rating awards. The work also ran through to commissioning, where I developed the commissioning plans for the buildings and checked the finished result against on-site measurements and the design documents.",
+      "highlights": [
+        "Analyzed and compared HVAC strategies across building types and usage profiles — VRF systems, centralized chilled-water plants with chillers — and the corresponding air-quality and ventilation levels (ASHRAE 62.1).",
+        "Designed photovoltaic solar systems and their inverter sizing, alongside building automation systems.",
+        "Reviewed lighting for efficiency and light-pollution reduction, sizing both natural (DIVA) and artificial (Dialux) lighting.",
+        "Balanced water-distribution networks, including pump sizing and hydraulic balance.",
+        "Ran thermal and energy simulations and thermal-zone dimensioning from blueprints and floorplans (OpenStudio, EnergyPlus).",
+        "Translated each efficiency, lighting and water measure into the LEED credits and documentation needed to claim them.",
+        "Developed the building commissioning plans and supported commissioning from on-site measurements cross-checked against the design documents."
+      ],
+      "stack": ["EnergyPlus", "OpenStudio", "Revit", "DIVA", "Dialux", "ASHRAE 90.1", "ASHRAE 62.1", "ASHRAE 55", "AutoCAD", "Excel"]
     },
     {
       "id": "petinelli-assistant",
+      "logo": "/company_logos/petinelli_logo.png",
       "company": "Petinelli",
       "title": "Student Assistant",
       "period": "Jun 2017 – Jun 2019",
       "website": "https://www.petinelli.com",
-      "description": "LEED certification process and energy conservation measures application based on design reviews. Renewable energy systems design. Technical and economic feasibility reports."
+      "description": "LEED certification process and energy conservation measures application based on design reviews. Renewable energy systems design. Technical and economic feasibility reports.",
+      "details": "This was where my energy engineering career started. I supported the LEED certification work and the energy conservation measures that came out of the design reviews, which included the lighting power density reviews and the lighting controls. It was also around this time that I began working with building energy simulation in EnergyPlus.",
+      "highlights": [
+        "Supported the LEED certification process and applied energy-conservation measures derived from design reviews.",
+        "Reviewed lighting power density and specified lighting-control strategies against ASHRAE 90.1.",
+        "Designed renewable-energy systems.",
+        "Began working with whole-building energy simulation in EnergyPlus.",
+        "Prepared technical and economic feasibility reports to justify proposed measures."
+      ],
+      "stack": ["EnergyPlus", "OpenStudio", "Revit", "ASHRAE 90.1", "ASHRAE 62.1", "ASHRAE 55", "AutoCAD", "Excel"]
     }
   ],
   "languages": [
@@ -106,30 +286,79 @@
     {
       "category": "Teaching",
       "items": [
-        "PCPP Teaching Assistant – Practical concurrent and parallel programming course assistant at IT University of Copenhagen (2024)"
+        {
+          "title": "PCPP Teaching Assistant – Practical concurrent and parallel programming course assistant at IT University of Copenhagen (2024)",
+          "details": "Practical Concurrent and Parallel Programming is an ITU course that gives a hands-on introduction to writing correct and efficient concurrent software, mostly in Java. It runs through threads and locks, mutual exclusion and the Java memory model, atomic operations and compare and swap, the concurrent data structures in java.util.concurrent, lock-free and lock-based designs, measuring performance and scalability, testing and reasoning about concurrent programs, and parallel functional programming with streams, along with software transactional memory and message passing. As a teaching assistant I corrected and gave feedback on all of the assignments from the groups I was responsible for, going through every topic of the course."
+        }
       ]
     },
     {
       "category": "Awards",
       "items": [
-        "Innovation Prize – Vitta (2022)"
+        {
+          "title": "Innovation Prize – Vitta (2022)",
+          "details": "Vitta gives this prize for ideas that move the company forward, and I received it for the building-performance work I led there. We brought the thermal, lighting and acoustic simulations in-house, built a repeatable methodology around the Brazilian standard NBR 15575, and automated the analysis with a Python tool that cut a single run from six or seven hours down to about one, roughly an 85% reduction. Together that replaced a fully outsourced process, saved a large amount of manual work and lowered costs at scale."
+        }
       ]
     },
     {
-      "category": "Software & Technology",
+      "category": "Software & Technology Courses",
       "items": [
-        "Software Courses – C++, JavaScript, Dart, SQL, Git, Computer architecture, and Scrum at Alura (2022)",
-        "Linux Lab – ITU"
+        {
+          "title": "C++",
+          "details": "C++ from the ground up, this Alura path started with the basic syntax, variables, data types and operators, control flow with conditionals and loops, and functions, then moved into the Standard Template Library with its containers, iterators and algorithms. On the object oriented side it covered classes, methods and attributes, encapsulation, constructors and destructors, and inheritance and polymorphism with virtual methods. It also went into memory and how references and pointers work, organizing code across multiple source and header files, how the compilation and linking process works, and the more advanced and modern C++ topics around performance and optimization such as strings and string_view, copy and move semantics, and copy constructors. The concepts were practiced by building small console programs along the way."
+        },
+        {
+          "title": "JavaScript & TypeScript",
+          "details": "Run with Node and Visual Studio Code rather than the browser, this Alura course kept the focus on the JavaScript language itself. It covered variables and data types, operators, conditionals, loops, functions, and arrays and objects, scope and how values are passed around, and using the debugger to step through and follow the flow of execution. It then moved into the browser side with the Document Object Model, selecting and changing elements and handling events to make pages dynamic, and finished with a first look at TypeScript and static typing for writing more robust code. The exercises were small programs run directly on the machine through Node."
+        },
+        {
+          "title": "Dart & Flutter",
+          "details": "Dart is the language behind Flutter, and this Alura path covered it from project setup onward, the basic syntax, variables, types and operators, conditionals, loops and functions, then collections such as lists, sets and maps. The object oriented part covered classes and objects, constructors, encapsulation, inheritance and polymorphism, abstract classes, interfaces and mixins, and generics, and it closed with asynchronous programming using futures and async and await. It also touched on null safety and the good practices used with the language day to day."
+        },
+        {
+          "title": "SQL",
+          "details": "Built around SQL and relational databases on a relational database engine, this Alura course covered creating and dropping databases and tables, choosing data types and constraints, and the full set of data manipulation operations, inserting, updating and deleting records. On the query side it went through selects, filtering with where, ordering and limiting results, aggregate functions and grouping with group by and having, primary and foreign keys and the relationships between tables, and the different kinds of joins to read data across several tables. It also touched on views and stored procedures."
+        },
+        {
+          "title": "Git and GitHub",
+          "details": "Version control with Git and GitHub, this Alura course covered setting up Git and initializing a repository, the staging area and committing changes, writing good commit messages, viewing the history and the differences between versions, and undoing changes with reset and revert. It then went into branching and merging and resolving conflicts, rebasing, and working with GitHub as a remote to clone, push and pull, and to collaborate on shared code through forks, pull requests and code review."
+        },
+        {
+          "title": "Computer Architecture",
+          "details": "About what happens behind your program, this Alura course explained how data is represented in bits and bytes, the binary and hexadecimal number systems and how integers and characters are encoded, how the processor and memory work together, the registers and the fetch and execute cycle through which the computer reads and runs instructions, how memory and the stack store data, and how high level code is compiled down into the assembly and machine code the processor actually executes."
+        },
+        {
+          "title": "Scrum",
+          "details": "Focused on Scrum and agility, this Alura course covered the origins and principles behind the agile manifesto and Lean thinking, then the Scrum framework in detail, its three roles of product owner, scrum master and development team, its artifacts such as the product and sprint backlogs and the increment, and its events such as sprint planning, the daily, the review and the retrospective. It also looked at estimation and the definition of done, how to set up and run a Scrum team, and how Scrum compares with Kanban."
+        },
+        {
+          "title": "Linux Lab – ITU",
+          "details": "The Linux Lab at ITU was a student group I took part in to go deep on Linux. We worked through using Linux day to day and its command line, and built a deeper understanding of the operating system itself, the kernel and system administration. It covered most of the important topics, from boot and installation through package management, services and health checks, users and permissions, processes, the filesystem and shell scripting."
+        }
       ]
     },
     {
       "category": "Energy & HVAC",
       "items": [
-        "HVAC Engineering – Electrical and mechanical design, refrigeration cycle analysis, O&M techniques at ASBRAV (2019)",
-        "Industrial Refrigeration Systems – UFRGS (2019)",
-        "Indirect Cooling Systems – ABRAVA / ASHRAE (2019)",
-        "Internal Combustion Engines – UFSC (2014)"
+        {
+          "title": "HVAC Engineering – Electrical and mechanical design, refrigeration cycle analysis, O&M techniques at ASBRAV (2019)",
+          "details": "The course covered identifying electrical and mechanical design issues and analyzing the vapour compression refrigeration cycle across its four stages, the compressor, condenser, expansion device and evaporator. From there it moved into identifying and correcting failures, preventive maintenance routines, and selecting and replacing air conditioning equipment, along with the command logic and electric drives that run compressors and fans. A good part of it focused on the data acquisition of the fundamental operating variables, things like pressures, temperatures, superheat and subcooling, that you read to judge how healthy a system is and to keep it monitored and under control."
+        },
+        {
+          "title": "Industrial Refrigeration Systems – UFRGS (2019)",
+          "details": "An extension course focused on the design of industrial refrigeration for cold rooms and cold chambers using ammonia (R717) as the refrigerant. It worked through the cooling load calculations, the sizing of compressors, evaporators and condensers, and the layout of the plant, with most of the examples drawn from the meat industry and its cold chain. Because ammonia is very efficient but also hazardous, the course gave a lot of attention to the safety side and to the maintenance challenges these plants face, along with the quality control and continuous monitoring needed to keep stored product within its temperature limits."
+        },
+        {
+          "title": "Indirect Cooling Systems – ABRAVA / ASHRAE (2019)",
+          "details": "Held in São Paulo and sponsored by Petinelli, this course covered the design, installation, commissioning, operation and maintenance of indirect cooling systems, the kind where a chiller cools water that is then pumped through the building instead of cooling the air directly. It went into chillers, cooling towers, hydronic circuits and the automation that ties them together. One technical aspect it dug into was the low delta T syndrome, which happens when the temperature difference between the chilled water leaving and returning to the chiller falls below its design value. When that difference drops, the pumps have to move much more water to deliver the same amount of cooling, the secondary flow can overrun the primary and spill back through the bypass, and the chillers end up running at low load and lose usable capacity, so the plant burns more pumping energy and becomes harder to control. The course looked at the usual culprits behind it, such as poorly selected or fouled coils, three way control valves, wrong setpoints and weak controls, and at how to design and operate the system so it keeps a healthy delta T."
+        },
+        {
+          "title": "Internal Combustion Engines – UFSC (2014)",
+          "details": "A theoretical and practical course on internal combustion engines, going through the four stroke operation and the differences between the Otto cycle, which burns a spark ignited mixture of air and fuel, and the Diesel cycle, which relies on compression ignition. The practical side meant assembling and disassembling engines to learn their parts, from the block, pistons and crankshaft to the valve train and timing. I was also part of a team that rebuilt a Monza 86 engine from scratch, putting it back together and then starting and running it to check its healthiness and confirm everything worked as it should."
+        }
       ]
     }
-  ]
+  ],
+  "others": ["ASHRAE YEA, ASHRAE Student Branch, Tchê Baja Team"]
 }
