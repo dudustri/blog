@@ -17,13 +17,17 @@ export type Experience = {
   // paraphrase of it). Optional — only curated jobs have it.
   details?: string;
   highlights?: string[];
-  team?: string;
   projects?: ExperienceProject[];
   stack?: string[];
-  reviewTodo?: string;
 };
 
 export type Education = (typeof data.education)[0];
 
+// An Extra item can carry an optional deep-dive shown in its popup.
+export type ExtraItem = { title: string; details?: string };
+export type ExtraGroup = { category: string; items: ExtraItem[] };
+
 export const experience: Experience[] = data.experience;
-export const { techStack, education, languages, extra } = data;
+export const { summary, techStack, education, languages } = data;
+export const extra = data.extra as ExtraGroup[];
+export const others = data.others as string[];
