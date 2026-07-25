@@ -453,7 +453,7 @@ export default function MundoPage() {
 
       {/* Legend — hidden during game */}
       {!inGame && (
-        <div className="absolute bottom-6 sm:bottom-20 left-4 sm:left-6 z-10 flex flex-col gap-1.5">
+        <div className="absolute bottom-28 sm:bottom-20 left-4 sm:left-6 z-10 flex flex-col gap-1.5">
           {([
             { color: COLOR_VISITED,    label: 'Visited',  key: 'visited'  as const },
             { color: COLOR_WANT_TO_GO, label: 'Planning', key: 'planning' as const },
@@ -475,7 +475,7 @@ export default function MundoPage() {
       )}
 
       {/* Bottom right — country label / list / game UI */}
-      <div className="absolute bottom-6 sm:bottom-20 right-4 sm:right-6 z-10 flex flex-col items-end gap-2 max-w-[60vw]">
+      <div className="absolute bottom-28 sm:bottom-20 right-4 sm:right-6 z-10 flex flex-col items-end gap-2 max-w-[60vw]">
 
         {inGame && (
           <div className="flex flex-col items-end gap-2">

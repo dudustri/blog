@@ -12,6 +12,14 @@ const cards = [
   { href: "/contact", label: "Contact", desc: "Get in touch" },
 ];
 
+const bio =
+  "Software engineering, cloud systems, and DevOps with a background in power systems, industrial plants, and HVAC.";
+
+const socials = [
+  { href: "https://github.com/dudustri", label: "GitHub ↗" },
+  { href: "https://linkedin.com/in/eduardo-sfreddo-trindade", label: "LinkedIn ↗" },
+];
+
 export default function Home() {
   const [dark, setDark] = useState(false);
   const [photoToast, setPhotoToast] = useState(false);
@@ -27,53 +35,13 @@ export default function Home() {
   const cardHoverBg = dark ? "#252525" : "#f9fafb";
   const cardHoverBorder = dark ? "#555" : "#9ca3af";
   const cardHoverShadow = dark ? "0 2px 12px rgba(0,0,0,0.3)" : "0 2px 12px rgba(0,0,0,0.07)";
-  const arrowHoverColor = "#3e6b89";
 
   return (
     <div className="max-w-6xl mx-auto px-6 relative">
-      {/* Animated background blobs */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div
-          style={{
-            position: "absolute",
-            top: "-80px",
-            left: "-60px",
-            width: "280px",
-            height: "280px",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(62,107,137,0.2) 0%, transparent 70%)",
-            animation: "blobFloat1 16s ease-in-out infinite",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: "180px",
-            right: "-80px",
-            width: "240px",
-            height: "240px",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(30,74,106,0.15) 0%, transparent 70%)",
-            animation: "blobFloat2 20s ease-in-out infinite",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: "-20px",
-            left: "40%",
-            width: "200px",
-            height: "200px",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(62,107,137,0.13) 0%, transparent 70%)",
-            animation: "blobFloat3 24s ease-in-out infinite",
-          }}
-        />
-      </div>
-
       {/* Hero */}
-      <section className="pt-16 pb-14 flex flex-col md:flex-row md:items-start gap-10">
-        <div className="flex-1">
+      <section className="pt-16 pb-14 select-none">
+        <div className="flex flex-row items-start gap-5 md:gap-10">
+        <div className="flex-1 min-w-0">
           <p
             className="text-xs font-semibold uppercase tracking-[0.2em] mb-4"
             style={{
@@ -85,30 +53,25 @@ export default function Home() {
           >
             Software &amp; Energy Engineer
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6 md:whitespace-nowrap">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6 md:whitespace-nowrap">
             Eduardo Sfreddo Trindade
           </h1>
-          <p className="text-gray-500 leading-relaxed max-w-sm text-[15px]">
-            Software engineering, cloud systems, and DevOps with a background in power systems,
-            industrial plants, and HVAC.
+          {/* Desktop: bio + links live in the text column beside the photo */}
+          <p className="hidden md:block text-gray-500 leading-relaxed max-w-sm text-[15px]">
+            {bio}
           </p>
-          <div className="flex gap-4 mt-8">
-            <a
-              href="https://github.com/dudustri"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-gray-400 hover:text-black transition-colors"
-            >
-              GitHub ↗
-            </a>
-            <a
-              href="https://linkedin.com/in/eduardo-sfreddo-trindade"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-gray-400 hover:text-black transition-colors"
-            >
-              LinkedIn ↗
-            </a>
+          <div className="hidden md:flex gap-4 mt-8">
+            {socials.map((s) => (
+              <a
+                key={s.href}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-gray-400 hover:text-black transition-colors"
+              >
+                {s.label}
+              </a>
+            ))}
           </div>
         </div>
 
@@ -118,13 +81,13 @@ export default function Home() {
           <img
             src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/avatar.jpg`}
             alt="Eduardo Sfreddo Trindade"
-            className="w-40 h-40 md:w-52 md:h-52 rounded-3xl object-cover select-none cursor-pointer"
+            className="w-24 h-24 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-2xl sm:rounded-3xl object-cover select-none cursor-pointer"
             onClick={() => setPhotoToast(v => !v)}
           />
 
           {/* Photo toast — top-right of the photo */}
           {photoToast && (
-            <div className="absolute z-50 bg-black text-white text-xs px-4 py-3 rounded-xl shadow-lg leading-relaxed top-full left-0 mt-3 w-[min(20rem,80vw)] md:top-1/2 md:left-full md:mt-0 md:ml-3 md:-translate-y-1/2 md:w-56">
+            <div className="absolute z-50 bg-black text-white text-xs px-4 py-3 rounded-xl shadow-lg leading-relaxed top-full right-0 mt-3 w-[min(20rem,80vw)] md:top-1/2 md:right-auto md:left-full md:mt-0 md:ml-3 md:-translate-y-1/2 md:w-56">
               Nej, this is not AI generated (:
               <br />
               <br />
@@ -142,6 +105,25 @@ export default function Home() {
               </a>
             </div>
           )}
+        </div>
+        </div>
+
+        {/* Mobile: bio spans full width, links centered on screen */}
+        <p className="md:hidden text-gray-500 leading-relaxed text-[15px] mt-6">
+          {bio}
+        </p>
+        <div className="md:hidden flex justify-center gap-6 mt-8">
+          {socials.map((s) => (
+            <a
+              key={s.href}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-gray-400 hover:text-black transition-colors"
+            >
+              {s.label}
+            </a>
+          ))}
         </div>
       </section>
 
@@ -166,18 +148,9 @@ export default function Home() {
                 el.style.boxShadow = "";
               }}
             >
-              <p className="font-semibold text-sm mb-1">{card.label}</p>
+              <p className="font-semibold text-sm mb-1 transition-colors duration-200 group-hover:text-[#3e6b89]">{card.label}</p>
               <p className="text-gray-500 text-xs leading-relaxed">{card.desc}</p>
-              <p
-                className="text-sm mt-4 transition-colors duration-200"
-                style={{ color: "#d1d5db" }}
-                onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color = arrowHoverColor)
-                }
-                onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color = "#d1d5db")
-                }
-              >
+              <p className="text-sm mt-4 text-gray-300 transition-all duration-200 group-hover:text-[#3e6b89] group-hover:translate-x-1">
                 →
               </p>
             </Link>

@@ -122,7 +122,7 @@ export default function ContactPage() {
     <>
       <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" />
 
-      <div className="max-w-2xl mx-auto px-6 py-10">
+      <div className="max-w-2xl mx-auto px-6 py-10 select-none">
         {/* Header */}
         <div className="mb-12">
           <h1 className="text-3xl font-bold tracking-tight mb-2">Get in touch</h1>
@@ -149,7 +149,7 @@ export default function ContactPage() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 select-text">
               <div>
                 <input
                   className={inputClass}
@@ -239,7 +239,7 @@ export default function ContactPage() {
               )}
             </div>
           ) : (
-            <div className="space-y-5" style={{ animation: "slideUp 0.4s ease" }}>
+            <div className="space-y-5 select-text" style={{ animation: "slideUp 0.4s ease" }}>
               <div className="flex gap-3 text-sm">
                 <span className="text-gray-400 w-16 flex-shrink-0">Email</span>
                 <a href={`mailto:${contactInfo.email}`} className="hover:underline">

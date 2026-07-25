@@ -39,7 +39,7 @@ export default function SportsPage() {
   const stats = statsFor(list);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
+    <div className="max-w-6xl mx-auto px-6 py-10 select-none">
       {/* Hero */}
       <header className="mb-10">
         <p

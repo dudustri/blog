@@ -16,7 +16,7 @@ function projectGradient(slug: string) {
 
 export default function PortfolioPage() {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
+    <div className="max-w-6xl mx-auto px-6 py-10 select-none">
       <h1 className="text-3xl font-bold tracking-tight mb-10">Portfolio</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {projects.map((project) => (
