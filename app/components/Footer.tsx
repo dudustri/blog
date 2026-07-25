@@ -7,7 +7,7 @@ export default function Footer() {
   const isMundo = pathname.startsWith('/mundo');
 
   return (
-    <footer className={`border-t ${
+    <footer className={`border-t select-none ${
       isMundo
         ? 'fixed bottom-0 left-0 right-0 z-50 border-white/10 bg-transparent backdrop-blur-sm'
         : 'border-gray-100 mt-12'

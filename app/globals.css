@@ -92,24 +92,6 @@ html.dark .hover\:text-white:hover  { color: #ffffff !important; }
 }
 .wrong-flash { animation: wrongFlash 0.6s ease forwards; }
 
-@keyframes blobFloat1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(30px, -40px) scale(1.05); }
-  66%       { transform: translate(-20px, 20px) scale(0.97); }
-}
-
-@keyframes blobFloat2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(-35px, 25px) scale(1.04); }
-  66%       { transform: translate(20px, -30px) scale(0.96); }
-}
-
-@keyframes blobFloat3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(25px, 35px) scale(0.98); }
-  66%       { transform: translate(-30px, -20px) scale(1.06); }
-}
-
 /* Rainbow shimmer for the rare "Ultra Splash" button */
 @keyframes rainbowShift {
   0%   { background-position: 0% 50%; }
