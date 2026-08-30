@@ -108,3 +108,43 @@ html.dark .hover\:text-white:hover  { color: #ffffff !important; }
   border-color: transparent !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
+
+/* Matter.js banner — gravity + cursor-repelling squares (home page). */
+.matter-stage {
+  overflow: hidden;
+}
+.matter-sq {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* Cursor-trail background — squares spawned at the pointer that linger then fade. */
+.trail-stage {
+  overflow: hidden;
+}
+.trail-sq {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+
+/* Landing nav-card hover accent: apple green, matching the resume tech stack
+   highlight. !important beats the html.dark .text-gray-400 override. */
+.card-hint {
+  transition: color 0.2s ease;
+}
+.group:hover .card-hint {
+  color: #5c9c08 !important;
+}
+html.dark .group:hover .card-hint {
+  color: #a3e635 !important;
+}

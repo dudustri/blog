@@ -5,12 +5,15 @@ import { usePathname } from 'next/navigation';
 export default function Footer() {
   const pathname = usePathname();
   const isMundo = pathname.startsWith('/mundo');
+  // Home page ends on the gravity banner, which should sit glued to the footer,
+  // so drop the usual top margin there.
+  const isHome = pathname === '/';
 
   return (
     <footer className={`border-t select-none ${
       isMundo
         ? 'fixed bottom-0 left-0 right-0 z-50 border-white/10 bg-transparent backdrop-blur-sm'
-        : 'border-gray-100 mt-12'
+        : `border-gray-100 ${isHome ? '' : 'mt-12'}`
     }`}>
       <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
         <p className={`text-xs ${isMundo ? 'text-white/50' : 'text-gray-400'}`}>

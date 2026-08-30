@@ -96,11 +96,14 @@ type Props = {
 
 export default function ResumeSidebar({ experience, clickedJobId, onJobClick }: Props) {
   const [visibleIds, setVisibleIds] = useState<Set<string>>(new Set());
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [topOffset, setTopOffset] = useState(24);
 
   const scrollActiveId = experience.find((j) => visibleIds.has(j.id))?.id ?? "";
-  const activeId = clickedJobId || scrollActiveId;
+  // Hovering a timeline entry expands it as if we were in that position; on
+  // leave it falls back to the click/scroll-tracked entry.
+  const activeId = hoveredId ?? (clickedJobId || scrollActiveId);
 
   useEffect(() => {
     const recalc = () => {
@@ -177,7 +180,11 @@ export default function ResumeSidebar({ experience, clickedJobId, onJobClick }: 
                 alignItems: "center",
                 paddingBottom: isLast ? 4 : 36,
                 paddingTop: idx === 0 ? 0 : 0,
+                transform: active ? "translateX(2px)" : "translateX(0)",
+                transition: "transform 0.35s cubic-bezier(0.34,1.56,0.64,1)",
               }}
+              onMouseEnter={() => setHoveredId(job.id)}
+              onMouseLeave={() => setHoveredId(null)}
               onClick={() => handleJobClick(job)}
             >
               {/* Dot — centered in the column, above the absolute line */}

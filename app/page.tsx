@@ -2,14 +2,27 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import MatterBanner from "@/app/components/MatterBanner";
+import { projects } from "@/app/data/portfolio";
+import { posts } from "@/app/data/blog";
+import { experience, education } from "@/app/data/resume";
+import { countries } from "@/app/data/mundo";
+import { activities, statsFor } from "@/app/data/activities";
+
+// Live micro-stats pulled from the same data the individual pages use, so each
+// card shows one real number instead of an empty arrow.
+const companyCount = new Set(experience.map((e) => e.company)).size;
+const degreeCount = new Set(education.map((e) => e.degree)).size;
+const activityCount = statsFor(activities).count;
+const latestPost = posts.find((p) => !p.draft)?.title ?? "";
 
 const cards = [
-  { href: "/resume", label: "Resume", desc: "Skills, experience & education" },
-  { href: "/portfolio", label: "Portfolio", desc: "Projects I've built or aiming to build" },
-  { href: "/mundo", label: "Mundo", desc: "Places I have been hanging around "},
-  { href: "/sports", label: "Sports", desc: "Activities, pizzas earned and stats" },
-  { href: "/blog", label: "Blog", desc: "Random thoughts & cool things" },
-  { href: "/contact", label: "Contact", desc: "Get in touch" },
+  { href: "/resume", label: "Resume", desc: "Skills, experience & education", stat: `${companyCount} companies · ${degreeCount} degrees` },
+  { href: "/portfolio", label: "Portfolio", desc: "Projects I've built or aiming to build", stat: `${projects.length} projects (WIP)` },
+  { href: "/mundo", label: "Mundo", desc: "Places I have been hanging around ", stat: `${countries.length} countries visited` },
+  { href: "/sports", label: "Sports", desc: "Activities, pizzas earned and stats", stat: `${activityCount.toLocaleString()} recorded activities` },
+  { href: "/blog", label: "Blog", desc: "Random thoughts & cool things", stat: latestPost ? `latest: ${latestPost}` : "" },
+  { href: "/contact", label: "Contact", desc: "Get in touch", stat: "replies asap !" },
 ];
 
 const bio =
@@ -31,6 +44,15 @@ export default function Home() {
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
     return () => observer.disconnect();
   }, []);
+
+  // While the photo note is open, any click elsewhere dismisses it. The photo's
+  // own click stops propagation so it toggles instead of instantly closing.
+  useEffect(() => {
+    if (!photoToast) return;
+    const close = () => setPhotoToast(false);
+    document.addEventListener("click", close);
+    return () => document.removeEventListener("click", close);
+  }, [photoToast]);
 
   const cardHoverBg = dark ? "#252525" : "#f9fafb";
   const cardHoverBorder = dark ? "#555" : "#9ca3af";
@@ -82,7 +104,7 @@ export default function Home() {
             src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/avatar.jpg`}
             alt="Eduardo Sfreddo Trindade"
             className="w-24 h-24 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-2xl sm:rounded-3xl object-cover select-none cursor-pointer"
-            onClick={() => setPhotoToast(v => !v)}
+            onClick={(e) => { e.stopPropagation(); setPhotoToast((v) => !v); }}
           />
 
           {/* Photo toast — top-right of the photo */}
@@ -148,14 +170,32 @@ export default function Home() {
                 el.style.boxShadow = "";
               }}
             >
-              <p className="font-semibold text-sm mb-1 transition-colors duration-200 group-hover:text-[#3e6b89]">{card.label}</p>
+              <p className="card-hint font-semibold text-sm mb-1 transition-colors duration-200">{card.label}</p>
               <p className="text-gray-500 text-xs leading-relaxed">{card.desc}</p>
-              <p className="text-sm mt-4 text-gray-300 transition-all duration-200 group-hover:text-[#3e6b89] group-hover:translate-x-1">
-                →
-              </p>
+              <div className="flex items-baseline justify-between gap-2 mt-4">
+                <span className="card-hint min-w-0 truncate font-mono text-[11px] text-gray-400 transition-colors duration-200">
+                  {card.stat}
+                </span>
+                <span className="card-hint flex-shrink-0 font-mono text-[11px] opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0">
+                  →
+                </span>
+              </div>
             </Link>
           ))}
         </div>
+      </section>
+
+      {/* Closing CTA banner — gravity + cursor-repelling squares (Matter.js).
+          Home page only. Extra top margin separates it from the nav cards; the
+          tiny bottom padding glues it to the footer. On touch the squares fall
+          and scatter on swipe; fewer squares on narrow screens. */}
+      <section className="mt-16 pb-0 select-none">
+        <MatterBanner
+          title={<>From kilowatts to Kubernetes.</>}
+          subtitle="Software across energy and industrial systems, embedded devices and cloud applications."
+          ctaHref="/contact"
+          ctaLabel="Get in touch"
+        />
       </section>
     </div>
   );
