@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { projects } from "@/app/data/portfolio";
+import MatterBackground from "@/app/components/MatterBackground";
 
 const gradients = [
   "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
@@ -26,8 +27,18 @@ export default function PortfolioPage() {
             className="group block border border-gray-200 rounded-xl overflow-hidden hover:border-black hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
           >
             {/* Image area */}
-            <div className="w-full h-40 overflow-hidden">
-              {project.image ? (
+            <div className="w-full h-40 overflow-hidden relative bg-gray-50">
+              {project.slug === "personal-blog" ? (
+                // This very site: show its own gravity-square physics.
+                <MatterBackground count={12} />
+              ) : project.wip ? (
+                // Work in progress: solid black banner.
+                <div className="w-full h-full bg-black flex items-center justify-center">
+                  <span className="text-5xl font-bold text-white/10 select-none">
+                    {project.title[0]}
+                  </span>
+                </div>
+              ) : project.image ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={project.image}

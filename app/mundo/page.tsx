@@ -134,6 +134,7 @@ const NAME_ISO: Record<string, string> = {
   Kazakhstan: 'KZ', Georgia: 'GE', Japan: 'JP', Peru: 'PE', Bolivia: 'BO',
   Chile: 'CL', Argentina: 'AR', Mongolia: 'MN', Kyrgyzstan: 'KG',
   'Faroe Islands': 'FO', Iceland: 'IS', Yemen: 'YE', Tanzania: 'TZ',
+  Spain: 'ES',
 };
 
 const NAME_FLAG: Record<string, string> = {
