@@ -35,7 +35,7 @@ export default function CompanyLogos() {
               <img
                 src={`${BASE}${c.logo}`}
                 alt={c.company}
-                className="h-9 md:h-11 w-auto object-contain grayscale opacity-70 transition-all duration-200 hover:grayscale-0 hover:opacity-100"
+                className="h-9 md:h-11 w-auto object-contain grayscale transition-all duration-200 hover:grayscale-0"
               />
             );
             return c.website ? (
