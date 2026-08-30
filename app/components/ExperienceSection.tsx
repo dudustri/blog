@@ -2,22 +2,23 @@
 
 import { useState, useEffect } from "react";
 import DetailModal, { type Detail } from "./DetailModal";
-import type { Experience } from "@/app/data/resume";
+import { jobHasTech, type Experience } from "@/app/data/resume";
 
 const BLUE = "#3e6b89";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// Hard match against the job's curated `stack` (hardcoded in content/resume.json),
-// instead of grepping the free-text description.
-function matchesTech(job: Experience, tech: string): boolean {
-  return job.stack?.includes(tech) ?? false;
+// A job matches when no tech is selected, or when it uses any of the selected
+// ones (union). `jobHasTech` handles coupled labels like "C / C++".
+function jobMatches(job: Experience, activeTechs: string[]): boolean {
+  return activeTechs.length === 0 || activeTechs.some((t) => jobHasTech(job.stack, t));
 }
 
 // Maps an Experience record to the generic Detail the shared popup renders.
-function jobToDetail(job: Experience, activeTech: string | null): Detail {
+function jobToDetail(job: Experience, activeTechs: string[]): Detail {
   return {
     title: job.company,
     subtitle: job.title,
+    impact: job.impact,
     meta: job.period,
     logo: job.logo,
     website: job.website,
@@ -26,14 +27,14 @@ function jobToDetail(job: Experience, activeTech: string | null): Detail {
     highlights: job.highlights,
     projects: job.projects,
     stack: job.stack,
-    activeTech,
+    activeTechs,
   };
 }
 
 type Props = {
   experience: Experience[];
   selectedJob: Experience | null;
-  activeTech: string | null;
+  activeTechs: string[];
   onJobSelect: (job: Experience) => void;
   onModalClose: () => void;
 };
@@ -41,7 +42,7 @@ type Props = {
 export default function ExperienceSection({
   experience,
   selectedJob,
-  activeTech,
+  activeTechs,
   onJobSelect,
   onModalClose,
 }: Props) {
@@ -62,7 +63,8 @@ export default function ExperienceSection({
     <>
       <div className={`space-y-0${selectedJob ? " pointer-events-none select-none" : ""}`}>
         {experience.map((job) => {
-          const matched = !activeTech || matchesTech(job, activeTech);
+          const matched = jobMatches(job, activeTechs);
+          const anySelected = activeTechs.length > 0;
           return (
             <div
               key={job.id}
@@ -70,7 +72,7 @@ export default function ExperienceSection({
               className="group scroll-mt-24 cursor-pointer rounded-xl p-5 -mx-5"
               style={{
                 opacity: matched ? 1 : 0.2,
-                borderLeft: matched && activeTech ? `3px solid ${BLUE}` : "3px solid transparent",
+                borderLeft: matched && anySelected ? `3px solid ${BLUE}` : "3px solid transparent",
                 transition:
                   "opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease",
               }}
@@ -97,6 +99,11 @@ export default function ExperienceSection({
                   <p className="text-gray-500 text-sm">{job.title}</p>
                 </div>
               </div>
+              {job.impact ? (
+                <p className="text-sm font-semibold mb-1.5" style={{ color: BLUE }}>
+                  {job.impact}
+                </p>
+              ) : null}
               <p className="text-gray-600 text-sm leading-relaxed text-justify">{job.description}</p>
             </div>
           );
@@ -104,7 +111,7 @@ export default function ExperienceSection({
       </div>
 
       <DetailModal
-        detail={selectedJob ? jobToDetail(selectedJob, activeTech) : null}
+        detail={selectedJob ? jobToDetail(selectedJob, activeTechs) : null}
         onClose={onModalClose}
       />
     </>

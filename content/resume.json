@@ -1,15 +1,35 @@
 {
-  "summary": "Energy and software engineer who builds across the full stack, from C on edge devices to cloud backends. Quick to learn, and at my best where software meets the physical world.",
+  "tagline": "Software and energy engineer, at my best where software meets the physical world.",
+  "summary": "At home handling backend and frontend services, firmware on edge and IoT devices, plus the networks and DevOps infrastructure behind them. Comfortable owning the whole path from device to cloud, through build, deploy, maintenance, monitoring. Quick to learn, deeply curious, energized by hard problems and strong teammates. Above all, motivated by work with real purpose, something worth being proud to build.",
   "techStack": [
-    "C", "C++", "Java", "C#",
+    "C / C++",
+    "Java",
+    "C#",
     "Python",
-    "SQL", "NoSQL", "ORMs",
-    "TypeScript", "Node",
-    "Golang", "Rust",
-    "Git", "GitHub Actions",
-    "Docker", "Kubernetes",
-    "Linux", "Bash", "Make",
-    "CI/CD", "AWS", "GCP"
+    "SQL",
+    "NoSQL",
+    "PostgreSQL",
+    "MongoDB",
+    "React",
+    "TypeScript",
+    "Node",
+    "REST",
+    "GraphQL",
+    "gRPC",
+    "Golang",
+    "Rust",
+    "Git",
+    "GitHub Actions",
+    "Docker",
+    "Kubernetes",
+    "Nginx",
+    "Linux",
+    "Bash",
+    "Make",
+    "CI/CD",
+    "AWS",
+    "GCP",
+    "Azure"
   ],
   "education": [
     {
@@ -19,18 +39,78 @@
       "description": "Individual specialization track focusing on distributed systems, operating systems, and DevOps.",
       "gradeScale": "Danish 7-point scale (12 highest, 02 the minimum pass).",
       "courses": [
-        { "name": "Introductory Programming", "summary": "An introduction to programming covering imperative and object oriented programming, variables, control flow, functions, data structures and basic problem solving.", "hours": "15 ECTS", "grade": "10" },
-        { "name": "Algorithms and Data Structures", "summary": "Core data structures such as lists, trees, hash tables and graphs, the main algorithms over them, and the analysis of correctness and running time.", "hours": "7.5 ECTS", "grade": "7" },
-        { "name": "Discrete Mathematics", "summary": "The logic, set theory, combinatorics, relations, graph theory and proof techniques that underpin computer science.", "hours": "7.5 ECTS", "grade": "10" },
-        { "name": "Introduction to Database Systems", "summary": "Relational data modelling, the relational model and SQL, normalization, and the basics of how a database system stores and queries data.", "hours": "7.5 ECTS", "grade": "7" },
-        { "name": "Software Engineering", "summary": "The methods and practices of building software in teams, from requirements and design through testing and quality assurance.", "hours": "7.5 ECTS", "grade": "10" },
-        { "name": "Feasibility of a Swarm Robotics Approach to Container Shipping", "summary": "A project investigating whether a swarm robotics approach could be applied to container shipping logistics, including modelling and evaluation.", "hours": "7.5 ECTS", "grade": "12" },
-        { "name": "Operating Systems and C", "summary": "How operating systems work, covering processes and threads, scheduling, memory management and concurrency, with low level systems programming in C.", "hours": "7.5 ECTS", "grade": "7" },
-        { "name": "Practical Concurrent and Parallel Programming", "summary": "Writing correct concurrent and parallel programs, covering threads, locks and synchronization, data races, and parallel performance in practice.", "hours": "7.5 ECTS", "grade": "12" },
-        { "name": "Distributed Systems", "summary": "The design of distributed systems, covering communication, time and ordering, consistency and replication, consensus and fault tolerance.", "hours": "7.5 ECTS", "grade": "10" },
-        { "name": "Functional Programming", "summary": "Programming in a functional style with immutable data, recursion, higher order functions, algebraic data types and pattern matching.", "hours": "7.5 ECTS", "grade": "10" },
-        { "name": "DevOps, Software Evolution and Software Maintenance", "summary": "Continuous integration and delivery, automation and monitoring, and the practices for evolving and maintaining software systems over time.", "hours": "7.5 ECTS", "grade": "Passed" },
-        { "name": "Thesis – Energy Consumption in Web Applications", "summary": "A master's thesis comparing the energy consumption of different languages, frameworks and related technologies in web applications, with measurement and analysis.", "hours": "30 ECTS", "grade": "12" }
+        {
+          "name": "Introductory Programming",
+          "summary": "An introduction to programming covering imperative and object oriented programming, variables, control flow, functions, data structures and basic problem solving.",
+          "hours": "15 ECTS",
+          "grade": "10"
+        },
+        {
+          "name": "Algorithms and Data Structures",
+          "summary": "Core data structures such as lists, trees, hash tables and graphs, the main algorithms over them, and the analysis of correctness and running time.",
+          "hours": "7.5 ECTS",
+          "grade": "7"
+        },
+        {
+          "name": "Discrete Mathematics",
+          "summary": "The logic, set theory, combinatorics, relations, graph theory and proof techniques that underpin computer science.",
+          "hours": "7.5 ECTS",
+          "grade": "10"
+        },
+        {
+          "name": "Introduction to Database Systems",
+          "summary": "Relational data modelling, the relational model and SQL, normalization, and the basics of how a database system stores and queries data.",
+          "hours": "7.5 ECTS",
+          "grade": "7"
+        },
+        {
+          "name": "Software Engineering",
+          "summary": "The methods and practices of building software in teams, from requirements and design through testing and quality assurance.",
+          "hours": "7.5 ECTS",
+          "grade": "10"
+        },
+        {
+          "name": "Feasibility of a Swarm Robotics Approach to Container Shipping",
+          "summary": "A project investigating whether a swarm robotics approach could be applied to container shipping logistics, including modelling and evaluation.",
+          "hours": "7.5 ECTS",
+          "grade": "12"
+        },
+        {
+          "name": "Operating Systems and C",
+          "summary": "How operating systems work, covering processes and threads, scheduling, memory management and concurrency, with low level systems programming in C.",
+          "hours": "7.5 ECTS",
+          "grade": "7"
+        },
+        {
+          "name": "Practical Concurrent and Parallel Programming",
+          "summary": "Writing correct concurrent and parallel programs, covering threads, locks and synchronization, data races, and parallel performance in practice.",
+          "hours": "7.5 ECTS",
+          "grade": "12"
+        },
+        {
+          "name": "Distributed Systems",
+          "summary": "The design of distributed systems, covering communication, time and ordering, consistency and replication, consensus and fault tolerance.",
+          "hours": "7.5 ECTS",
+          "grade": "10"
+        },
+        {
+          "name": "Functional Programming",
+          "summary": "Programming in a functional style with immutable data, recursion, higher order functions, algebraic data types and pattern matching.",
+          "hours": "7.5 ECTS",
+          "grade": "10"
+        },
+        {
+          "name": "DevOps, Software Evolution and Software Maintenance",
+          "summary": "Continuous integration and delivery, automation and monitoring, and the practices for evolving and maintaining software systems over time.",
+          "hours": "7.5 ECTS",
+          "grade": "Passed"
+        },
+        {
+          "name": "Thesis – Energy Consumption in Web Applications",
+          "summary": "A master's thesis comparing the energy consumption of different languages, frameworks and related technologies in web applications, with measurement and analysis.",
+          "hours": "30 ECTS",
+          "grade": "12"
+        }
       ]
     },
     {
@@ -40,54 +120,294 @@
       "description": "A multidisciplinary degree about the generation, conversion and use of energy, from electrical power systems and machines to thermodynamics, fluid mechanics and renewable sources, built on a strong maths and physics foundation.",
       "gradeScale": "Concept grades A to D (A excellent, B good, C regular, D fail).",
       "courses": [
-        { "name": "Statistics for Engineering", "summary": "Random variables and frequency distributions, central tendency and variability, probability and probability distributions, sampling, confidence intervals, hypothesis tests, regression and correlation.", "hours": "60 h", "grade": "B" },
-        { "name": "Introduction to Energy Engineering", "summary": "The structure and organization of the programme, the engineering education system, and the fields where energy engineering is applied.", "hours": "30 h", "grade": "B" },
-        { "name": "General Physics – Electromagnetism", "summary": "Electrostatics, electrodynamics, magnetism and electromagnetism.", "hours": "90 h", "grade": "C" },
-        { "name": "Descriptive Geometry II-A", "summary": "Graphic representation of form and position, current methods of representation, dislocations, auxiliary views and sections.", "hours": "30 h", "grade": "A" },
-        { "name": "Differential Equations II", "summary": "Ordinary and linear differential equations, Fourier series, Legendre polynomials and Bessel functions, and partial differential equations as boundary problems of classical physics.", "hours": "90 h", "grade": "B" },
-        { "name": "Technical Drawing I-A", "summary": "Fundamental drawing technique, multiple orthogonal projections, reading and choosing views, axonometric projections and conceptual drawing.", "hours": "60 h", "grade": "B" },
-        { "name": "Applied Mechanics I", "summary": "Force systems and equivalent systems, rigid body equilibrium, distributed forces and centroids, trusses and structures, internal stresses in beams, friction and moments of inertia.", "hours": "60 h", "grade": "C" },
-        { "name": "Technical Drawing II-A", "summary": "Extended orthogonal views, primary and secondary auxiliary views, sections and cuts, dimensioning and drawing standards.", "hours": "60 h", "grade": "B" },
-        { "name": "Physics IV-C", "summary": "Interference, diffraction and polarization of light, and an introduction to quantum mechanics, relativity and atomic and nuclear physics.", "hours": "90 h", "grade": "B" },
-        { "name": "Applied Mathematics II", "summary": "Fourier series and the Fourier integral, the Fourier and Laplace transforms, and vector analysis.", "hours": "90 h", "grade": "C" },
-        { "name": "Thermodynamics A", "summary": "The first and second laws, pure substances, ideal gas processes, psychrometry and thermodynamic cycles.", "hours": "90 h", "grade": "A" },
-        { "name": "Numerical Calculus", "summary": "Numerical systems, root finding, numerical linear algebra, interpolation, numerical differentiation and integration, curve fitting and numerical solutions of differential equations.", "hours": "90 h", "grade": "C" },
-        { "name": "Fuel", "summary": "Fundamentals of organic chemistry and the fossil and renewable fuel processes and their life cycle.", "hours": "60 h", "grade": "C" },
-        { "name": "Fluid Mechanics A", "summary": "Fluid statics and kinetics, the continuity and Navier-Stokes equations, ideal and viscous flow, boundary layers, laminar and turbulent flow in pipes, flow resistance and aerodynamic profiles.", "hours": "90 h", "grade": "B" },
-        { "name": "Electrical and Magnetic Materials", "summary": "Materials science fundamentals and the properties and applications of conductor, semiconductor, insulating and magnetic materials, with testing and standards.", "hours": "75 h", "grade": "B" },
-        { "name": "Fundamentals of Combustion", "summary": "Combustion and thermochemistry, chemical kinetics, conservation equations for reactive systems, premixed and diffusion laminar flames and pollutant emissions.", "hours": "45 h", "grade": "C" },
-        { "name": "Operational Research for Engineering I", "summary": "The operational research approach, modelling optimization problems, linear programming and mathematical methods to support decision-making and production analysis.", "hours": "60 h", "grade": "A" },
-        { "name": "Electric Circuits I-C", "summary": "Analysis of resistive circuits and quadrupoles and of first and second order circuits in the time domain.", "hours": "60 h", "grade": "B" },
-        { "name": "Heat and Mass Transfer I", "summary": "Steady and transient heat conduction in one and two dimensions, forced and natural convection, and radiation exchange between surfaces.", "hours": "90 h", "grade": "C" },
-        { "name": "Electric Circuits II-C", "summary": "Phasor analysis and electric power, magnetic coupling and transformers, polyphase circuits, and the Fourier and Laplace transforms applied to circuits.", "hours": "60 h", "grade": "A" },
-        { "name": "Laboratory of Electric Circuits", "summary": "Measurement concepts and equipment, simulation tools, and practical work on resistive and reactive circuits, frequency response, power measurement and transformers.", "hours": "30 h", "grade": "C" },
-        { "name": "Mechanical Measurements", "summary": "Instrumentation and error analysis for thermal, pressure, velocity, flow, electrical, rotation and other measurements, plus light, sound and vibration and data gathering.", "hours": "60 h", "grade": "B" },
-        { "name": "Wind Energy", "summary": "Wind turbines and blade aerodynamics, the mechanical and electrical systems, wind atlases and resource assessment, and the selection of turbines and design of a wind farm.", "hours": "60 h", "grade": "B" },
-        { "name": "Financial Mathematics-A", "summary": "Capitalization and discounts, fixed and variable incomes, internal rate of return, cash flow equivalence, amortization and investment analysis.", "hours": "60 h", "grade": "A" },
-        { "name": "Fundamentals of Occupational Safety Engineering", "summary": "Work accidents and risk activities such as electric shock and high voltage, industrial risks, risk management and quantification, and accident frequencies and consequences.", "hours": "30 h", "grade": "B" },
-        { "name": "Fundamentals of Nuclear Engineering", "summary": "Atomic and nuclear physics for engineers, the interaction of radiation with matter, cross sections, nuclear fission, chain reactions, criticality and reactor types.", "hours": "60 h", "grade": "B" },
-        { "name": "Power Systems Analysis", "summary": "Per unit calculation and three phase systems, modelling of generators, transformers and lines, the admittance and impedance matrices, power flow and symmetrical and asymmetrical fault analysis.", "hours": "60 h", "grade": "B" },
-        { "name": "Simulation of Energy Systems", "summary": "Modelling of pumps, heat exchangers, steam generators and steam and gas turbines, and the computer simulation and optimization of coupled energy systems.", "hours": "60 h", "grade": "A" },
-        { "name": "Electromechanical Energy Conversion II", "summary": "Magnetic circuits and transformers, energy conversion in magnetic systems, and the steady state and transient operation of DC, synchronous and induction machines.", "hours": "90 h", "grade": "B" },
-        { "name": "Solar Thermal Energy", "summary": "Solar geometry and radiation, instrumentation and estimation of solar radiation, solar collectors and panels and their efficiency, thermal storage and the design of solar heating systems.", "hours": "60 h", "grade": "A" },
-        { "name": "Occupational Hygiene and Safety-A", "summary": "Workplace hygiene and the prevention of work related illness, biological, physical, chemical and mechanical agents, air quality control and Brazilian standards.", "hours": "30 h", "grade": "C" },
-        { "name": "Energy Planning", "summary": "The structure of the energy industry, tools and concepts of energy planning, demand forecasting, supply planning for renewables and non-renewables, and operational planning of power systems.", "hours": "60 h", "grade": "B" },
-        { "name": "Electricity Transmission Systems", "summary": "Voltage selection and electrical calculation, steady state operation of transmission lines, mechanical calculations, and the fundamentals of HVDC and FACTS devices.", "hours": "60 h", "grade": "C" },
-        { "name": "Photovoltaic Solar Energy", "summary": "Semiconductors and the P-N junction, photovoltaic cells and the effects of radiation and temperature, cell and module structures and fabrication, and standard testing of modules.", "hours": "60 h", "grade": "A" },
-        { "name": "Environmental Management", "summary": "Environmental issues in the company context, cleaner production and eco-design, standards and certifications, ISO 14000 and the planning of environmental management systems.", "hours": "30 h", "grade": "C" },
-        { "name": "C Language for Engineering", "summary": "The C language, functions and control flow, data types and structures, pointers and pointer arithmetic, the standard libraries and computer interface applications.", "hours": "45 h", "grade": "B" },
-        { "name": "Systems and Signals", "summary": "Modelling and analysis of linear and sampled systems, time domain representation, Fourier, Laplace and Z transforms, filters and feedback systems.", "hours": "90 h", "grade": "B" },
-        { "name": "Electric Distribution Systems", "summary": "Distribution grid architecture and equipment, distributed generation and active grids, demand forecasting, reliability and operation, and smart grids and microgrids.", "hours": "60 h", "grade": "B" },
-        { "name": "Electric Power Production", "summary": "Electricity generation and sustainable development, hydroelectric, thermoelectric and alternative generation, and the technical and economic aspects of integrating generation with the grid.", "hours": "60 h", "grade": "B" },
-        { "name": "Electrical Installations", "summary": "Design of residential, commercial and industrial installations, lighting design, power factor, lightning protection and demand calculation.", "hours": "60 h", "grade": "B" },
-        { "name": "Fundamental Electronics I-B", "summary": "Diodes and waveform generators, field effect and junction transistors and their biasing, single and multistage amplifiers, operational amplifiers and feedback.", "hours": "60 h", "grade": "B" },
-        { "name": "Protection and Stability of Electric Power Systems", "summary": "The methodology and algorithms of power system protection, transient stability, the equal area criterion and multimachine systems.", "hours": "60 h", "grade": "C" },
-        { "name": "Air Conditioning II", "summary": "Psychrometrics, natural and mechanical ventilation, air diffusion and duct systems, cooling and heating systems, cold storage and the refrigeration cycle and equipment.", "hours": "60 h", "grade": "B" },
-        { "name": "Heat Transfer and Computational Fluid Mechanics", "summary": "An introduction to CFD, the mathematical formulation of heat exchange with phase change, the finite volume method and the simulation of diffusive and convective problems.", "hours": "60 h", "grade": "C" },
-        { "name": "Control Systems I-B", "summary": "Dynamic system identification and modelling, the fundamental problems of control, and the theory, tuning and root locus design of PID controllers.", "hours": "60 h", "grade": "C" },
-        { "name": "Energy Analysis in Buildings", "summary": "The building heat balance and its heat and mass transfer phenomena, ventilation and infiltration, thermal structure, and building energy simulation and use strategies.", "hours": "60 h", "grade": "A" },
-        { "name": "Project in Energy I to VIII", "summary": "A sequence of energy engineering project courses running through the programme.", "hours": "240 h", "grade": "A to C" },
-        { "name": "Final Project – Energy Engineering", "summary": "The capstone thesis on the demand response impact of low voltage consumers on distribution network performance, using power flow simulations stored in a database and an algorithm to compute the economic impact.", "hours": "15 h", "grade": "B" }
+        {
+          "name": "Statistics for Engineering",
+          "summary": "Random variables and frequency distributions, central tendency and variability, probability and probability distributions, sampling, confidence intervals, hypothesis tests, regression and correlation.",
+          "hours": "60 h",
+          "grade": "B"
+        },
+        {
+          "name": "Introduction to Energy Engineering",
+          "summary": "The structure and organization of the programme, the engineering education system, and the fields where energy engineering is applied.",
+          "hours": "30 h",
+          "grade": "B"
+        },
+        {
+          "name": "General Physics – Electromagnetism",
+          "summary": "Electrostatics, electrodynamics, magnetism and electromagnetism.",
+          "hours": "90 h",
+          "grade": "C"
+        },
+        {
+          "name": "Descriptive Geometry II-A",
+          "summary": "Graphic representation of form and position, current methods of representation, dislocations, auxiliary views and sections.",
+          "hours": "30 h",
+          "grade": "A"
+        },
+        {
+          "name": "Differential Equations II",
+          "summary": "Ordinary and linear differential equations, Fourier series, Legendre polynomials and Bessel functions, and partial differential equations as boundary problems of classical physics.",
+          "hours": "90 h",
+          "grade": "B"
+        },
+        {
+          "name": "Technical Drawing I-A",
+          "summary": "Fundamental drawing technique, multiple orthogonal projections, reading and choosing views, axonometric projections and conceptual drawing.",
+          "hours": "60 h",
+          "grade": "B"
+        },
+        {
+          "name": "Applied Mechanics I",
+          "summary": "Force systems and equivalent systems, rigid body equilibrium, distributed forces and centroids, trusses and structures, internal stresses in beams, friction and moments of inertia.",
+          "hours": "60 h",
+          "grade": "C"
+        },
+        {
+          "name": "Technical Drawing II-A",
+          "summary": "Extended orthogonal views, primary and secondary auxiliary views, sections and cuts, dimensioning and drawing standards.",
+          "hours": "60 h",
+          "grade": "B"
+        },
+        {
+          "name": "Physics IV-C",
+          "summary": "Interference, diffraction and polarization of light, and an introduction to quantum mechanics, relativity and atomic and nuclear physics.",
+          "hours": "90 h",
+          "grade": "B"
+        },
+        {
+          "name": "Applied Mathematics II",
+          "summary": "Fourier series and the Fourier integral, the Fourier and Laplace transforms, and vector analysis.",
+          "hours": "90 h",
+          "grade": "C"
+        },
+        {
+          "name": "Thermodynamics A",
+          "summary": "The first and second laws, pure substances, ideal gas processes, psychrometry and thermodynamic cycles.",
+          "hours": "90 h",
+          "grade": "A"
+        },
+        {
+          "name": "Numerical Calculus",
+          "summary": "Numerical systems, root finding, numerical linear algebra, interpolation, numerical differentiation and integration, curve fitting and numerical solutions of differential equations.",
+          "hours": "90 h",
+          "grade": "C"
+        },
+        {
+          "name": "Fuel",
+          "summary": "Fundamentals of organic chemistry and the fossil and renewable fuel processes and their life cycle.",
+          "hours": "60 h",
+          "grade": "C"
+        },
+        {
+          "name": "Fluid Mechanics A",
+          "summary": "Fluid statics and kinetics, the continuity and Navier-Stokes equations, ideal and viscous flow, boundary layers, laminar and turbulent flow in pipes, flow resistance and aerodynamic profiles.",
+          "hours": "90 h",
+          "grade": "B"
+        },
+        {
+          "name": "Electrical and Magnetic Materials",
+          "summary": "Materials science fundamentals and the properties and applications of conductor, semiconductor, insulating and magnetic materials, with testing and standards.",
+          "hours": "75 h",
+          "grade": "B"
+        },
+        {
+          "name": "Fundamentals of Combustion",
+          "summary": "Combustion and thermochemistry, chemical kinetics, conservation equations for reactive systems, premixed and diffusion laminar flames and pollutant emissions.",
+          "hours": "45 h",
+          "grade": "C"
+        },
+        {
+          "name": "Operational Research for Engineering I",
+          "summary": "The operational research approach, modelling optimization problems, linear programming and mathematical methods to support decision-making and production analysis.",
+          "hours": "60 h",
+          "grade": "A"
+        },
+        {
+          "name": "Electric Circuits I-C",
+          "summary": "Analysis of resistive circuits and quadrupoles and of first and second order circuits in the time domain.",
+          "hours": "60 h",
+          "grade": "B"
+        },
+        {
+          "name": "Heat and Mass Transfer I",
+          "summary": "Steady and transient heat conduction in one and two dimensions, forced and natural convection, and radiation exchange between surfaces.",
+          "hours": "90 h",
+          "grade": "C"
+        },
+        {
+          "name": "Electric Circuits II-C",
+          "summary": "Phasor analysis and electric power, magnetic coupling and transformers, polyphase circuits, and the Fourier and Laplace transforms applied to circuits.",
+          "hours": "60 h",
+          "grade": "A"
+        },
+        {
+          "name": "Laboratory of Electric Circuits",
+          "summary": "Measurement concepts and equipment, simulation tools, and practical work on resistive and reactive circuits, frequency response, power measurement and transformers.",
+          "hours": "30 h",
+          "grade": "C"
+        },
+        {
+          "name": "Mechanical Measurements",
+          "summary": "Instrumentation and error analysis for thermal, pressure, velocity, flow, electrical, rotation and other measurements, plus light, sound and vibration and data gathering.",
+          "hours": "60 h",
+          "grade": "B"
+        },
+        {
+          "name": "Wind Energy",
+          "summary": "Wind turbines and blade aerodynamics, the mechanical and electrical systems, wind atlases and resource assessment, and the selection of turbines and design of a wind farm.",
+          "hours": "60 h",
+          "grade": "B"
+        },
+        {
+          "name": "Financial Mathematics-A",
+          "summary": "Capitalization and discounts, fixed and variable incomes, internal rate of return, cash flow equivalence, amortization and investment analysis.",
+          "hours": "60 h",
+          "grade": "A"
+        },
+        {
+          "name": "Fundamentals of Occupational Safety Engineering",
+          "summary": "Work accidents and risk activities such as electric shock and high voltage, industrial risks, risk management and quantification, and accident frequencies and consequences.",
+          "hours": "30 h",
+          "grade": "B"
+        },
+        {
+          "name": "Fundamentals of Nuclear Engineering",
+          "summary": "Atomic and nuclear physics for engineers, the interaction of radiation with matter, cross sections, nuclear fission, chain reactions, criticality and reactor types.",
+          "hours": "60 h",
+          "grade": "B"
+        },
+        {
+          "name": "Power Systems Analysis",
+          "summary": "Per unit calculation and three phase systems, modelling of generators, transformers and lines, the admittance and impedance matrices, power flow and symmetrical and asymmetrical fault analysis.",
+          "hours": "60 h",
+          "grade": "B"
+        },
+        {
+          "name": "Simulation of Energy Systems",
+          "summary": "Modelling of pumps, heat exchangers, steam generators and steam and gas turbines, and the computer simulation and optimization of coupled energy systems.",
+          "hours": "60 h",
+          "grade": "A"
+        },
+        {
+          "name": "Electromechanical Energy Conversion II",
+          "summary": "Magnetic circuits and transformers, energy conversion in magnetic systems, and the steady state and transient operation of DC, synchronous and induction machines.",
+          "hours": "90 h",
+          "grade": "B"
+        },
+        {
+          "name": "Solar Thermal Energy",
+          "summary": "Solar geometry and radiation, instrumentation and estimation of solar radiation, solar collectors and panels and their efficiency, thermal storage and the design of solar heating systems.",
+          "hours": "60 h",
+          "grade": "A"
+        },
+        {
+          "name": "Occupational Hygiene and Safety-A",
+          "summary": "Workplace hygiene and the prevention of work related illness, biological, physical, chemical and mechanical agents, air quality control and Brazilian standards.",
+          "hours": "30 h",
+          "grade": "C"
+        },
+        {
+          "name": "Energy Planning",
+          "summary": "The structure of the energy industry, tools and concepts of energy planning, demand forecasting, supply planning for renewables and non-renewables, and operational planning of power systems.",
+          "hours": "60 h",
+          "grade": "B"
+        },
+        {
+          "name": "Electricity Transmission Systems",
+          "summary": "Voltage selection and electrical calculation, steady state operation of transmission lines, mechanical calculations, and the fundamentals of HVDC and FACTS devices.",
+          "hours": "60 h",
+          "grade": "C"
+        },
+        {
+          "name": "Photovoltaic Solar Energy",
+          "summary": "Semiconductors and the P-N junction, photovoltaic cells and the effects of radiation and temperature, cell and module structures and fabrication, and standard testing of modules.",
+          "hours": "60 h",
+          "grade": "A"
+        },
+        {
+          "name": "Environmental Management",
+          "summary": "Environmental issues in the company context, cleaner production and eco-design, standards and certifications, ISO 14000 and the planning of environmental management systems.",
+          "hours": "30 h",
+          "grade": "C"
+        },
+        {
+          "name": "C Language for Engineering",
+          "summary": "The C language, functions and control flow, data types and structures, pointers and pointer arithmetic, the standard libraries and computer interface applications.",
+          "hours": "45 h",
+          "grade": "B"
+        },
+        {
+          "name": "Systems and Signals",
+          "summary": "Modelling and analysis of linear and sampled systems, time domain representation, Fourier, Laplace and Z transforms, filters and feedback systems.",
+          "hours": "90 h",
+          "grade": "B"
+        },
+        {
+          "name": "Electric Distribution Systems",
+          "summary": "Distribution grid architecture and equipment, distributed generation and active grids, demand forecasting, reliability and operation, and smart grids and microgrids.",
+          "hours": "60 h",
+          "grade": "B"
+        },
+        {
+          "name": "Electric Power Production",
+          "summary": "Electricity generation and sustainable development, hydroelectric, thermoelectric and alternative generation, and the technical and economic aspects of integrating generation with the grid.",
+          "hours": "60 h",
+          "grade": "B"
+        },
+        {
+          "name": "Electrical Installations",
+          "summary": "Design of residential, commercial and industrial installations, lighting design, power factor, lightning protection and demand calculation.",
+          "hours": "60 h",
+          "grade": "B"
+        },
+        {
+          "name": "Fundamental Electronics I-B",
+          "summary": "Diodes and waveform generators, field effect and junction transistors and their biasing, single and multistage amplifiers, operational amplifiers and feedback.",
+          "hours": "60 h",
+          "grade": "B"
+        },
+        {
+          "name": "Protection and Stability of Electric Power Systems",
+          "summary": "The methodology and algorithms of power system protection, transient stability, the equal area criterion and multimachine systems.",
+          "hours": "60 h",
+          "grade": "C"
+        },
+        {
+          "name": "Air Conditioning II",
+          "summary": "Psychrometrics, natural and mechanical ventilation, air diffusion and duct systems, cooling and heating systems, cold storage and the refrigeration cycle and equipment.",
+          "hours": "60 h",
+          "grade": "B"
+        },
+        {
+          "name": "Heat Transfer and Computational Fluid Mechanics",
+          "summary": "An introduction to CFD, the mathematical formulation of heat exchange with phase change, the finite volume method and the simulation of diffusive and convective problems.",
+          "hours": "60 h",
+          "grade": "C"
+        },
+        {
+          "name": "Control Systems I-B",
+          "summary": "Dynamic system identification and modelling, the fundamental problems of control, and the theory, tuning and root locus design of PID controllers.",
+          "hours": "60 h",
+          "grade": "C"
+        },
+        {
+          "name": "Energy Analysis in Buildings",
+          "summary": "The building heat balance and its heat and mass transfer phenomena, ventilation and infiltration, thermal structure, and building energy simulation and use strategies.",
+          "hours": "60 h",
+          "grade": "A"
+        },
+        {
+          "name": "Project in Energy I to VIII",
+          "summary": "A sequence of energy engineering project courses running through the programme.",
+          "hours": "240 h",
+          "grade": "A to C"
+        },
+        {
+          "name": "Final Project – Energy Engineering",
+          "summary": "The capstone thesis on the demand response impact of low voltage consumers on distribution network performance, using power flow simulations stored in a database and an algorithm to compute the economic impact.",
+          "hours": "15 h",
+          "grade": "B"
+        }
       ]
     },
     {
@@ -97,24 +417,114 @@
       "description": "The first half of the degree, building the maths, physics, chemistry and core engineering foundations before I transferred to UFRGS.",
       "gradeScale": "Scale from 0 to 10 (6.0 the minimum pass).",
       "courses": [
-        { "name": "Calculus I", "summary": "Real numbers, inequalities and elementary functions, limits and continuity, derivatives and their applications, and definite and indefinite integrals.", "hours": "72 h", "grade": "7.5" },
-        { "name": "Calculus II", "summary": "Integration methods and applications, improper integrals, multivariable functions, partial derivatives and their applications, and multiple integrals.", "hours": "72 h", "grade": "9.5" },
-        { "name": "Analytical Geometry", "summary": "Matrices, determinants and linear systems, vectors and vector algebra, the geometry of the straight line and plane, and quadric surfaces.", "hours": "72 h", "grade": "8.0" },
-        { "name": "Linear Algebra", "summary": "Vector spaces, linear transformations and change of basis, inner products and orthogonal transformations, eigenvalues and eigenvectors, and matrix diagonalization.", "hours": "72 h", "grade": "8.5" },
-        { "name": "Calculus III", "summary": "Surface and curvilinear integrals, the Stokes and Gauss divergence theorems, first and higher order differential equations, and the Laplace transform.", "hours": "72 h", "grade": "7.0" },
-        { "name": "Physics A", "summary": "Unit systems, uniform and accelerated motion in two and three dimensions, Newton's laws, work and energy and its conservation, momentum and impulse, collisions and rotation.", "hours": "72 h", "grade": "8.0" },
-        { "name": "Physics B", "summary": "Fluid statics and dynamics, heat and temperature, the first and second laws of thermodynamics, the kinetic theory of gases, gravitation, oscillations and mechanical and acoustic waves.", "hours": "72 h", "grade": "8.5" },
-        { "name": "Physics C", "summary": "Electric charge and field, Coulomb's and Gauss's laws, potential and capacitors, current and circuits, the magnetic field, Ampere's and Faraday's laws, inductance and physical optics.", "hours": "72 h", "grade": "7.0" },
-        { "name": "General Chemistry", "summary": "Atomic structure and the periodic table, chemical bonding, solutions, stoichiometry, acids and bases, chemical kinetics and equilibrium, and electrochemistry.", "hours": "72 h", "grade": "8.5" },
-        { "name": "Computer Programming I", "summary": "Algorithms, pseudocode and flowcharts, variables and constants, input and output, control flow, data structures such as arrays and records, modularization, and a structured high level language in the lab.", "hours": "72 h", "grade": "9.5" },
-        { "name": "Introduction to Energy Engineering", "summary": "The role of the engineer in the technological and social context, the curriculum and standards, visits to labs and companies, and the design, optimization, modelling and simulation tools energy engineers use.", "hours": "72 h", "grade": "9.0" },
-        { "name": "Natural Resources for Energy", "summary": "The Brazilian and world energy panorama, energy and fuel reserves, and the technologies behind fossil fuels, biomass, biogas, wind, solar, geothermal, ocean, hydrogen and nuclear energy.", "hours": "72 h", "grade": "8.5" },
-        { "name": "Geology", "summary": "Geology and the environment, the internal structure of the Earth, plate tectonics, minerals and rocks, the geological time column, mineral deposits, and the hydrological cycle and surface processes.", "hours": "72 h", "grade": "6.5" },
-        { "name": "Fundamentals of Biotechnology", "summary": "Organic compounds and biochemistry, enzymes and fermentation, bioreactors, microbiology, and environmental and industrial biotechnology.", "hours": "72 h", "grade": "9.0" },
-        { "name": "Fundamentals of Materials", "summary": "How chemical bonds shape material properties, crystalline structures and defects, the mechanical properties and failure of metals, and the processing of metals, ceramics, plastics and composites.", "hours": "72 h", "grade": "9.5" },
-        { "name": "Renewable Energies and Sustainability", "summary": "Renewable and non-renewable resources, how natural resources are characterized and used, and new technologies for energy production such as biomass and fuels.", "hours": "72 h", "grade": "7.5" },
-        { "name": "Chemistry Lab", "summary": "Lab safety and equipment, substance purification and preparation, qualitative and quantitative chemical analysis, chemical equilibrium and thermochemistry.", "hours": "72 h", "grade": "8.0" },
-        { "name": "Thermodynamics I", "summary": "Basic concepts and thermodynamic properties, work and heat, and the first law of thermodynamics for a control volume.", "hours": "72 h", "grade": "6.5" }
+        {
+          "name": "Calculus I",
+          "summary": "Real numbers, inequalities and elementary functions, limits and continuity, derivatives and their applications, and definite and indefinite integrals.",
+          "hours": "72 h",
+          "grade": "7.5"
+        },
+        {
+          "name": "Calculus II",
+          "summary": "Integration methods and applications, improper integrals, multivariable functions, partial derivatives and their applications, and multiple integrals.",
+          "hours": "72 h",
+          "grade": "9.5"
+        },
+        {
+          "name": "Analytical Geometry",
+          "summary": "Matrices, determinants and linear systems, vectors and vector algebra, the geometry of the straight line and plane, and quadric surfaces.",
+          "hours": "72 h",
+          "grade": "8.0"
+        },
+        {
+          "name": "Linear Algebra",
+          "summary": "Vector spaces, linear transformations and change of basis, inner products and orthogonal transformations, eigenvalues and eigenvectors, and matrix diagonalization.",
+          "hours": "72 h",
+          "grade": "8.5"
+        },
+        {
+          "name": "Calculus III",
+          "summary": "Surface and curvilinear integrals, the Stokes and Gauss divergence theorems, first and higher order differential equations, and the Laplace transform.",
+          "hours": "72 h",
+          "grade": "7.0"
+        },
+        {
+          "name": "Physics A",
+          "summary": "Unit systems, uniform and accelerated motion in two and three dimensions, Newton's laws, work and energy and its conservation, momentum and impulse, collisions and rotation.",
+          "hours": "72 h",
+          "grade": "8.0"
+        },
+        {
+          "name": "Physics B",
+          "summary": "Fluid statics and dynamics, heat and temperature, the first and second laws of thermodynamics, the kinetic theory of gases, gravitation, oscillations and mechanical and acoustic waves.",
+          "hours": "72 h",
+          "grade": "8.5"
+        },
+        {
+          "name": "Physics C",
+          "summary": "Electric charge and field, Coulomb's and Gauss's laws, potential and capacitors, current and circuits, the magnetic field, Ampere's and Faraday's laws, inductance and physical optics.",
+          "hours": "72 h",
+          "grade": "7.0"
+        },
+        {
+          "name": "General Chemistry",
+          "summary": "Atomic structure and the periodic table, chemical bonding, solutions, stoichiometry, acids and bases, chemical kinetics and equilibrium, and electrochemistry.",
+          "hours": "72 h",
+          "grade": "8.5"
+        },
+        {
+          "name": "Computer Programming I",
+          "summary": "Algorithms, pseudocode and flowcharts, variables and constants, input and output, control flow, data structures such as arrays and records, modularization, and a structured high level language in the lab.",
+          "hours": "72 h",
+          "grade": "9.5"
+        },
+        {
+          "name": "Introduction to Energy Engineering",
+          "summary": "The role of the engineer in the technological and social context, the curriculum and standards, visits to labs and companies, and the design, optimization, modelling and simulation tools energy engineers use.",
+          "hours": "72 h",
+          "grade": "9.0"
+        },
+        {
+          "name": "Natural Resources for Energy",
+          "summary": "The Brazilian and world energy panorama, energy and fuel reserves, and the technologies behind fossil fuels, biomass, biogas, wind, solar, geothermal, ocean, hydrogen and nuclear energy.",
+          "hours": "72 h",
+          "grade": "8.5"
+        },
+        {
+          "name": "Geology",
+          "summary": "Geology and the environment, the internal structure of the Earth, plate tectonics, minerals and rocks, the geological time column, mineral deposits, and the hydrological cycle and surface processes.",
+          "hours": "72 h",
+          "grade": "6.5"
+        },
+        {
+          "name": "Fundamentals of Biotechnology",
+          "summary": "Organic compounds and biochemistry, enzymes and fermentation, bioreactors, microbiology, and environmental and industrial biotechnology.",
+          "hours": "72 h",
+          "grade": "9.0"
+        },
+        {
+          "name": "Fundamentals of Materials",
+          "summary": "How chemical bonds shape material properties, crystalline structures and defects, the mechanical properties and failure of metals, and the processing of metals, ceramics, plastics and composites.",
+          "hours": "72 h",
+          "grade": "9.5"
+        },
+        {
+          "name": "Renewable Energies and Sustainability",
+          "summary": "Renewable and non-renewable resources, how natural resources are characterized and used, and new technologies for energy production such as biomass and fuels.",
+          "hours": "72 h",
+          "grade": "7.5"
+        },
+        {
+          "name": "Chemistry Lab",
+          "summary": "Lab safety and equipment, substance purification and preparation, qualitative and quantitative chemical analysis, chemical equilibrium and thermochemistry.",
+          "hours": "72 h",
+          "grade": "8.0"
+        },
+        {
+          "name": "Thermodynamics I",
+          "summary": "Basic concepts and thermodynamic properties, work and heat, and the first law of thermodynamics for a control volume.",
+          "hours": "72 h",
+          "grade": "6.5"
+        }
       ]
     }
   ],
@@ -124,9 +534,10 @@
       "logo": "/company_logos/res_logo.png",
       "company": "RES Group - Digital Solutions",
       "title": "Software Engineer",
+      "impact": "Built, optimized and maintained the data acquisition backend, edge controls and industrial protocols.",
       "period": "Jun 2025 – Present",
-      "website": "https://www.res-group.com",
-      "description": "Development and maintenance of wind and solar plants data acquisition software using C, Python, and C# for backend and JS/TS for frontend, supporting devices such as turbines, inverters, and sensors, vendor-specific and industrial protocols (e.g., Siemens, Vestas, Gamesa, Modbus). Architecture and implementation of production-ready control systems such as dynamic yaw and inverter optimization. License management, high-performance decryption, and PostgreSQL/MySQL interface in C. Redis real-time data storage and fast retrieval with non-volatile persistence. CI/CD workflow, infrastructure architecture, and shell/python scripting for environment setup, edge deployment, and operations tooling.",
+      "website": "https://www.res-group.com/digital-solutions/",
+      "description": "Development and maintenance of wind and solar plants data acquisition software using C, Python, and C# for backend and JS/TS for frontend, supporting devices such as turbines, inverters, and sensors, vendor-specific and industrial protocols (e.g., Siemens, Vestas, Gamesa, Modbus). Architecture and implementation of production-ready control systems such as dynamic yaw and inverter optimization. License management, high-performance decryption, and PostgreSQL/MySQL interface in C. Redis real-time data storage and fast retrieval with non-volatile persistence. CI/CD workflow, infrastructure architecture, Nginx as the reverse proxy, and shell/python scripting for environment setup, edge deployment, and operations tooling. Structured plant data was persisted in SQL databases while NoSQL stores handled real-time caching and fast retrieval.",
       "details": "RES is the largest independent renewable energy company, and I worked in its Digital Solutions department, whose products run on a broad range of wind and solar sites. Across the data acquisition and controls teams, on the data acquisition side I worked on the backend that acquired high frequency data from field devices across many vendor and industrial protocols and stored it at the edge, where the models also ran, with the data pulled up to the central servers and to Azure when needed.\n\nMuch of that work sat behind AnemoLive and HelioLive, the wind and solar products that are mostly about data acquisition, collecting and serving high frequency plant data for predictive maintenance and better operational decisions, with AnemoLive running on thousands of turbines. On the controls side I worked on Dynamic Yaw, a software layer over the turbine controllers that improved how a whole wind farm yaws into the wind, using collective control so turbines share wind direction with their neighbours and wake steering so upstream turbines steer their wakes away from the ones behind them, for a 1 to 3% uplift in energy production while cutting yaw wear. I also worked on Optivert, an intelligent temperature management system for solar inverters that spots and mitigates overheating and can raise output by up to 20% on hot days.",
       "highlights": [
         "Maintained and extended the acquisition backend in C, Python and C#, with a JS/TS frontend, across turbines, inverters and related sensors.",
@@ -136,76 +547,178 @@
         "Built the CI/CD workflow, edge-deployment infrastructure and shell/Python operations tooling.",
         "Refactored the C blob decryption library under the hood into modular packages and built a proper interface so it could also connect to and query PostgreSQL, not just MySQL, which the new Siemens turbine StickBox required with its different database.",
         "Decoupled the license procedures into their own standalone C package.",
-        "Restructured the repository to split shared code into a common library that other projects could reuse without pulling in heavy unused dependencies, cutting the controls image size by around 70%."
+        "Restructured the repository to split shared code into a common library that other projects could reuse without pulling in heavy unused dependencies, cutting the controls image size by around 70%.",
+        "Ran across a fleet of thousands of turbines through the AnemoLive wind product."
       ],
-      "stack": ["C", "C#", "Python", "TypeScript", "Node", "SQL", "Redis", "Docker", "Azure", "CI/CD", "Bash", "Linux", "Git", "Modbus"]
+      "stack": [
+        "C",
+        "C#",
+        "Python",
+        "TypeScript",
+        "React",
+        "Node",
+        "REST",
+        "SQL",
+        "NoSQL",
+        "PostgreSQL",
+        "Redis",
+        "Docker",
+        "Nginx",
+        "Azure",
+        "CI/CD",
+        "GitHub Actions",
+        "Bash",
+        "Make",
+        "Linux",
+        "Git",
+        "Modbus"
+      ]
     },
     {
       "id": "bodil-hw-sw",
       "logo": "/company_logos/bodil_logo.jpeg",
       "company": "Bodil Energy",
       "title": "Hardware & Software Engineer",
+      "impact": "Took the BEAM prototype all the way to a shippable product that earns households income from grid balancing services.",
       "period": "Jun 2024 – Jun 2025",
       "website": "https://www.bodil.energy",
-      "description": "Responsible for transitioning the prototype and its firmware into a product. New features such as Over-the-Air (OTA) updates and Power/Energy Metering. Definition of technical requirements for hardware, firmware, and software. Hardware design coordination. Scalable data-collection multithreading system development using MQTT and Rust to handle high frequency real-time data from field devices. Service manager engine architecture design (AWS & GCP) and implementation using TypeScript, Bun, Docker and K8s to ensure responsiveness and availability to grid balance signals. IBM/Andel Flex Platform integration for FCR-D market regulation.",
+      "description": "Responsible for transitioning the prototype and its firmware into a product. New features such as Over-the-Air (OTA) updates and Power/Energy Metering. Definition of technical requirements for hardware, firmware, and software. Hardware design coordination. Scalable data-collection multithreading system development using MQTT and Rust to handle high frequency real-time data from field devices. Service manager engine architecture design (AWS & GCP) and implementation using TypeScript, Bun, Docker and K8s, with Nginx as the reverse proxy, to ensure responsiveness and availability to grid balance signals. IBM/Andel Flex Platform integration for FCR-D market regulation. Collected device and metering data was persisted across SQL and NoSQL databases according to structure and access needs.",
       "details": "Bodil is a Danish home-energy startup whose BEAM product lets households help balance the grid and earn passive income, and I worked only on the BEAM project. Building on the first-generation device, this role drove the second generation of the platform, internally Distributed System Orchestration for the Flexibility Market (BEAM v2). The focus shifted from a single device to orchestrating a responsive fleet that reacts to grid-balancing signals and bids into the flexibility markets in real time, taking the prototype all the way to a shippable product that earns households from grid services.",
       "highlights": [
         "Owned the prototype-to-product transition: defined hardware, firmware and software requirements and coordinated the hardware design.",
         "Shipped Over-the-Air (OTA) firmware updates and on-device power/energy metering.",
         "Built a scalable, multithreaded data-collection system in Rust over MQTT for high-frequency real-time field data.",
         "Architected the service-manager engine on AWS and GCP using TypeScript, Bun, Docker and Kubernetes, tuned for responsiveness and availability under grid-balancing signals.",
-        "Integrated the IBM/Andel Flex platform to participate in the FCR-D frequency-regulation market."
+        "Integrated the IBM/Andel Flex platform to participate in the FCR-D frequency-regulation market.",
+        "Delivered a product that lets households earn income by helping balance the grid."
       ],
       "projects": [
-        { "slug": "beam-v2-distributed-orchestration", "title": "Distributed System Orchestration for Flexibility Market — BEAM v2" }
+        {
+          "slug": "beam-v2-distributed-orchestration",
+          "title": "Distributed System Orchestration for Flexibility Market — BEAM v2"
+        }
       ],
-      "stack": ["Rust", "TypeScript", "Node", "Bun", "Docker", "Kubernetes", "AWS", "GCP", "MQTT", "CI/CD", "Git"]
+      "stack": [
+        "C",
+        "Rust",
+        "TypeScript",
+        "React",
+        "Node",
+        "REST",
+        "SQL",
+        "NoSQL",
+        "MongoDB",
+        "PostgreSQL",
+        "Bun",
+        "Docker",
+        "Nginx",
+        "Kubernetes",
+        "AWS",
+        "GCP",
+        "MQTT",
+        "CI/CD",
+        "GitHub Actions",
+        "Linux",
+        "Bash",
+        "Make",
+        "Git"
+      ]
     },
     {
       "id": "bodil-systems",
       "logo": "/company_logos/bodil_logo.jpeg",
       "company": "Bodil Energy",
       "title": "Systems Engineer",
+      "impact": "Delivered the first generation BEAM platform on ESP32 hardware and drove a product pivot from in loco heat pump testing.",
       "period": "Nov 2022 – Jun 2024",
       "website": "https://www.bodil.energy",
-      "description": "Firmware development using C, TypeScript and Node for API and Python for the energy simulation engine. Use of ESP32 with ESP IDF for Bluetooth, WiFi, LTE/NB-IoT, and peer-to-peer communication, alongside parsers, protocols, and machine interface. Aggregator implementation for data handling and implemented a server-side state holder to validate and manage connections between the database, simulation service, and IoT devices.",
+      "description": "Firmware development using C, TypeScript and Node for API and Python for the energy simulation engine. Use of ESP32 with ESP IDF for Bluetooth, WiFi, LTE/NB-IoT, and peer-to-peer communication, alongside parsers, protocols, and machine interface. Aggregator implementation for data handling and implemented a server-side state holder to validate and manage connections between the database, simulation service, and IoT devices. The state holder synchronized data across SQL and NoSQL databases to keep the simulation service and IoT devices consistent.",
       "details": "This role built the first generation of the BEAM platform, internally the Smart Grid Interface (BEAM v1). The first try used that smart grid interface to control heat pumps based on external signals, and I coordinated the hardware PCB design for it. We tested the reaction time empirically in loco across many different heat pump brands, and it turned out heat pumps were not suitable for the fast reactions the FCR-D signal needs, which led the project to pivot to a broader concept that no longer relied on them. Underneath it all the hard part was getting reliable telemetry and control off constrained ESP32 hardware and into a backend that could simulate and act on it.",
       "highlights": [
         "Brought up the ESP32 (ESP-IDF) connectivity stack: Bluetooth provisioning, WiFi and LTE/NB-IoT fallback, plus peer-to-peer device communication.",
         "Wrote the firmware-side parsers and machine interface, and the protocol layer framing messages between device and backend.",
         "Built the data aggregator and a server-side state holder that keep the database, the simulation service and the field devices consistent.",
-        "Stood up the Python energy-simulation engine behind a TypeScript/Node API."
+        "Stood up the Python energy-simulation engine behind a TypeScript/Node API.",
+        "Coordinated the hardware PCB design and, from in loco testing across many heat pump brands, showed they could not meet the fast grid signal, which steered the project to pivot."
       ],
       "projects": [
-        { "slug": "beam-v1-smart-grid-interface", "title": "Smart Grid Interface — BEAM v1" }
+        {
+          "slug": "beam-v1-smart-grid-interface",
+          "title": "Smart Grid Interface — BEAM v1"
+        }
       ],
-      "stack": ["C", "TypeScript", "Node", "Python", "ESP32", "ESP-IDF", "MQTT", "Git"]
+      "stack": [
+        "C",
+        "TypeScript",
+        "React",
+        "Node",
+        "REST",
+        "Docker",
+        "AWS",
+        "GCP",
+        "Kubernetes",
+        "SQL",
+        "NoSQL",
+        "PostgreSQL",
+        "Python",
+        "ESP32",
+        "ESP-IDF",
+        "MQTT",
+        "Linux",
+        "Bash",
+        "Make",
+        "Git",
+        "GitHub Actions"
+      ]
     },
     {
       "id": "numerous",
       "logo": "/company_logos/numerous_logo.jpeg",
       "company": "Numerous",
       "title": "Backend Developer",
+      "impact": "Owned the backend, CLI and pipelines for a platform that deploys apps as products.",
       "period": "Feb 2023 – Jul 2024",
       "website": "https://numerous.com",
-      "description": "Development focusing on CLI, API, backend-related code, pipeline maintenance, tests, and code quality enforcement. Docker and Kubernetes for containerization and orchestration, Python, Golang, and Typescript as languages. REST, GraphQL and gRPC APIs. Cloud services from GCP and AWS. Test-driven development (TDD).",
+      "description": "Development focusing on CLI, API, backend-related code, pipeline maintenance, tests, and code quality enforcement. Docker and Kubernetes for containerization and orchestration, Python, Golang, and Typescript as languages. REST, GraphQL and gRPC APIs. Cloud services from GCP and AWS. Test-driven development (TDD). Backend services persisted and queried data through both SQL and NoSQL databases.",
       "details": "Numerous is a web platform for turning Python apps into shareable, production-ready products without anyone having to manage infrastructure. Developers push their apps through a CLI, with support for frameworks like Streamlit, Dash, Panel, Marimo and Docker, and the platform handles the serverless deployment and scaling, user accounts and organizations with fine-grained permissions, payments and subscriptions, white-labeling, analytics and file storage. I worked on the backend across the CLI, the API and the supporting services, and owned much of the pipelines, tests and code-quality checks that kept the codebase reliable and reviewable.",
       "highlights": [
         "Wrote services in Python, Golang and TypeScript, containerized and orchestrated with Docker and Kubernetes.",
         "Built and consumed REST, GraphQL and gRPC APIs deployed on GCP and AWS.",
         "Maintained the CI/CD pipelines and enforced code-quality standards across the team.",
-        "Practised test-driven development (TDD) throughout."
+        "Practised test-driven development (TDD) throughout.",
+        "Worked across the CLI, API and services of a platform that turns developer apps into deployed products with no infrastructure to manage."
       ],
-      "stack": ["Python", "Golang", "TypeScript", "Docker", "Kubernetes", "GCP", "AWS", "REST", "GraphQL", "gRPC", "CI/CD", "Git"]
+      "stack": [
+        "Python",
+        "SQL",
+        "NoSQL",
+        "PostgreSQL",
+        "Golang",
+        "TypeScript",
+        "React",
+        "Docker",
+        "Kubernetes",
+        "GCP",
+        "AWS",
+        "REST",
+        "GraphQL",
+        "gRPC",
+        "CI/CD",
+        "GitHub Actions",
+        "Linux",
+        "Bash",
+        "Git"
+      ]
     },
     {
       "id": "novus",
       "logo": "/company_logos/novus_logo.jpg",
       "company": "Novus Automation",
       "title": "Software Developer",
+      "impact": "Shipped industrial configuration software to the app stores and validated every fix on real Novus hardware.",
       "period": "Mar 2022 – Feb 2023",
       "website": "https://www.novusautomation.com/en/",
-      "description": "Development and maintenance of configuration and monitoring software products for desktop, web and mobile using C++, Java, and Dart/Flutter. API tests using JavaScript and Postman. Scrum methodology application and software version control using Git/Gitlab and Sourcetree. MQTT and LoRaWAN applications (IoT).",
+      "description": "Development and maintenance of configuration and monitoring software products for desktop, web and mobile using C++, Java, and Dart/Flutter. API tests using JavaScript and Postman. Scrum methodology application and software version control using Git/Gitlab and Sourcetree. MQTT and LoRaWAN applications (IoT). Configuration and monitoring data was persisted and queried through SQL databases.",
       "details": "Novus builds industrial instrumentation and software, and I worked across its configuration and monitoring product line, which talks to a broad range of hardware from controllers, sensors, transmitters and data loggers to many other data acquisition and communication devices. Most of my time went to NXperience, the desktop configuration, data collection and analysis software, where I maintained and extended the C++ code with a focus on data reading and communication with Novus devices through their internal procedures and standards such as register addresses and industrial protocols, most often Modbus. I also maintained and added features to NXperience Mobile, the native Java app for configuring devices and collecting data from loggers like the LogBox over WiFi and Bluetooth, testing everything on real phones and on Android Studio emulators.\n\nI worked closely on the LoRaWAN implementation for the Telik Trafo Lite, an IoT temperature transmitter for distribution transformers, building out the packages behind its wireless communication. I also gave maintenance to the FieldLogger Configurator, the software for Novus FieldLogger dataloggers that communicates over USB, Modbus TCP and Modbus RTU, and near the end I had a quick passage in Flutter on the desktop and mobile versions of QuickTune, the configuration tool for Novus controllers and indicators. For every fix I had access to the real devices I needed, which was essential for reproducing bugs, writing tests and checking the corrections on actual hardware. I took the mobile apps through publishing to the stores and meeting all their requirements, and I did some work on customer usage metrics, collecting them into a centralized company database and defining cronjobs and SQL procedures to generate analytics.",
       "highlights": [
         "Built and maintained products with C++, Java and Dart/Flutter across desktop, web and mobile.",
@@ -214,15 +727,36 @@
         "Published the mobile apps to the app stores and met all the store requirements.",
         "Built customer usage analytics into a centralized company database, defining SQL procedures and scheduled cronjobs.",
         "Wrote API tests with JavaScript and Postman.",
-        "Worked in Scrum, using Git/GitLab and Sourcetree for version control."
+        "Worked in Scrum, using Git/GitLab and Sourcetree for version control.",
+        "Worked across the full configuration and monitoring product line, talking to controllers, sensors, transmitters and data loggers."
       ],
-      "stack": ["C++", "Java", "Dart", "Flutter", "JavaScript", "SQL", "Modbus", "LoRaWAN", "MQTT", "Bluetooth", "Git", "Scrum"]
+      "stack": [
+        "C++",
+        "Java",
+        "Dart",
+        "Flutter",
+        "JavaScript",
+        "SQL",
+        "PostgreSQL",
+        "Modbus",
+        "LoRaWAN",
+        "MQTT",
+        "Bluetooth",
+        "Linux",
+        "Bash",
+        "Make",
+        "Git",
+        "Docker",
+        "Scrum",
+        "REST"
+      ]
     },
     {
       "id": "vitta",
       "logo": "/company_logos/vitta_logo.png",
       "company": "Vitta",
       "title": "Simulation Engineer",
+      "impact": "Brought building simulation in house and authored the award winning methodology, cutting each analysis by about 85%.",
       "period": "Feb 2021 – Mar 2022",
       "website": "https://vittaresidencial.com.br",
       "description": "Computational simulation head's engineer and in charge of the internal methodology development to measure the building's energy performance.",
@@ -233,15 +767,25 @@
         "Simulated daylighting in Dialux against the weather and solar standards for each building's location.",
         "Managed acoustic validation end to end — commissioning a third-party firm's simulations and the contracts behind them, then confirming results with on-site (in loco) measurement.",
         "Led, with the data-analysis department, a Python tool that turned raw simulation output into concrete compliance data. It brought a single analysis down from six or seven hours to about one, roughly an 85% cut, and we kept refining it through the NBR 15575 revision.",
-        "Drove design changes to meet energy-efficiency, thermal-comfort and ventilation targets — orientation, colours, materials, shading, landscape resources, and window/aperture design."
+        "Drove design changes to meet energy-efficiency, thermal-comfort and ventilation targets — orientation, colours, materials, shading, landscape resources, and window/aperture design.",
+        "The methodology went on to win the company Innovation Prize."
       ],
-      "stack": ["EnergyPlus", "OpenStudio", "Revit", "Dialux", "Python", "NBR 15575", "Excel"]
+      "stack": [
+        "EnergyPlus",
+        "OpenStudio",
+        "Revit",
+        "Dialux",
+        "Python",
+        "NBR 15575",
+        "Excel"
+      ]
     },
     {
       "id": "petinelli-engineer",
       "logo": "/company_logos/petinelli_logo.png",
       "company": "Petinelli",
       "title": "Energy Engineer",
+      "impact": "Helped deliver building projects to LEED Platinum, the highest level the rating awards.",
       "period": "Jul 2019 – Dec 2020",
       "website": "https://www.petinelli.com",
       "description": "Design: HVAC, electrical, automation, photovoltaic, and lighting systems. Thermal and energy building performance analysis. Computational simulations. Technical and economical diagnosis of energy efficiency measures. Commissioning process.",
@@ -253,15 +797,28 @@
         "Balanced water-distribution networks, including pump sizing and hydraulic balance.",
         "Ran thermal and energy simulations and thermal-zone dimensioning from blueprints and floorplans (OpenStudio, EnergyPlus).",
         "Translated each efficiency, lighting and water measure into the LEED credits and documentation needed to claim them.",
-        "Developed the building commissioning plans and supported commissioning from on-site measurements cross-checked against the design documents."
+        "Developed the building commissioning plans and supported commissioning from on-site measurements cross-checked against the design documents.",
+        "Was part of the team that took several projects to LEED Platinum, the highest level the rating awards."
       ],
-      "stack": ["EnergyPlus", "OpenStudio", "Revit", "DIVA", "Dialux", "ASHRAE 90.1", "ASHRAE 62.1", "ASHRAE 55", "AutoCAD", "Excel"]
+      "stack": [
+        "EnergyPlus",
+        "OpenStudio",
+        "Revit",
+        "DIVA",
+        "Dialux",
+        "ASHRAE 90.1",
+        "ASHRAE 62.1",
+        "ASHRAE 55",
+        "AutoCAD",
+        "Excel"
+      ]
     },
     {
       "id": "petinelli-assistant",
       "logo": "/company_logos/petinelli_logo.png",
       "company": "Petinelli",
       "title": "Student Assistant",
+      "impact": "Where my energy engineering career started, supporting LEED certification and whole building energy simulation.",
       "period": "Jun 2017 – Jun 2019",
       "website": "https://www.petinelli.com",
       "description": "LEED certification process and energy conservation measures application based on design reviews. Renewable energy systems design. Technical and economic feasibility reports.",
@@ -273,14 +830,35 @@
         "Began working with whole-building energy simulation in EnergyPlus.",
         "Prepared technical and economic feasibility reports to justify proposed measures."
       ],
-      "stack": ["EnergyPlus", "OpenStudio", "Revit", "ASHRAE 90.1", "ASHRAE 62.1", "ASHRAE 55", "AutoCAD", "Excel"]
+      "stack": [
+        "EnergyPlus",
+        "OpenStudio",
+        "Revit",
+        "ASHRAE 90.1",
+        "ASHRAE 62.1",
+        "ASHRAE 55",
+        "AutoCAD",
+        "Excel"
+      ]
     }
   ],
   "languages": [
-    { "name": "Portuguese", "level": "Native" },
-    { "name": "English", "level": "Fluent" },
-    { "name": "Spanish", "level": "Elementary" },
-    { "name": "Danish", "level": "Beginner" }
+    {
+      "name": "Portuguese",
+      "level": "Native"
+    },
+    {
+      "name": "English",
+      "level": "Fluent"
+    },
+    {
+      "name": "Spanish",
+      "level": "Elementary"
+    },
+    {
+      "name": "Danish",
+      "level": "Beginner"
+    }
   ],
   "extra": [
     {
@@ -360,5 +938,7 @@
       ]
     }
   ],
-  "others": ["ASHRAE YEA, ASHRAE Student Branch, Tchê Baja Team"]
+  "others": [
+    "ASHRAE YEA, ASHRAE Student Branch, Tchê Baja Team"
+  ]
 }
