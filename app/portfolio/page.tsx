@@ -16,7 +16,7 @@ function projectGradient(slug: string) {
 
 export default function PortfolioPage() {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10">
+    <div className="max-w-6xl mx-auto px-6 py-10 select-none">
       <h1 className="text-3xl font-bold tracking-tight mb-10">Portfolio</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {projects.map((project) => (
@@ -48,7 +48,14 @@ export default function PortfolioPage() {
 
             {/* Card body */}
             <div className="p-5">
-              <h2 className="font-semibold mb-1.5 group-hover:underline">{project.title}</h2>
+              <div className="flex items-start gap-2 mb-1.5">
+                <h2 className="font-semibold group-hover:underline">{project.title}</h2>
+                {project.wip ? (
+                  <span className="flex-shrink-0 mt-0.5 text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5 rounded bg-amber-100 text-amber-700">
+                    To be done
+                  </span>
+                ) : null}
+              </div>
               <p className="text-gray-500 text-sm leading-relaxed mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-1.5">
                 {project.tech.map((t) => (

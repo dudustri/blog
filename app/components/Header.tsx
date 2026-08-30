@@ -43,7 +43,7 @@ export default function Header() {
   const isMundo = pathname.startsWith('/mundo');
 
   return (
-    <header className={`sticky top-0 z-50 border-b transition-colors ${
+    <header className={`sticky top-0 z-50 border-b transition-colors select-none ${
       isMundo ? 'border-white/10 bg-transparent backdrop-blur-sm' : 'border-gray-100 bg-white'
     }`}>
       <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
@@ -62,8 +62,8 @@ export default function Header() {
                 className={`text-sm transition-colors ${
                   active
                     ? isMundo
-                      ? 'text-white font-medium underline underline-offset-4'
-                      : 'text-black font-medium underline underline-offset-4'
+                      ? 'text-white font-medium'
+                      : 'text-black font-medium'
                     : isMundo
                       ? 'text-white/50 hover:text-white'
                       : 'text-gray-400 hover:text-black'
@@ -80,7 +80,7 @@ export default function Header() {
             aria-label="Toggle dark mode"
             aria-hidden={isMundo}
             className={`ml-1 transition-colors ${isMundo ? 'invisible' : 'text-gray-400 hover:text-black'}`}
-            style={{ fontSize: 16, lineHeight: 1, padding: "2px 0" }}
+            style={{ fontSize: 16, lineHeight: 1, padding: "2px 0", transform: "translateY(-1px)" }}
           >
             {dark ? "○" : "●"}
           </button>

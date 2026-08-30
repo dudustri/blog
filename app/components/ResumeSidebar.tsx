@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { Experience } from "@/app/data/resume";
 
 const BLUE = "#3e6b89";
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const ICON_PALETTE = [
   { bg: "#DBEAFE", fg: "#1D4ED8" },
@@ -21,12 +22,20 @@ function iconColor(name: string) {
   return ICON_PALETTE[Math.abs(h)];
 }
 
-function CompanyIcon({ company, active }: { company: string; active: boolean }) {
+function CompanyIcon({
+  company,
+  logo,
+  active,
+}: {
+  company: string;
+  logo?: string;
+  active: boolean;
+}) {
   const { bg, fg } = iconColor(company);
   return (
     <div
       style={{
-        background: bg,
+        background: logo ? "#fff" : bg,
         color: fg,
         width: active ? 16 : 0,
         height: 16,
@@ -44,7 +53,16 @@ function CompanyIcon({ company, active }: { company: string; active: boolean }) 
           "width 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease, margin-right 0.3s ease",
       }}
     >
-      {company[0]}
+      {logo ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={`${BASE}${logo}`}
+          alt={company}
+          style={{ width: 16, height: 16, objectFit: "contain" }}
+        />
+      ) : (
+        company[0]
+      )}
     </div>
   );
 }
@@ -78,11 +96,14 @@ type Props = {
 
 export default function ResumeSidebar({ experience, clickedJobId, onJobClick }: Props) {
   const [visibleIds, setVisibleIds] = useState<Set<string>>(new Set());
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [topOffset, setTopOffset] = useState(24);
 
   const scrollActiveId = experience.find((j) => visibleIds.has(j.id))?.id ?? "";
-  const activeId = clickedJobId || scrollActiveId;
+  // Hovering a timeline entry expands it as if we were in that position; on
+  // leave it falls back to the click/scroll-tracked entry.
+  const activeId = hoveredId ?? (clickedJobId || scrollActiveId);
 
   useEffect(() => {
     const recalc = () => {
@@ -159,7 +180,11 @@ export default function ResumeSidebar({ experience, clickedJobId, onJobClick }: 
                 alignItems: "center",
                 paddingBottom: isLast ? 4 : 36,
                 paddingTop: idx === 0 ? 0 : 0,
+                transform: active ? "translateX(2px)" : "translateX(0)",
+                transition: "transform 0.35s cubic-bezier(0.34,1.56,0.64,1)",
               }}
+              onMouseEnter={() => setHoveredId(job.id)}
+              onMouseLeave={() => setHoveredId(null)}
               onClick={() => handleJobClick(job)}
             >
               {/* Dot — centered in the column, above the absolute line */}
@@ -180,7 +205,7 @@ export default function ResumeSidebar({ experience, clickedJobId, onJobClick }: 
               <div style={{ flex: 1, minWidth: 0 }}>
                 {/* Icon + company name on the same row */}
                 <div style={{ display: "flex", alignItems: "center" }}>
-                  <CompanyIcon company={job.company} active={active} />
+                  <CompanyIcon company={job.company} logo={job.logo} active={active} />
                   <p
                     style={{
                       fontSize: 11,
