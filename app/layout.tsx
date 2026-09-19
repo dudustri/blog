@@ -14,9 +14,17 @@ export const metadata: Metadata = {
   },
 };
 
+// Applies the saved theme before first paint, so dark mode doesn't flash white
+// on load. Runs inline in <head>, ahead of React; Header keeps it in sync after.
+const themeScript = `try{if(localStorage.getItem("theme")==="dark")document.documentElement.classList.add("dark")}catch(e){}`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    // The script above may add "dark" before hydration, so the class can differ from the server HTML.
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className={`${inter.className} antialiased bg-white text-black flex flex-col min-h-screen`}>
         <Header />
         <main className="flex-1 flex flex-col">{children}</main>
