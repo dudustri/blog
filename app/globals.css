@@ -87,6 +87,19 @@ html.dark .citation-quote       { color: #e5e5e5; }
 html.dark .citation-translation { color: #999; }
 html.dark .citation-source      { color: #777; }
 
+/* Blog section break ("---" in a post) — centered dots. */
+.section-break {
+  width: 6px;
+  height: 6px;
+  margin: 3rem auto !important;
+  border: none;
+  border-radius: 50%;
+  background: #3e6b89;
+  box-shadow: -22px 0 0 #3e6b89, 22px 0 0 #3e6b89;
+  opacity: 0.6;
+  overflow: visible;
+}
+
 /* Clickable resume cards (Education, Extra) — open a detail popup. */
 .resume-card {
   cursor: pointer;
