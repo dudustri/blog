@@ -28,6 +28,7 @@ function renderInline(text: string) {
 //   ## Subheading    → <h3>
 //   ##effect src     → image with a named effect, e.g. "##fade /images/suspdog2.jpg"
 //   ![alt](src)      → inline image
+//   > quote          → centered citation (see below)
 //   anything else    → paragraph (supports inline **bold**)
 function renderContent(content: string) {
   return content.split("\n\n").map((block, i) => {
@@ -95,6 +96,33 @@ function renderContent(content: string) {
           className="w-full rounded-xl object-cover my-8"
           style={{ maxHeight: 600, objectPosition }}
         />
+      );
+    }
+
+    // Citation: every line of the block starts with ">" (lines joined by \n).
+    //   first line   → the quote itself
+    //   next lines   → secondary lines, e.g. a translation
+    //   "> -- Name"  → attribution
+    const lines = trimmed.split("\n").map((l) => l.trim());
+    if (lines.every((l) => l.startsWith(">"))) {
+      const body = lines.map((l) => l.replace(/^>\s?/, "")).filter(Boolean);
+      const attribution = body.find((l) => l.startsWith("-- "))?.slice(3);
+      // Translation lines and attribution are optional; the quote is not.
+      const [quote, ...rest] = body.filter((l) => !l.startsWith("-- "));
+      if (quote) return (
+        <figure key={i} className="citation">
+          <blockquote>
+            <p className="citation-quote">{renderInline(quote)}</p>
+            {rest.map((line, j) => (
+              <p key={j} className="citation-translation">
+                {renderInline(line)}
+              </p>
+            ))}
+          </blockquote>
+          {attribution && (
+            <figcaption className="citation-source">{attribution}</figcaption>
+          )}
+        </figure>
       );
     }
 

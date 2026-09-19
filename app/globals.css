@@ -33,6 +33,60 @@ html.dark .bg-gray-50      { background-color: #222 !important; }
 html.dark .bg-gray-100     { background-color: #2a2a2a !important; }
 html.dark .divide-gray-100 > * { border-color: #2a2a2a !important; }
 
+/* Blog citation ("> " lines in a post) — centered italic pull quote. */
+.citation {
+  max-width: 38rem;
+  margin: 3rem auto !important;
+  padding: 0 1rem;
+  text-align: center;
+}
+.citation blockquote::before {
+  content: "\201C";
+  display: block;
+  height: 2.25rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 4.5rem;
+  line-height: 1;
+  color: #3e6b89;
+  opacity: 0.6;
+}
+.citation-quote {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #222;
+}
+.citation-translation {
+  position: relative;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: #6b7280;
+}
+.citation-translation::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3rem;
+  height: 1px;
+  background: #3e6b89;
+  opacity: 0.5;
+  transform: translateX(-50%);
+}
+.citation-source {
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+html.dark .citation-quote       { color: #e5e5e5; }
+html.dark .citation-translation { color: #999; }
+html.dark .citation-source      { color: #777; }
+
 /* Clickable resume cards (Education, Extra) — open a detail popup. */
 .resume-card {
   cursor: pointer;
