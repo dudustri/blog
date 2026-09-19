@@ -29,7 +29,12 @@ function renderInline(text: string) {
 //   ##effect src     → image with a named effect, e.g. "##fade /images/suspdog2.jpg"
 //   ![alt](src)      → inline image
 //   > quote          → centered citation (see below)
+//   ---              → section break (· · ·)
+//   -- Name          → sign-off, a paragraph with extra space above it
 //   anything else    → paragraph (supports inline **bold**)
+const PARAGRAPH =
+  "text-gray-700 leading-relaxed text-justify indent-8";
+
 function renderContent(content: string) {
   return content.split("\n\n").map((block, i) => {
     const trimmed = block.trim();
@@ -126,11 +131,33 @@ function renderContent(content: string) {
       );
     }
 
+    if (trimmed === "---") {
+      return <hr key={i} className="section-break" />;
+    }
+
+    if (trimmed.startsWith("-- ")) {
+      return (
+        <p key={i} className={`${PARAGRAPH} mt-10`}>
+          {renderInline(trimmed.slice(3))}
+        </p>
+      );
+    }
+
     return (
-      <p key={i} className="text-gray-700 leading-relaxed text-justify indent-8">
+      <p key={i} className={PARAGRAPH}>
         {renderInline(trimmed)}
       </p>
     );
+  });
+}
+
+// "19-09-2026" → "19 September 2026"
+function formatDate(date: string) {
+  const [day, month, year] = date.split("-");
+  return new Date(+year, +month - 1, +day).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
   });
 }
 
@@ -178,31 +205,10 @@ export default async function BlogPost({
           100% { opacity: 0; }
         }
       `}</style>
-      {/* Navigation — always at the very top */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="mb-8">
         <Link href="/blog" className="text-sm text-gray-500 hover:text-black transition-colors">
           ← Back
         </Link>
-        <div className="flex items-center gap-6 text-sm text-gray-400">
-          {prevPost && (
-            <Link
-              href={`/blog/${prevPost.slug}`}
-              className="hover:text-black transition-colors"
-              title={prevPost.title}
-            >
-              ← Prev
-            </Link>
-          )}
-          {nextPost && (
-            <Link
-              href={`/blog/${nextPost.slug}`}
-              className="hover:text-black transition-colors"
-              title={nextPost.title}
-            >
-              Next →
-            </Link>
-          )}
-        </div>
       </div>
 
       {/* Head image — full image if provided, blue banner strip otherwise */}
@@ -222,9 +228,33 @@ export default async function BlogPost({
       )}
 
       <h1 className="text-3xl font-bold tracking-tight mb-1">{post.title}</h1>
-      <p className="text-gray-400 text-sm mb-8">{post.date}</p>
+      <p className="text-gray-400 text-sm mb-8">{formatDate(post.date)}</p>
 
       <div className="space-y-4">{renderContent(post.content)}</div>
+
+      {/* Prev/next — at the end, so readers can keep going */}
+      {(prevPost || nextPost) && (
+        <nav className="flex justify-between gap-6 mt-16 pt-8 border-t border-gray-200 text-sm">
+          {prevPost ? (
+            <Link href={`/blog/${prevPost.slug}`} className="group max-w-[45%]">
+              <span className="block text-gray-400 mb-1">← Prev</span>
+              <span className="text-gray-700 group-hover:text-black transition-colors">
+                {prevPost.title}
+              </span>
+            </Link>
+          ) : (
+            <span />
+          )}
+          {nextPost && (
+            <Link href={`/blog/${nextPost.slug}`} className="group max-w-[45%] text-right">
+              <span className="block text-gray-400 mb-1">Next →</span>
+              <span className="text-gray-700 group-hover:text-black transition-colors">
+                {nextPost.title}
+              </span>
+            </Link>
+          )}
+        </nav>
+      )}
     </div>
   );
 }
