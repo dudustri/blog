@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation';
 export default function Footer() {
   const pathname = usePathname();
   const isMundo = pathname.startsWith('/mundo');
-  // Home page ends on the gravity banner, which should sit glued to the footer,
-  // so drop the usual top margin there.
+  // Home page ends on the gravity banner, which sets its own small gap above the
+  // footer, so drop the usual top margin there.
   const isHome = pathname === '/';
 
   return (

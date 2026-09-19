@@ -186,10 +186,10 @@ export default function Home() {
       </section>
 
       {/* Closing CTA banner — gravity + cursor-repelling squares (Matter.js).
-          Home page only. Extra top margin separates it from the nav cards; the
-          tiny bottom padding glues it to the footer. On touch the squares fall
+          Home page only. Extra top margin separates it from the nav cards; a
+          small bottom padding keeps it just off the footer. On touch the squares fall
           and scatter on swipe; fewer squares on narrow screens. */}
-      <section className="mt-16 pb-0 select-none">
+      <section className="mt-16 pb-12 select-none">
         <MatterBanner
           title={<>From kilowatts to Kubernetes.</>}
           subtitle="Software across energy and industrial systems, embedded devices and cloud applications."
