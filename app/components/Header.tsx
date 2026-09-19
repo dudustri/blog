@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 
 const navLinks = [
   { href: "/", label: "Home", exact: true },
@@ -14,23 +14,22 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
+// The theme lives on <html> as the "dark" class. The inline script in layout.tsx
+// applies the saved choice before paint; the toggle reads the class from there.
+const subscribeTheme = (onChange: () => void) => {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+  return () => observer.disconnect();
+};
+const isDarkTheme = () => document.documentElement.classList.contains("dark");
+
 export default function Header() {
   const pathname = usePathname();
-  const [dark, setDark] = useState(false);
+  const dark = useSyncExternalStore(subscribeTheme, isDarkTheme, () => false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  // Sync dark class on <html> and persist preference
-  useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved === "dark") {
-      setDark(true);
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
 
   const toggleDark = () => {
     const next = !dark;
-    setDark(next);
     if (next) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
