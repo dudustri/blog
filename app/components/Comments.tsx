@@ -5,8 +5,7 @@ import Script from "next/script";
 import { formatDate } from "@/app/data/blog";
 import type { Comment } from "@/app/data/comments";
 
-// the comments worker, see workers/README.md. must match the worker's name in
-// cloudflare, and this origin must be in its ALLOWED_ORIGINS
+// must match the worker name in cloudflare, see workers/README.md
 const WORKER_URL = "https://blog-comments.eduardostrindade.workers.dev";
 
 // same key as the contact form: a turnstile site key is per domain, not per form
@@ -149,8 +148,7 @@ export default function Comments({
                   <span className="text-xs text-gray-400">{formatDate(comment.date)}</span>
                 )}
               </div>
-              {/* plain text on purpose: never run a comment through the post
-                  markup renderer, and never through dangerouslySetInnerHTML */}
+              {/* plain text on purpose, never the post markup renderer */}
               <p className="text-gray-700 leading-relaxed text-sm whitespace-pre-line">
                 {comment.message}
               </p>
