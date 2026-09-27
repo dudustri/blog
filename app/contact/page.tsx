@@ -8,7 +8,7 @@ type ContactInfo = { email: string; phone: string };
 const FAKE_CODE = "banana";
 const FAKE_CONTACT: ContactInfo = { email: "nottodaybot@gmail.com", phone: "+45 12 34 56 78" };
 
-const WORKER_URL = "https://snowy-mountain-0ccb.eduardostrindade.workers.dev";
+const WORKER_URL = "https://blog-contact.eduardostrindade.workers.dev";
 const TURNSTILE_SITE_KEY = "0x4AAAAAADVl8aWps34OCYpt";
 
 const inputClass =
