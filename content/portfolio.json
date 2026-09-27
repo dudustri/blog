@@ -14,8 +14,8 @@
   },
   {
     "slug": "beam-v1-smart-grid-interface",
-    "title": "Smart Grid Interface — BEAM v1",
-    "description": "First generation of Bodil's in-home energy platform — the bridge between a constrained ESP32 device and a cloud backend that can simulate and act on its data.",
+    "title": "Smart Grid Interface - BEAM v1",
+    "description": "First generation of Bodil's in-home energy platform, the bridge between a constrained ESP32 device and a cloud backend that can simulate and act on its data.",
     "tech": [
       "C",
       "ESP32",
@@ -31,8 +31,8 @@
   },
   {
     "slug": "beam-v2-distributed-orchestration",
-    "title": "Distributed System Orchestration for Flexibility Market — BEAM v2",
-    "description": "Second generation of Bodil's platform — taking the device from prototype to product and orchestrating a fleet that bids into grid-balancing (FCR-D) in real time.",
+    "title": "Distributed System Orchestration for Flexibility Market - BEAM v2",
+    "description": "Second generation of Bodil's platform, taking the device from prototype to product and orchestrating a fleet that bids into grid-balancing (FCR-D) in real time.",
     "tech": [
       "Rust",
       "TypeScript",

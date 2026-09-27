@@ -1,20 +1,19 @@
 /**
- * Import a Strava bulk export → content/activities.json
+ * import a Strava bulk export → content/activities.json
  *
- * Strava's API now requires a paid subscription, so instead we use the free
- * bulk export:
+ * Strava API now needs a paid subscription, so we use the free bulk export:
  *   Strava → Settings → My Account → "Download or Delete Your Account" →
- *   Get Started → "Request your archive". Strava emails you a ZIP; unzip it and
+ *   Get Started → "Request your archive". Strava emails a ZIP, unzip it and
  *   point this script at the `activities.csv` inside.
  *
- * Run:
+ * run:
  *   bun run scripts/import-strava-export.ts path/to/activities.csv
  *   # or: bun run import:strava path/to/activities.csv
  *
- * The CSV layout varies by account/locale and even has DUPLICATE column names
- * (e.g. two "Distance" columns — the first in km/mi, the later in metres). This
- * maps columns by name and makes best-effort guesses, printing the columns it
- * picked so you can sanity-check. If a field looks wrong, paste me the header
+ * CSV layout varies by account/locale and even has DUPLICATE column names
+ * (e.g. two "Distance" columns, first in km/mi, later in metres). this maps
+ * columns by name and makes best-effort guesses, printing the columns it
+ * picked so you can sanity-check. if a field looks wrong, paste me the header
  * line of your CSV and I'll lock the mappings.
  */
 
@@ -115,7 +114,7 @@ const pad = (n: number) => n.toString().padStart(2, "0");
 function toISODate(s: string): string {
   const d = new Date(s);
   if (Number.isNaN(+d)) return s.slice(0, 10);
-  // Strava export dates are in the athlete's local time → keep the wall date.
+  // Strava export dates are in the athlete's local time → keep the wall date
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 const num = (s: string | undefined) => {
@@ -133,7 +132,7 @@ const activities = rows
       id: `s-${(at(r, iId) ?? "").trim()}`,
       name: (at(r, iName) ?? "").trim(),
       // "Trail Run" → "TrailRun", "Weight Training" → "WeightTraining" so it
-      // matches the type→category map in app/data/activities.ts.
+      // matches the type→category map in app/data/activities.ts
       type: (at(r, iType) ?? "").trim().replace(/\s+/g, ""),
       distanceKm: Math.round((distM / 1000) * 10) / 10,
       movingTimeSec: Math.round(num(at(r, iMovingTime))),
@@ -147,7 +146,7 @@ const activities = rows
 
 await writeFile(OUT, JSON.stringify(activities, null, 2) + "\n");
 
-// Stamp the generation date so the page can show "last updated".
+// stamp generation date so the page can show "last updated"
 const generatedAt = new Date().toISOString().slice(0, 10);
 await writeFile(META_OUT, JSON.stringify({ generatedAt }, null, 2) + "\n");
 

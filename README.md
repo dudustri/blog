@@ -1,6 +1,6 @@
-# eduardo-blog
+# Eduardo's website
 
-Personal blog and portfolio — built with Next.js, Tailwind CSS, and Bun.
+Personal blog, activities tracker, travelling goals, resume and portfolio.
 
 ## Dev
 
@@ -18,5 +18,10 @@ bun build
 ## Stack
 
 - Next.js 16 (App Router, static export)
+- React 19, TypeScript 5
 - Tailwind CSS v4
 - Bun
+- three.js + three-globe
+- Matter.js
+- Cloudflare Workers
+- GitHub Page/Actions

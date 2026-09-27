@@ -1,7 +1,7 @@
 import MatterBackground from "./MatterBackground";
 
-// CTA banner with the gravity/cursor-repel square physics behind a centered
-// title, subtitle and call to action.
+// CTA banner with gravity/cursor-repel square physics behind a centered
+// title, subtitle and call to action
 
 export default function MatterBanner({
   title,
@@ -18,7 +18,7 @@ export default function MatterBanner({
     <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-50">
       <MatterBackground />
 
-      {/* Foreground content sits above the squares */}
+      {/* foreground content sits above the squares */}
       <div className="relative z-10 px-6 py-16 md:py-20 text-center pointer-events-none">
         <h2 className="text-2xl md:text-4xl font-bold tracking-tight">{title}</h2>
         {subtitle && (

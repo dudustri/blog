@@ -9,8 +9,8 @@ import { experience, education } from "@/app/data/resume";
 import { countries } from "@/app/data/mundo";
 import { activities, statsFor } from "@/app/data/activities";
 
-// Live micro-stats pulled from the same data the individual pages use, so each
-// card shows one real number instead of an empty arrow.
+// live micro-stats from the same data the individual pages use, so each card
+// shows one real number instead of an empty arrow
 const companyCount = new Set(experience.map((e) => e.company)).size;
 const degreeCount = new Set(education.map((e) => e.degree)).size;
 const activityCount = statsFor(activities).count;
@@ -45,8 +45,8 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  // While the photo note is open, any click elsewhere dismisses it. The photo's
-  // own click stops propagation so it toggles instead of instantly closing.
+  // while the photo note is open, any click elsewhere dismisses it. photo's
+  // own click stops propagation so it toggles instead of instantly closing
   useEffect(() => {
     if (!photoToast) return;
     const close = () => setPhotoToast(false);
@@ -60,7 +60,7 @@ export default function Home() {
 
   return (
     <div className="max-w-6xl mx-auto px-6 relative">
-      {/* Hero */}
+      {/* hero */}
       <section className="pt-16 pb-14 select-none">
         <div className="flex flex-row items-start gap-5 md:gap-10">
         <div className="flex-1 min-w-0">
@@ -78,7 +78,7 @@ export default function Home() {
           <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6 md:whitespace-nowrap">
             Eduardo Sfreddo Trindade
           </h1>
-          {/* Desktop: bio + links live in the text column beside the photo */}
+          {/* desktop: bio + links live in the text column beside the photo */}
           <p className="hidden md:block text-gray-500 leading-relaxed max-w-sm text-[15px]">
             {bio}
           </p>
@@ -97,7 +97,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Avatar */}
+        {/* avatar */}
         <div className="relative flex-shrink-0 md:-ml-10 md:mt-6">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -107,7 +107,7 @@ export default function Home() {
             onClick={(e) => { e.stopPropagation(); setPhotoToast((v) => !v); }}
           />
 
-          {/* Photo toast — top-right of the photo */}
+          {/* photo toast, top-right of the photo */}
           {photoToast && (
             <div className="absolute z-50 bg-black text-white text-xs px-4 py-3 rounded-xl shadow-lg leading-relaxed top-full right-0 mt-3 w-[min(20rem,80vw)] md:top-1/2 md:right-auto md:left-full md:mt-0 md:ml-3 md:-translate-y-1/2 md:w-56">
               Nej, this is not AI generated (:
@@ -130,7 +130,7 @@ export default function Home() {
         </div>
         </div>
 
-        {/* Mobile: bio spans full width, links centered on screen */}
+        {/* mobile: bio spans full width, links centered on screen */}
         <p className="md:hidden text-gray-500 leading-relaxed text-[15px] mt-6">
           {bio}
         </p>
@@ -149,7 +149,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Nav cards */}
+      {/* nav cards */}
       <section className="pb-20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {cards.map((card) => (
@@ -185,7 +185,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Closing CTA banner — gravity + cursor-repelling squares (Matter.js).
+      {/* closing CTA banner, gravity + cursor-repelling squares (Matter.js).
           Home page only. Extra top margin separates it from the nav cards; a
           small bottom padding keeps it just off the footer. On touch the squares fall
           and scatter on swipe; fewer squares on narrow screens. */}

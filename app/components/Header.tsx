@@ -14,8 +14,8 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-// The theme lives on <html> as the "dark" class. The inline script in layout.tsx
-// applies the saved choice before paint; the toggle reads the class from there.
+// theme lives on <html> as "dark" class. inline script in layout.tsx applies
+// saved choice before paint, toggle reads class from there
 const subscribeTheme = (onChange: () => void) => {
   const observer = new MutationObserver(onChange);
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
@@ -50,7 +50,7 @@ export default function Header() {
           Eduardo S. Trindade
         </Link>
 
-        {/* Desktop nav */}
+        {/* desktop nav */}
         <nav className="hidden md:flex items-center gap-5">
           {navLinks.map(({ href, label, exact }) => {
             const active = exact ? pathname === href : pathname.startsWith(href);
@@ -73,7 +73,7 @@ export default function Header() {
             );
           })}
 
-          {/* Dark mode toggle — invisible placeholder on Mundo page to preserve layout */}
+          {/* dark mode toggle, invisible placeholder on Mundo page to preserve layout */}
           <button
             onClick={isMundo ? undefined : toggleDark}
             aria-label="Toggle dark mode"
@@ -85,7 +85,7 @@ export default function Header() {
           </button>
         </nav>
 
-        {/* Mobile controls — dark toggle + hamburger */}
+        {/* mobile controls, dark toggle + hamburger */}
         <div className="flex md:hidden items-center gap-4">
           {!isMundo && (
             <button
@@ -119,7 +119,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile dropdown menu */}
+      {/* mobile dropdown menu */}
       {menuOpen && (
         <nav
           className={`md:hidden border-t ${
