@@ -1,9 +1,30 @@
 import Link from "next/link";
+import { Press_Start_2P } from "next/font/google";
 import { notFound } from "next/navigation";
 import { projects } from "@/app/data/portfolio";
 import MatterBackground from "@/app/components/MatterBackground";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+// same face the ragnaduds site uses for its own title
+const pixelFont = Press_Start_2P({ subsets: ["latin"], weight: "400" });
+
+// gold with the brown/black offset shadow, lifted from that site's h1
+const PIXEL_TITLE = {
+  color: "#ffd166",
+  textShadow: "3px 3px 0 #7a3e12, 6px 6px 0 #000",
+  letterSpacing: "0.5px",
+};
+
+// renders **bold** inside a paragraph
+function renderInline(text: string) {
+  return text.split(/(\*\*.*?\*\*)/g).map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
+      return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
+}
 
 function renderContent(content: string) {
   return content.split("\n\n").map((block, i) => {
@@ -26,7 +47,7 @@ function renderContent(content: string) {
       return (
         <ul key={i} className="list-disc pl-5 space-y-1 text-gray-700 leading-relaxed">
           {block.split("\n").map((l, j) => (
-            <li key={j}>{l.slice(2)}</li>
+            <li key={j}>{renderInline(l.slice(2))}</li>
           ))}
         </ul>
       );
@@ -53,7 +74,7 @@ function renderContent(content: string) {
     }
     return (
       <p key={i} className="text-gray-700 leading-relaxed">
-        {block}
+        {renderInline(block)}
       </p>
     );
   });
@@ -68,6 +89,10 @@ export default async function ProjectPage({
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
+  // "Name - what it is" splits into the wordmark and the line under it
+  const [wordmark, ...restOfTitle] = project.title.split(" - ");
+  const tagline = restOfTitle.join(" - ");
+
   return (
     <div className="max-w-4xl mx-auto px-6 py-10">
       <Link
@@ -76,11 +101,49 @@ export default async function ProjectPage({
       >
         ← Back
       </Link>
-      {/* Matter hero: cursor-repelling squares behind the project title. */}
-      <div className="relative h-40 rounded-xl border border-gray-200 bg-gray-50 overflow-hidden mb-5 select-none">
-        <MatterBackground count={16} />
+      {/* Matter hero: cursor-repelling ragnarok cast behind the project title. */}
+      <div
+        className={`relative h-40 rounded-xl overflow-hidden mb-5 select-none ${
+          project.heroImage ? "" : "border border-gray-200 bg-gray-50"
+        }`}
+        style={
+          project.heroImage
+            ? {
+                backgroundImage: `url(${BASE}${project.heroImage})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center bottom",
+              }
+            : undefined
+        }
+      >
+        <MatterBackground
+          cast={[
+            { name: "duds", count: 1 },
+            { name: "orc", count: 3 },
+            { name: "poring", count: 20 },
+          ]}
+        />
         <div className="relative z-10 p-5 pointer-events-none">
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight">{project.title}</h1>
+          {project.heroStyle === "pixel" ? (
+            <>
+              <h1
+                className={`${pixelFont.className} uppercase text-lg md:text-2xl`}
+                style={PIXEL_TITLE}
+              >
+                {wordmark}
+              </h1>
+              {tagline ? (
+                <p
+                  className="mt-4 text-sm md:text-base font-semibold"
+                  style={{ color: "#f6ecd2", textShadow: "2px 2px 0 #000" }}
+                >
+                  {tagline}
+                </p>
+              ) : null}
+            </>
+          ) : (
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight">{project.title}</h1>
+          )}
         </div>
       </div>
       <p className="text-gray-600 mb-3">{project.description}</p>

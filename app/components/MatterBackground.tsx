@@ -2,14 +2,57 @@
 
 import { useEffect, useRef, useState } from "react";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 // physics layer of small squares: real Matter.js rigid bodies with gentle
 // gravity, cursor acts as a force field pushing nearby squares away, scaled
 // by pointer speed. runs only while on screen. drop as an absolute layer
 // inside a `position: relative` container. `count` overrides default, which
-// scales down on small screens so low-end phones do not lock up
+// scales down on small screens so low-end phones do not lock up.
+// `cast` swaps the squares for ragnarok sprites, same physics
 
 const SIZE = 32; // square edge, px
-const RADIUS = 170; // cursor repel radius, px
+const PORING_SCALE = 2; // px per cell, keeps the Poring near the square footprint
+
+// the Poring, same pixel grid and colours the ragnaduds site draws it from
+const PORING_ROWS = [
+  "....kkkkkk....", "..kkppppppkk..", ".kppppppplllk.", ".kpppppppllppk",
+  "kppppppppppppk", "kppekppppekppk", "kppekppppekppk", "kpppppprrppppk",
+  "kppppppppppppk", ".kpppppppppppk", "..kkkkkkkkkkk.",
+];
+const PORING_PALETTE: Record<string, string> = {
+  k: "#2a1420", p: "#ff8fb1", l: "#ffd1df", e: "#1b1b1b", r: "#c23b5a",
+};
+const PORING_COLS = PORING_ROWS[0].length;
+
+function poringDataUrl(scale: number) {
+  const cv = document.createElement("canvas");
+  cv.width = PORING_COLS * scale;
+  cv.height = PORING_ROWS.length * scale;
+  const ctx = cv.getContext("2d");
+  PORING_ROWS.forEach((row, y) =>
+    [...row].forEach((cell, x) => {
+      const color = PORING_PALETTE[cell];
+      if (!ctx || !color) return;
+      ctx.fillStyle = color;
+      ctx.fillRect(x * scale, y * scale, scale, scale);
+    }),
+  );
+  return cv.toDataURL();
+}
+
+type CastSpec = { pixel: true; scale: number } | { src: string; w: number; h: number };
+
+// sprite sizes are close to the square footprint, otherwise they pile up
+// instead of spreading out along the floor
+const CAST: Record<string, CastSpec> = {
+  poring: { pixel: true, scale: PORING_SCALE },
+  duds: { src: `${BASE}/images/ragnaduds-peco-duds.png`, w: 40, h: 67 },
+  orc: { src: `${BASE}/images/ragnaduds-orc.png`, w: 36, h: 53 },
+};
+
+export type CastMember = { name: keyof typeof CAST; count: number };
+const RADIUS = 100; // cursor repel radius, px, clamped to the stage below
 const ACCEL = 0.01; // cursor push strength
 const COUNT = 60;
 
@@ -17,7 +60,15 @@ const COUNT = 60;
 const PALETTE_LIGHT = ["#e2e8f0", "#cbd5e1", "#94a3b8", "#64748b", "#3e6b89"];
 const PALETTE_DARK = ["#3a3a3a", "#474747", "#565656", "#6b6b6b", "#4d7ea0"];
 
-export default function MatterBackground({ count }: { count?: number }) {
+export default function MatterBackground({
+  count,
+  cast,
+}: {
+  count?: number;
+  cast?: CastMember[];
+}) {
+  // serialized so a fresh array literal each render does not rebuild the sim
+  const castKey = JSON.stringify(cast ?? null);
   const stageRef = useRef<HTMLDivElement>(null);
   const [dark, setDark] = useState(false);
 
@@ -50,6 +101,18 @@ export default function MatterBackground({ count }: { count?: number }) {
         ? PALETTE_DARK
         : PALETTE_LIGHT;
 
+      // one entry per body, so sizes can differ inside the same stage
+      const members: { src: string; w: number; h: number; pixel: boolean }[] = [];
+      for (const c of (JSON.parse(castKey) as CastMember[] | null) ?? []) {
+        const spec = CAST[c.name];
+        if (!spec) continue;
+        const pixel = "pixel" in spec;
+        const src = "pixel" in spec ? poringDataUrl(spec.scale) : spec.src;
+        const w = "pixel" in spec ? PORING_COLS * spec.scale : spec.w;
+        const h = "pixel" in spec ? PORING_ROWS.length * spec.scale : spec.h;
+        for (let i = 0; i < c.count; i++) members.push({ src, w, h, pixel });
+      }
+
       let W = stage.clientWidth || 900;
       let H = stage.clientHeight || 320;
 
@@ -72,23 +135,37 @@ export default function MatterBackground({ count }: { count?: number }) {
       buildWalls();
 
       // explicit count when given, otherwise scale down on small screens
-      const n = count ?? (W < 500 ? 16 : W < 900 ? 40 : COUNT);
-      const items: { el: HTMLDivElement; body: Matter.Body }[] = [];
+      const n = members.length || count || (W < 500 ? 16 : W < 900 ? 40 : COUNT);
+      const items: { el: HTMLElement; body: Matter.Body; w: number; h: number }[] = [];
       for (let i = 0; i < n; i++) {
-        const el = document.createElement("div");
-        el.className = "matter-sq";
-        el.style.background = palette[i % palette.length];
+        const m = members[i];
+        const w = m ? m.w : SIZE;
+        const h = m ? m.h : SIZE;
+        let el: HTMLElement;
+        if (m) {
+          const img = document.createElement("img");
+          img.src = m.src;
+          img.alt = "";
+          img.className = m.pixel ? "matter-sprite pixel" : "matter-sprite";
+          img.style.width = `${w}px`;
+          img.style.height = `${h}px`;
+          el = img;
+        } else {
+          el = document.createElement("div");
+          el.className = "matter-sq";
+          el.style.background = palette[i % palette.length];
+        }
         stage.appendChild(el);
-        const x = SIZE + Math.random() * Math.max(1, W - 2 * SIZE);
-        const y = SIZE + Math.random() * Math.max(1, H - 3 * SIZE);
-        const body = Bodies.rectangle(x, y, SIZE, SIZE, {
+        const x = w + Math.random() * Math.max(1, W - 2 * w);
+        const y = h + Math.random() * Math.max(1, H - 3 * h);
+        const body = Bodies.rectangle(x, y, w, h, {
           friction: 0.4,
           frictionStatic: 0.6,
           restitution: 0.05,
         });
         Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.1);
         Composite.add(engine.world, body);
-        items.push({ el, body });
+        items.push({ el, body, w, h });
       }
 
       // cursor tracked on window and mapped into stage, so squares react
@@ -115,13 +192,14 @@ export default function MatterBackground({ count }: { count?: number }) {
       Events.on(engine, "beforeUpdate", () => {
         const speed = Math.hypot(cur.vx, cur.vy);
         const sf = 0.5 + Math.min(speed * 1.2, 4);
+        const radius = Math.min(RADIUS, H * 0.6);
         if (cur.active) {
           for (const { body } of items) {
             const dx = body.position.x - cur.x;
             const dy = body.position.y - cur.y;
             const d = Math.hypot(dx, dy) || 0.001;
-            if (d < RADIUS) {
-              const f = body.mass * ACCEL * (1 - d / RADIUS) * sf;
+            if (d < radius) {
+              const f = body.mass * ACCEL * (1 - d / radius) * sf;
               Body.applyForce(body, body.position, { x: (dx / d) * f, y: (dy / d) * f });
             }
           }
@@ -131,9 +209,9 @@ export default function MatterBackground({ count }: { count?: number }) {
       });
 
       const paint = () => {
-        for (const { el, body } of items) {
-          el.style.transform = `translate(${body.position.x - SIZE / 2}px, ${
-            body.position.y - SIZE / 2
+        for (const { el, body, w, h } of items) {
+          el.style.transform = `translate(${body.position.x - w / 2}px, ${
+            body.position.y - h / 2
           }px) rotate(${body.angle}rad)`;
         }
       };
@@ -166,6 +244,19 @@ export default function MatterBackground({ count }: { count?: number }) {
       );
       io.observe(stage);
 
+      // walls move when the stage is measured late, so anything left outside
+      // gets pulled back in, otherwise it stays trapped under the new floor
+      const clampInside = () => {
+        for (const { body, w, h } of items) {
+          const x = Math.min(W - w / 2, Math.max(w / 2, body.position.x));
+          const y = Math.min(H - h / 2, Math.max(h / 2, body.position.y));
+          if (x !== body.position.x || y !== body.position.y) {
+            Body.setPosition(body, { x, y });
+            Body.setVelocity(body, { x: 0, y: 0 });
+          }
+        }
+      };
+
       const ro = new ResizeObserver(() => {
         const nw = stage.clientWidth;
         const nh = stage.clientHeight;
@@ -173,6 +264,7 @@ export default function MatterBackground({ count }: { count?: number }) {
           W = nw;
           H = nh;
           buildWalls();
+          clampInside();
         }
       });
       ro.observe(stage);
@@ -193,7 +285,7 @@ export default function MatterBackground({ count }: { count?: number }) {
       cleanup();
     };
     // rebuild sim when theme flips so palette matches
-  }, [dark, count]);
+  }, [dark, count, castKey]);
 
   return <div ref={stageRef} className="matter-stage absolute inset-0" aria-hidden="true" />;
 }

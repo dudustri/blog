@@ -77,6 +77,7 @@ interface Props {
   onCountryClick?: (name: string | null, iso: string | null) => void;
   onPickedRandom?: (pick: { name: string; iso: string | null; lat: number; lng: number; span: number }) => void;
   focusTarget?: { lat: number; lng: number } | null;
+  onReady?: () => void;
 }
 
 export default function MundoGlobe({
@@ -90,10 +91,12 @@ export default function MundoGlobe({
   onCountryClick,
   onPickedRandom,
   focusTarget,
+  onReady,
 }: Props) {
   const mountRef = useRef<HTMLDivElement>(null);
 
   const onClickRef        = useRef(onCountryClick);
+  const onReadyRef        = useRef(onReady);
   const onPickedRandomRef = useRef(onPickedRandom);
   const selectedColorRef  = useRef(selectedCountryColor);
   const isRainbowRef      = useRef(isRainbow);
@@ -115,6 +118,7 @@ export default function MundoGlobe({
   const domRectRef            = useRef<DOMRect | null>(null);
 
   useEffect(() => { onClickRef.current        = onCountryClick; });
+  useEffect(() => { onReadyRef.current        = onReady; });
   useEffect(() => { onPickedRandomRef.current = onPickedRandom; });
   useEffect(() => { selectedColorRef.current  = selectedCountryColor; });
   useEffect(() => { isRainbowRef.current      = isRainbow; });
@@ -246,6 +250,11 @@ export default function MundoGlobe({
     let mounted = true;
     let resizeCleanup: (() => void) | undefined;
     let eventsCleanup: (() => void) | undefined;
+
+    // the page waits on this, so the spinner covers the texture too
+    const earthImg = new Image();
+    earthImg.src = EARTH_IMG;
+    const textureReady = earthImg.decode().catch(() => undefined);
 
     Promise.all([
       import('three'),
@@ -389,6 +398,12 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
             renderer?.domElement?.removeEventListener('mousemove', onMouseMove);
             renderer?.domElement?.removeEventListener('click', onClick);
           };
+
+          // countries are in and the texture decoded, let the page drop its spinner
+          textureReady.then(() => {
+            if (!mounted) return;
+            requestAnimationFrame(() => mounted && onReadyRef.current?.());
+          });
         });
 
       // update cached rect and renderer/camera on any size change

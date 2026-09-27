@@ -233,6 +233,21 @@ export default function MundoPage() {
   const [pickNonce, setPickNonce]     = useState(0);
   const [openList, setOpenList]       = useState<'visited' | 'planning' | null>(null);
 
+  // globe boot: `ready` fades the loader, `loaderGone` unmounts it after the fade
+  const [ready, setReady]             = useState(false);
+  const [loaderGone, setLoaderGone]   = useState(false);
+  const handleGlobeReady = useCallback(() => setReady(true), []);
+  useEffect(() => {
+    if (!ready) return;
+    const t = setTimeout(() => setLoaderGone(true), 600);
+    return () => clearTimeout(t);
+  }, [ready]);
+  // failsafe, never leave the page trapped behind the loader if the globe fails
+  useEffect(() => {
+    const t = setTimeout(() => setReady(true), 12000);
+    return () => clearTimeout(t);
+  }, []);
+
   // game state
   const [gamePhase,   setGamePhase]   = useState<GamePhase>('idle');
   const [gameRound,   setGameRound]   = useState(0);
@@ -393,7 +408,21 @@ export default function MundoPage() {
         }}
         onPickedRandom={handlePickedRandom}
         focusTarget={focusTarget}
+        onReady={handleGlobeReady}
       />
+
+      {/* boot loader, covers the three.js setup and the earth texture decode */}
+      {!loaderGone && (
+        <div
+          className={`fixed inset-0 z-50 flex flex-col items-center justify-center gap-5 transition-opacity duration-500 ${
+            ready ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          }`}
+          style={{ background: 'radial-gradient(ellipse at center, #0d0d2b 0%, #000005 100%)' }}
+        >
+          <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/15 border-t-white/70" />
+          <p className="text-[11px] uppercase tracking-[0.2em] text-white/40">Loading the globe</p>
+        </div>
+      )}
 
       {/* continent list */}
       <nav className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-3">

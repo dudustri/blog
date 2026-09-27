@@ -41,7 +41,7 @@ export default function PortfolioPage() {
               ) : project.image ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
-                  src={project.image}
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${project.image}`}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
