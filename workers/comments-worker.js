@@ -1,6 +1,5 @@
 /**
- * opens PR adding content/comments/<post id>/<stamp>-<id>.json
- * merge to publish, close to reject. nothing hits site before that
+ * opens a PR adding content/comments/<post id>/<file>.json, merge to publish
  *
  * vars:    GITHUB_OWNER, GITHUB_REPO, GITHUB_BRANCH, ALLOWED_ORIGINS, SITE_URL
  * secrets: GITHUB_TOKEN, TURNSTILE_SECRET
@@ -106,8 +105,7 @@ async function openCommentPr(env, { post, slug, name, message, country }) {
   const id = crypto.randomUUID().slice(0, 8);
   const stamp = compactStamp(now);
 
-  // postId is the real link to the post, slug is there so a stray file is
-  // still traceable. date is DD-MM-YYYY like posts, so page reuses same formatter
+  // postId is the real link, slug only so a stray file stays traceable
   const body = {
     id,
     postId: post.id,
