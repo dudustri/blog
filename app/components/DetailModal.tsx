@@ -5,7 +5,7 @@ import Link from "next/link";
 import { chipMatchesSelected } from "@/app/data/resume";
 
 const BLUE = "#3e6b89";
-// Two-tier keyword highlight, each shade tuned per theme:
+// two-tier keyword highlight, each shade tuned per theme:
 //  - green  = tech tools and languages (what I used)
 //  - accent  = quantified impact, awards and standards (what I achieved)
 const GREEN_LIGHT = "#5c9c08";
@@ -14,7 +14,7 @@ const ACCENT_LIGHT = "#1d80c4"; // brighter azure so a single word pops against 
 const ACCENT_DARK = "#89cff0"; // baby blue
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// Tech tools and languages -> green.
+// tech tools and languages -> green
 const KEYWORDS = [
   "C++", "C#", " C ", "Java", "Python", "TypeScript", "JavaScript", "JS/TS", "React", "Node",
   "Golang", "Rust", "Docker", "Nginx", "Kubernetes", "K8s", "AWS", "GCP", "Azure",
@@ -26,11 +26,11 @@ const KEYWORDS = [
   "IoT", "HVAC", "VRF", "EnergyPlus", "OpenStudio", "Dialux", "DIVA", "Bun", "Make", "Cloud",
 ];
 
-// Awards, standards and scale words -> accent (percentages are matched by regex).
+// awards, standards and scale words -> accent (percentages matched by regex)
 const ACCENT_TERMS = ["Innovation Prize", "LEED Platinum", "NBR 15575", "ASHRAE", "FCR-D", "LEED", "thousands"];
 const PERCENT_SRC = "\\d+(?:\\s+to\\s+\\d+)?%"; // e.g. "20%", "1 to 3%"
 
-// Builds a case-insensitive regex pattern for a keyword.
+// builds a case-insensitive regex pattern for a keyword
 function buildKeywordPattern(keyword: string): string {
   const k = keyword.trim();
   const esc = k.replace(/[+#.*?()[\]{}|\\]/g, "\\$&");
@@ -45,8 +45,8 @@ function buildKeywordPattern(keyword: string): string {
 const GREEN_SET = new Set(KEYWORDS.map((k) => k.trim().toLowerCase()));
 const ACCENT_SET = new Set(ACCENT_TERMS.map((k) => k.trim().toLowerCase()));
 const PERCENT_RE = new RegExp(`^${PERCENT_SRC}$`, "i");
-// Accent patterns come first so multi-word ones (e.g. "LEED Platinum") and
-// percentages win over any shorter overlap.
+// accent patterns first so multi-word ones (e.g. "LEED Platinum") and
+// percentages win over shorter overlaps
 const HIGHLIGHT_RE = new RegExp(
   `(${[PERCENT_SRC, ...ACCENT_TERMS.map(buildKeywordPattern), ...KEYWORDS.map(buildKeywordPattern)].join("|")})`,
   "gi",
@@ -70,8 +70,8 @@ function highlightKeywords(text: string, green: string, accent: string) {
   });
 }
 
-// Single popup used across the resume: Professional Experience, Education and
-// Extra all render through this. Only the fields they pass get shown.
+// single popup for Professional Experience, Education and Extra
+// only fields they pass get shown
 export type Detail = {
   title: string;
   subtitle?: string;
@@ -110,7 +110,7 @@ export default function DetailModal({
   const green = dark ? GREEN_DARK : GREEN_LIGHT;
   const accent = dark ? ACCENT_DARK : ACCENT_LIGHT;
   const hairline = dark ? "#333" : "#ececec";
-  // Company name matches the list: strong black on light, white on dark.
+  // company name matches list: strong black on light, white on dark
   const titleColor = dark ? "#e5e5e5" : "#111111";
 
   const titleNode = detail.website ? (
@@ -260,7 +260,7 @@ export default function DetailModal({
               Tech &amp; tools used
             </p>
             <div className="flex flex-wrap gap-2">
-              {/* Always show C and C++ as a single coupled chip. */}
+              {/* always show C and C++ as a single coupled chip. */}
               {Array.from(
                 new Set(detail.stack.map((t) => (t === "C" || t === "C++" ? "C / C++" : t))),
               ).map((tech) => {

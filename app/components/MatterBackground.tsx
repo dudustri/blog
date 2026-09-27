@@ -2,18 +2,18 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Physics layer of small squares: real Matter.js rigid bodies with gentle
-// gravity, where the cursor acts as a force field pushing nearby squares away,
-// scaled by pointer speed. Runs only while on screen. Drop it as an absolute
-// layer inside a `position: relative` container. `count` overrides the default
-// (which scales down on small screens so low-end phones do not lock up).
+// physics layer of small squares: real Matter.js rigid bodies with gentle
+// gravity, cursor acts as a force field pushing nearby squares away, scaled
+// by pointer speed. runs only while on screen. drop as an absolute layer
+// inside a `position: relative` container. `count` overrides default, which
+// scales down on small screens so low-end phones do not lock up
 
 const SIZE = 32; // square edge, px
 const RADIUS = 170; // cursor repel radius, px
 const ACCEL = 0.01; // cursor push strength
 const COUNT = 60;
 
-// Visible slate greys + the brand accent, picked to read on a bg-gray-50 card.
+// visible slate greys + brand accent, picked to read on a bg-gray-50 card
 const PALETTE_LIGHT = ["#e2e8f0", "#cbd5e1", "#94a3b8", "#64748b", "#3e6b89"];
 const PALETTE_DARK = ["#3a3a3a", "#474747", "#565656", "#6b6b6b", "#4d7ea0"];
 
@@ -38,9 +38,9 @@ export default function MatterBackground({ count }: { count?: number }) {
     let disposed = false;
     let cleanup = () => {};
 
-    // matter-js is loaded lazily so it only ships with the page that uses it.
-    // It is a CommonJS/UMD module: through the bundler's interop the whole API
-    // lands under `.default`, so fall back to that before destructuring.
+    // matter-js is loaded lazily so it only ships with the page using it.
+    // CommonJS/UMD module: through bundler interop the whole API lands under
+    // `.default`, so fall back to that before destructuring
     import("matter-js").then((mod) => {
       if (disposed || !stage) return;
       const Matter = (mod as unknown as { default?: typeof mod }).default ?? mod;
@@ -71,7 +71,7 @@ export default function MatterBackground({ count }: { count?: number }) {
       };
       buildWalls();
 
-      // Explicit count when given, otherwise scale down on small screens.
+      // explicit count when given, otherwise scale down on small screens
       const n = count ?? (W < 500 ? 16 : W < 900 ? 40 : COUNT);
       const items: { el: HTMLDivElement; body: Matter.Body }[] = [];
       for (let i = 0; i < n; i++) {
@@ -91,8 +91,8 @@ export default function MatterBackground({ count }: { count?: number }) {
         items.push({ el, body });
       }
 
-      // Cursor tracked on the window and mapped into the stage, so squares react
-      // even when content sits on top of the layer.
+      // cursor tracked on window and mapped into stage, so squares react
+      // even when content sits on top of the layer
       const cur = { x: -9999, y: -9999, vx: 0, vy: 0, active: false };
       let lastPt: { x: number; y: number; t: number } | null = null;
       const onMove = (e: PointerEvent) => {
@@ -192,7 +192,7 @@ export default function MatterBackground({ count }: { count?: number }) {
       disposed = true;
       cleanup();
     };
-    // Rebuild the sim when the theme flips so the palette matches.
+    // rebuild sim when theme flips so palette matches
   }, [dark, count]);
 
   return <div ref={stageRef} className="matter-stage absolute inset-0" aria-hidden="true" />;

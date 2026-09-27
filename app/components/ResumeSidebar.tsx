@@ -101,8 +101,8 @@ export default function ResumeSidebar({ experience, clickedJobId, onJobClick }: 
   const [topOffset, setTopOffset] = useState(24);
 
   const scrollActiveId = experience.find((j) => visibleIds.has(j.id))?.id ?? "";
-  // Hovering a timeline entry expands it as if we were in that position; on
-  // leave it falls back to the click/scroll-tracked entry.
+  // hovering a timeline entry expands it as if we were in that position,
+  // on leave it falls back to the click/scroll-tracked entry
   const activeId = hoveredId ?? (clickedJobId || scrollActiveId);
 
   useEffect(() => {
@@ -152,9 +152,9 @@ export default function ResumeSidebar({ experience, clickedJobId, onJobClick }: 
         Career Timeline
       </p>
 
-      {/* Timeline entries with single absolute connecting line */}
+      {/* timeline entries with single absolute connecting line */}
       <div style={{ position: "relative" }}>
-        {/* Vertical line spanning the full list */}
+        {/* vertical line spanning the full list */}
         <div
           style={{
             position: "absolute",
@@ -187,7 +187,7 @@ export default function ResumeSidebar({ experience, clickedJobId, onJobClick }: 
               onMouseLeave={() => setHoveredId(null)}
               onClick={() => handleJobClick(job)}
             >
-              {/* Dot — centered in the column, above the absolute line */}
+              {/* dot, centered in the column, above the absolute line */}
               <div
                 style={{
                   width: COL_W,
@@ -201,9 +201,9 @@ export default function ResumeSidebar({ experience, clickedJobId, onJobClick }: 
                 <Dot active={active} />
               </div>
 
-              {/* Content */}
+              {/* content */}
               <div style={{ flex: 1, minWidth: 0 }}>
-                {/* Icon + company name on the same row */}
+                {/* icon + company name on the same row */}
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <CompanyIcon company={job.company} logo={job.logo} active={active} />
                   <p
@@ -220,7 +220,7 @@ export default function ResumeSidebar({ experience, clickedJobId, onJobClick }: 
                     {job.company}
                   </p>
                 </div>
-                {/* Period — slides in below */}
+                {/* period, slides in below */}
                 <p
                   style={{
                     fontSize: 9,

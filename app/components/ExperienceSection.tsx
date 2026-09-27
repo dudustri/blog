@@ -7,13 +7,13 @@ import { jobHasTech, type Experience } from "@/app/data/resume";
 const BLUE = "#3e6b89";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// A job matches when no tech is selected, or when it uses any of the selected
-// ones (union). `jobHasTech` handles coupled labels like "C / C++".
+// a job matches when no tech is selected, or when it uses any selected one
+// (union). `jobHasTech` handles coupled labels like "C / C++"
 function jobMatches(job: Experience, activeTechs: string[]): boolean {
   return activeTechs.length === 0 || activeTechs.some((t) => jobHasTech(job.stack, t));
 }
 
-// Maps an Experience record to the generic Detail the shared popup renders.
+// maps an Experience record to the generic Detail the shared popup renders
 function jobToDetail(job: Experience, activeTechs: string[]): Detail {
   return {
     title: job.company,
@@ -56,7 +56,7 @@ export default function ExperienceSection({
     return () => observer.disconnect();
   }, []);
 
-  // Hover: a theme-adaptive neutral overlay (darkens on light, lightens on dark), no border/ring.
+  // hover: theme-adaptive neutral overlay (darkens on light, lightens on dark), no border/ring
   const hoverBg = dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.04)";
 
   return (

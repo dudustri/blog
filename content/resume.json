@@ -35,7 +35,7 @@
     {
       "school": "IT University of Copenhagen",
       "degree": "MSc in Software Design",
-      "period": "Aug 2022 – Jan 2025",
+      "period": "Aug 2022 - Jan 2025",
       "description": "Individual specialization track focusing on distributed systems, operating systems, and DevOps.",
       "gradeScale": "Danish 7-point scale (12 highest, 02 the minimum pass).",
       "courses": [
@@ -106,7 +106,7 @@
           "grade": "Passed"
         },
         {
-          "name": "Thesis – Energy Consumption in Web Applications",
+          "name": "Thesis - Energy Consumption in Web Applications",
           "summary": "A master's thesis comparing the energy consumption of different languages, frameworks and related technologies in web applications, with measurement and analysis.",
           "hours": "30 ECTS",
           "grade": "12"
@@ -116,7 +116,7 @@
     {
       "school": "Federal University of Rio Grande do Sul",
       "degree": "BSc in Energy Engineering",
-      "period": "Jan 2014 – Aug 2019",
+      "period": "Jan 2014 - Aug 2019",
       "description": "A multidisciplinary degree about the generation, conversion and use of energy, from electrical power systems and machines to thermodynamics, fluid mechanics and renewable sources, built on a strong maths and physics foundation.",
       "gradeScale": "Concept grades A to D (A excellent, B good, C regular, D fail).",
       "courses": [
@@ -133,7 +133,7 @@
           "grade": "B"
         },
         {
-          "name": "General Physics – Electromagnetism",
+          "name": "General Physics - Electromagnetism",
           "summary": "Electrostatics, electrodynamics, magnetism and electromagnetism.",
           "hours": "90 h",
           "grade": "C"
@@ -403,7 +403,7 @@
           "grade": "A to C"
         },
         {
-          "name": "Final Project – Energy Engineering",
+          "name": "Final Project - Energy Engineering",
           "summary": "The capstone thesis on the demand response impact of low voltage consumers on distribution network performance, using power flow simulations stored in a database and an algorithm to compute the economic impact.",
           "hours": "15 h",
           "grade": "B"
@@ -413,7 +413,7 @@
     {
       "school": "Federal University of Santa Catarina",
       "degree": "BSc in Energy Engineering",
-      "period": "Jul 2012 – Dec 2013",
+      "period": "Jul 2012 - Dec 2013",
       "description": "The first half of the degree, building the maths, physics, chemistry and core engineering foundations before I transferred to UFRGS.",
       "gradeScale": "Scale from 0 to 10 (6.0 the minimum pass).",
       "courses": [
@@ -535,7 +535,7 @@
       "company": "RES Group - Digital Solutions",
       "title": "Software Engineer",
       "impact": "Built, optimized and maintained the data acquisition backend, edge controls and industrial protocols.",
-      "period": "Jun 2025 – Present",
+      "period": "Jun 2025 - Present",
       "website": "https://www.res-group.com/digital-solutions/",
       "description": "Development and maintenance of wind and solar plants data acquisition software using C, Python, and C# for backend and JS/TS for frontend, supporting devices such as turbines, inverters, and sensors, vendor-specific and industrial protocols (e.g., Siemens, Vestas, Gamesa, Modbus). Architecture and implementation of production-ready control systems such as dynamic yaw and inverter optimization. License management, high-performance decryption, and PostgreSQL/MySQL interface in C. Redis real-time data storage and fast retrieval with non-volatile persistence. CI/CD workflow, infrastructure architecture, Nginx as the reverse proxy, and shell/python scripting for environment setup, edge deployment, and operations tooling. Structured plant data was persisted in SQL databases while NoSQL stores handled real-time caching and fast retrieval.",
       "details": "RES is the largest independent renewable energy company, and I worked in its Digital Solutions department, whose products run on a broad range of wind and solar sites. Across the data acquisition and controls teams, on the data acquisition side I worked on the backend that acquired high frequency data from field devices across many vendor and industrial protocols and stored it at the edge, where the models also ran, with the data pulled up to the central servers and to Azure when needed.\n\nMuch of that work sat behind AnemoLive and HelioLive, the wind and solar products that are mostly about data acquisition, collecting and serving high frequency plant data for predictive maintenance and better operational decisions, with AnemoLive running on thousands of turbines. On the controls side I worked on Dynamic Yaw, a software layer over the turbine controllers that improved how a whole wind farm yaws into the wind, using collective control so turbines share wind direction with their neighbours and wake steering so upstream turbines steer their wakes away from the ones behind them, for a 1 to 3% uplift in energy production while cutting yaw wear. I also worked on Optivert, an intelligent temperature management system for solar inverters that spots and mitigates overheating and can raise output by up to 20% on hot days.",
@@ -580,7 +580,7 @@
       "company": "Bodil Energy",
       "title": "Hardware & Software Engineer",
       "impact": "Took the BEAM prototype all the way to a shippable product that earns households income from grid balancing services.",
-      "period": "Jun 2024 – Jun 2025",
+      "period": "Jun 2024 - Jun 2025",
       "website": "https://www.bodil.energy",
       "description": "Responsible for transitioning the prototype and its firmware into a product. New features such as Over-the-Air (OTA) updates and Power/Energy Metering. Definition of technical requirements for hardware, firmware, and software. Hardware design coordination. Scalable data-collection multithreading system development using MQTT and Rust to handle high frequency real-time data from field devices. Service manager engine architecture design (AWS & GCP) and implementation using TypeScript, Bun, Docker and K8s, with Nginx as the reverse proxy, to ensure responsiveness and availability to grid balance signals. IBM/Andel Flex Platform integration for FCR-D market regulation. Collected device and metering data was persisted across SQL and NoSQL databases according to structure and access needs.",
       "details": "Bodil is a Danish home-energy startup whose BEAM product lets households help balance the grid and earn passive income, and I worked only on the BEAM project. Building on the first-generation device, this role drove the second generation of the platform, internally Distributed System Orchestration for the Flexibility Market (BEAM v2). The focus shifted from a single device to orchestrating a responsive fleet that reacts to grid-balancing signals and bids into the flexibility markets in real time, taking the prototype all the way to a shippable product that earns households from grid services.",
@@ -595,7 +595,7 @@
       "projects": [
         {
           "slug": "beam-v2-distributed-orchestration",
-          "title": "Distributed System Orchestration for Flexibility Market — BEAM v2"
+          "title": "Distributed System Orchestration for Flexibility Market - BEAM v2"
         }
       ],
       "stack": [
@@ -630,7 +630,7 @@
       "company": "Bodil Energy",
       "title": "Systems Engineer",
       "impact": "Delivered the first generation BEAM platform on ESP32 hardware and drove a product pivot from in loco heat pump testing.",
-      "period": "Nov 2022 – Jun 2024",
+      "period": "Nov 2022 - Jun 2024",
       "website": "https://www.bodil.energy",
       "description": "Firmware development using C, TypeScript and Node for API and Python for the energy simulation engine. Use of ESP32 with ESP IDF for Bluetooth, WiFi, LTE/NB-IoT, and peer-to-peer communication, alongside parsers, protocols, and machine interface. Aggregator implementation for data handling and implemented a server-side state holder to validate and manage connections between the database, simulation service, and IoT devices. The state holder synchronized data across SQL and NoSQL databases to keep the simulation service and IoT devices consistent.",
       "details": "This role built the first generation of the BEAM platform, internally the Smart Grid Interface (BEAM v1). The first try used that smart grid interface to control heat pumps based on external signals, and I coordinated the hardware PCB design for it. We tested the reaction time empirically in loco across many different heat pump brands, and it turned out heat pumps were not suitable for the fast reactions the FCR-D signal needs, which led the project to pivot to a broader concept that no longer relied on them. Underneath it all the hard part was getting reliable telemetry and control off constrained ESP32 hardware and into a backend that could simulate and act on it.",
@@ -644,7 +644,7 @@
       "projects": [
         {
           "slug": "beam-v1-smart-grid-interface",
-          "title": "Smart Grid Interface — BEAM v1"
+          "title": "Smart Grid Interface - BEAM v1"
         }
       ],
       "stack": [
@@ -677,7 +677,7 @@
       "company": "Numerous",
       "title": "Backend Developer",
       "impact": "Owned the backend, CLI and pipelines for a platform that deploys apps as products.",
-      "period": "Feb 2023 – Jul 2024",
+      "period": "Feb 2023 - Jul 2024",
       "website": "https://numerous.com",
       "description": "Development focusing on CLI, API, backend-related code, pipeline maintenance, tests, and code quality enforcement. Docker and Kubernetes for containerization and orchestration, Python, Golang, and Typescript as languages. REST, GraphQL and gRPC APIs. Cloud services from GCP and AWS. Test-driven development (TDD). Backend services persisted and queried data through both SQL and NoSQL databases.",
       "details": "Numerous is a web platform for turning Python apps into shareable, production-ready products without anyone having to manage infrastructure. Developers push their apps through a CLI, with support for frameworks like Streamlit, Dash, Panel, Marimo and Docker, and the platform handles the serverless deployment and scaling, user accounts and organizations with fine-grained permissions, payments and subscriptions, white-labeling, analytics and file storage. I worked on the backend across the CLI, the API and the supporting services, and owned much of the pipelines, tests and code-quality checks that kept the codebase reliable and reviewable.",
@@ -716,7 +716,7 @@
       "company": "Novus Automation",
       "title": "Software Developer",
       "impact": "Shipped industrial configuration software to the app stores and validated every fix on real Novus hardware.",
-      "period": "Mar 2022 – Feb 2023",
+      "period": "Mar 2022 - Feb 2023",
       "website": "https://www.novusautomation.com/en/",
       "description": "Development and maintenance of configuration and monitoring software products for desktop, web and mobile using C++, Java, and Dart/Flutter. API tests using JavaScript and Postman. Scrum methodology application and software version control using Git/Gitlab and Sourcetree. MQTT and LoRaWAN applications (IoT). Configuration and monitoring data was persisted and queried through SQL databases.",
       "details": "Novus builds industrial instrumentation and software, and I worked across its configuration and monitoring product line, which talks to a broad range of hardware from controllers, sensors, transmitters and data loggers to many other data acquisition and communication devices. Most of my time went to NXperience, the desktop configuration, data collection and analysis software, where I maintained and extended the C++ code with a focus on data reading and communication with Novus devices through their internal procedures and standards such as register addresses and industrial protocols, most often Modbus. I also maintained and added features to NXperience Mobile, the native Java app for configuring devices and collecting data from loggers like the LogBox over WiFi and Bluetooth, testing everything on real phones and on Android Studio emulators.\n\nI worked closely on the LoRaWAN implementation for the Telik Trafo Lite, an IoT temperature transmitter for distribution transformers, building out the packages behind its wireless communication. I also gave maintenance to the FieldLogger Configurator, the software for Novus FieldLogger dataloggers that communicates over USB, Modbus TCP and Modbus RTU, and near the end I had a quick passage in Flutter on the desktop and mobile versions of QuickTune, the configuration tool for Novus controllers and indicators. For every fix I had access to the real devices I needed, which was essential for reproducing bugs, writing tests and checking the corrections on actual hardware. I took the mobile apps through publishing to the stores and meeting all their requirements, and I did some work on customer usage metrics, collecting them into a centralized company database and defining cronjobs and SQL procedures to generate analytics.",
@@ -757,17 +757,17 @@
       "company": "Vitta",
       "title": "Simulation Engineer",
       "impact": "Brought building simulation in house and authored the award winning methodology, cutting each analysis by about 85%.",
-      "period": "Feb 2021 – Mar 2022",
+      "period": "Feb 2021 - Mar 2022",
       "website": "https://vittaresidencial.com.br",
       "description": "Computational simulation head's engineer and in charge of the internal methodology development to measure the building's energy performance.",
       "details": "As the head engineer for the building simulations, I owned the internal methodology we used to measure thermal, lighting and acoustic performance, and I gave the final sign-off that each design met the Brazilian standard NBR 15575. The role went beyond confirming whether a building performed. A large part of it was making it perform. When a design fell short, I identified what to change, from the orientation, materials and colours to the shading, landscaping, windows and openings, so it could meet the energy efficiency, thermal comfort and ventilation targets. As one of the five largest residential developers in Brazil, the company had an almost endless pipeline of buildings and a substantial workload. It was also where I first used programming professionally. I built a Python tool to run the analysis, and that experience is what gave me the taste for software I have followed ever since. The methodology we developed went on to win the company's Innovation Prize.",
       "highlights": [
-        "Brought building-performance simulation in-house — work previously outsourced entirely to third parties — and authored the internal methodology spanning thermal, lighting and acoustic performance, cutting costs at scale.",
+        "Brought building-performance simulation in-house (work previously outsourced entirely to third parties) and authored the internal methodology spanning thermal, lighting and acoustic performance, cutting costs at scale.",
         "Gave the final sign-off on each design, verifying thermal performance against the Brazilian standard NBR 15575 through EnergyPlus simulation.",
         "Simulated daylighting in Dialux against the weather and solar standards for each building's location.",
-        "Managed acoustic validation end to end — commissioning a third-party firm's simulations and the contracts behind them, then confirming results with on-site (in loco) measurement.",
+        "Managed acoustic validation end to end, commissioning a third-party firm's simulations and the contracts behind them, then confirming results with on-site (in loco) measurement.",
         "Led, with the data-analysis department, a Python tool that turned raw simulation output into concrete compliance data. It brought a single analysis down from six or seven hours to about one, roughly an 85% cut, and we kept refining it through the NBR 15575 revision.",
-        "Drove design changes to meet energy-efficiency, thermal-comfort and ventilation targets — orientation, colours, materials, shading, landscape resources, and window/aperture design.",
+        "Drove design changes to meet energy-efficiency, thermal-comfort and ventilation targets through orientation, colours, materials, shading, landscape resources, and window/aperture design.",
         "The methodology went on to win the company Innovation Prize."
       ],
       "stack": [
@@ -786,12 +786,12 @@
       "company": "Petinelli",
       "title": "Energy Engineer",
       "impact": "Helped deliver building projects to LEED Platinum, the highest level the rating awards.",
-      "period": "Jul 2019 – Dec 2020",
+      "period": "Jul 2019 - Dec 2020",
       "website": "https://www.petinelli.com",
       "description": "Design: HVAC, electrical, automation, photovoltaic, and lighting systems. Thermal and energy building performance analysis. Computational simulations. Technical and economical diagnosis of energy efficiency measures. Commissioning process.",
       "details": "The projects ran across every kind of building, from commercial and residential to hotels and industrial sites. I reviewed the design of the HVAC, electrical, automation, photovoltaic, lighting and hydraulic systems, and studied how each building performed through thermoenergetic simulations grounded in the ASHRAE standards. From there I diagnosed the energy efficiency measures, looked at lighting efficiency and light pollution reduction, and prepared the documentation behind the sustainability certifications. I was part of the team that took several projects all the way to LEED Platinum, which is the highest level the rating awards. The work also ran through to commissioning, where I developed the commissioning plans for the buildings and checked the finished result against on-site measurements and the design documents.",
       "highlights": [
-        "Analyzed and compared HVAC strategies across building types and usage profiles — VRF systems, centralized chilled-water plants with chillers — and the corresponding air-quality and ventilation levels (ASHRAE 62.1).",
+        "Analyzed and compared HVAC strategies across building types and usage profiles (VRF systems, centralized chilled-water plants with chillers) and the corresponding air-quality and ventilation levels (ASHRAE 62.1).",
         "Designed photovoltaic solar systems and their inverter sizing, alongside building automation systems.",
         "Reviewed lighting for efficiency and light-pollution reduction, sizing both natural (DIVA) and artificial (Dialux) lighting.",
         "Balanced water-distribution networks, including pump sizing and hydraulic balance.",
@@ -819,7 +819,7 @@
       "company": "Petinelli",
       "title": "Student Assistant",
       "impact": "Where my energy engineering career started, supporting LEED certification and whole building energy simulation.",
-      "period": "Jun 2017 – Jun 2019",
+      "period": "Jun 2017 - Jun 2019",
       "website": "https://www.petinelli.com",
       "description": "LEED certification process and energy conservation measures application based on design reviews. Renewable energy systems design. Technical and economic feasibility reports.",
       "details": "This was where my energy engineering career started. I supported the LEED certification work and the energy conservation measures that came out of the design reviews, which included the lighting power density reviews and the lighting controls. It was also around this time that I began working with building energy simulation in EnergyPlus.",
@@ -865,7 +865,7 @@
       "category": "Teaching",
       "items": [
         {
-          "title": "PCPP Teaching Assistant – Practical concurrent and parallel programming course assistant at IT University of Copenhagen (2024)",
+          "title": "PCPP Teaching Assistant - Practical concurrent and parallel programming course assistant at IT University of Copenhagen (2024)",
           "details": "Practical Concurrent and Parallel Programming is an ITU course that gives a hands-on introduction to writing correct and efficient concurrent software, mostly in Java. It runs through threads and locks, mutual exclusion and the Java memory model, atomic operations and compare and swap, the concurrent data structures in java.util.concurrent, lock-free and lock-based designs, measuring performance and scalability, testing and reasoning about concurrent programs, and parallel functional programming with streams, along with software transactional memory and message passing. As a teaching assistant I corrected and gave feedback on all of the assignments from the groups I was responsible for, going through every topic of the course."
         }
       ]
@@ -874,7 +874,7 @@
       "category": "Awards",
       "items": [
         {
-          "title": "Innovation Prize – Vitta (2022)",
+          "title": "Innovation Prize - Vitta (2022)",
           "details": "Vitta gives this prize for ideas that move the company forward, and I received it for the building-performance work I led there. We brought the thermal, lighting and acoustic simulations in-house, built a repeatable methodology around the Brazilian standard NBR 15575, and automated the analysis with a Python tool that cut a single run from six or seven hours down to about one, roughly an 85% reduction. Together that replaced a fully outsourced process, saved a large amount of manual work and lowered costs at scale."
         }
       ]
@@ -911,7 +911,7 @@
           "details": "Focused on Scrum and agility, this Alura course covered the origins and principles behind the agile manifesto and Lean thinking, then the Scrum framework in detail, its three roles of product owner, scrum master and development team, its artifacts such as the product and sprint backlogs and the increment, and its events such as sprint planning, the daily, the review and the retrospective. It also looked at estimation and the definition of done, how to set up and run a Scrum team, and how Scrum compares with Kanban."
         },
         {
-          "title": "Linux Lab – ITU",
+          "title": "Linux Lab - ITU",
           "details": "The Linux Lab at ITU was a student group I took part in to go deep on Linux. We worked through using Linux day to day and its command line, and built a deeper understanding of the operating system itself, the kernel and system administration. It covered most of the important topics, from boot and installation through package management, services and health checks, users and permissions, processes, the filesystem and shell scripting."
         }
       ]
@@ -920,19 +920,19 @@
       "category": "Energy & HVAC",
       "items": [
         {
-          "title": "HVAC Engineering – Electrical and mechanical design, refrigeration cycle analysis, O&M techniques at ASBRAV (2019)",
+          "title": "HVAC Engineering - Electrical and mechanical design, refrigeration cycle analysis, O&M techniques at ASBRAV (2019)",
           "details": "The course covered identifying electrical and mechanical design issues and analyzing the vapour compression refrigeration cycle across its four stages, the compressor, condenser, expansion device and evaporator. From there it moved into identifying and correcting failures, preventive maintenance routines, and selecting and replacing air conditioning equipment, along with the command logic and electric drives that run compressors and fans. A good part of it focused on the data acquisition of the fundamental operating variables, things like pressures, temperatures, superheat and subcooling, that you read to judge how healthy a system is and to keep it monitored and under control."
         },
         {
-          "title": "Industrial Refrigeration Systems – UFRGS (2019)",
+          "title": "Industrial Refrigeration Systems - UFRGS (2019)",
           "details": "An extension course focused on the design of industrial refrigeration for cold rooms and cold chambers using ammonia (R717) as the refrigerant. It worked through the cooling load calculations, the sizing of compressors, evaporators and condensers, and the layout of the plant, with most of the examples drawn from the meat industry and its cold chain. Because ammonia is very efficient but also hazardous, the course gave a lot of attention to the safety side and to the maintenance challenges these plants face, along with the quality control and continuous monitoring needed to keep stored product within its temperature limits."
         },
         {
-          "title": "Indirect Cooling Systems – ABRAVA / ASHRAE (2019)",
+          "title": "Indirect Cooling Systems - ABRAVA / ASHRAE (2019)",
           "details": "Held in São Paulo and sponsored by Petinelli, this course covered the design, installation, commissioning, operation and maintenance of indirect cooling systems, the kind where a chiller cools water that is then pumped through the building instead of cooling the air directly. It went into chillers, cooling towers, hydronic circuits and the automation that ties them together. One technical aspect it dug into was the low delta T syndrome, which happens when the temperature difference between the chilled water leaving and returning to the chiller falls below its design value. When that difference drops, the pumps have to move much more water to deliver the same amount of cooling, the secondary flow can overrun the primary and spill back through the bypass, and the chillers end up running at low load and lose usable capacity, so the plant burns more pumping energy and becomes harder to control. The course looked at the usual culprits behind it, such as poorly selected or fouled coils, three way control valves, wrong setpoints and weak controls, and at how to design and operate the system so it keeps a healthy delta T."
         },
         {
-          "title": "Internal Combustion Engines – UFSC (2014)",
+          "title": "Internal Combustion Engines - UFSC (2014)",
           "details": "A theoretical and practical course on internal combustion engines, going through the four stroke operation and the differences between the Otto cycle, which burns a spark ignited mixture of air and fuel, and the Diesel cycle, which relies on compression ignition. The practical side meant assembling and disassembling engines to learn their parts, from the block, pistons and crankshaft to the valve train and timing. I was also part of a team that rebuilt a Monza 86 engine from scratch, putting it back together and then starting and running it to check its healthiness and confirm everything worked as it should."
         }
       ]

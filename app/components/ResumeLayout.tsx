@@ -17,8 +17,8 @@ export default function ResumeLayout() {
       prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech],
     );
 
-  // One Extra category rendered as its own separated section. "Software &
-  // Technology Courses" has short titles, so it flows into up to three columns.
+  // one Extra category as its own separated section. "Software &
+  // Technology Courses" has short titles, so it flows into up to three columns
   const renderExtraGroup = (group: (typeof extra)[number]) => {
     const isCourses = group.category.toLowerCase().includes("courses");
     return (
@@ -57,7 +57,7 @@ export default function ResumeLayout() {
 
   return (
     <div className="relative">
-      {/* Career timeline — its own div, pinned to the extreme left and sitting
+      {/* career timeline, its own div, pinned to the extreme left and sitting
           entirely outside the content column (right-full + margin) so it never
           changes the centred content's width. Shown only when the left margin
           is wide enough to hold it. */}
@@ -69,12 +69,12 @@ export default function ResumeLayout() {
         />
       </aside>
 
-      {/* All content sections — same left edge throughout. Each section is
+      {/* all content sections, same left edge throughout. Each section is
           split from the previous by a centered header over a top border line,
           matching the "Where I have worked" block above. */}
       <div className="min-w-0">
 
-        {/* Tech Stack */}
+        {/* tech Stack */}
         <section id="techstack" className="mt-16 pt-8 border-t border-gray-200">
           <h2 className="text-sm font-semibold uppercase tracking-widest text-gray-400 text-center mb-8">
             Tech Stack
@@ -100,7 +100,7 @@ export default function ResumeLayout() {
           </div>
         </section>
 
-        {/* Professional Experience */}
+        {/* professional Experience */}
         <section id="experience" className="mt-16 pt-8 border-t border-gray-200">
           <h2 className="text-sm font-semibold uppercase tracking-widest text-gray-400 text-center mb-8">
             Professional Experience
@@ -114,7 +114,7 @@ export default function ResumeLayout() {
           />
         </section>
 
-        {/* Education */}
+        {/* education */}
         <section id="education" className="mt-16 pt-8 border-t border-gray-200">
           <h2 className="text-sm font-semibold uppercase tracking-widest text-gray-400 text-center mb-8">
             Education
@@ -148,10 +148,10 @@ export default function ResumeLayout() {
           </div>
         </section>
 
-        {/* Extra categories, minus Awards (placed after Languages below). */}
+        {/* extra categories, minus Awards (placed after Languages below). */}
         {extra.filter((g) => g.category !== "Awards").map(renderExtraGroup)}
 
-        {/* Languages — short pairs, laid out in up to four columns. */}
+        {/* languages, short pairs, laid out in up to four columns. */}
         <section id="languages" className="mt-16 pt-8 border-t border-gray-200">
           <h2 className="text-sm font-semibold uppercase tracking-widest text-gray-400 text-center mb-8">
             Languages
@@ -166,10 +166,10 @@ export default function ResumeLayout() {
           </div>
         </section>
 
-        {/* Awards — after Languages. */}
+        {/* awards, after Languages. */}
         {extra.filter((g) => g.category === "Awards").map(renderExtraGroup)}
 
-        {/* Others — affiliations, no popup */}
+        {/* others, affiliations, no popup */}
         <section id="others" className="mt-16 pt-8 border-t border-gray-200">
           <h2 className="text-sm font-semibold uppercase tracking-widest text-gray-400 text-center mb-8">
             Others

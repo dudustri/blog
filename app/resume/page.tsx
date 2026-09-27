@@ -5,7 +5,7 @@ import { summary, tagline } from "@/app/data/resume";
 export default function ResumePage() {
   return (
     <div className="px-6 py-10">
-      {/* Centred content column — the timeline is positioned relative to this.
+      {/* centred content column, the timeline is positioned relative to this.
           select-none + cursor-default makes the page text non-copyable with no
           text cursor; interactive cards/links keep their own pointer cursor. */}
       <div className="max-w-4xl mx-auto select-none cursor-default">
