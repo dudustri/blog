@@ -1,16 +1,10 @@
 /**
- * give every post in content/blog.json a permanent id
+ * give every post in content/blog.json a permanent id, shape 2026-03-15-a1b2
  *
- * run:
  *   bun run ids           # fill in missing ids, write the file
- *   bun run ids --check   # fail if any id is missing or duplicated, write nothing
+ *   bun run ids --check   # fail if any is missing or duplicated, write nothing
  *
- * comments hang off these ids (content/comments/<id>/), so an id must never
- * change once a post has one. this only ever fills a gap, it never rewrites an
- * existing id. build runs --check so a post added without an id fails loudly
- * instead of quietly getting a fresh id on every build.
- *
- * shape: <post date, YYYY-MM-DD>-<4 hex>, e.g. 2026-03-15-a1b2
+ * comments hang off these ids, so this only fills a gap and never rewrites one
  */
 
 import { readFile, writeFile } from "node:fs/promises";
