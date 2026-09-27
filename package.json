@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "bun --bun next dev",
-    "build": "bun --bun next build",
+    "build": "bun run scripts/ensure-post-ids.ts --check && bun --bun next build",
     "start": "bun --bun next start",
     "lint": "eslint",
-    "import:strava": "bun run scripts/import-strava-export.ts"
+    "import:strava": "bun run scripts/import-strava-export.ts",
+    "ids": "bun run scripts/ensure-post-ids.ts"
   },
   "dependencies": {
     "@types/matter-js": "^0.20.2",
