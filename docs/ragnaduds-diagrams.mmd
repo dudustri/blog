@@ -1,0 +1,83 @@
+%% Source for the RagnaDuds diagrams on /portfolio/ragnaduds.
+%% The site is a static export with no mermaid runtime, so each block is kept
+%% here as the editable source and shipped as a hand-authored SVG next to it.
+%%
+%%   public/images/ragnaduds-architecture.svg
+%%   public/images/ragnaduds-release.svg
+%%   public/images/ragnaduds-client.svg
+
+%% ---------------------------------------------------------------- architecture
+flowchart TD
+    friends["friends in DK and BR<br/>game client + browser"]
+    friends -->|game ports, HTTPS| fw
+
+    subgraph vm["Oracle Cloud VM (ARM, Ubuntu)"]
+        fw["iptables + Oracle security list"]
+
+        subgraph pre["pre-renewal, classic era"]
+            pre_game["login / char / map<br/>rAthena, 2021 packet version"]
+            pre_web["web api"]
+            pre_db[("MariaDB<br/>internal network only")]
+        end
+
+        subgraph re["renewal, modern era"]
+            re_game["login / char / map<br/>rAthena, 2026 packet version"]
+            re_web["web api"]
+            re_db[("MariaDB<br/>internal network only")]
+        end
+
+        caddy["Caddy<br/>auto HTTPS, cookie login, client downloads"]
+        status["status sidecar<br/>ports + one read only query per database every 15 s"]
+    end
+
+    fw --> pre_game
+    fw --> re_game
+    fw -->|HTTPS| caddy
+    status -.->|status.json| caddy
+    status -.-> pre_db
+    status -.-> re_db
+
+%% -------------------------------------------------------- release and deploy
+flowchart LR
+    subgraph pc["my PC (amd64)"]
+        buildx["docker buildx + QEMU<br/>amd64 and arm64 in one go"]
+        cfg["per host config folder<br/>.env secrets, rates, scripts"]
+        dumps["backups on my PC"]
+        accfile["local accounts file"]
+    end
+
+    ghcr["GHCR<br/>private registry<br/>:latest and :&lt;git sha&gt;"]
+
+    subgraph vm["Oracle Cloud VM (arm64)"]
+        pull["docker compose pull<br/>no source code on the VM"]
+        mounts["runtime mounts<br/>a rate change needs no rebuild"]
+        cron["cron every 6 hours<br/>keeps 7 days"]
+        accounts["game accounts"]
+    end
+
+    buildx -->|release| ghcr --> pull
+    cfg -->|up vm, rsync over ssh| mounts
+    cron -->|backup, mariadb-dump over ssh| dumps
+    accfile -->|accounts, idempotent SQL over ssh| accounts
+
+%% ------------------------------------------------------------- client toolchain
+flowchart TD
+    exe["official client exe<br/>a 2026 build, 32 bit Windows, Korean"]
+    exe -->|WARP patch session| patched
+    patched["patched exe<br/>local files before the GRF archives<br/>no anti cheat, our server address"]
+    patched -->|boot| boot
+
+    subgraph boot["what the client loads at boot"]
+        grf["data.grf, archive format 0x200 / 0x300"]
+        lub["System/itemInfo.lub, 32 bit Lua bytecode, Korean"]
+        eng["the English table, sits in the folder, never read"]
+    end
+
+    boot -->|the fix| loader
+
+    subgraph loader["itemInfo.lub becomes a loader"]
+        s1["1. run the original bytecode"]
+        s2["2. overlay the English table"]
+        s3["3. append our custom items"]
+        s1 --> s2 --> s3
+    end
