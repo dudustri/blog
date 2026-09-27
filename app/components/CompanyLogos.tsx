@@ -3,7 +3,7 @@ import { experience } from "@/app/data/resume";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// One entry per company that has a logo, in first-seen (most recent) order.
+// one entry per company with a logo, first-seen (most recent) order
 const companyLogos = Array.from(
   experience
     .filter((e) => e.logo)
@@ -16,8 +16,8 @@ const companyLogos = Array.from(
     .values(),
 );
 
-// A logo strip for every company in the resume, over a cursor-trail background
-// (TrailBackground). Logos are grayscale and lift to full color on hover.
+// logo strip for every company in resume, over a cursor-trail background
+// (TrailBackground). grayscale, lift to full color on hover
 export default function CompanyLogos() {
   return (
     <section className="mt-16 pt-8 border-t border-gray-200">

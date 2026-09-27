@@ -8,7 +8,7 @@ type ContactInfo = { email: string; phone: string };
 const FAKE_CODE = "banana";
 const FAKE_CONTACT: ContactInfo = { email: "nottodaybot@gmail.com", phone: "+45 12 34 56 78" };
 
-const WORKER_URL = "https://snowy-mountain-0ccb.eduardostrindade.workers.dev";
+const WORKER_URL = "https://blog-contact.eduardostrindade.workers.dev";
 const TURNSTILE_SITE_KEY = "0x4AAAAAADVl8aWps34OCYpt";
 
 const inputClass =
@@ -41,7 +41,7 @@ export default function ContactPage() {
   const widgetIdRef = useRef<string | null>(null);
   const isSendingRef = useRef(false);
 
-  // Refs so sendMessage always reads latest form values
+  // refs so sendMessage always reads latest form values
   const nameRef = useRef(name);
   const emailRef = useRef(email);
   const messageRef = useRef(message);
@@ -123,7 +123,7 @@ export default function ContactPage() {
       <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" />
 
       <div className="max-w-2xl mx-auto px-6 py-10 select-none">
-        {/* Header */}
+        {/* header */}
         <div className="mb-12">
           <h1 className="text-3xl font-bold tracking-tight mb-2">Get in touch</h1>
           <p className="text-gray-500 text-sm">
@@ -131,7 +131,7 @@ export default function ContactPage() {
           </p>
         </div>
 
-        {/* Contact form */}
+        {/* contact form */}
         <section className="mb-14">
           <h2 className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-6">
             Send a message
@@ -140,7 +140,7 @@ export default function ContactPage() {
           {formState === "success" ? (
             <div className="py-10 text-center" style={{ animation: "fadeIn 0.4s ease" }}>
               <p className="text-2xl mb-2">✓</p>
-              <p className="text-sm text-gray-500">Message sent — I&apos;ll get back to you soon.</p>
+              <p className="text-sm text-gray-500">Message sent, I&apos;ll get back to you soon.</p>
               <button
                 onClick={() => setFormState("idle")}
                 className="mt-6 text-xs underline text-gray-400 hover:text-black transition-colors"
@@ -183,13 +183,13 @@ export default function ContactPage() {
                 />
               </div>
 
-              {/* Turnstile widget — appears after submit, auto-sends on verify */}
+              {/* turnstile widget, appears after submit, auto-sends on verify */}
               {showTurnstile && (
                 <div ref={turnstileRef} className="flex justify-center" />
               )}
 
               {formState === "error" && (
-                <p className="text-red-500 text-xs">Something went wrong — please try again.</p>
+                <p className="text-red-500 text-xs">Something went wrong, please try again.</p>
               )}
 
               <button
@@ -203,10 +203,10 @@ export default function ContactPage() {
           )}
         </section>
 
-        {/* Divider */}
+        {/* divider */}
         <div className="border-t border-gray-100 mb-14" />
 
-        {/* Access code gate */}
+        {/* access code gate */}
         <section>
           <h2 className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-6">
             Access contact details

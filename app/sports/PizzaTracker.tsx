@@ -25,7 +25,7 @@ type ThreeNS = typeof import("three");
 const clamp01 = (t: number) => Math.min(1, Math.max(0, t));
 const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
-// An emoji or short string baked into a transparent canvas texture for sprites.
+// an emoji or short string baked into a transparent canvas texture for sprites
 function makeEmojiTexture(THREE: ThreeNS, emoji: string, size = 128) {
   const canvas = document.createElement("canvas");
   canvas.width = canvas.height = size;
@@ -39,7 +39,7 @@ function makeEmojiTexture(THREE: ThreeNS, emoji: string, size = 128) {
   return tex;
 }
 
-// A short text label (e.g. a month shortcut) on a wide transparent texture.
+// a short text label (e.g. a month shortcut) on a wide transparent texture
 function makeLabelTexture(
   THREE: ThreeNS,
   text: string,
@@ -70,15 +70,15 @@ type Props = {
 
 export default function PizzaTracker({ aggregation, year, month }: Props) {
   const mountRef = useRef<HTMLDivElement>(null);
-  // Lets the Replay button restart the reveal without rebuilding the scene.
+  // lets the Replay button restart the reveal without rebuilding the scene
   const replayRef = useRef<() => void>(() => {});
-  // Lets the Collect button sweep the resting pizzas into a single stack.
+  // lets the Collect button sweep the resting pizzas into one stack
   const collectRef = useRef<() => void>(() => {});
-  // Lets the Splash button fling the collected pizzas back out at random.
-  // The argument scales the throw strength (Ultra Splash throws 3× harder).
+  // lets the Splash button fling the collected pizzas back out at random.
+  // argument scales the throw strength (Ultra Splash throws 3× harder)
   const splashRef = useRef<(power?: number) => void>(() => {});
   const [collected, setCollected] = useState(false);
-  // Rare (15%) rainbow "Ultra Splash" unlocked when collecting.
+  // rare (15%) rainbow "Ultra Splash" unlocked when collecting
   const [ultra, setUltra] = useState(false);
   const [stats, setStats] = useState({ totalKcal: 0, pizzas: 0, empty: false });
 
@@ -86,7 +86,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
     const container = mountRef.current;
     if (!container) return;
 
-    // Recompute the timeline for the current filters/aggregation.
+    // recompute the timeline for current filters/aggregation
     const list = filterActivities(year, month);
     const POINTS: TimelinePoint[] = caloriesTimeline(list, aggregation);
     const MILESTONES: PizzaMilestone[] = pizzaMilestones(POINTS);
@@ -96,7 +96,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
     setUltra(false);
     if (POINTS.length === 0) return;
 
-    // Multiple calendar years in view → disambiguate month labels with a year.
+    // multiple calendar years in view → disambiguate month labels with a year
     const multiYear =
       new Set(POINTS.map((p) => p.key.slice(0, 4))).size > 1;
 
@@ -133,10 +133,10 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
       const FOV = 45;
       const camera = new THREE.PerspectiveCamera(FOV, w / h, 0.1, 1000);
 
-      // Frame the whole plot — its full width and tallest bar — so it reads the
-      // same whether there are 3 bars or 300. Bars are normalised so the tallest
-      // is always MAX_HEIGHT; we just need to back the camera off enough to fit
-      // the wider of (plot width, plot height) for the current aspect ratio.
+      // frame the whole plot (full width and tallest bar) so it reads the
+      // same whether there are 3 bars or 300. bars are normalised so the
+      // tallest is always MAX_HEIGHT, we just back the camera off enough to
+      // fit the wider of (plot width, plot height) for the current aspect.
       const fov = (FOV * Math.PI) / 180;
       const HEADROOM = 2.4; // space above bars for counters / flying pizzas
       const topY = MAX_HEIGHT + HEADROOM;
@@ -159,9 +159,9 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
       key.position.set(6, 12, 8);
       scene.add(key);
 
-      // Faint grid so the bars read as a "plot" rather than floating boxes.
+      // faint grid so the bars read as a "plot" rather than floating boxes
       const GRID_SIZE = spanX + 4;
-      // Pizzas are kept inside this half-extent so a splash stays on the plot.
+      // pizzas are kept inside this half-extent so a splash stays on the plot
       const GRID_HALF = GRID_SIZE / 2 - 0.45;
       const grid = new THREE.GridHelper(
         GRID_SIZE,
@@ -174,9 +174,9 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
       gridMat.opacity = 0.7;
       scene.add(grid);
 
-      // One bar per bucket. A unit box is scaled on Y to animate growth.
+      // one bar per bucket. a unit box scaled on Y to animate growth.
       // MeshBasicMaterial keeps the bar's colour identical to the flat swatches
-      // used in the Activities list (no lighting to dull it). Buckets with more
+      // used in the Activities list, no lighting to dull it. buckets with more
       // than one sport get the full colour list so the bar can cycle them.
       const barGeo = new THREE.BoxGeometry(BAR_W, 1, BAR_DEPTH);
       const bars = POINTS.map((d, i) => {
@@ -188,9 +188,9 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
         return { mesh, targetH: d.cumulative * heightScale, colors };
       });
 
-      // Per-bar legend under each bar. Daily view labels every day as DD/MM
-      // (numeric day/month); monthly view shows the month shortcut (plus a
-      // year suffix when more than one year is in view).
+      // per-bar legend under each bar. daily view labels every day as DD/MM
+      // (numeric day/month), monthly view shows the month shortcut, plus a
+      // year suffix when more than one year is in view.
       POINTS.forEach((d, i) => {
         const text =
           aggregation === "daily"
@@ -210,11 +210,11 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
         scene.add(sprite);
       });
 
-      // How many pizzas were completed in each bucket (day or month).
+      // how many pizzas were completed in each bucket (day or month)
       const pizzasPerPoint = new Array(POINTS.length).fill(0);
       for (const m of MILESTONES) pizzasPerPoint[m.pointIndex]++;
 
-      // A counter that pops above a bar once that bucket's pizzas have rained.
+      // a counter that pops above a bar once that bucket's pizzas have rained
       const counters = POINTS.flatMap((d, i) => {
         const count = pizzasPerPoint[i];
         if (count <= 0) return [];
@@ -232,10 +232,10 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
         return [{ sprite, pointIndex: i }];
       });
 
-      // Pizza rain: one pizza sprite per earned pizza, so the rain's density
-      // tracks how many pizzas were earned. Each one bursts out of its bar,
-      // falls under gravity and bounces — then rests on the floor for good
-      // (no fade / recycle). (Modelled on Platane's emitter.)
+      // pizza rain: one sprite per earned pizza, so density tracks how many
+      // were earned. each bursts out of its bar, falls under gravity and
+      // bounces, then rests on the floor for good, no fade or recycle.
+      // (modelled on Platane's emitter.)
       const pizzaTex = makeEmojiTexture(THREE, "🍕");
       const GRAVITY = -16; // world units / s²
 
@@ -253,7 +253,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
         tz: number;
       };
 
-      // One pool slot per milestone — the floor ends up holding exactly that
+      // one pool slot per milestone, the floor ends up holding exactly that
       // many pizzas.
       const particles: Particle[] = MILESTONES.map(() => {
         const sprite = new THREE.Sprite(
@@ -278,7 +278,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
         p.size = size;
         p.active = true;
         p.resting = false;
-        // Fling upward + outward, gravity does the rest.
+        // fling upward + outward, gravity does the rest
         p.vx = (Math.random() - 0.5) * 4;
         p.vy = 3 + Math.random() * 4;
         p.vz = (Math.random() - 0.5) * 4;
@@ -289,7 +289,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
         p.sprite.visible = true;
       };
 
-      // Track which milestones have already burst in the current reveal pass.
+      // track which milestones already burst in the current reveal pass
       const emitted = new Array(MILESTONES.length).fill(false);
       const resetParticles = () => {
         emitted.fill(false);
@@ -301,7 +301,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
         }
       };
 
-      // Sweep every spawned pizza into one neat stack at the front-centre.
+      // sweep every spawned pizza into one neat stack at the front-centre
       let collecting = false;
       const STACK_X = 0;
       const STACK_Z = BAR_DEPTH / 2 + 2.6;
@@ -318,8 +318,8 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
         }
       };
 
-      // Blast the (usually stacked) pizzas back out with random velocities so
-      // they scatter and bounce across the floor again.
+      // blast the (usually stacked) pizzas back out with random velocities so
+      // they scatter and bounce over the floor again.
       splashRef.current = (power = 1) => {
         collecting = false;
         for (const p of particles) {
@@ -356,7 +356,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
         camera.aspect = nw / nh;
         camera.updateProjectionMatrix();
         renderer.setSize(nw, nh);
-        // Re-fit distance for the new aspect, keeping the current orbit angle.
+        // re-fit distance for the new aspect, keeping the current orbit angle
         const r = fitRadius(nw / nh);
         const offset = camera.position.clone().sub(targetVec).setLength(r);
         camera.position.copy(targetVec).add(offset);
@@ -380,7 +380,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
         lastTime = now;
 
         const elapsed = (now - startTime) / 1000;
-        // Continuous "day cursor": bar i grows while the cursor sweeps past it.
+        // continuous "day cursor": bar i grows while the cursor sweeps past it
         const cursor = Math.max(0, (elapsed - REVEAL_DELAY) / perDay);
 
         for (let i = 0; i < bars.length; i++) {
@@ -388,7 +388,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
           const hgt = bar.targetH * easeOutCubic(clamp01(cursor - i));
           bar.mesh.scale.y = Math.max(hgt, 0.0001);
           bar.mesh.position.y = hgt / 2;
-          // Multi-sport day/month → smoothly cycle through its sports' colours.
+          // multi-sport day/month → smoothly cycle through its sports' colours
           if (bar.colors.length > 1) {
             const phase =
               (elapsed * 0.5 + i * 0.15) % bar.colors.length; // ~0.5 colours/sec
@@ -402,7 +402,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
           }
         }
 
-        // Fling one pizza from a bar as its kcal threshold is reached.
+        // fling one pizza from a bar as its kcal threshold is reached
         for (let i = 0; i < MILESTONES.length; i++) {
           if (emitted[i]) continue;
           const m = MILESTONES[i];
@@ -416,7 +416,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
           );
         }
 
-        // Reveal each bucket's pizza counter once its pizzas have rained down.
+        // reveal each bucket's pizza counter once its pizzas have rained down
         for (const c of counters) {
           const t = clamp01((cursor - (c.pointIndex + 1.4)) / 0.5);
           c.sprite.material.opacity = t;
@@ -425,7 +425,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
 
         const drag = Math.pow(0.986, dt * 60);
         if (collecting) {
-          // Glide every pizza to its slot in the single stack.
+          // glide every pizza to its slot in the stack
           const ease = 1 - Math.pow(1 - 0.14, dt * 60);
           for (const p of particles) {
             if (!p.active) continue;
@@ -436,8 +436,8 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
             p.sprite.material.rotation += (0 - p.sprite.material.rotation) * ease;
           }
         } else {
-          // Integrate particle physics: gravity, air drag, floor bounce. Pizzas
-          // come to rest on the floor and stay there.
+          // integrate particle physics: gravity, air drag, floor bounce.
+          // pizzas come to rest on the floor and stay there.
           for (const p of particles) {
             if (!p.active || p.resting) continue;
             p.vy += GRAVITY * dt;
@@ -448,7 +448,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
             s.x += p.vx * dt;
             s.y += p.vy * dt;
             s.z += p.vz * dt;
-            // Keep pizzas inside the plot — bounce off the grid edges.
+            // keep pizzas inside the plot, bounce off the grid edges
             if (s.x > GRID_HALF) {
               s.x = GRID_HALF;
               p.vx = -p.vx * 0.5;

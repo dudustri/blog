@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// A cursor-trail background layer: as the pointer moves across the parent, small
-// squares appear exactly where the cursor is and linger for a few seconds before
-// fading out. No physics — spawned DOM nodes with CSS transitions. Desktop-only
-// (a trail needs a hovering pointer); skipped on mobile. Drop it as an absolute
-// layer inside a `position: relative` container, with the real content above it.
+// cursor-trail background layer: as pointer moves over parent, small squares
+// appear where cursor is and linger a few seconds before fading out. no
+// physics, just spawned DOM nodes with CSS transitions. desktop-only, a trail
+// needs a hovering pointer, so skipped on mobile. drop as an absolute layer
+// inside a `position: relative` container, with real content above it
 
 const SIZE = 30; // square edge, px
 const STEP = 22; // min pointer travel between spawns, px
@@ -57,7 +57,7 @@ export default function TrailBackground() {
       stage.appendChild(el);
       live.add(el);
 
-      // Cap concurrent squares — drop the oldest.
+      // cap concurrent squares, drop oldest
       if (live.size > MAX) {
         const oldest = live.values().next().value as HTMLDivElement | undefined;
         if (oldest) {
@@ -66,14 +66,14 @@ export default function TrailBackground() {
         }
       }
 
-      // Fade in on the next frame.
+      // fade in on next frame
       requestAnimationFrame(() => {
         el.style.transition = "opacity 180ms ease, transform 260ms ease";
         el.style.opacity = "1";
         el.style.transform = `rotate(${rot}rad) scale(1)`;
       });
 
-      // After LIFE, fade out slowly; then remove.
+      // after LIFE, fade out slowly, then remove
       window.setTimeout(() => {
         el.style.transition = `opacity ${FADE}ms ease, transform ${FADE}ms ease`;
         el.style.opacity = "0";
@@ -89,7 +89,7 @@ export default function TrailBackground() {
       const r = stage.getBoundingClientRect();
       const x = e.clientX - r.left;
       const y = e.clientY - r.top;
-      // Only trail while the pointer is over the layer.
+      // only trail while pointer is over the layer
       if (x < 0 || y < 0 || x > r.width || y > r.height) return;
       if (!seeded) {
         lastX = x;
@@ -111,7 +111,7 @@ export default function TrailBackground() {
       for (const el of live) el.remove();
       live.clear();
     };
-    // Rebuild when the theme flips so the palette matches.
+    // rebuild when theme flips so palette matches
   }, [dark]);
 
   return <div ref={stageRef} className="trail-stage absolute inset-0" aria-hidden="true" />;

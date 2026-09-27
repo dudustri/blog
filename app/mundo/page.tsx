@@ -30,7 +30,7 @@ const BTN = 'text-left text-sm font-semibold tracking-wide transition-colors tex
 const VISITED_SORTED  = [...countries].sort();
 const PLANNING_SORTED = [...wantToGoCountries].sort();
 
-// Common aliases so guesses like "Czech Republic" or "USA" are accepted
+// common aliases so guesses like "Czech Republic" or "USA" are accepted
 const ALIASES: Record<string, string> = {
   'czech republic':          'czechia',
   'usa':                     'united states of america',
@@ -89,18 +89,18 @@ function levenshtein(a: string, b: string): number {
   return dp[n];
 }
 
-// Returns true if the guess is close enough to the answer
+// true if the guess is close enough to the answer
 function isCloseEnough(guess: string, answer: string): boolean {
   const g = normalise(guess);
   const a = normalise(answer);
   if (g === a) return true;
-  // Substring match: "hong kong" inside "hong kong s.a.r." or "french guiana" ↔ "guiana"
-  // Only match if the guess *contains* the answer (not the other way around),
-  // e.g. typing "Republic of France" when answer is "France". We do NOT accept
-  // a short guess that is merely a substring of a longer answer — that would
+  // substring match: "hong kong" inside "hong kong s.a.r." or "french guiana" ↔ "guiana"
+  // only match if the guess *contains* the answer, not the other way around,
+  // e.g. typing "Republic of France" when answer is "France". we do NOT accept
+  // a short guess that is merely a substring of a longer answer, that would
   // make "Guiana" pass for "French Guiana" while Guyana is a real country.
   if (g.includes(a)) return true;
-  // Typo tolerance: 1 edit for short names (≥4 chars), 2 edits for longer ones (≥7 chars)
+  // typo tolerance: 1 edit for short names (≥4 chars), 2 for longer (≥7 chars)
   const dist = levenshtein(g, a);
   const maxLen = Math.max(g.length, a.length);
   if (maxLen >= 7 && dist <= 2) return true;
@@ -116,15 +116,15 @@ function fibScore(round: number): number {
 }
 
 function isoToFlag(iso: string): string {
-  // Only valid 2-letter alpha codes produce real flag emojis.
-  // Natural Earth uses '-99' for disputed/unrecognised territories — skip those.
+  // only valid 2-letter alpha codes produce real flag emojis.
+  // Natural Earth uses '-99' for disputed/unrecognised territories, skip those.
   if (!/^[A-Za-z]{2}$/.test(iso)) return '';
   return [...iso.toUpperCase()]
     .map(c => String.fromCodePoint(0x1F1E6 + c.charCodeAt(0) - 65))
     .join('');
 }
 
-// NOTE: when adding a country to countries.json or wantToGo.json, add it here too (or to NAME_FLAG for regional flags)
+// note: when adding a country to countries.json or wantToGo.json, add it here too (or to NAME_FLAG for regional flags)
 const NAME_ISO: Record<string, string> = {
   Brazil: 'BR', Denmark: 'DK', Italy: 'IT', Poland: 'PL', Portugal: 'PT',
   Norway: 'NO', Vietnam: 'VN', Indonesia: 'ID', Thailand: 'TH', Cambodia: 'KH',
@@ -138,11 +138,11 @@ const NAME_ISO: Record<string, string> = {
 };
 
 const NAME_FLAG: Record<string, string> = {
-  // Regional flags (not in ISO 3166-1)
+  // regional flags (not in ISO 3166-1)
   England:  '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
   Scotland: '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
-  // Disputed / unrecognised territories — Natural Earth gives these iso_a2 = '-99'
-  // No universally accepted flag emoji exists for these
+  // disputed / unrecognised territories, Natural Earth gives these iso_a2 = '-99'
+  // no universally accepted flag emoji exists for these
   Kosovo:            '🇽🇰',  // XK is widely supported despite not being ISO 3166-1
   Palestine:         '🇵🇸',
   'Western Sahara':  '🇪🇭',
@@ -159,7 +159,7 @@ function flagFor(name: string, iso?: string | null): string {
 }
 
 // ---------------------------------------------------------------------------
-// Confetti
+// confetti
 // ---------------------------------------------------------------------------
 const CONFETTI_COLORS = ['#fb7185', '#a78bfa', '#34d399', '#fbbf24', '#60a5fa', '#f97316', '#e879f9', '#2dd4bf'];
 
@@ -182,7 +182,7 @@ function Confetti() {
       const color = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
       const size  = 5 + Math.random() * 9;
       const shape = Math.floor(Math.random() * 4);
-      // Cluster in three bursts: left, center, right
+      // cluster in three bursts: left, center, right
       const cluster = [20, 50, 80][i % 3];
       return {
         id:       i,
@@ -199,7 +199,7 @@ function Confetti() {
     })
   ).current;
 
-  // Build per-piece keyframes so each piece has its own drift + rotation
+  // build per-piece keyframes so each piece has its own drift + rotation
   const styles = pieces.map(p =>
     `@keyframes cb${p.id}{0%{transform:translateY(-20px) translateX(0) rotate(0deg) scale(1);opacity:1}15%{opacity:1}100%{transform:translateY(110vh) translateX(${p.drift}px) rotate(${p.rotate + 540}deg) scale(0.6);opacity:0}}`
   ).join('\n');
@@ -224,7 +224,7 @@ function Confetti() {
 }
 
 // ---------------------------------------------------------------------------
-// Page
+// page
 // ---------------------------------------------------------------------------
 export default function MundoPage() {
   const [selection, setSelection]     = useState<{ name: string; iso: string | null; source: 'click' | 'random' } | null>(null);
@@ -233,7 +233,7 @@ export default function MundoPage() {
   const [pickNonce, setPickNonce]     = useState(0);
   const [openList, setOpenList]       = useState<'visited' | 'planning' | null>(null);
 
-  // Game state
+  // game state
   const [gamePhase,   setGamePhase]   = useState<GamePhase>('idle');
   const [gameRound,   setGameRound]   = useState(0);
   const [gameScore,   setGameScore]   = useState(0);
@@ -249,7 +249,7 @@ export default function MundoPage() {
   const currentCountryRef             = useRef<string | null>(null);
   const inputRef                      = useRef<HTMLInputElement>(null);
 
-  const TOO_SMALL_SPAN = 0.5; // degrees — only truly tiny countries (Monaco, Singapore, Vatican…)
+  const TOO_SMALL_SPAN = 0.5; // degrees, only truly tiny countries (Monaco, Singapore, Vatican…)
 
   const inGame = gamePhase !== 'idle';
 
@@ -264,7 +264,7 @@ export default function MundoPage() {
     };
   }, []);
 
-  // Focus input whenever a new guessing round starts
+  // focus input whenever a new guessing round starts
   useEffect(() => {
     if (gamePhase === 'guessing') inputRef.current?.focus();
   }, [gamePhase, gameRound]);
@@ -325,7 +325,7 @@ export default function MundoPage() {
     setTimeout(() => setSkippedCountry(null), 1500);
   }
 
-  // Regular skip — costs one skip, advances round (Fibonacci level goes up)
+  // regular skip, costs one skip, advances round (Fibonacci level goes up)
   function skipCountry() {
     if (gamePhase !== 'guessing' || skipsLeft <= 0) return;
     if (currentCountryRef.current) showSkipped(currentCountryRef.current);
@@ -334,7 +334,7 @@ export default function MundoPage() {
     setPickNonce(n => n + 1);
   }
 
-  // Too-small skip — free, does NOT advance round (Fibonacci level stays the same)
+  // too-small skip, free, does NOT advance round (Fibonacci level stays)
   function skipTooSmall() {
     if (gamePhase !== 'guessing' || !isTooSmall) return;
     if (currentCountryRef.current) showSkipped(currentCountryRef.current);
@@ -395,7 +395,7 @@ export default function MundoPage() {
         focusTarget={focusTarget}
       />
 
-      {/* Continent list */}
+      {/* continent list */}
       <nav className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-3">
         {CONTINENTS.map(c => (
           <button
@@ -408,7 +408,7 @@ export default function MundoPage() {
         ))}
       </nav>
 
-      {/* Spin controls */}
+      {/* spin controls */}
       <div className="absolute left-4 sm:left-6 z-10 flex flex-col gap-2" style={{ top: 'calc(50% + 5rem)' }}>
         <div className="border-t border-white/15 w-14" />
         <div className="flex flex-col gap-3">
@@ -452,7 +452,7 @@ export default function MundoPage() {
         </div>
       </div>
 
-      {/* Legend — hidden during game */}
+      {/* legend, hidden during game */}
       {!inGame && (
         <div className="absolute bottom-28 sm:bottom-20 left-4 sm:left-6 z-10 flex flex-col gap-1.5">
           {([
@@ -475,27 +475,27 @@ export default function MundoPage() {
         </div>
       )}
 
-      {/* Bottom right — country label / list / game UI */}
+      {/* bottom right, country label / list / game UI */}
       <div className="absolute bottom-28 sm:bottom-20 right-4 sm:right-6 z-10 flex flex-col items-end gap-2 max-w-[60vw]">
 
         {inGame && (
           <div className="flex flex-col items-end gap-2">
 
-            {/* Hints & skips — always at the top during guessing */}
+            {/* hints & skips, always at the top during guessing */}
             {gamePhase === 'guessing' && (
               <div className="flex flex-col items-end gap-1.5">
 
-                {/* Too small — free, no Fibonacci advance */}
+                {/* too small, free, no Fibonacci advance */}
                 {isTooSmall && (
                   <button
                     onClick={skipTooSmall}
                     className="text-xs text-yellow-400/60 hover:text-yellow-400 transition-colors tracking-wide"
                   >
-                    too small — free skip
+                    too small, free skip
                   </button>
                 )}
 
-                {/* Flag hint — up to 5 uses */}
+                {/* flag hint, up to 5 uses */}
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => { if (flagHintsLeft > 0) { setShowFlagHint(true); setFlagHintsLeft(h => h - 1); } }}
@@ -511,7 +511,7 @@ export default function MundoPage() {
                   </span>
                 </div>
 
-                {/* Regular skip — costs one, advances Fibonacci */}
+                {/* regular skip, costs one, advances Fibonacci */}
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={skipCountry}
@@ -530,21 +530,21 @@ export default function MundoPage() {
               </div>
             )}
 
-            {/* Skipped country name — briefly shown after a skip */}
+            {/* skipped country name, briefly shown after a skip */}
             {skippedCountry && (
               <span className="text-xs text-white/40 tracking-wide italic">
                 skipped: {skippedCountry}
               </span>
             )}
 
-            {/* Best score */}
+            {/* best score */}
             {highScore > 0 && (
               <span className="text-xs text-white/20 tracking-wide tabular-nums">
                 best: {highScore}
               </span>
             )}
 
-            {/* Score */}
+            {/* score */}
             <div className="flex items-baseline gap-3">
               <span className="text-xs text-white/30 tracking-wide">
                 round {gameRound} · next +{fibScore(gameRound)} pts
@@ -555,7 +555,7 @@ export default function MundoPage() {
             {gamePhase === 'ended' ? (
               <div className="flex flex-col items-end gap-2">
                 <span className="text-sm text-red-400 font-semibold tracking-wide">
-                  wrong — it was {currentCountryRef.current}
+                  wrong, it was {currentCountryRef.current}
                 </span>
                 <span className="text-xs text-white/40">
                   final: {gameScore}{highScore > gameScore ? ` · best: ${highScore}` : ' · new best!'}

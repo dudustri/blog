@@ -1,8 +1,8 @@
 import data from "@/content/activities.json";
 
-// Normalised Strava activity baked into content/activities.json. Declared
-// explicitly (not inferred from the JSON) so a mix of entries with and without
-// avgHeartrate — common in real exports — doesn't break the build.
+// normalised Strava activity baked into content/activities.json. declared
+// explicitly, not inferred from JSON, so a mix of entries with and without
+// avgHeartrate (common in real exports) doesn't break the build
 export type Activity = {
   id: string;
   name: string;
@@ -16,7 +16,7 @@ export type Activity = {
 
 export type Category = "running" | "swimming" | "cycling" | "gym" | "others";
 
-// Strava `type` → our five buckets. Anything unmapped falls back to "others".
+// Strava `type` → our five buckets. anything unmapped falls back to "others"
 const TYPE_TO_CATEGORY: Record<string, Category> = {
   Run: "running",
   TrailRun: "running",
@@ -49,7 +49,7 @@ export type CategoryMeta = {
   accent: string; // brand-ish accent colour per sport
 };
 
-// Order = display order on the page.
+// order = display order on the page
 export const CATEGORY_META: CategoryMeta[] = [
   { key: "running", label: "Running", accent: "#e0533d" },
   { key: "swimming", label: "Swimming", accent: "#2f8fd6" },
@@ -95,7 +95,7 @@ export function formatDuration(totalSec: number): string {
 }
 
 export function formatPace(distanceKm: number, movingTimeSec: number): string {
-  if (distanceKm <= 0) return "—";
+  if (distanceKm <= 0) return "-";
   const secPerKm = movingTimeSec / distanceKm;
   const m = Math.floor(secPerKm / 60);
   const s = Math.round(secPerKm % 60);
@@ -112,8 +112,8 @@ export function formatDate(iso: string): string {
 
 // --- calories & pizza tracker -------------------------------------------------
 
-// Rough MET (metabolic equivalent) per bucket — good enough for a vanity chart,
-// not a nutrition app. calories ≈ MET × bodyWeight(kg) × hours.
+// rough MET (metabolic equivalent) per bucket, good enough for a vanity chart,
+// not a nutrition app. calories ≈ MET × bodyWeight(kg) × hours
 const MET_BY_CATEGORY: Record<Category, number> = {
   running: 9.8,
   cycling: 7.5,
@@ -124,10 +124,10 @@ const MET_BY_CATEGORY: Record<Category, number> = {
 
 const BODY_WEIGHT_KG = 72;
 
-/** One whole pizza ≈ this many kcal. Cross it and you've "earned" a pizza. */
+/** one whole pizza ≈ this many kcal. cross it and you've "earned" a pizza */
 export const PIZZA_KCAL = 1000;
 
-/** Estimated calories burned for a single activity. */
+/** estimated calories burned for one activity */
 export function caloriesFor(activity: Activity): number {
   const met = MET_BY_CATEGORY[categoryOf(activity)];
   return Math.round(met * BODY_WEIGHT_KG * (activity.movingTimeSec / 3600));
@@ -142,14 +142,14 @@ export const MONTH_SHORT = [
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
 ];
 
-/** Distinct years present in the data, newest first. */
+/** distinct years in the data, newest first */
 export function availableYears(list: Activity[] = activities): number[] {
   const years = new Set<number>();
   for (const a of list) years.add(new Date(a.date).getFullYear());
   return [...years].sort((a, b) => b - a);
 }
 
-/** Filter activities by an optional year and month (0-based). "all" = no filter. */
+/** filter activities by optional year and month (0-based). "all" = no filter */
 export function filterActivities(
   year: number | "all",
   month: number | "all",
@@ -165,7 +165,7 @@ export function filterActivities(
 
 export type TimelinePoint = {
   key: string; // YYYY-MM-DD (daily) or YYYY-MM (monthly)
-  monthShort: string; // e.g. "Jun" — used as the per-bar legend
+  monthShort: string; // e.g. "Jun", used as the per-bar legend
   isMonthStart: boolean; // first bucket of a calendar month (for daily axis labels)
   calories: number; // kcal burned in this bucket
   cumulative: number; // running total up to and including this bucket
@@ -173,7 +173,7 @@ export type TimelinePoint = {
   accents: string[]; // every category's colour, most calories first (for cycling)
 };
 
-/** Accent colour of each category present in the bucket, biggest burn first. */
+/** accent colour of each category in the bucket, biggest burn first */
 function bucketAccents(acts: Activity[]): string[] {
   const burn = new Map<Category, number>();
   for (const a of acts) {
@@ -186,8 +186,8 @@ function bucketAccents(acts: Activity[]): string[] {
 }
 
 /**
- * Calories aggregated per bucket (day or month), oldest → newest, with a
- * running cumulative total and a month-short label per bucket.
+ * calories aggregated per bucket (day or month), oldest → newest, with a
+ * running cumulative total and a month-short label per bucket
  */
 export function caloriesTimeline(
   list: Activity[] = activities,
@@ -230,7 +230,7 @@ export type PizzaMilestone = {
   pointIndex: number; // index into the TimelinePoint[] where this pizza is "earned"
 };
 
-/** Bucket index at which each successive PIZZA_KCAL threshold is crossed. */
+/** bucket index where each successive PIZZA_KCAL threshold is crossed */
 export function pizzaMilestones(points: TimelinePoint[]): PizzaMilestone[] {
   const out: PizzaMilestone[] = [];
   let next = PIZZA_KCAL;

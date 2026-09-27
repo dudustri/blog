@@ -1,18 +1,20 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { posts } from "@/app/data/blog";
+import { posts, formatDate } from "@/app/data/blog";
+import { commentsFor } from "@/app/data/comments";
+import Comments from "@/app/components/Comments";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// Named visual effects usable as a content block (see renderContent).
-//   fade → image that fades away once on load (the original "suspdog" decay)
+// named visual effects usable as a content block (see renderContent)
+//   fade → image that fades away once on load ("suspdog" decay)
 const EFFECTS: Record<string, CSSProperties> = {
   fade: { animation: "fadeDecay 4s ease-in forwards" },
 };
 
-// Renders inline markup within a paragraph.
-// Supported: **bold** → <strong>
+// renders inline markup in a paragraph
+// supported: **bold** → <strong>
 function renderInline(text: string) {
   return text.split(/(\*\*.*?\*\*)/g).map((part, i) => {
     if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
@@ -22,16 +24,16 @@ function renderInline(text: string) {
   });
 }
 
-// Renders a block of content.
-// Supported block types (each separated by \n\n in the JSON):
+// renders a content block
+// block types (separated by \n\n in JSON):
 //   # Heading        → <h2>
 //   ## Subheading    → <h3>
-//   ##effect src     → image with a named effect, e.g. "##fade /images/suspdog2.jpg"
+//   ##effect src     → image with named effect, e.g. "##fade /images/suspdog2.jpg"
 //   ![alt](src)      → inline image
 //   > quote          → centered citation (see below)
 //   ---              → section break (· · ·)
-//   -- Name          → sign-off, a paragraph with extra space above it
-//   anything else    → paragraph (supports inline **bold**)
+//   -- Name          → sign-off, paragraph with extra space above
+//   anything else    → paragraph (inline **bold** works)
 const PARAGRAPH =
   "text-gray-700 leading-relaxed text-justify indent-8";
 
@@ -55,10 +57,9 @@ function renderContent(content: string) {
       );
     }
 
-    // Effect image: ##<effect> <src>   e.g. "##fade /images/suspdog2.jpg"
-    // Two sequential # immediately followed by the effect name (no space, so it
-    // doesn't collide with "## Subheading"). The src supports the same optional
-    // #position hash as inline images.
+    // effect image: ##<effect> <src>   e.g. "##fade /images/suspdog2.jpg"
+    // two # then effect name, no space, so it can't collide with "## Subheading"
+    // src takes same optional #position hash as inline images
     const effectMatch = trimmed.match(/^##(\w+)\s+(\S+)$/);
     if (effectMatch && EFFECTS[effectMatch[1]]) {
       const [, effect, raw] = effectMatch;
@@ -80,8 +81,8 @@ function renderContent(content: string) {
       );
     }
 
-    // Inline image: ![alt text](src)
-    // Optional crop position via a #hash on the src, e.g. ![alt](/img.jpg#top)
+    // inline image: ![alt text](src)
+    // optional crop via #hash on src, e.g. ![alt](/img.jpg#top)
     //   #top | #bottom | #center  → object-position keyword
     //   #30% (or #50%)            → vertical object-position (top..bottom)
     const imgMatch = trimmed.match(/^!\[(.*?)\]\((.*?)\)$/);
@@ -104,15 +105,15 @@ function renderContent(content: string) {
       );
     }
 
-    // Citation: every line of the block starts with ">" (lines joined by \n).
-    //   first line   → the quote itself
+    // citation: every line starts with ">" (lines joined by \n)
+    //   first line   → quote itself
     //   next lines   → secondary lines, e.g. a translation
     //   "> -- Name"  → attribution
     const lines = trimmed.split("\n").map((l) => l.trim());
     if (lines.every((l) => l.startsWith(">"))) {
       const body = lines.map((l) => l.replace(/^>\s?/, "")).filter(Boolean);
       const attribution = body.find((l) => l.startsWith("-- "))?.slice(3);
-      // Translation lines and attribution are optional; the quote is not.
+      // translation lines and attribution optional, quote is not
       const [quote, ...rest] = body.filter((l) => !l.startsWith("-- "));
       if (quote) return (
         <figure key={i} className="citation">
@@ -151,16 +152,6 @@ function renderContent(content: string) {
   });
 }
 
-// "19-09-2026" → "19 September 2026"
-function formatDate(date: string) {
-  const [day, month, year] = date.split("-");
-  return new Date(+year, +month - 1, +day).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
-
 export default async function BlogPost({
   params,
 }: {
@@ -172,7 +163,7 @@ export default async function BlogPost({
 
   const post = posts[idx];
 
-  // Skip over draft posts when finding prev/next neighbours.
+  // skip drafts when finding prev/next neighbours
   const isPublished = (p: (typeof posts)[number]) =>
     !("draft" in p && p.draft);
   let prevPost: (typeof posts)[number] | null = null;
@@ -184,9 +175,11 @@ export default async function BlogPost({
     if (isPublished(posts[i])) { nextPost = posts[i]; break; }
   }
 
+  const comments = commentsFor(post.id);
+
   const headImageRaw =
     "headImage" in post ? (post.headImage as string) : null;
-  // Optional crop position via a #hash on the src, e.g. "/img.jpg#15%"
+  // optional crop via #hash on src, e.g. "/img.jpg#15%"
   //   #top | #bottom | #center → keyword; #15% → vertical position (top..bottom)
   const [headImage, headPos] = headImageRaw
     ? headImageRaw.split("#")
@@ -211,7 +204,7 @@ export default async function BlogPost({
         </Link>
       </div>
 
-      {/* Head image — full image if provided, blue banner strip otherwise */}
+      {/* head image, full image if provided, blue banner strip otherwise */}
       {headImage ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -232,7 +225,9 @@ export default async function BlogPost({
 
       <div className="space-y-4">{renderContent(post.content)}</div>
 
-      {/* Prev/next — at the end, so readers can keep going */}
+      <Comments slug={post.slug} comments={comments} />
+
+      {/* prev/next, at the end, so readers can keep going */}
       {(prevPost || nextPost) && (
         <nav className="flex justify-between gap-6 mt-16 pt-8 border-t border-gray-200 text-sm">
           {prevPost ? (
