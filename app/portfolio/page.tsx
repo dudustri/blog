@@ -26,13 +26,13 @@ export default function PortfolioPage() {
             href={`/portfolio/${project.slug}`}
             className="group block border border-gray-200 rounded-xl overflow-hidden hover:border-black hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
           >
-            {/* Image area */}
+            {/* image area */}
             <div className="w-full h-40 overflow-hidden relative bg-gray-50">
               {project.slug === "personal-blog" ? (
-                // This very site: show its own gravity-square physics.
+                // this very site: show its own gravity-square physics
                 <MatterBackground count={12} />
               ) : project.wip ? (
-                // Work in progress: solid black banner.
+                // work in progress: solid black banner
                 <div className="w-full h-full bg-black flex items-center justify-center">
                   <span className="text-5xl font-bold text-white/10 select-none">
                     {project.title[0]}
@@ -57,7 +57,7 @@ export default function PortfolioPage() {
               )}
             </div>
 
-            {/* Card body */}
+            {/* card body */}
             <div className="p-5">
               <div className="flex items-start gap-2 mb-1.5">
                 <h2 className="font-semibold group-hover:underline">{project.title}</h2>

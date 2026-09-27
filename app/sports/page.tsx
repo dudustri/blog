@@ -20,7 +20,7 @@ import activitiesMeta from "@/content/activities-meta.json";
 
 type View = "pizzas" | "activities";
 
-// Overall lifetime numbers across everything.
+// overall lifetime numbers
 const LIFETIME = statsFor(activities);
 const YEARS = availableYears();
 
@@ -32,15 +32,15 @@ export default function SportsPage() {
   const [month, setMonth] = useState<number | "all">("all");
 
   const meta = CATEGORY_META.find((m) => m.key === active)!;
-  // Year/month filters drive both views; the activity list is then narrowed
-  // to the selected category.
+  // year/month filters drive both views, activity list is then narrowed to
+  // the selected category
   const filtered = filterActivities(year, month);
   const list = filtered.filter((a) => categoryOf(a) === active);
   const stats = statsFor(list);
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 select-none">
-      {/* Hero */}
+      {/* hero */}
       <header className="mb-10">
         <p
           className="text-xs font-semibold uppercase tracking-[0.2em] mb-3"
@@ -57,18 +57,18 @@ export default function SportsPage() {
           Sports
         </h1>
         <p className="text-gray-500 leading-relaxed max-w-xl text-[15px]">
-          All my recorded activities since I got my Garmin watch — the full
+          All my recorded activities since I got my Garmin watch. The full
           history, sorted by sport.
         </p>
         <p className="text-xs text-gray-400 mt-3">
           Last updated: {formatDate(activitiesMeta.generatedAt)}{" "}
           <span className="italic">
-            (manually updated — I&apos;m not paying Strava for the API o.O)
+            (manually updated, I&apos;m not paying Strava for the API o.O)
           </span>
         </p>
       </header>
 
-      {/* Lifetime banner */}
+      {/* lifetime banner */}
       <section className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
         <StatTile label="Total sessions" value={LIFETIME.count.toString()} />
         <StatTile
@@ -86,9 +86,9 @@ export default function SportsPage() {
         />
       </section>
 
-      {/* View switch + shared filters */}
+      {/* view switch + shared filters */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-        {/* Pizzas Earned ↔ Activities */}
+        {/* pizzas earned ↔ activities */}
         <div className="inline-flex rounded-lg border border-gray-200 overflow-hidden">
           {(
             [
@@ -111,7 +111,7 @@ export default function SportsPage() {
           })}
         </div>
 
-        {/* Filters (year/month apply to both views; aggregation is plot-only) */}
+        {/* filters (year/month apply to both views; aggregation is plot-only) */}
         <div className="flex flex-wrap items-center gap-3">
           {view === "pizzas" && (
             <div className="inline-flex rounded-lg border border-gray-200 overflow-hidden">
@@ -134,7 +134,7 @@ export default function SportsPage() {
             </div>
           )}
 
-          {/* Year selector */}
+          {/* year selector */}
           <select
             value={year}
             onChange={(e) =>
@@ -150,7 +150,7 @@ export default function SportsPage() {
             ))}
           </select>
 
-          {/* Month selector */}
+          {/* month selector */}
           <select
             value={month}
             onChange={(e) =>
@@ -171,14 +171,14 @@ export default function SportsPage() {
       </div>
 
       {view === "pizzas" ? (
-        /* Pizza tracker */
+        /* pizza tracker */
         <section className="mb-12">
           <PizzaTracker aggregation={aggregation} year={year} month={month} />
         </section>
       ) : (
-        /* Activities list */
+        /* activities list */
         <>
-          {/* Category tabs */}
+          {/* category tabs */}
           <nav className="flex flex-wrap gap-2 mb-8">
             {CATEGORY_META.map((m) => {
               const isActive = m.key === active;
@@ -199,7 +199,7 @@ export default function SportsPage() {
             })}
           </nav>
 
-          {/* Active category panel */}
+          {/* active category panel */}
           <section
             className="border border-gray-200 rounded-2xl p-6 md:p-8 mb-6"
             style={{ borderTop: `3px solid ${meta.accent}` }}
@@ -219,7 +219,7 @@ export default function SportsPage() {
               </p>
             ) : (
               <>
-                {/* Per-category stats */}
+                {/* per-category stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-7">
                   <MiniStat label="Sessions" value={stats.count.toString()} />
                   <MiniStat
@@ -227,7 +227,7 @@ export default function SportsPage() {
                     value={
                       stats.distanceKm > 0
                         ? `${stats.distanceKm.toFixed(1)} km`
-                        : "—"
+                        : "-"
                     }
                   />
                   <MiniStat
@@ -239,12 +239,12 @@ export default function SportsPage() {
                     value={
                       stats.elevationM > 0
                         ? `${Math.round(stats.elevationM)} m`
-                        : "—"
+                        : "-"
                     }
                   />
                 </div>
 
-                {/* Activity list */}
+                {/* activity list */}
                 <ul className="divide-y divide-gray-100">
                   {list.map((a) => (
                     <li

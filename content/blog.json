@@ -1,5 +1,6 @@
 [
   {
+    "id": "2026-03-15-168b",
     "slug": "first-blog-post-from-my-life",
     "title": "My First Post Ever",
     "date": "15-03-2026",
@@ -8,6 +9,7 @@
     "draft": false
   },
   {
+    "id": "2026-03-16-6591",
     "slug": "banana-post",
     "title": "Banana Post",
     "date": "16-03-2026",
@@ -16,6 +18,7 @@
     "draft": false
   },
   {
+    "id": "2026-06-13-0878",
     "slug": "ausangate",
     "title": "Ausangate",
     "date": "13-06-2026",
@@ -25,54 +28,61 @@
     "draft": false
   },
   {
+    "id": "2026-06-12-c820",
     "slug": "mushrooms-and-capitalism",
     "title": "Mushrooms and Capitalism",
     "date": "12-06-2026",
     "excerpt": "What fungi networks can teach us about markets, value, and decay.",
-    "content": "DRAFT — scaffold, to be fleshed out. \n\n An intro hooking the reader: the moment I started thinking about mushrooms as more than dinner. \n\n Outline to cover: \n\n - Mycelium as a decentralised network, and the lazy comparison to 'the market' (and why it might be wrong). \n\n - Foraging, commodification, and what happens when a wild thing gets a price tag. \n\n - Growth for growth's sake vs. decomposition — fungi only thrive by breaking things down. A degrowth metaphor that probably gets away from me. \n\n - Closing thought: what we lose when we measure everything in yield.",
+    "content": "DRAFT - scaffold, to be fleshed out. \n\n An intro hooking the reader: the moment I started thinking about mushrooms as more than dinner. \n\n Outline to cover: \n\n - Mycelium as a decentralised network, and the lazy comparison to 'the market' (and why it might be wrong). \n\n - Foraging, commodification, and what happens when a wild thing gets a price tag. \n\n - Growth for growth's sake vs. decomposition, fungi only thrive by breaking things down. A degrowth metaphor that probably gets away from me. \n\n - Closing thought: what we lose when we measure everything in yield.",
     "draft": true
   },
   {
+    "id": "2026-06-12-3d8b",
     "slug": "huaraz-public-hospital",
     "title": "Huaraz Public Hospital",
     "date": "12-06-2026",
     "excerpt": "An unplanned visit to a public hospital in the Peruvian Andes.",
-    "content": "DRAFT — scaffold, to be fleshed out. \n\n Open with how I ended up there — the thing that went wrong. \n\n Outline to cover: \n\n - The walk/ride in, first impressions, the waiting room. \n\n - The care itself: the people, the improvisation, what surprised me. \n\n - A gringo's reckoning with public healthcare far from home, and the cost (or lack of it). \n\n - Gratitude, and what it made me think about systems back home.",
+    "content": "DRAFT - scaffold, to be fleshed out. \n\n Open with how I ended up there, the thing that went wrong. \n\n Outline to cover: \n\n - The walk/ride in, first impressions, the waiting room. \n\n - The care itself: the people, the improvisation, what surprised me. \n\n - A gringo's reckoning with public healthcare far from home, and the cost (or lack of it). \n\n - Gratitude, and what it made me think about systems back home.",
     "draft": true
   },
   {
+    "id": "2026-06-12-e1d6",
     "slug": "electric-guitar",
     "title": "Electric Guitar",
     "date": "12-06-2026",
     "excerpt": "Picking up the electric guitar, again.",
-    "content": "DRAFT — scaffold, to be fleshed out. \n\n Why now, after all this time. \n\n Outline to cover: \n\n - The gear: what I bought, what I already had, the rabbit hole of pedals and tone. \n\n - The practice reality vs. the fantasy — calluses, plateaus, the metronome I keep ignoring. \n\n - Songs I'm learning and the one riff I can almost play. \n\n - What playing badly teaches you about patience.",
+    "content": "DRAFT - scaffold, to be fleshed out. \n\n Why now, after all this time. \n\n Outline to cover: \n\n - The gear: what I bought, what I already had, the rabbit hole of pedals and tone. \n\n - The practice reality vs. the fantasy, calluses, plateaus, the metronome I keep ignoring. \n\n - Songs I'm learning and the one riff I can almost play. \n\n - What playing badly teaches you about patience.",
     "draft": true
   },
   {
+    "id": "2026-06-12-d189",
     "slug": "wifes-birthday-2026",
     "title": "Wife's Birthday 2026",
     "date": "12-06-2026",
     "excerpt": "Celebrating another trip around the sun together.",
-    "content": "DRAFT — scaffold, to be fleshed out. \n\n A short, honest love-letter of a post. \n\n Outline to cover: \n\n - The plan (and how much of it survived contact with reality). \n\n - A favourite small moment from the day. \n\n - Something I'm grateful for this year. \n\n - Inside jokes that won't make sense to anyone else — keep a couple anyway.",
+    "content": "DRAFT - scaffold, to be fleshed out. \n\n A short, honest love-letter of a post. \n\n Outline to cover: \n\n - The plan (and how much of it survived contact with reality). \n\n - A favourite small moment from the day. \n\n - Something I'm grateful for this year. \n\n - Inside jokes that won't make sense to anyone else, keep a couple anyway.",
     "draft": true
   },
   {
+    "id": "2026-06-12-2bd7",
     "slug": "parrilla-uruguaya-in-copenhagen",
     "title": "Parrilla Uruguaya in Copenhagen",
     "date": "12-06-2026",
     "excerpt": "Hunting for proper Uruguayan asado in the Danish capital.",
-    "content": "DRAFT — scaffold, to be fleshed out. \n\n The craving that started it all. \n\n Outline to cover: \n\n - What a real parrilla means and why Copenhagen makes it hard (the wood, the cuts, the patience). \n\n - The search: places I tried, what was close, what was heresy. \n\n - The verdict, and whether I just ended up building my own grill on the balcony. \n\n - Chimichurri notes, because someone will ask.",
+    "content": "DRAFT - scaffold, to be fleshed out. \n\n The craving that started it all. \n\n Outline to cover: \n\n - What a real parrilla means and why Copenhagen makes it hard (the wood, the cuts, the patience). \n\n - The search: places I tried, what was close, what was heresy. \n\n - The verdict, and whether I just ended up building my own grill on the balcony. \n\n - Chimichurri notes, because someone will ask.",
     "draft": true
   },
   {
+    "id": "2026-06-12-6bd7",
     "slug": "why-is-it-so-hard-to-take-business-actions",
     "title": "Why Is It So Hard to Take Business Actions?",
     "date": "12-06-2026",
     "excerpt": "A graveyard of business ideas I never started, and what keeps me from pulling the trigger.",
-    "content": "DRAFT — scaffold, to be fleshed out. \n\n The honest question behind this post: why is the gap between 'I have an idea' and 'I started something' so wide? Fear, time, money, comfort, perfectionism — name the real culprit. \n\n The graveyard of ideas (so far): \n\n - An amethyst web shop — sourcing crystals and selling them online. \n\n - A startup in the energy market. \n\n - A software and hardware company with my roommate and a friend from Brazil. \n\n - A software inspection / codebase-audit company for other companies. \n\n - A South American bakery in Copenhagen, selling pan de bono and pão de queijo. \n\n Outline to cover: \n\n - For each idea: the spark, why it excited me, and the exact moment I stalled. \n\n - The pattern across all of them — what they have in common in how they died. \n\n - What 'taking action' would actually look like this time, in small, scary, concrete steps. \n\n - A promise to my future self (and a date to check back on it).",
+    "content": "DRAFT - scaffold, to be fleshed out. \n\n The honest question behind this post: why is the gap between 'I have an idea' and 'I started something' so wide? Fear, time, money, comfort, perfectionism, name the real culprit. \n\n The graveyard of ideas (so far): \n\n - An amethyst web shop, sourcing crystals and selling them online. \n\n - A startup in the energy market. \n\n - A software and hardware company with my roommate and a friend from Brazil. \n\n - A software inspection / codebase-audit company for other companies. \n\n - A South American bakery in Copenhagen, selling pan de bono and pão de queijo. \n\n Outline to cover: \n\n - For each idea: the spark, why it excited me, and the exact moment I stalled. \n\n - The pattern across all of them, what they have in common in how they died. \n\n - What 'taking action' would actually look like this time, in small, scary, concrete steps. \n\n - A promise to my future self (and a date to check back on it).",
     "draft": true
   },
   {
+    "id": "2026-09-19-231e",
     "slug": "a-maybe-stability-letter",
     "title": "A Maybe Stability Letter for Life's Vagrants",
     "date": "19-09-2026",

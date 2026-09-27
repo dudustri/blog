@@ -8,19 +8,19 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Eduardo Sfreddo Trindade",
-  description: "Software & Energy Engineer — personal blog and portfolio",
+  description: "Software & Energy Engineer, personal blog and portfolio",
   icons: {
     icon: "/icon.svg",
   },
 };
 
-// Applies the saved theme before first paint, so dark mode doesn't flash white
-// on load. Runs inline in <head>, ahead of React; Header keeps it in sync after.
+// applies saved theme before first paint, so dark mode doesn't flash white on
+// load. runs inline in <head>, ahead of React. Header keeps it in sync after
 const themeScript = `try{if(localStorage.getItem("theme")==="dark")document.documentElement.classList.add("dark")}catch(e){}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // The script above may add "dark" before hydration, so the class can differ from the server HTML.
+    // script above may add "dark" before hydration, so class can differ from server HTML
     <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />

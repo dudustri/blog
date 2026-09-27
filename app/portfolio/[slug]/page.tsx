@@ -21,7 +21,7 @@ function renderContent(content: string) {
         </h2>
       );
     }
-    // Bullet list: every line starts with "- ".
+    // bullet list: every line starts with "- "
     if (block.split("\n").every((l) => l.startsWith("- "))) {
       return (
         <ul key={i} className="list-disc pl-5 space-y-1 text-gray-700 leading-relaxed">
@@ -31,7 +31,7 @@ function renderContent(content: string) {
         </ul>
       );
     }
-    // Markdown image block: ![alt](/path). Alt becomes the caption.
+    // markdown image block: ![alt](/path). alt becomes the caption
     const img = block.match(/^!\[(.*?)\]\((.*?)\)$/);
     if (img) {
       const [, alt, src] = img;
