@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Not app code: the Cloudflare worker deployed by hand, see workers/.
+    "workers/**",
   ]),
 ]);
 
