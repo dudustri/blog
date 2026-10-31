@@ -1,8 +1,24 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Press_Start_2P } from "next/font/google";
 import { notFound } from "next/navigation";
 import { projects } from "@/app/data/portfolio";
 import MatterBackground from "@/app/components/MatterBackground";
+import FlowDiagram, { type FlowSpec } from "@/app/components/FlowDiagram";
+import {
+  ragnadudsFlow,
+  ragnadudsRelease,
+  ragnadudsClient,
+  blogArchitecture,
+} from "@/app/data/ragnadudsFlow";
+
+// interactive diagrams a project's content can embed with "::flow <name>"
+const FLOWS: Record<string, FlowSpec> = {
+  ragnaduds: ragnadudsFlow,
+  "ragnaduds-release": ragnadudsRelease,
+  "ragnaduds-client": ragnadudsClient,
+  "blog-architecture": blogArchitecture,
+};
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -52,6 +68,12 @@ function renderContent(content: string) {
         </ul>
       );
     }
+    // interactive diagram block: ::flow <name>
+    const flow = block.match(/^::flow\s+([\w-]+)$/);
+    if (flow && FLOWS[flow[1]]) {
+      return <FlowDiagram key={i} spec={FLOWS[flow[1]]} />;
+    }
+
     // markdown image block: ![alt](/path). alt becomes the caption
     const img = block.match(/^!\[(.*?)\]\((.*?)\)$/);
     if (img) {
@@ -116,13 +138,11 @@ export default async function ProjectPage({
             : undefined
         }
       >
-        <MatterBackground
-          cast={[
-            { name: "duds", count: 1 },
-            { name: "orc", count: 3 },
-            { name: "poring", count: 20 },
-          ]}
-        />
+        {project.heroCast ? (
+          <MatterBackground cast={project.heroCast} />
+        ) : (
+          <MatterBackground count={16} />
+        )}
         <div className="relative z-10 p-5 pointer-events-none">
           {project.heroStyle === "pixel" ? (
             <>
@@ -172,4 +192,36 @@ export default async function ProjectPage({
 
 export async function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
+}
+
+// per-project share card, falling back to the site image when the project has none
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) return {};
+
+  const image = project.heroImage ?? project.image ?? "/images/og.png";
+
+  return {
+    title: project.title,
+    description: project.description,
+    alternates: { canonical: `/portfolio/${project.slug}` },
+    openGraph: {
+      type: "article",
+      title: project.title,
+      description: project.description,
+      url: `/portfolio/${project.slug}`,
+      images: [{ url: image, alt: project.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description: project.description,
+      images: [image],
+    },
+  };
 }
