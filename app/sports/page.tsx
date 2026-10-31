@@ -11,14 +11,21 @@ import {
   statsFor,
   formatDuration,
   formatPace,
-  formatDate,
+  formatIsoDate,
   availableYears,
+  pizzaSummary,
+  FOOD_MENU,
+  foodKcal,
+  PIZZA_KCAL,
   MONTH_SHORT,
 } from "@/app/data/activities";
 import PizzaTracker from "./PizzaTracker";
+import PizzaMenu from "./PizzaMenu";
 import activitiesMeta from "@/content/activities-meta.json";
 
 type View = "pizzas" | "activities";
+
+const PAGE = 10; // activities visible before "load more"
 
 // overall lifetime numbers
 const LIFETIME = statsFor(activities);
@@ -26,10 +33,14 @@ const YEARS = availableYears();
 
 export default function SportsPage() {
   const [view, setView] = useState<View>("pizzas");
+  // which pizza the plot counts as one
+  const [pizza, setPizza] = useState("Margherita");
   const [active, setActive] = useState<Category>("running");
   const [aggregation, setAggregation] = useState<Aggregation>("monthly");
   const [year, setYear] = useState<number | "all">("all");
   const [month, setMonth] = useState<number | "all">("all");
+  // long lists start short, the button below grows them
+  const [shown, setShown] = useState(PAGE);
 
   const meta = CATEGORY_META.find((m) => m.key === active)!;
   // year/month filters drive both views, activity list is then narrowed to
@@ -37,19 +48,16 @@ export default function SportsPage() {
   const filtered = filterActivities(year, month);
   const list = filtered.filter((a) => categoryOf(a) === active);
   const stats = statsFor(list);
+  // same kcal per item as the plot and the menu
+  const picked = FOOD_MENU.find((p) => p.name === pizza);
+  const pizzas = pizzaSummary(filtered, picked ? foodKcal(picked) : PIZZA_KCAL);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-10 select-none">
+    <div className="w-full max-w-6xl mx-auto px-6 py-10 select-none">
       {/* hero */}
       <header className="mb-10">
         <p
-          className="text-xs font-semibold uppercase tracking-[0.2em] mb-3"
-          style={{
-            background: "linear-gradient(90deg, #2a5a7a, #3e6b89)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
+          className="eyebrow text-xs font-semibold uppercase tracking-[0.2em] mb-3"
         >
           Training Log
         </p>
@@ -57,11 +65,10 @@ export default function SportsPage() {
           Sports
         </h1>
         <p className="text-gray-500 leading-relaxed max-w-xl text-[15px]">
-          All my recorded activities since I got my Garmin watch. The full
-          history, sorted by sport.
+          All my recorded activities since I got my Garmin watch.
         </p>
         <p className="text-xs text-gray-400 mt-3">
-          Last updated: {formatDate(activitiesMeta.generatedAt)}{" "}
+          Last updated: {formatIsoDate(activitiesMeta.generatedAt)}{" "}
           <span className="italic">
             (manually updated, I&apos;m not paying Strava for the API o.O)
           </span>
@@ -137,9 +144,10 @@ export default function SportsPage() {
           {/* year selector */}
           <select
             value={year}
-            onChange={(e) =>
-              setYear(e.target.value === "all" ? "all" : Number(e.target.value))
-            }
+            onChange={(e) => {
+              setYear(e.target.value === "all" ? "all" : Number(e.target.value));
+              setShown(PAGE);
+            }}
             className="px-3 py-1.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 bg-white hover:border-gray-400 transition-colors"
           >
             <option value="all">All years</option>
@@ -153,11 +161,12 @@ export default function SportsPage() {
           {/* month selector */}
           <select
             value={month}
-            onChange={(e) =>
+            onChange={(e) => {
               setMonth(
                 e.target.value === "all" ? "all" : Number(e.target.value),
-              )
-            }
+              );
+              setShown(PAGE);
+            }}
             className="px-3 py-1.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 bg-white hover:border-gray-400 transition-colors"
           >
             <option value="all">All months</option>
@@ -173,7 +182,62 @@ export default function SportsPage() {
       {view === "pizzas" ? (
         /* pizza tracker */
         <section className="mb-12">
-          <PizzaTracker aggregation={aggregation} year={year} month={month} />
+          {/* what the total actually means, the plot alone only shows a count */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+            <StatTile label={`${pizza} earned`} value={pizzas.pizzas.toLocaleString()} />
+            <StatTile
+              label="Best month"
+              value={pizzas.best ? pizzas.best.label : "—"}
+              sub={pizzas.best ? `${pizzas.best.pizzas} × ${pizza}` : undefined}
+            />
+            <StatTile
+              label={`${pizza} per month`}
+              value={pizzas.perMonth.toFixed(1)}
+              sub={`over ${pizzas.months} active ${pizzas.months === 1 ? "month" : "months"}`}
+            />
+            <StatTile
+              label="Calories burned"
+              value={`${Math.round(pizzas.calories).toLocaleString()} kcal`}
+            />
+          </div>
+
+          {/* which sport earned the pizzas */}
+          {pizzas.byCategory.length > 0 && (
+            <div className="mb-6">
+              <div className="flex h-2.5 w-full overflow-hidden rounded-full">
+                {pizzas.byCategory.map((c) => (
+                  <div
+                    key={c.key}
+                    style={{ width: `${c.share * 100}%`, background: c.accent }}
+                    title={`${c.label} ${(c.share * 100).toFixed(0)}%`}
+                  />
+                ))}
+              </div>
+              <div className="mt-2.5 flex flex-wrap gap-x-5 gap-y-1.5">
+                {pizzas.byCategory.map((c) => (
+                  <span key={c.key} className="flex items-center gap-1.5 text-xs text-gray-500">
+                    <span
+                      className="h-2 w-2 rounded-full"
+                      style={{ background: c.accent }}
+                      aria-hidden="true"
+                    />
+                    {c.label}
+                    <span className="tabular-nums text-gray-400">
+                      {c.pizzas} ({(c.share * 100).toFixed(0)}%)
+                    </span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <PizzaTracker aggregation={aggregation} year={year} month={month} pizza={pizza} />
+
+          <PizzaMenu
+            calories={pizzas.calories}
+            selected={pizza}
+            onSelect={setPizza}
+          />
         </section>
       ) : (
         /* activities list */
@@ -185,7 +249,7 @@ export default function SportsPage() {
               return (
                 <button
                   key={m.key}
-                  onClick={() => setActive(m.key)}
+                  onClick={() => { setActive(m.key); setShown(PAGE); }}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg border text-sm font-medium transition-all duration-200 ${
                     isActive
                       ? "text-white border-transparent shadow-sm -translate-y-0.5"
@@ -246,17 +310,17 @@ export default function SportsPage() {
 
                 {/* activity list */}
                 <ul className="divide-y divide-gray-100">
-                  {list.map((a) => (
+                  {list.slice(0, shown).map((a) => (
                     <li
                       key={a.id}
-                      className="py-3 flex items-start justify-between gap-4 group"
+                      className="py-3 flex items-start justify-between gap-4"
                     >
                       <div className="min-w-0">
-                        <p className="font-medium text-sm break-words group-hover:underline">
+                        <p className="font-medium text-sm break-words">
                           {a.name}
                         </p>
                         <p className="text-xs text-gray-400 mt-0.5">
-                          {formatDate(a.date)} · {a.type}
+                          {formatIsoDate(a.date)} · {a.type}
                           {a.avgHeartrate ? ` · ${a.avgHeartrate} bpm` : ""}
                         </p>
                       </div>
@@ -275,6 +339,23 @@ export default function SportsPage() {
                     </li>
                   ))}
                 </ul>
+
+                {list.length > shown && (
+                  <div className="mt-5 flex gap-3">
+                    <button
+                      onClick={() => setShown((n) => n + PAGE)}
+                      className="flex-1 rounded-lg border border-gray-200 py-2.5 text-sm font-medium text-gray-500 transition-colors hover:border-gray-400 hover:text-black"
+                    >
+                      Load {Math.min(PAGE, list.length - shown)} more ({list.length - shown} left)
+                    </button>
+                    <button
+                      onClick={() => setShown(list.length)}
+                      className="rounded-lg border border-gray-200 px-5 py-2.5 text-sm font-medium text-gray-500 transition-colors hover:border-gray-400 hover:text-black"
+                    >
+                      Load all {list.length}
+                    </button>
+                  </div>
+                )}
               </>
             )}
           </section>

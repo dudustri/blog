@@ -1,9 +1,12 @@
 import type { CSSProperties } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { posts, formatDate } from "@/app/data/blog";
+import { posts, formatDmyDate, isoDate } from "@/app/data/blog";
 import { commentsFor } from "@/app/data/comments";
 import Comments from "@/app/components/Comments";
+import JsonLd from "@/app/components/JsonLd";
+import { renderInline } from "@/app/components/InlineText";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -12,17 +15,6 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const EFFECTS: Record<string, CSSProperties> = {
   fade: { animation: "fadeDecay 4s ease-in forwards" },
 };
-
-// renders inline markup in a paragraph
-// supported: **bold** → <strong>
-function renderInline(text: string) {
-  return text.split(/(\*\*.*?\*\*)/g).map((part, i) => {
-    if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
-      return <strong key={i}>{part.slice(2, -2)}</strong>;
-    }
-    return part;
-  });
-}
 
 // renders a content block
 // block types (separated by \n\n in JSON):
@@ -33,7 +25,7 @@ function renderInline(text: string) {
 //   > quote          → centered citation (see below)
 //   ---              → section break (· · ·)
 //   -- Name          → sign-off, paragraph with extra space above
-//   anything else    → paragraph (inline **bold** works)
+//   anything else    → paragraph (inline **bold** and [links](url) work)
 const PARAGRAPH =
   "text-gray-700 leading-relaxed text-justify indent-8";
 
@@ -177,6 +169,19 @@ export default async function BlogPost({
 
   const comments = commentsFor(post.id);
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: isoDate(post.date),
+    author: { "@type": "Person", name: "Eduardo Sfreddo Trindade", url: "https://eduardo.dk" },
+    mainEntityOfPage: `https://eduardo.dk/blog/${post.slug}`,
+    ...("headImage" in post
+      ? { image: `https://eduardo.dk${(post.headImage as string).split("#")[0]}` }
+      : {}),
+  };
+
   const headImageRaw =
     "headImage" in post ? (post.headImage as string) : null;
   // optional crop via #hash on src, e.g. "/img.jpg#15%"
@@ -221,11 +226,12 @@ export default async function BlogPost({
       )}
 
       <h1 className="text-3xl font-bold tracking-tight mb-1">{post.title}</h1>
-      <p className="text-gray-400 text-sm mb-8">{formatDate(post.date)}</p>
+      <p className="text-gray-400 text-sm mb-8">{formatDmyDate(post.date)}</p>
 
       <div className="space-y-4">{renderContent(post.content)}</div>
 
       <Comments slug={post.slug} comments={comments} />
+      <JsonLd data={articleSchema} />
 
       {/* prev/next, at the end, so readers can keep going */}
       {(prevPost || nextPost) && (
@@ -255,5 +261,41 @@ export default async function BlogPost({
 }
 
 export async function generateStaticParams() {
-  return posts.map((post) => ({ slug: post.slug }));
+  // drafts get no page at all, a guessed or shared link must not show an unfinished post
+  return posts.filter((post) => !post.draft).map((post) => ({ slug: post.slug }));
+}
+
+// per-post share card, so a shared link shows the post and not the site blurb
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = posts.find((p) => p.slug === slug);
+  if (!post) return {};
+
+  // headImage carries an optional #crop hint that is not part of the path
+  const head = "headImage" in post ? (post.headImage as string).split("#")[0] : null;
+  const image = head ?? "/images/og.png";
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url: `/blog/${post.slug}`,
+      publishedTime: isoDate(post.date),
+      images: [{ url: image, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [image],
+    },
+  };
 }

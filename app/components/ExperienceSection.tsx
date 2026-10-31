@@ -1,19 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import DetailModal, { type Detail } from "./DetailModal";
-import { jobHasTech, type Experience } from "@/app/data/resume";
+import { jobMatches, type Experience } from "@/app/data/resume";
 
-const BLUE = "#3e6b89";
+// site accent, lighter in dark mode (globals.css)
+const BLUE = "var(--accent)";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// a job matches when no tech is selected, or when it uses any selected one
-// (union). `jobHasTech` handles coupled labels like "C / C++"
-function jobMatches(job: Experience, activeTechs: string[]): boolean {
-  return activeTechs.length === 0 || activeTechs.some((t) => jobHasTech(job.stack, t));
-}
-
 // maps an Experience record to the generic Detail the shared popup renders
+const CARD_HIGHLIGHTS = 3;
+
 function jobToDetail(job: Experience, activeTechs: string[]): Detail {
   return {
     title: job.company,
@@ -46,19 +42,6 @@ export default function ExperienceSection({
   onJobSelect,
   onModalClose,
 }: Props) {
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    const check = () => setDark(document.documentElement.classList.contains("dark"));
-    check();
-    const observer = new MutationObserver(check);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
-
-  // hover: theme-adaptive neutral overlay (darkens on light, lightens on dark), no border/ring
-  const hoverBg = dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.04)";
-
   return (
     <>
       <div className={`space-y-0${selectedJob ? " pointer-events-none select-none" : ""}`}>
@@ -69,16 +52,15 @@ export default function ExperienceSection({
             <div
               key={job.id}
               id={job.id}
-              className="group scroll-mt-24 cursor-pointer rounded-xl p-5 -mx-5"
+              // hover tint only on roles that match the selected skills, colours in globals.css
+              className={`group scroll-mt-24 cursor-pointer rounded-xl p-5 -mx-5${matched ? " job-hover" : ""}`}
               style={{
                 opacity: matched ? 1 : 0.2,
                 borderLeft: matched && anySelected ? `3px solid ${BLUE}` : "3px solid transparent",
                 transition:
                   "opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease",
               }}
-              onMouseEnter={(e) => { if (matched) (e.currentTarget as HTMLElement).style.backgroundColor = hoverBg; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = ""; }}
-              onClick={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = ""; onJobSelect(job); }}
+              onClick={() => onJobSelect(job)}
             >
               <div className="flex items-start mb-2">
                 {job.logo ? (
@@ -104,7 +86,25 @@ export default function ExperienceSection({
                   {job.impact}
                 </p>
               ) : null}
-              <p className="text-gray-600 text-sm leading-relaxed text-justify">{job.description}</p>
+              {/* the card leads with scannable bullets, the full paragraph is one
+                  click away in the modal, which already receives it */}
+              {job.highlights?.length ? (
+                <>
+                  <ul className="space-y-1.5 text-gray-600 text-[15px] leading-relaxed">
+                    {job.highlights.slice(0, CARD_HIGHLIGHTS).map((h, i) => (
+                      <li key={i} className="flex gap-2.5">
+                        <span aria-hidden="true" className="mt-[9px] h-1 w-1 flex-shrink-0 rounded-full bg-gray-300" />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <span className="mt-3 inline-block text-xs text-gray-400 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    Read the full role →
+                  </span>
+                </>
+              ) : (
+                <p className="text-gray-600 text-[15px] leading-relaxed text-justify">{job.description}</p>
+              )}
             </div>
           );
         })}

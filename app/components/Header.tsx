@@ -6,6 +6,7 @@ import { useState, useSyncExternalStore } from "react";
 
 const navLinks = [
   { href: "/", label: "Home", exact: true },
+  { href: "/about", label: "About" },
   { href: "/resume", label: "Resume" },
   { href: "/mundo", label: "Mundo" },
   { href: "/sports", label: "Sports" },
@@ -22,6 +23,39 @@ const subscribeTheme = (onChange: () => void) => {
   return () => observer.disconnect();
 };
 const isDarkTheme = () => document.documentElement.classList.contains("dark");
+
+// shows the mode you would switch to, sun while dark and moon while light
+function ThemeIcon({ dark }: { dark: boolean }) {
+  return dark ? (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="4.2" />
+      <path d="M12 2.6v2.1M12 19.3v2.1M2.6 12h2.1M19.3 12h2.1M5.7 5.7l1.5 1.5M16.8 16.8l1.5 1.5M18.3 5.7l-1.5 1.5M7.2 16.8l-1.5 1.5" />
+    </svg>
+  ) : (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M20.6 14.3A8.6 8.6 0 0 1 9.7 3.4 8.6 8.6 0 1 0 20.6 14.3Z" />
+    </svg>
+  );
+}
 
 export default function Header() {
   const pathname = usePathname();
@@ -75,28 +109,28 @@ export default function Header() {
 
           {/* dark mode toggle, invisible placeholder on Mundo page to preserve layout */}
           <button
-            onClick={isMundo ? undefined : toggleDark}
-            aria-label="Toggle dark mode"
-            aria-hidden={isMundo}
-            className={`ml-1 transition-colors ${isMundo ? 'invisible' : 'text-gray-400 hover:text-black'}`}
-            style={{ fontSize: 16, lineHeight: 1, padding: "2px 0", transform: "translateY(-1px)" }}
+            onClick={toggleDark}
+            aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+            title={dark ? "Switch to light mode" : "Switch to dark mode"}
+            className={`ml-1 flex items-center transition-colors ${
+              isMundo ? 'text-white/50 hover:text-white' : 'text-gray-400 hover:text-black'
+            }`}
           >
-            {dark ? "○" : "●"}
+            <ThemeIcon dark={dark} />
           </button>
         </nav>
 
         {/* mobile controls, dark toggle + hamburger */}
         <div className="flex md:hidden items-center gap-4">
-          {!isMundo && (
-            <button
-              onClick={toggleDark}
-              aria-label="Toggle dark mode"
-              className="text-gray-400 hover:text-black transition-colors"
-              style={{ fontSize: 16, lineHeight: 1, padding: "2px 0" }}
-            >
-              {dark ? "○" : "●"}
-            </button>
-          )}
+          <button
+            onClick={toggleDark}
+            aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+            className={`flex items-center transition-colors ${
+              isMundo ? 'text-white/50 hover:text-white' : 'text-gray-400 hover:text-black'
+            }`}
+          >
+            <ThemeIcon dark={dark} />
+          </button>
           <button
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
@@ -126,7 +160,7 @@ export default function Header() {
             isMundo ? 'border-white/10 bg-black/80 backdrop-blur-md' : 'border-gray-100 bg-white'
           }`}
         >
-          <div className="max-w-6xl mx-auto px-6 py-3 flex flex-col">
+          <div className="max-w-6xl mx-auto px-6 py-4 grid grid-cols-3 gap-2">
             {navLinks.map(({ href, label, exact }) => {
               const active = exact ? pathname === href : pathname.startsWith(href);
               return (
@@ -134,14 +168,14 @@ export default function Header() {
                   key={href}
                   href={href}
                   onClick={() => setMenuOpen(false)}
-                  className={`py-2.5 text-sm transition-colors ${
+                  className={`rounded-lg border py-3 text-center text-sm transition-colors ${
                     active
                       ? isMundo
-                        ? 'text-white font-medium'
-                        : 'text-black font-medium'
+                        ? 'border-white/40 text-white font-medium'
+                        : 'border-[var(--accent)] text-[var(--accent)] font-medium'
                       : isMundo
-                        ? 'text-white/60 hover:text-white'
-                        : 'text-gray-500 hover:text-black'
+                        ? 'border-white/10 text-white/60 hover:text-white'
+                        : 'border-gray-200 text-gray-500 hover:text-black'
                   }`}
                 >
                   {label}

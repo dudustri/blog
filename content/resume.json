@@ -1,6 +1,6 @@
 {
   "tagline": "Software and energy engineer, at my best where software meets the physical world.",
-  "summary": "At home handling backend and frontend services, firmware on edge and IoT devices, plus the networks and DevOps infrastructure behind them. Comfortable owning the whole path from device to cloud, through build, deploy, maintenance, monitoring. Quick to learn, deeply curious, energized by hard problems and strong teammates. Above all, motivated by work with real purpose, something worth being proud to build.",
+  "summary": "Most of my work lives between hardware and the cloud, from firmware on edge and IoT devices to backend services, frontends, networks and the DevOps infrastructure behind them. Comfortable owning the whole path from device to cloud, through build, deploy, maintenance, monitoring. Quick to learn, deeply curious, energized by hard problems and strong teammates. Above all, motivated by work with real purpose, something worth being proud to build.",
   "techStack": [
     "C / C++",
     "Java",
@@ -8,18 +8,29 @@
     "Python",
     "SQL",
     "NoSQL",
+    "MySQL",
     "PostgreSQL",
     "MongoDB",
+    "Redis",
+    "ArangoDB",
+    "Elasticsearch",
     "React",
     "TypeScript",
     "Node",
     "REST",
     "GraphQL",
     "gRPC",
+    "WebRTC",
+    "WebSockets",
+    "SSE",
+    "SignalR",
+    "Webhooks",
+    "WASM",
     "Golang",
     "Rust",
     "Git",
     "GitHub Actions",
+    "Jenkins",
     "Docker",
     "Kubernetes",
     "Nginx",
@@ -29,7 +40,11 @@
     "CI/CD",
     "AWS",
     "GCP",
-    "Azure"
+    "Azure",
+    "Oracle Cloud",
+    "Grafana",
+    "Prometheus",
+    "Kibana"
   ],
   "education": [
     {
@@ -540,15 +555,14 @@
       "description": "Development and maintenance of wind and solar plants data acquisition software using C, Python, and C# for backend and JS/TS for frontend, supporting devices such as turbines, inverters, and sensors, vendor-specific and industrial protocols (e.g., Siemens, Vestas, Gamesa, Modbus). Architecture and implementation of production-ready control systems such as dynamic yaw and inverter optimization. License management, high-performance decryption, and PostgreSQL/MySQL interface in C. Redis real-time data storage and fast retrieval with non-volatile persistence. CI/CD workflow, infrastructure architecture, Nginx as the reverse proxy, and shell/python scripting for environment setup, edge deployment, and operations tooling. Structured plant data was persisted in SQL databases while NoSQL stores handled real-time caching and fast retrieval.",
       "details": "RES is the largest independent renewable energy company, and I worked in its Digital Solutions department, whose products run on a broad range of wind and solar sites. Across the data acquisition and controls teams, on the data acquisition side I worked on the backend that acquired high frequency data from field devices across many vendor and industrial protocols and stored it at the edge, where the models also ran, with the data pulled up to the central servers and to Azure when needed.\n\nMuch of that work sat behind AnemoLive and HelioLive, the wind and solar products that are mostly about data acquisition, collecting and serving high frequency plant data for predictive maintenance and better operational decisions, with AnemoLive running on thousands of turbines. On the controls side I worked on Dynamic Yaw, a software layer over the turbine controllers that improved how a whole wind farm yaws into the wind, using collective control so turbines share wind direction with their neighbours and wake steering so upstream turbines steer their wakes away from the ones behind them, for a 1 to 3% uplift in energy production while cutting yaw wear. I also worked on Optivert, an intelligent temperature management system for solar inverters that spots and mitigates overheating and can raise output by up to 20% on hot days.",
       "highlights": [
-        "Maintained and extended the acquisition backend in C, Python and C#, with a JS/TS frontend, across turbines, inverters and related sensors.",
-        "Integrated vendor-specific protocols such as Siemens, Vestas, Gamesa and GE, and industry-standard ones such as Modbus.",
-        "Designed production-ready control systems such as dynamic yaw and inverter optimization running unattended at the edge.",
-        "Implemented license management, high-performance decryption and a PostgreSQL/MySQL interface directly in C, backed by Redis for real-time storage and non-volatile persistence.",
-        "Built the CI/CD workflow, edge-deployment infrastructure and shell/Python operations tooling.",
-        "Refactored the C blob decryption library under the hood into modular packages and built a proper interface so it could also connect to and query PostgreSQL, not just MySQL, which the new Siemens turbine StickBox required with its different database.",
-        "Decoupled the license procedures into their own standalone C package.",
-        "Restructured the repository to split shared code into a common library that other projects could reuse without pulling in heavy unused dependencies, cutting the controls image size by around 70%.",
-        "Ran across a fleet of thousands of turbines through the AnemoLive wind product."
+        "Fast data acquisition and controls backend in C, Python and C# running on a fleet of wind turbines and inverters.",
+        "Built dynamic yaw for wake steering and inverter optimization controls running on the edge.",
+        "Integrated vendor protocols from Siemens, Vestas, Gamesa and GE, plus Modbus.",
+        "Split shared code into a common library, cutting the controls image size by about 70%.",
+        "Wrote license management, fast blob decryption and a PostgreSQL/MySQL interface in C, with Redis for real-time storage and non-volatile persistence.",
+        "Refactored the C decryption library into modular packages behind a proper interface, so the new Siemens StickBox could query PostgreSQL rather than only MySQL.",
+        "Decoupled the license procedures into a standalone C package.",
+        "Built the CI/CD workflow, the edge deployment infrastructure and the shell and Python operations tooling."
       ],
       "stack": [
         "C",
@@ -558,10 +572,14 @@
         "React",
         "Node",
         "REST",
+        "SignalR",
+        "Webhooks",
         "SQL",
         "NoSQL",
+        "MySQL",
         "PostgreSQL",
         "Redis",
+        "ArangoDB",
         "Docker",
         "Nginx",
         "Azure",
@@ -571,7 +589,14 @@
         "Make",
         "Linux",
         "Git",
-        "Modbus"
+        "Modbus",
+        "Grafana",
+        "Prometheus",
+        "Jenkins",
+        "Wind turbines",
+        "Inverters",
+        "SCADA",
+        "Controls"
       ]
     },
     {
@@ -585,12 +610,12 @@
       "description": "Responsible for transitioning the prototype and its firmware into a product. New features such as Over-the-Air (OTA) updates and Power/Energy Metering. Definition of technical requirements for hardware, firmware, and software. Hardware design coordination. Scalable data-collection multithreading system development using MQTT and Rust to handle high frequency real-time data from field devices. Service manager engine architecture design (AWS & GCP) and implementation using TypeScript, Bun, Docker and K8s, with Nginx as the reverse proxy, to ensure responsiveness and availability to grid balance signals. IBM/Andel Flex Platform integration for FCR-D market regulation. Collected device and metering data was persisted across SQL and NoSQL databases according to structure and access needs.",
       "details": "Bodil is a Danish home-energy startup whose BEAM product lets households help balance the grid and earn passive income, and I worked only on the BEAM project. Building on the first-generation device, this role drove the second generation of the platform, internally Distributed System Orchestration for the Flexibility Market (BEAM v2). The focus shifted from a single device to orchestrating a responsive fleet that reacts to grid-balancing signals and bids into the flexibility markets in real time, taking the prototype all the way to a shippable product that earns households from grid services.",
       "highlights": [
-        "Owned the prototype-to-product transition: defined hardware, firmware and software requirements and coordinated the hardware design.",
-        "Shipped Over-the-Air (OTA) firmware updates and on-device power/energy metering.",
-        "Built a scalable, multithreaded data-collection system in Rust over MQTT for high-frequency real-time field data.",
-        "Architected the service-manager engine on AWS and GCP using TypeScript, Bun, Docker and Kubernetes, tuned for responsiveness and availability under grid-balancing signals.",
-        "Integrated the IBM/Andel Flex platform to participate in the FCR-D frequency-regulation market.",
-        "Delivered a product that lets households earn income by helping balance the grid."
+        "Took the prototype to a shipping product, defining hardware, firmware and software requirements and coordinating the hardware design.",
+        "Multithreaded data collection in Rust over MQTT for high frequency real-time field data.",
+        "Service manager engine on AWS and GCP in TypeScript, Bun, Docker and Kubernetes, tuned for responsiveness under grid balancing signals.",
+        "Shipped over the air firmware updates and on device power and energy metering.",
+        "Integrated the IBM/Andel Flex platform to bid into the FCR-D frequency regulation market.",
+        "Shipped a product that pays households for helping balance the grid."
       ],
       "projects": [
         {
@@ -621,7 +646,12 @@
         "Linux",
         "Bash",
         "Make",
-        "Git"
+        "Git",
+        "FCR-D",
+        "Grid balancing",
+        "Energy metering",
+        "Heat pumps",
+        "Controls"
       ]
     },
     {
@@ -635,16 +665,17 @@
       "description": "Firmware development using C, TypeScript and Node for API and Python for the energy simulation engine. Use of ESP32 with ESP IDF for Bluetooth, WiFi, LTE/NB-IoT, and peer-to-peer communication, alongside parsers, protocols, and machine interface. Aggregator implementation for data handling and implemented a server-side state holder to validate and manage connections between the database, simulation service, and IoT devices. The state holder synchronized data across SQL and NoSQL databases to keep the simulation service and IoT devices consistent.",
       "details": "This role built the first generation of the BEAM platform, internally the Smart Grid Interface (BEAM v1). The first try used that smart grid interface to control heat pumps based on external signals, and I coordinated the hardware PCB design for it. We tested the reaction time empirically in loco across many different heat pump brands, and it turned out heat pumps were not suitable for the fast reactions the FCR-D signal needs, which led the project to pivot to a broader concept that no longer relied on them. Underneath it all the hard part was getting reliable telemetry and control off constrained ESP32 hardware and into a backend that could simulate and act on it.",
       "highlights": [
-        "Brought up the ESP32 (ESP-IDF) connectivity stack: Bluetooth provisioning, WiFi and LTE/NB-IoT fallback, plus peer-to-peer device communication.",
-        "Wrote the firmware-side parsers and machine interface, and the protocol layer framing messages between device and backend.",
-        "Built the data aggregator and a server-side state holder that keep the database, the simulation service and the field devices consistent.",
-        "Stood up the Python energy-simulation engine behind a TypeScript/Node API.",
-        "Coordinated the hardware PCB design and, from in loco testing across many heat pump brands, showed they could not meet the fast grid signal, which steered the project to pivot."
+        "Brought up the ESP32 connectivity stack in ESP-IDF, Bluetooth provisioning, WiFi with LTE and NB-IoT fallback, plus peer to peer device communication.",
+        "Wrote the firmware parsers, the machine interface and the protocol layer framing messages between device and backend.",
+        "Proved in field testing that no heat pump brand could follow the fast grid signal, which steered the project to pivot.",
+        "Built the data aggregator and the server side state holder keeping database, simulation service and field devices consistent.",
+        "Stood up the Python energy simulation engine behind a TypeScript and Node API.",
+        "Coordinated the hardware PCB design."
       ],
       "projects": [
         {
           "slug": "beam-v1-smart-grid-interface",
-          "title": "Smart Grid Interface - BEAM v1"
+          "title": "Smart Grid Interface and IoT Device - BEAM v1"
         }
       ],
       "stack": [
@@ -668,7 +699,13 @@
         "Bash",
         "Make",
         "Git",
-        "GitHub Actions"
+        "GitHub Actions",
+        "NB-IoT",
+        "LTE",
+        "PCB design",
+        "Heat pumps",
+        "Grid balancing",
+        "Controls"
       ]
     },
     {
@@ -682,11 +719,11 @@
       "description": "Development focusing on CLI, API, backend-related code, pipeline maintenance, tests, and code quality enforcement. Docker and Kubernetes for containerization and orchestration, Python, Golang, and Typescript as languages. REST, GraphQL and gRPC APIs. Cloud services from GCP and AWS. Test-driven development (TDD). Backend services persisted and queried data through both SQL and NoSQL databases.",
       "details": "Numerous is a web platform for turning Python apps into shareable, production-ready products without anyone having to manage infrastructure. Developers push their apps through a CLI, with support for frameworks like Streamlit, Dash, Panel, Marimo and Docker, and the platform handles the serverless deployment and scaling, user accounts and organizations with fine-grained permissions, payments and subscriptions, white-labeling, analytics and file storage. I worked on the backend across the CLI, the API and the supporting services, and owned much of the pipelines, tests and code-quality checks that kept the codebase reliable and reviewable.",
       "highlights": [
-        "Wrote services in Python, Golang and TypeScript, containerized and orchestrated with Docker and Kubernetes.",
+        "Services in Python, Golang and TypeScript, containerized with Docker and orchestrated on Kubernetes.",
         "Built and consumed REST, GraphQL and gRPC APIs deployed on GCP and AWS.",
-        "Maintained the CI/CD pipelines and enforced code-quality standards across the team.",
-        "Practised test-driven development (TDD) throughout.",
-        "Worked across the CLI, API and services of a platform that turns developer apps into deployed products with no infrastructure to manage."
+        "Worked the CLI, API and services of a platform that turns developer apps into deployed products with no infrastructure to manage.",
+        "Maintained the CI/CD pipelines and the team code quality standards.",
+        "Practised test-driven development (TDD) throughout."
       ],
       "stack": [
         "Python",
@@ -721,14 +758,13 @@
       "description": "Development and maintenance of configuration and monitoring software products for desktop, web and mobile using C++, Java, and Dart/Flutter. API tests using JavaScript and Postman. Scrum methodology application and software version control using Git/Gitlab and Sourcetree. MQTT and LoRaWAN applications (IoT). Configuration and monitoring data was persisted and queried through SQL databases.",
       "details": "Novus builds industrial instrumentation and software, and I worked across its configuration and monitoring product line, which talks to a broad range of hardware from controllers, sensors, transmitters and data loggers to many other data acquisition and communication devices. Most of my time went to NXperience, the desktop configuration, data collection and analysis software, where I maintained and extended the C++ code with a focus on data reading and communication with Novus devices through their internal procedures and standards such as register addresses and industrial protocols, most often Modbus. I also maintained and added features to NXperience Mobile, the native Java app for configuring devices and collecting data from loggers like the LogBox over WiFi and Bluetooth, testing everything on real phones and on Android Studio emulators.\n\nI worked closely on the LoRaWAN implementation for the Telik Trafo Lite, an IoT temperature transmitter for distribution transformers, building out the packages behind its wireless communication. I also gave maintenance to the FieldLogger Configurator, the software for Novus FieldLogger dataloggers that communicates over USB, Modbus TCP and Modbus RTU, and near the end I had a quick passage in Flutter on the desktop and mobile versions of QuickTune, the configuration tool for Novus controllers and indicators. For every fix I had access to the real devices I needed, which was essential for reproducing bugs, writing tests and checking the corrections on actual hardware. I took the mobile apps through publishing to the stores and meeting all their requirements, and I did some work on customer usage metrics, collecting them into a centralized company database and defining cronjobs and SQL procedures to generate analytics.",
       "highlights": [
-        "Built and maintained products with C++, Java and Dart/Flutter across desktop, web and mobile.",
-        "Implemented the LoRaWAN communication for the Telik Trafo Lite and worked on MQTT connectivity across the IoT product line.",
-        "Reproduced, fixed and verified bugs directly on the real Novus hardware, with access to the full device range for testing.",
-        "Published the mobile apps to the app stores and met all the store requirements.",
-        "Built customer usage analytics into a centralized company database, defining SQL procedures and scheduled cronjobs.",
-        "Wrote API tests with JavaScript and Postman.",
-        "Worked in Scrum, using Git/GitLab and Sourcetree for version control.",
-        "Worked across the full configuration and monitoring product line, talking to controllers, sensors, transmitters and data loggers."
+        "Products in C++, Java and Dart/Flutter for desktop, web and mobile.",
+        "Implemented LoRaWAN for the Telik Trafo Lite and MQTT connectivity for the IoT product line.",
+        "Built customer usage analytics into a central company database, with SQL procedures and scheduled cronjobs.",
+        "Reproduced, fixed and verified bugs on real Novus hardware, with the full device range available for testing.",
+        "Published the mobile apps to the stores and met every store requirement.",
+        "Wrote API tests in JavaScript and Postman.",
+        "Worked the whole configuration and monitoring line, talking to controllers, sensors, transmitters and data loggers."
       ],
       "stack": [
         "C++",
@@ -748,7 +784,9 @@
         "Git",
         "Docker",
         "Scrum",
-        "REST"
+        "REST",
+        "Sensors",
+        "Controls"
       ]
     },
     {
@@ -762,13 +800,13 @@
       "description": "Computational simulation head's engineer and in charge of the internal methodology development to measure the building's energy performance.",
       "details": "As the head engineer for the building simulations, I owned the internal methodology we used to measure thermal, lighting and acoustic performance, and I gave the final sign-off that each design met the Brazilian standard NBR 15575. The role went beyond confirming whether a building performed. A large part of it was making it perform. When a design fell short, I identified what to change, from the orientation, materials and colours to the shading, landscaping, windows and openings, so it could meet the energy efficiency, thermal comfort and ventilation targets. As one of the five largest residential developers in Brazil, the company had an almost endless pipeline of buildings and a substantial workload. It was also where I first used programming professionally. I built a Python tool to run the analysis, and that experience is what gave me the taste for software I have followed ever since. The methodology we developed went on to win the company's Innovation Prize.",
       "highlights": [
-        "Brought building-performance simulation in-house (work previously outsourced entirely to third parties) and authored the internal methodology spanning thermal, lighting and acoustic performance, cutting costs at scale.",
-        "Gave the final sign-off on each design, verifying thermal performance against the Brazilian standard NBR 15575 through EnergyPlus simulation.",
+        "Brought building performance simulation in house, previously outsourced entirely, and authored the internal methodology covering thermal, lighting and acoustic performance.",
+        "Led a Python tool with the data analysis department that cut a single analysis from six or seven hours to about one, roughly 85%.",
+        "The methodology went on to win the company Innovation Prize.",
+        "Gave the final sign-off on every design, verifying thermal performance against the Brazilian standard NBR 15575 in EnergyPlus.",
         "Simulated daylighting in Dialux against the weather and solar standards for each building's location.",
-        "Managed acoustic validation end to end, commissioning a third-party firm's simulations and the contracts behind them, then confirming results with on-site (in loco) measurement.",
-        "Led, with the data-analysis department, a Python tool that turned raw simulation output into concrete compliance data. It brought a single analysis down from six or seven hours to about one, roughly an 85% cut, and we kept refining it through the NBR 15575 revision.",
-        "Drove design changes to meet energy-efficiency, thermal-comfort and ventilation targets through orientation, colours, materials, shading, landscape resources, and window/aperture design.",
-        "The methodology went on to win the company Innovation Prize."
+        "Ran acoustic validation end to end, commissioning a third-party firm and the contracts behind it, then confirming results with on-site measurement.",
+        "Drove design changes for energy efficiency, thermal comfort and ventilation through orientation, colours, materials, shading, landscape resources and aperture design."
       ],
       "stack": [
         "EnergyPlus",
@@ -777,7 +815,11 @@
         "Dialux",
         "Python",
         "NBR 15575",
-        "Excel"
+        "Excel",
+        "Thermal simulation",
+        "Daylighting",
+        "Acoustics",
+        "Commissioning"
       ]
     },
     {
@@ -791,14 +833,14 @@
       "description": "Design: HVAC, electrical, automation, photovoltaic, and lighting systems. Thermal and energy building performance analysis. Computational simulations. Technical and economical diagnosis of energy efficiency measures. Commissioning process.",
       "details": "The projects ran across every kind of building, from commercial and residential to hotels and industrial sites. I reviewed the design of the HVAC, electrical, automation, photovoltaic, lighting and hydraulic systems, and studied how each building performed through thermoenergetic simulations grounded in the ASHRAE standards. From there I diagnosed the energy efficiency measures, looked at lighting efficiency and light pollution reduction, and prepared the documentation behind the sustainability certifications. I was part of the team that took several projects all the way to LEED Platinum, which is the highest level the rating awards. The work also ran through to commissioning, where I developed the commissioning plans for the buildings and checked the finished result against on-site measurements and the design documents.",
       "highlights": [
-        "Analyzed and compared HVAC strategies across building types and usage profiles (VRF systems, centralized chilled-water plants with chillers) and the corresponding air-quality and ventilation levels (ASHRAE 62.1).",
-        "Designed photovoltaic solar systems and their inverter sizing, alongside building automation systems.",
-        "Reviewed lighting for efficiency and light-pollution reduction, sizing both natural (DIVA) and artificial (Dialux) lighting.",
-        "Balanced water-distribution networks, including pump sizing and hydraulic balance.",
-        "Ran thermal and energy simulations and thermal-zone dimensioning from blueprints and floorplans (OpenStudio, EnergyPlus).",
-        "Translated each efficiency, lighting and water measure into the LEED credits and documentation needed to claim them.",
-        "Developed the building commissioning plans and supported commissioning from on-site measurements cross-checked against the design documents.",
-        "Was part of the team that took several projects to LEED Platinum, the highest level the rating awards."
+        "Part of the team that took several projects to LEED Platinum, the highest level the rating awards.",
+        "Compared HVAC strategies by building type and usage profile, VRF against centralized chilled-water plants, with air quality and ventilation to ASHRAE 62.1.",
+        "Ran thermal and energy simulation with thermal-zone dimensioning from blueprints in OpenStudio and EnergyPlus.",
+        "Designed photovoltaic systems with inverter sizing, alongside the building automation.",
+        "Sized natural lighting in DIVA and artificial lighting in Dialux, reviewing efficiency and light-pollution reduction.",
+        "Balanced water distribution networks including pump sizing and hydraulic balance.",
+        "Translated every efficiency, lighting and water measure into the LEED credits and documentation needed to claim them.",
+        "Wrote the building commissioning plans and supported commissioning from on-site measurements checked against the design documents."
       ],
       "stack": [
         "EnergyPlus",
@@ -810,7 +852,16 @@
         "ASHRAE 62.1",
         "ASHRAE 55",
         "AutoCAD",
-        "Excel"
+        "Excel",
+        "LEED",
+        "VRF",
+        "Chilled water",
+        "Photovoltaics",
+        "Thermal simulation",
+        "Daylighting",
+        "Ventilation",
+        "Commissioning",
+        "Building automation"
       ]
     },
     {
@@ -824,10 +875,10 @@
       "description": "LEED certification process and energy conservation measures application based on design reviews. Renewable energy systems design. Technical and economic feasibility reports.",
       "details": "This was where my energy engineering career started. I supported the LEED certification work and the energy conservation measures that came out of the design reviews, which included the lighting power density reviews and the lighting controls. It was also around this time that I began working with building energy simulation in EnergyPlus.",
       "highlights": [
-        "Supported the LEED certification process and applied energy-conservation measures derived from design reviews.",
+        "Supported the LEED certification process and applied energy conservation measures from design reviews.",
         "Reviewed lighting power density and specified lighting-control strategies against ASHRAE 90.1.",
-        "Designed renewable-energy systems.",
-        "Began working with whole-building energy simulation in EnergyPlus.",
+        "Began whole-building energy simulation in EnergyPlus.",
+        "Designed renewable energy systems.",
         "Prepared technical and economic feasibility reports to justify proposed measures."
       ],
       "stack": [
@@ -838,7 +889,10 @@
         "ASHRAE 62.1",
         "ASHRAE 55",
         "AutoCAD",
-        "Excel"
+        "Excel",
+        "LEED",
+        "Photovoltaics",
+        "Thermal simulation"
       ]
     }
   ],
@@ -940,5 +994,43 @@
   ],
   "others": [
     "ASHRAE YEA, ASHRAE Student Branch, Tchê Baja Team"
+  ],
+  "engineeringStack": [
+    "EnergyPlus",
+    "OpenStudio",
+    "Dialux",
+    "DIVA",
+    "Revit",
+    "AutoCAD",
+    "Thermal simulation",
+    "Daylighting",
+    "Acoustics",
+    "Ventilation",
+    "Commissioning",
+    "LEED",
+    "ASHRAE 90.1",
+    "ASHRAE 62.1",
+    "ASHRAE 55",
+    "NBR 15575",
+    "VRF",
+    "Chilled water",
+    "Heat pumps",
+    "Building automation",
+    "Photovoltaics",
+    "Inverters",
+    "Wind turbines",
+    "Energy metering",
+    "Grid balancing",
+    "FCR-D",
+    "SCADA",
+    "Modbus",
+    "MQTT",
+    "LoRaWAN",
+    "NB-IoT",
+    "Bluetooth",
+    "ESP32",
+    "PCB design",
+    "Sensors",
+    "Controls"
   ]
 }

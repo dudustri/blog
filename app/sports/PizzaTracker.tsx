@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
+  FOOD_MENU,
+  foodKcal,
   caloriesTimeline,
   pizzaMilestones,
   filterActivities,
@@ -21,6 +23,8 @@ const REVEAL_CAP = 6; // total reveal never runs longer than this many seconds
 const REVEAL_DELAY = 0.35; // beat before the animation kicks off
 
 type ThreeNS = typeof import("three");
+
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const clamp01 = (t: number) => Math.min(1, Math.max(0, t));
 const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
@@ -66,9 +70,15 @@ type Props = {
   aggregation: Aggregation;
   year: number | "all";
   month: number | "all";
+  pizza?: string; // menu choice, decides how many kcal make one pizza
 };
 
-export default function PizzaTracker({ aggregation, year, month }: Props) {
+export default function PizzaTracker({ aggregation, year, month, pizza }: Props) {
+  // one pizza is whatever the menu says it is, falling back to the round number
+  const pizzaSize = useMemo(() => {
+    const picked = FOOD_MENU.find((p) => p.name === pizza);
+    return picked ? foodKcal(picked) : PIZZA_KCAL;
+  }, [pizza]);
   const mountRef = useRef<HTMLDivElement>(null);
   // lets the Replay button restart the reveal without rebuilding the scene
   const replayRef = useRef<() => void>(() => {});
@@ -80,7 +90,28 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
   const [collected, setCollected] = useState(false);
   // rare (15%) rainbow "Ultra Splash" unlocked when collecting
   const [ultra, setUltra] = useState(false);
-  const [stats, setStats] = useState({ totalKcal: 0, pizzas: 0, empty: false });
+  // derived in render, not state, so the numbers are right on the first paint
+  // instead of showing zeros until the effect runs
+  const stats = useMemo(() => {
+    const points = caloriesTimeline(filterActivities(year, month), aggregation);
+    return {
+      totalKcal: points.length ? points[points.length - 1].cumulative : 0,
+      pizzas: pizzaMilestones(points, pizzaSize).length,
+      empty: points.length === 0,
+    };
+  }, [aggregation, year, month, pizzaSize]);
+  // loading covers the three.js import and scene build, failed covers no WebGL
+  const [phase, setPhase] = useState<"loading" | "ready" | "failed">("loading");
+  const [spinning, setSpinning] = useState(false);
+  // every icon on the plot comes from the selected item, not a hardcoded pizza
+  const picked = useMemo(() => FOOD_MENU.find((p) => p.name === pizza), [pizza]);
+  const iconFile = `${BASE}/images/food/${picked?.icon ?? "1f355"}.png`;
+  const emoji = picked?.emoji ?? "🍕";
+  const spinRef = useRef(false);
+
+  useEffect(() => {
+    spinRef.current = spinning;
+  }, [spinning]);
 
   useEffect(() => {
     const container = mountRef.current;
@@ -89,11 +120,10 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
     // recompute the timeline for current filters/aggregation
     const list = filterActivities(year, month);
     const POINTS: TimelinePoint[] = caloriesTimeline(list, aggregation);
-    const MILESTONES: PizzaMilestone[] = pizzaMilestones(POINTS);
-    const totalKcal = POINTS.length ? POINTS[POINTS.length - 1].cumulative : 0;
-    setStats({ totalKcal, pizzas: MILESTONES.length, empty: POINTS.length === 0 });
+    const MILESTONES: PizzaMilestone[] = pizzaMilestones(POINTS, pizzaSize);
     setCollected(false); // a fresh scene starts uncollected
     setUltra(false);
+    setPhase(POINTS.length === 0 ? "ready" : "loading");
     if (POINTS.length === 0) return;
 
     // multiple calendar years in view → disambiguate month labels with a year
@@ -111,7 +141,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
     Promise.all([
       import("three"),
       import("three/examples/jsm/controls/OrbitControls.js"),
-    ]).then(([THREE, { OrbitControls }]) => {
+    ]).then(async ([THREE, { OrbitControls }]) => {
       if (!mounted) return;
 
       const n = POINTS.length;
@@ -124,12 +154,19 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
       const w = container.clientWidth;
       const h = container.clientHeight || 420;
 
-      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      try {
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      } catch {
+        setPhase("failed");
+        return;
+      }
       renderer.setSize(w, h);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       container.appendChild(renderer.domElement);
+      requestAnimationFrame(() => mounted && setPhase("ready"));
 
       const scene = new THREE.Scene();
+
       const FOV = 45;
       const camera = new THREE.PerspectiveCamera(FOV, w / h, 0.1, 1000);
 
@@ -145,12 +182,24 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
       const contentW = spanX + 2.5; // margin for the end bars + their counters
       const footprintDepth = Math.max(BAR_DEPTH, 6); // pizzas land/stack in front
       const targetVec = new THREE.Vector3(0, (topY + botY) / 2, 0);
+      // three-quarter view. head-on hides the depth of the bars, steeper looks
+      // down on the skyline instead of along it
+      const AZIMUTH = (22 * Math.PI) / 180;
+      const ELEVATION = (19 * Math.PI) / 180;
       const fitRadius = (aspect: number) => {
         const distH = contentH / 2 / Math.tan(fov / 2);
-        const distW = contentW / 2 / (Math.tan(fov / 2) * aspect);
+        // turned off head-on the row is narrower but its near end swings
+        // toward the camera, so that depth has to be backed off too
+        const distW =
+          ((contentW / 2) * Math.cos(AZIMUTH)) / (Math.tan(fov / 2) * aspect) +
+          (contentW / 2) * Math.sin(AZIMUTH);
         return Math.max(distH, distW) * 1.18 + footprintDepth * 0.5;
       };
-      const camDir = new THREE.Vector3(0.2, 0.5, 1).normalize();
+      const camDir = new THREE.Vector3(
+        Math.sin(AZIMUTH) * Math.cos(ELEVATION),
+        Math.sin(ELEVATION),
+        Math.cos(AZIMUTH) * Math.cos(ELEVATION),
+      );
       const initialRadius = fitRadius(w / h);
       camera.position.copy(targetVec).addScaledVector(camDir, initialRadius);
 
@@ -163,6 +212,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
       const GRID_SIZE = spanX + 4;
       // pizzas are kept inside this half-extent so a splash stays on the plot
       const GRID_HALF = GRID_SIZE / 2 - 0.45;
+      // faint grid so the bars read as a "plot" rather than floating boxes
       const grid = new THREE.GridHelper(
         GRID_SIZE,
         Math.round(spanX) + 4,
@@ -180,12 +230,22 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
       // than one sport get the full colour list so the bar can cycle them.
       const barGeo = new THREE.BoxGeometry(BAR_W, 1, BAR_DEPTH);
       const bars = POINTS.map((d, i) => {
-        const colors = d.accents.map((c) => new THREE.Color(c));
-        const mat = new THREE.MeshBasicMaterial({ color: colors[0] });
-        const mesh = new THREE.Mesh(barGeo, mat);
-        mesh.position.x = xOf(i);
-        scene.add(mesh);
-        return { mesh, targetH: d.cumulative * heightScale, colors };
+        const targetH = d.cumulative * heightScale;
+        // one segment per sport, stacked bottom to top in a fixed order, sized
+        // by that sport's share of the running total
+        let base = 0;
+        const segments = d.stack.map((s) => {
+          const mesh = new THREE.Mesh(
+            barGeo,
+            new THREE.MeshBasicMaterial({ color: new THREE.Color(s.accent) }),
+          );
+          mesh.position.x = xOf(i);
+          scene.add(mesh);
+          const seg = { mesh, from: base, to: base + s.fraction };
+          base += s.fraction;
+          return seg;
+        });
+        return { segments, targetH };
       });
 
       // per-bar legend under each bar. daily view labels every day as DD/MM
@@ -220,7 +280,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
         if (count <= 0) return [];
         const sprite = new THREE.Sprite(
           new THREE.SpriteMaterial({
-            map: makeLabelTexture(THREE, `🍕×${count}`, "#b45309", 50),
+            map: makeLabelTexture(THREE, `${emoji}×${count}`, "#b45309", 50),
             transparent: true,
             depthTest: false,
           }),
@@ -236,7 +296,12 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
       // were earned. each bursts out of its bar, falls under gravity and
       // bounces, then rests on the floor for good, no fade or recycle.
       // (modelled on Platane's emitter.)
-      const pizzaTex = makeEmojiTexture(THREE, "🍕");
+      // bundled png rather than a system emoji, so the icon is identical on
+      // every platform and matches whatever is selected on the menu
+      const pizzaTex = await new THREE.TextureLoader().loadAsync(iconFile).catch(() =>
+        makeEmojiTexture(THREE, emoji),
+      );
+      pizzaTex.colorSpace = THREE.SRGBColorSpace;
       const GRAVITY = -16; // world units / s²
 
       type Particle = {
@@ -335,8 +400,13 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
       controls.enableDamping = true;
       controls.dampingFactor = 0.1;
       controls.enablePan = false;
-      controls.autoRotate = true;
+      controls.autoRotate = spinRef.current;
       controls.autoRotateSpeed = 0.6;
+      // grabbing the plot means you want to aim it yourself
+      controls.addEventListener("start", () => {
+        spinRef.current = false;
+        setSpinning(false);
+      });
       controls.minDistance = initialRadius * 0.45;
       controls.maxDistance = initialRadius * 2.5;
       controls.target.copy(targetVec);
@@ -386,19 +456,11 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
         for (let i = 0; i < bars.length; i++) {
           const bar = bars[i];
           const hgt = bar.targetH * easeOutCubic(clamp01(cursor - i));
-          bar.mesh.scale.y = Math.max(hgt, 0.0001);
-          bar.mesh.position.y = hgt / 2;
-          // multi-sport day/month → smoothly cycle through its sports' colours
-          if (bar.colors.length > 1) {
-            const phase =
-              (elapsed * 0.5 + i * 0.15) % bar.colors.length; // ~0.5 colours/sec
-            const c0 = Math.floor(phase);
-            const c1 = (c0 + 1) % bar.colors.length;
-            bar.mesh.material.color.lerpColors(
-              bar.colors[c0],
-              bar.colors[c1],
-              phase - c0,
-            );
+          // segments keep their share while the whole bar grows
+          for (const seg of bar.segments) {
+            const h = (seg.to - seg.from) * hgt;
+            seg.mesh.scale.y = Math.max(h, 0.0001);
+            seg.mesh.position.y = seg.from * hgt + h / 2;
           }
         }
 
@@ -477,10 +539,13 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
           }
         }
 
+        controls.autoRotate = spinRef.current;
         controls.update();
         renderer.render(scene, camera);
       };
       animate();
+    }).catch(() => {
+      if (mounted) setPhase("failed");
     });
 
     return () => {
@@ -491,7 +556,7 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
       renderer?.dispose();
       renderer?.domElement?.remove();
     };
-  }, [aggregation, year, month]);
+  }, [aggregation, year, month, pizzaSize, iconFile, emoji]);
 
   return (
     <div>
@@ -504,6 +569,27 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
             No activities in this range.
           </div>
         )}
+
+        {!stats.empty && phase === "loading" && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-gradient-to-b from-gray-50 to-white">
+            <div className="h-9 w-9 animate-spin rounded-full border-2 border-gray-200 border-t-gray-400" />
+            <p className="text-[11px] uppercase tracking-[0.2em] text-gray-400">
+              Baking the pizzas
+            </p>
+          </div>
+        )}
+
+        {!stats.empty && phase === "failed" && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center">
+            <p className="text-sm font-medium text-gray-600">
+              {stats.pizzas} {emoji} earned
+            </p>
+            <p className="text-xs leading-relaxed text-gray-400">
+              The 3D plot needs WebGL, which this browser did not give us. The
+              numbers above and the activity list still work.
+            </p>
+          </div>
+        )}
       </div>
       <div className="flex items-center justify-between gap-3 flex-wrap mt-3">
         <p className="text-sm text-gray-500">
@@ -511,11 +597,11 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
             {Math.round(stats.totalKcal).toLocaleString()} kcal
           </span>{" "}
           burned ·{" "}
-          <span className="font-semibold text-gray-700">{stats.pizzas} 🍕</span>{" "}
+          <span className="font-semibold text-gray-700">{stats.pizzas} {emoji}</span>{" "}
           earned
           <span className="text-gray-400">
             {" "}
-            (1 pizza = {PIZZA_KCAL.toLocaleString()} kcal)
+            (1 {pizza ?? "pizza"} = {pizzaSize.toLocaleString()} kcal)
           </span>
         </p>
         <div className="flex items-center gap-2">
@@ -538,7 +624,14 @@ export default function PizzaTracker({ aggregation, year, month }: Props) {
                 : "border-gray-200 text-gray-500 hover:text-black hover:border-gray-400 disabled:hover:text-gray-500 disabled:hover:border-gray-200"
             }`}
           >
-            {collected ? (ultra ? "🌈 Ultra Splash" : "💥 Splash") : "🍕 Collect"}
+            {collected ? (ultra ? "🌈 Ultra Splash" : "💥 Splash") : `${emoji} Collect`}
+          </button>
+          <button
+            onClick={() => setSpinning((v) => !v)}
+            aria-pressed={spinning}
+            className="text-sm font-medium px-3 py-1.5 rounded-lg border border-gray-200 text-gray-500 hover:text-black hover:border-gray-400 transition-colors"
+          >
+            {spinning ? "⏸ Stop spin" : "↻ Spin"}
           </button>
           <button
             onClick={() => {

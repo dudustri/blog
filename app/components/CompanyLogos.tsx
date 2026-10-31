@@ -1,23 +1,17 @@
 import TrailBackground from "@/app/components/TrailBackground";
-import { experience } from "@/app/data/resume";
+import { companyLogos } from "@/app/data/resume";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// one entry per company with a logo, first-seen (most recent) order
-const companyLogos = Array.from(
-  experience
-    .filter((e) => e.logo)
-    .reduce((map, e) => {
-      if (!map.has(e.company)) {
-        map.set(e.company, { company: e.company, logo: e.logo!, website: e.website });
-      }
-      return map;
-    }, new Map<string, { company: string; logo: string; website?: string }>())
-    .values(),
-);
-
 // logo strip for every company in resume, over a cursor-trail background
 // (TrailBackground). grayscale, lift to full color on hover
+// the ring says which logo the pointer is on, the strip is dense and the
+// colour lift alone is easy to miss on a logo that is already pale. it hugs
+// the image box, tones live in globals.css so each theme gets its own
+const TILE = "group shrink-0 focus-visible:outline-none";
+const LOGO =
+  "logo-mark h-9 md:h-11 w-auto object-contain grayscale rounded-md transition-all duration-200 group-hover:grayscale-0 group-focus-visible:grayscale-0";
+
 export default function CompanyLogos() {
   return (
     <section className="mt-16 pt-8 border-t border-gray-200">
@@ -25,7 +19,7 @@ export default function CompanyLogos() {
         Where I have worked
       </h2>
 
-      <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-50">
+      <div className="relative overflow-hidden outline-box rounded-2xl border-gray-200">
         <TrailBackground />
 
         <div className="relative z-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 px-6 py-12">
@@ -35,7 +29,7 @@ export default function CompanyLogos() {
               <img
                 src={`${BASE}${c.logo}`}
                 alt={c.company}
-                className="h-9 md:h-11 w-auto object-contain grayscale transition-all duration-200 hover:grayscale-0"
+                className={LOGO}
               />
             );
             return c.website ? (
@@ -45,12 +39,12 @@ export default function CompanyLogos() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={c.company}
-                className="shrink-0"
+                className={TILE}
               >
                 {img}
               </a>
             ) : (
-              <span key={c.company} title={c.company} className="shrink-0">
+              <span key={c.company} title={c.company} className={TILE}>
                 {img}
               </span>
             );

@@ -1,6 +1,13 @@
 @import "tailwindcss";
 
 
+:root { --accent: #3e6b89; --accent-fill: #3e6b89; --on-accent: #fff; }
+/* lighter accent so highlights read on the dark background */
+html.dark { --accent: #6f9fc0; --accent-fill: #4a7a9c; --on-accent: #fff; }
+/* portfolio diagrams (FlowDiagram): boxes stay readable in both themes */
+:root { --flow-box: #ffffff; --flow-text: #1f2937; --flow-muted: #6b7280; --flow-line: #d1d5db; --flow-edge: #9ca3af; --flow-dots: #d1d5db; --flow-label-bg: #f9fafb; --flow-accent-bg: #edf3f7; }
+html.dark { --flow-box: #2a2a2a; --flow-text: #e5e5e5; --flow-muted: #a3a3a3; --flow-line: #444; --flow-edge: #777; --flow-dots: #3a3a3a; --flow-label-bg: #222; --flow-accent-bg: #23303a; }
+
 html {
   scrollbar-width: none;
 }
@@ -107,8 +114,23 @@ html.dark .citation-source      { color: #777; }
   border-radius: 0.75rem;
   transition: background-color 0.3s ease;
 }
-.resume-card:hover { background-color: rgba(0, 0, 0, 0.04); }
-html.dark .resume-card:hover { background-color: rgba(255, 255, 255, 0.06); }
+.resume-card:hover, .job-hover:hover { background-color: rgba(62, 107, 137, 0.05); }
+
+/* resume boxes: white with a cool edge in light, unchanged #222 fill in dark. */
+.outline-box { background-color: #ffffff; border: 1px solid #e3e9ee; }
+html.dark .outline-box { background-color: #222; border-color: transparent; }
+
+/* stack tabs and the see all view fade in when switched */
+@keyframes stackFade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.stack-fade { animation: stackFade 0.25s ease; }
+@media (prefers-reduced-motion: reduce) { .stack-fade { animation: none; } }
+
+/* skill chips: on hover the edge takes the text colour, both themes */
+.skill-chip { border: 1px solid #e5e7eb; background-color: #fff; color: #374151; }
+.skill-chip:hover { color: #3e6b89; border-color: currentColor; background-color: rgba(62, 107, 137, 0.06); }
+html.dark .skill-chip { border-color: #333; background-color: #1a1a1a; color: #bbb; }
+html.dark .skill-chip:hover { color: #6f9fc0; border-color: currentColor; background-color: rgba(111, 159, 192, 0.08); }
+html.dark .resume-card:hover, html.dark .job-hover:hover { background-color: rgba(111, 159, 192, 0.08); }
 
 /* Dark mode hover overrides */
 html.dark .hover\:bg-gray-50:hover  { background-color: #252525 !important; }
@@ -177,6 +199,11 @@ html.dark .hover\:text-white:hover  { color: #ffffff !important; }
 }
 
 /* Matter.js banner, gravity + cursor-repelling squares (home page). */
+/* justified copy without hyphens opens rivers, worst on narrow screens */
+.text-justify {
+  hyphens: auto;
+}
+
 .matter-stage {
   overflow: hidden;
 }
@@ -188,6 +215,17 @@ html.dark .hover\:text-white:hover  { color: #ffffff !important; }
   height: 32px;
   will-change: transform;
   pointer-events: none;
+}
+/* sprite variant of the same physics layer */
+.matter-sprite {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  pointer-events: none;
+}
+.matter-sprite.pixel {
+  image-rendering: pixelated;
 }
 
 /* Cursor-trail background, squares spawned at the pointer that linger then fade. */
@@ -204,15 +242,76 @@ html.dark .hover\:text-white:hover  { color: #ffffff !important; }
 }
 
 
-/* Landing nav-card hover accent: apple green, matching the resume tech stack
-   highlight. !important beats the html.dark .text-gray-400 override. */
+/* gradient eyebrow above the page titles. the light ramp measures about
+   2.5:1 on the dark background, under the 4.5:1 AA floor, so dark mode gets a
+   lighter one */
+.eyebrow {
+  background: linear-gradient(90deg, #2a5a7a, #3e6b89);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+html.dark .eyebrow {
+  background: linear-gradient(90deg, #7cc4ff, #a5d8ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* card title accent on hover and keyboard focus. !important beats the
+   html.dark .text-gray-400 override. */
 .card-hint {
   transition: color 0.2s ease;
 }
-.group:hover .card-hint {
-  color: #5c9c08 !important;
+.group:hover .card-hint,
+.group:focus-visible .card-hint {
+  color: #3e6b89 !important;
 }
-html.dark .group:hover .card-hint {
+html.dark .group:hover .card-hint,
+html.dark .group:focus-visible .card-hint {
   color: #a3e635 !important;
 }
 
+/* landing nav card. hover and focus-visible share one rule so keyboard users
+   get the same highlight the mouse does */
+.nav-card {
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+.nav-card:hover,
+.nav-card:focus-visible {
+  border-color: #9ca3af;
+  background-color: #f9fafb;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  transform: translateY(-2px);
+}
+html.dark .nav-card:hover,
+html.dark .nav-card:focus-visible {
+  border-color: #555 !important;
+  background-color: #252525 !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+.nav-card:focus-visible {
+  outline: 2px solid #3e6b89;
+  outline-offset: 2px;
+}
+
+/* company logo strip. the ring marks which logo the pointer is on. it is an
+   outer ring rather than a border because the logos carry opaque white
+   backgrounds, so a line on the edge itself disappears between the white and
+   the dark panel. soft tones, one per theme */
+.logo-mark {
+  box-shadow: 0 0 0 0 transparent;
+}
+.group:hover .logo-mark,
+.group:focus-visible .logo-mark {
+  box-shadow: 0 0 0 1px #b3bdc2;
+}
+/* a touch thicker in dark, the ring is pinched between the white logo plates
+   and the dark panel so 1px there reads as nothing */
+html.dark .group:hover .logo-mark,
+html.dark .group:focus-visible .logo-mark {
+  box-shadow: 0 0 0 1.5px #8cbfdd;
+}

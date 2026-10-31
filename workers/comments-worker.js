@@ -142,7 +142,7 @@ async function openCommentPr(env, { post, slug, name, message, country }) {
       head: branch,
       base: env.GITHUB_BRANCH,
       body: [
-        `**${name}** left a comment on [${slug}](${postUrl}).`,
+        `**${noMention(name)}** left a comment on [${slug}](${postUrl}).`,
         "",
         fenced,
         "",
@@ -239,6 +239,11 @@ function clean(input, max, allowNewlines = false) {
     ? out.replace(/[^\S\n]+/g, " ").replace(/\n{3,}/g, "\n\n")
     : out.replace(/\s+/g, " ");
   return out.trim().slice(0, max);
+}
+
+// an invisible space after @ stops a name from pinging a GitHub user from our token
+function noMention(text) {
+  return text.replace(/@/g, "@\u200b");
 }
 
 // real characters, not just punctuation or emoji

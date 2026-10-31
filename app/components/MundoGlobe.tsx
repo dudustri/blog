@@ -77,6 +77,8 @@ interface Props {
   onCountryClick?: (name: string | null, iso: string | null) => void;
   onPickedRandom?: (pick: { name: string; iso: string | null; lat: number; lng: number; span: number }) => void;
   focusTarget?: { lat: number; lng: number } | null;
+  onReady?: () => void;
+  onFail?: () => void;
 }
 
 export default function MundoGlobe({
@@ -90,10 +92,14 @@ export default function MundoGlobe({
   onCountryClick,
   onPickedRandom,
   focusTarget,
+  onReady,
+  onFail,
 }: Props) {
   const mountRef = useRef<HTMLDivElement>(null);
 
   const onClickRef        = useRef(onCountryClick);
+  const onReadyRef        = useRef(onReady);
+  const onFailRef         = useRef(onFail);
   const onPickedRandomRef = useRef(onPickedRandom);
   const selectedColorRef  = useRef(selectedCountryColor);
   const isRainbowRef      = useRef(isRainbow);
@@ -115,6 +121,8 @@ export default function MundoGlobe({
   const domRectRef            = useRef<DOMRect | null>(null);
 
   useEffect(() => { onClickRef.current        = onCountryClick; });
+  useEffect(() => { onReadyRef.current        = onReady; });
+  useEffect(() => { onFailRef.current         = onFail; });
   useEffect(() => { onPickedRandomRef.current = onPickedRandom; });
   useEffect(() => { selectedColorRef.current  = selectedCountryColor; });
   useEffect(() => { isRainbowRef.current      = isRainbow; });
@@ -247,6 +255,11 @@ export default function MundoGlobe({
     let resizeCleanup: (() => void) | undefined;
     let eventsCleanup: (() => void) | undefined;
 
+    // the page waits on this, so the spinner covers the texture too
+    const earthImg = new Image();
+    earthImg.src = EARTH_IMG;
+    const textureReady = earthImg.decode().catch(() => undefined);
+
     Promise.all([
       import('three'),
       import('three/examples/jsm/controls/OrbitControls.js'),
@@ -257,7 +270,12 @@ export default function MundoGlobe({
       const w = container.clientWidth;
       const h = container.clientHeight || window.innerHeight;
 
-      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      try {
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      } catch {
+        onFailRef.current?.();
+        return;
+      }
       renderer.setSize(w, h);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       container.appendChild(renderer.domElement);
@@ -304,8 +322,9 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
 
       controls.addEventListener('start', () => { pendingFocusRef.current = null; });
 
-      const visited  = new Set(visitedCountries);
-      const wantToGo = new Set(wantToGoCountries);
+      // read through the refs, the scene is built once and the lists stay current there
+      const visited  = visitedSetRef.current;
+      const wantToGo = wantToGoSetRef.current;
 
       fetch(GEOJSON_URL)
         .then(r => r.json())
@@ -348,7 +367,7 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
 
             const candidates: GeoFeature[] = [];
 
-            for (const hit of raycaster.intersectObjects([globe as any], true)) {
+            for (const hit of raycaster.intersectObjects([globe as unknown as InstanceType<typeof THREE.Object3D>], true)) {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               let obj: any = hit.object;
               while (obj && obj.__globeObjType === undefined) obj = obj.parent;
@@ -389,6 +408,12 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
             renderer?.domElement?.removeEventListener('mousemove', onMouseMove);
             renderer?.domElement?.removeEventListener('click', onClick);
           };
+
+          // countries are in and the texture decoded, let the page drop its spinner
+          textureReady.then(() => {
+            if (!mounted) return;
+            requestAnimationFrame(() => mounted && onReadyRef.current?.());
+          });
         });
 
       // update cached rect and renderer/camera on any size change
@@ -447,6 +472,8 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
         renderer.render(scene, camera);
       };
       animate();
+    }).catch(() => {
+      if (mounted) onFailRef.current?.();
     });
 
     return () => {

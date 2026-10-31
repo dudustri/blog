@@ -12,7 +12,7 @@ const WORKER_URL = "https://blog-contact.eduardostrindade.workers.dev";
 const TURNSTILE_SITE_KEY = "0x4AAAAAADVl8aWps34OCYpt";
 
 const inputClass =
-  "w-full border-b border-gray-200 py-3 bg-transparent outline-none text-sm placeholder-gray-400 transition-colors duration-200 focus:border-black";
+  "w-full border-b border-gray-200 py-3 bg-transparent text-sm placeholder-gray-400 transition-colors duration-200 focus:border-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3e6b89]";
 
 type FormState = "idle" | "verifying" | "sending" | "success" | "error";
 
@@ -151,7 +151,9 @@ export default function ContactPage() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6 select-text">
               <div>
+                <label htmlFor="contact-name" className="sr-only">Your name</label>
                 <input
+                  id="contact-name"
                   className={inputClass}
                   placeholder="Your name"
                   value={name}
@@ -161,7 +163,9 @@ export default function ContactPage() {
                 />
               </div>
               <div>
+                <label htmlFor="contact-email" className="sr-only">Your email</label>
                 <input
+                  id="contact-email"
                   type="email"
                   className={inputClass}
                   placeholder="Your email"
@@ -172,7 +176,9 @@ export default function ContactPage() {
                 />
               </div>
               <div>
+                <label htmlFor="contact-message" className="sr-only">Your message</label>
                 <textarea
+                  id="contact-message"
                   className={`${inputClass} resize-none`}
                   placeholder="Your message"
                   rows={5}
@@ -214,13 +220,18 @@ export default function ContactPage() {
 
           {!contactInfo ? (
             <div>
-              <p className="text-sm text-gray-500 mb-4">
+              <p className="text-sm text-gray-500 mb-1">
                 Enter your access code to see email, phone and official curriculum vitae.
               </p>
+              <p className="text-xs text-gray-400 mb-4">
+                No code? Send a message above and I will reply with one.
+              </p>
               <div className="flex gap-2">
+                <label htmlFor="access-code" className="sr-only">Access code</label>
                 <input
+                  id="access-code"
                   type="password"
-                  className="flex-1 border border-gray-200 rounded-lg px-4 py-2.5 text-sm outline-none focus:border-black transition-colors"
+                  className="flex-1 border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:border-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3e6b89] transition-colors"
                   placeholder="Access code"
                   value={code}
                   onChange={(e) => setCode(e.target.value)}

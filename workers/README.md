@@ -17,6 +17,7 @@ Message from `/contact` → Turnstile check → email through Resend.
 | `TO_EMAIL`         | var    | the inbox, kept out of this file       |
 | `TURNSTILE_SECRET` | secret | Turnstile secret key                   |
 | `RESEND_API_KEY`   | secret | Resend API key                         |
+| `RATE_LIMITER`     | binding | optional, limits sends per IP         |
 
 Set `TO_EMAIL` before pasting this version, or it answers 500 with
 `TO_EMAIL env binding missing`.

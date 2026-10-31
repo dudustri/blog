@@ -1,17 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useIsDark } from "@/app/components/useIsDark";
 import Link from "next/link";
 import { chipMatchesSelected } from "@/app/data/resume";
 
-const BLUE = "#3e6b89";
+// site accent, lighter in dark mode (globals.css)
+const BLUE = "var(--accent)";
 // two-tier keyword highlight, each shade tuned per theme:
-//  - green  = tech tools and languages (what I used)
-//  - accent  = quantified impact, awards and standards (what I achieved)
-const GREEN_LIGHT = "#5c9c08";
+//  - tech   = tools and languages (what I used), warm so it separates cleanly
+//             from the two blues already on the page
+//  - accent = quantified impact, awards and standards (what I achieved)
+// what separates a highlight from body text is saturation more than darkness.
+// the olive at 3.4:1 was too pale, the browns were dark enough but low chroma
+// so they read as muddy, and forest green at 9.1:1 read as plain black. a
+// saturated mid tone advances on white even against 7.6:1 grey body text.
+// each tier also keeps one hue family in both themes, so the page does not
+// change identity when the theme flips.
+const GREEN_LIGHT = "#047857"; // emerald, 5.6:1. chroma does the work here
 const GREEN_DARK = "#a3e635";
-const ACCENT_LIGHT = "#1d80c4"; // brighter azure so a single word pops against gray body text
-const ACCENT_DARK = "#89cff0"; // baby blue
+const ACCENT_LIGHT = "#075985"; // 7.6:1, matches the body weight exactly
+const ACCENT_DARK = "#6f9fc0"; // same as the site accent in dark (--accent)
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 // tech tools and languages -> green
@@ -96,14 +104,7 @@ export default function DetailModal({
   detail: Detail | null;
   onClose: () => void;
 }) {
-  const [dark, setDark] = useState(false);
-  useEffect(() => {
-    const check = () => setDark(document.documentElement.classList.contains("dark"));
-    check();
-    const observer = new MutationObserver(check);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
+  const dark = useIsDark();
 
   if (!detail) return null;
 
@@ -257,7 +258,7 @@ export default function DetailModal({
         {detail.stack?.length ? (
           <div style={{ marginTop: 28, paddingTop: 20, borderTop: `1px solid ${hairline}` }}>
             <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
-              Tech &amp; tools used
+              Tech &amp; engineering
             </p>
             <div className="flex flex-wrap gap-2">
               {/* always show C and C++ as a single coupled chip. */}
@@ -268,12 +269,15 @@ export default function DetailModal({
                 return (
                   <span
                     key={tech}
-                    className="px-2.5 py-1 text-xs rounded border"
-                    style={{
-                      borderColor: active ? BLUE : `${BLUE}33`,
-                      background: active ? BLUE : `${BLUE}0d`,
-                      color: active ? "#fff" : BLUE,
-                    }}
+                    // same chip as the stack sections, grey classes only when inactive (dark overrides are !important)
+                    className={`whitespace-nowrap px-2 py-[3px] text-[12.5px] rounded border ${
+                      active ? "" : "border-gray-200 text-gray-700"
+                    }`}
+                    style={
+                      active
+                        ? { borderColor: "var(--accent-fill)", background: "var(--accent-fill)", color: "var(--on-accent)" }
+                        : undefined
+                    }
                   >
                     {tech}
                   </span>
