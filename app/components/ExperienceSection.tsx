@@ -14,6 +14,8 @@ function jobMatches(job: Experience, activeTechs: string[]): boolean {
 }
 
 // maps an Experience record to the generic Detail the shared popup renders
+const CARD_HIGHLIGHTS = 3;
+
 function jobToDetail(job: Experience, activeTechs: string[]): Detail {
   return {
     title: job.company,
@@ -104,7 +106,25 @@ export default function ExperienceSection({
                   {job.impact}
                 </p>
               ) : null}
-              <p className="text-gray-600 text-sm leading-relaxed text-justify">{job.description}</p>
+              {/* the card leads with scannable bullets, the full paragraph is one
+                  click away in the modal, which already receives it */}
+              {job.highlights?.length ? (
+                <>
+                  <ul className="space-y-1.5 text-gray-600 text-[15px] leading-relaxed">
+                    {job.highlights.slice(0, CARD_HIGHLIGHTS).map((h, i) => (
+                      <li key={i} className="flex gap-2.5">
+                        <span aria-hidden="true" className="mt-[9px] h-1 w-1 flex-shrink-0 rounded-full bg-gray-300" />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <span className="mt-3 inline-block text-xs text-gray-400 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    Read the full role →
+                  </span>
+                </>
+              ) : (
+                <p className="text-gray-600 text-[15px] leading-relaxed text-justify">{job.description}</p>
+              )}
             </div>
           );
         })}

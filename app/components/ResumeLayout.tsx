@@ -4,7 +4,7 @@ import { useState } from "react";
 import ResumeSidebar from "./ResumeSidebar";
 import ExperienceSection from "./ExperienceSection";
 import DetailModal, { type Detail } from "./DetailModal";
-import { experience, techStack, education, languages, extra, others } from "@/app/data/resume";
+import { experience, techStackGrouped, engineeringStackGrouped, education, languages, extra, others } from "@/app/data/resume";
 import type { Experience } from "@/app/data/resume";
 
 export default function ResumeLayout() {
@@ -60,8 +60,10 @@ export default function ResumeLayout() {
       {/* career timeline, its own div, pinned to the extreme left and sitting
           entirely outside the content column (right-full + margin) so it never
           changes the centred content's width. Shown only when the left margin
-          is wide enough to hold it. */}
-      <aside className="hidden xl:block absolute right-full top-0 bottom-0 mr-8 lg:mr-12 w-44">
+          is wide enough to hold it. w-44 + mr-12 needs 224px, which the 896px
+          content column only frees up from about 1344px, so it shows from 1400
+          instead of xl (1280) where it used to clip off screen. */}
+      <aside className="hidden min-[1400px]:block absolute right-full top-0 bottom-0 mr-12 w-44">
         <ResumeSidebar
           experience={experience}
           clickedJobId={selectedJob?.id ?? ""}
@@ -79,24 +81,74 @@ export default function ResumeLayout() {
           <h2 className="text-sm font-semibold uppercase tracking-widest text-gray-400 text-center mb-8">
             Tech Stack
           </h2>
-          <div className="flex flex-wrap justify-center gap-2">
-            {techStack.map((tech) => {
-              const active = activeTechs.includes(tech);
-              return (
-                <button
-                  key={tech}
-                  onClick={() => toggleTech(tech)}
-                  className="px-3 py-1 text-sm rounded border border-gray-200 text-gray-700 transition-all duration-200 cursor-pointer hover:border-[#3e6b89] hover:text-[#3e6b89] hover:bg-[#3e6b89]/[0.06]"
-                  style={{
-                    borderColor: active ? "#3e6b89" : undefined,
-                    background: active ? "#3e6b89" : undefined,
-                    color: active ? "#fff" : undefined,
-                  }}
-                >
-                  {tech}
-                </button>
-              );
-            })}
+          <div className="space-y-4">
+            {techStackGrouped.map((group) => (
+              <div
+                key={group.label}
+                className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4"
+              >
+                <p className="sm:w-[4.5rem] sm:text-right flex-shrink-0 text-[10px] uppercase tracking-wider text-gray-400">
+                  {group.label}
+                </p>
+                <div className="flex flex-wrap gap-1.5 sm:flex-nowrap">
+                  {group.items.map((tech) => {
+                    const active = activeTechs.includes(tech);
+                    return (
+                      <button
+                        key={tech}
+                        onClick={() => toggleTech(tech)}
+                        className="whitespace-nowrap px-2 py-[3px] text-[12.5px] rounded border border-gray-200 text-gray-700 transition-all duration-200 cursor-pointer hover:border-[#3e6b89] hover:text-[#3e6b89] hover:bg-[#3e6b89]/[0.06]"
+                        style={{
+                          borderColor: active ? "#3e6b89" : undefined,
+                          background: active ? "#3e6b89" : undefined,
+                          color: active ? "#fff" : undefined,
+                        }}
+                      >
+                        {tech}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* engineering Stack, the other half of the work */}
+        <section id="engineeringstack" className="mt-16 pt-8 border-t border-gray-200">
+          <h2 className="text-sm font-semibold uppercase tracking-widest text-gray-400 text-center mb-8">
+            Engineering Stack
+          </h2>
+          <div className="space-y-4">
+            {engineeringStackGrouped.map((group) => (
+              <div
+                key={group.label}
+                className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4"
+              >
+                <p className="sm:w-[4.5rem] sm:text-right flex-shrink-0 text-[10px] uppercase tracking-wider text-gray-400">
+                  {group.label}
+                </p>
+                <div className="flex flex-wrap gap-1.5 sm:flex-nowrap">
+                  {group.items.map((tech) => {
+                    const active = activeTechs.includes(tech);
+                    return (
+                      <button
+                        key={tech}
+                        onClick={() => toggleTech(tech)}
+                        className="whitespace-nowrap px-2 py-[3px] text-[12.5px] rounded border border-gray-200 text-gray-700 transition-all duration-200 cursor-pointer hover:border-[#3e6b89] hover:text-[#3e6b89] hover:bg-[#3e6b89]/[0.06]"
+                        style={{
+                          borderColor: active ? "#3e6b89" : undefined,
+                          background: active ? "#3e6b89" : undefined,
+                          color: active ? "#fff" : undefined,
+                        }}
+                      >
+                        {tech}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 

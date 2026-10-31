@@ -6,12 +6,19 @@ import { chipMatchesSelected } from "@/app/data/resume";
 
 const BLUE = "#3e6b89";
 // two-tier keyword highlight, each shade tuned per theme:
-//  - green  = tech tools and languages (what I used)
-//  - accent  = quantified impact, awards and standards (what I achieved)
-const GREEN_LIGHT = "#5c9c08";
+//  - tech   = tools and languages (what I used), warm so it separates cleanly
+//             from the two blues already on the page
+//  - accent = quantified impact, awards and standards (what I achieved)
+// what separates a highlight from body text is saturation more than darkness.
+// the olive at 3.4:1 was too pale, the browns were dark enough but low chroma
+// so they read as muddy, and forest green at 9.1:1 read as plain black. a
+// saturated mid tone advances on white even against 7.6:1 grey body text.
+// each tier also keeps one hue family in both themes, so the page does not
+// change identity when the theme flips.
+const GREEN_LIGHT = "#047857"; // emerald, 5.6:1. chroma does the work here
 const GREEN_DARK = "#a3e635";
-const ACCENT_LIGHT = "#1d80c4"; // brighter azure so a single word pops against gray body text
-const ACCENT_DARK = "#89cff0"; // baby blue
+const ACCENT_LIGHT = "#075985"; // 7.6:1, matches the body weight exactly
+const ACCENT_DARK = "#7dd3fc";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 // tech tools and languages -> green
@@ -257,7 +264,7 @@ export default function DetailModal({
         {detail.stack?.length ? (
           <div style={{ marginTop: 28, paddingTop: 20, borderTop: `1px solid ${hairline}` }}>
             <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
-              Tech &amp; tools used
+              Tech &amp; engineering
             </p>
             <div className="flex flex-wrap gap-2">
               {/* always show C and C++ as a single coupled chip. */}

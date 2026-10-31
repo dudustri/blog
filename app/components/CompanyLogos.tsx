@@ -1,20 +1,7 @@
 import TrailBackground from "@/app/components/TrailBackground";
-import { experience } from "@/app/data/resume";
+import { companyLogos } from "@/app/data/resume";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-
-// one entry per company with a logo, first-seen (most recent) order
-const companyLogos = Array.from(
-  experience
-    .filter((e) => e.logo)
-    .reduce((map, e) => {
-      if (!map.has(e.company)) {
-        map.set(e.company, { company: e.company, logo: e.logo!, website: e.website });
-      }
-      return map;
-    }, new Map<string, { company: string; logo: string; website?: string }>())
-    .values(),
-);
 
 // logo strip for every company in resume, over a cursor-trail background
 // (TrailBackground). grayscale, lift to full color on hover
