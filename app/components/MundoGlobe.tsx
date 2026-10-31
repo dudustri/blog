@@ -78,6 +78,7 @@ interface Props {
   onPickedRandom?: (pick: { name: string; iso: string | null; lat: number; lng: number; span: number }) => void;
   focusTarget?: { lat: number; lng: number } | null;
   onReady?: () => void;
+  onFail?: () => void;
 }
 
 export default function MundoGlobe({
@@ -92,11 +93,13 @@ export default function MundoGlobe({
   onPickedRandom,
   focusTarget,
   onReady,
+  onFail,
 }: Props) {
   const mountRef = useRef<HTMLDivElement>(null);
 
   const onClickRef        = useRef(onCountryClick);
   const onReadyRef        = useRef(onReady);
+  const onFailRef         = useRef(onFail);
   const onPickedRandomRef = useRef(onPickedRandom);
   const selectedColorRef  = useRef(selectedCountryColor);
   const isRainbowRef      = useRef(isRainbow);
@@ -119,6 +122,7 @@ export default function MundoGlobe({
 
   useEffect(() => { onClickRef.current        = onCountryClick; });
   useEffect(() => { onReadyRef.current        = onReady; });
+  useEffect(() => { onFailRef.current         = onFail; });
   useEffect(() => { onPickedRandomRef.current = onPickedRandom; });
   useEffect(() => { selectedColorRef.current  = selectedCountryColor; });
   useEffect(() => { isRainbowRef.current      = isRainbow; });
@@ -266,7 +270,12 @@ export default function MundoGlobe({
       const w = container.clientWidth;
       const h = container.clientHeight || window.innerHeight;
 
-      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      try {
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      } catch {
+        onFailRef.current?.();
+        return;
+      }
       renderer.setSize(w, h);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       container.appendChild(renderer.domElement);
@@ -462,6 +471,8 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
         renderer.render(scene, camera);
       };
       animate();
+    }).catch(() => {
+      if (mounted) onFailRef.current?.();
     });
 
     return () => {

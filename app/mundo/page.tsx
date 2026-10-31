@@ -25,7 +25,7 @@ const SPIN_LEVELS = [
   { speed: 400,  nextLabel: null                       },
 ];
 
-const BTN = 'text-left text-sm font-semibold tracking-wide transition-colors text-white/35 hover:text-white/70';
+const BTN = 'text-left text-sm font-semibold tracking-wide transition-colors text-white/60 hover:text-white';
 
 const VISITED_SORTED  = [...countries].sort();
 const PLANNING_SORTED = [...wantToGoCountries].sort();
@@ -233,20 +233,24 @@ export default function MundoPage() {
   const [pickNonce, setPickNonce]     = useState(0);
   const [openList, setOpenList]       = useState<'visited' | 'planning' | null>(null);
 
-  // globe boot: `ready` fades the loader, `loaderGone` unmounts it after the fade
+  // globe boot: `ready` fades the loader, `loaderGone` unmounts it after the
+  // fade, `failed` swaps the loader for an explanation instead of a blank void
   const [ready, setReady]             = useState(false);
   const [loaderGone, setLoaderGone]   = useState(false);
+  const [failed, setFailed]           = useState(false);
   const handleGlobeReady = useCallback(() => setReady(true), []);
+  const handleGlobeFail  = useCallback(() => setFailed(true), []);
   useEffect(() => {
     if (!ready) return;
     const t = setTimeout(() => setLoaderGone(true), 600);
     return () => clearTimeout(t);
   }, [ready]);
-  // failsafe, never leave the page trapped behind the loader if the globe fails
+  // a globe that never arrives is treated as a failure, so the page explains
+  // itself rather than dropping the spinner onto nothing
   useEffect(() => {
-    const t = setTimeout(() => setReady(true), 12000);
+    const t = setTimeout(() => setFailed((f) => (ready ? f : true)), 12000);
     return () => clearTimeout(t);
-  }, []);
+  }, [ready]);
 
   // game state
   const [gamePhase,   setGamePhase]   = useState<GamePhase>('idle');
@@ -409,10 +413,30 @@ export default function MundoPage() {
         onPickedRandom={handlePickedRandom}
         focusTarget={focusTarget}
         onReady={handleGlobeReady}
+        onFail={handleGlobeFail}
       />
 
+      {/* globe could not be drawn, say so and keep the numbers useful */}
+      {failed && !ready && (
+        <div className="pointer-events-none fixed inset-0 z-30 flex flex-col items-center justify-center gap-3 px-6 text-center">
+          <p className="text-white/80 text-sm font-medium">
+            {countries.length} countries visited, {wantToGoCountries.length} on the list
+          </p>
+          <p className="max-w-md text-xs leading-relaxed text-white/40">
+            The globe needs WebGL, which this browser did not give us. The country
+            lists below still work.
+          </p>
+          <button
+            onClick={() => setOpenList('visited')}
+            className="pointer-events-auto mt-2 rounded-lg border border-white/30 px-4 py-2 text-xs text-white/70 transition-colors hover:border-white/60 hover:text-white"
+          >
+            Show the list
+          </button>
+        </div>
+      )}
+
       {/* boot loader, covers the three.js setup and the earth texture decode */}
-      {!loaderGone && (
+      {!loaderGone && !failed && (
         <div
           className={`fixed inset-0 z-50 flex flex-col items-center justify-center gap-5 transition-opacity duration-500 ${
             ready ? 'opacity-0 pointer-events-none' : 'opacity-100'
@@ -420,7 +444,7 @@ export default function MundoPage() {
           style={{ background: 'radial-gradient(ellipse at center, #0d0d2b 0%, #000005 100%)' }}
         >
           <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/15 border-t-white/70" />
-          <p className="text-[11px] uppercase tracking-[0.2em] text-white/40">Loading the globe</p>
+          <p className="text-sm text-white/50">spinning up the world…</p>
         </div>
       )}
 
@@ -439,7 +463,7 @@ export default function MundoPage() {
 
       {/* spin controls */}
       <div className="absolute left-4 sm:left-6 z-10 flex flex-col gap-2" style={{ top: 'calc(50% + 5rem)' }}>
-        <div className="border-t border-white/15 w-14" />
+        <div className="border-t border-white/25 w-14" />
         <div className="flex flex-col gap-3">
           {inGame ? (
             <button onClick={quitGame} className={BTN}>
@@ -463,11 +487,11 @@ export default function MundoPage() {
                     <button onClick={() => setPickNonce(n => n + 1)} className="text-left text-sm font-semibold tracking-wide rainbow-text">
                       Where Next?
                     </button>
-                    <span className="absolute left-full ml-4 w-44 text-xs text-white/35 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none leading-snug">
+                    <span className="absolute left-full ml-4 w-44 text-xs text-white/55 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none leading-snug">
                       wherever it lands, that&apos;s where you should go. this is called destiny, where the gambler and the traveller spirit essences had a baby and that baby is you right now. just do it!!
                     </span>
                   </div>
-                  <button onClick={startGame} className="text-left text-sm font-semibold tracking-wide text-white/35 hover:text-white/70 transition-colors">
+                  <button onClick={startGame} className="text-left text-sm font-semibold tracking-wide text-white/60 hover:text-white transition-colors">
                     Guess the Country
                   </button>
                 </>
@@ -529,13 +553,13 @@ export default function MundoPage() {
                   <button
                     onClick={() => { if (flagHintsLeft > 0) { setShowFlagHint(true); setFlagHintsLeft(h => h - 1); } }}
                     disabled={flagHintsLeft <= 0 || showFlagHint}
-                    className="text-xs text-white/20 hover:text-white/50 disabled:opacity-30 disabled:pointer-events-none transition-colors tracking-wide"
+                    className="text-xs text-white/55 hover:text-white disabled:opacity-30 disabled:pointer-events-none transition-colors tracking-wide"
                   >
                     flag hint
                   </button>
                   <span className="text-xs tracking-wide">
                     {Array.from({ length: 5 }, (_, i) => (
-                      <span key={i} className={i < flagHintsLeft ? 'text-white/35' : 'text-white/10'}>●</span>
+                      <span key={i} className={i < flagHintsLeft ? 'text-white/70' : 'text-white/25'}>●</span>
                     ))}
                   </span>
                 </div>
@@ -545,13 +569,13 @@ export default function MundoPage() {
                   <button
                     onClick={skipCountry}
                     disabled={skipsLeft <= 0}
-                    className="text-xs text-white/20 hover:text-white/50 disabled:opacity-30 disabled:pointer-events-none transition-colors tracking-wide"
+                    className="text-xs text-white/55 hover:text-white disabled:opacity-30 disabled:pointer-events-none transition-colors tracking-wide"
                   >
                     skip
                   </button>
                   <span className="text-xs tracking-wide">
                     {Array.from({ length: 3 }, (_, i) => (
-                      <span key={i} className={i < skipsLeft ? 'text-white/35' : 'text-white/10'}>●</span>
+                      <span key={i} className={i < skipsLeft ? 'text-white/70' : 'text-white/25'}>●</span>
                     ))}
                   </span>
                 </div>
@@ -568,14 +592,14 @@ export default function MundoPage() {
 
             {/* best score */}
             {highScore > 0 && (
-              <span className="text-xs text-white/20 tracking-wide tabular-nums">
+              <span className="text-xs text-white/55 tracking-wide tabular-nums">
                 best: {highScore}
               </span>
             )}
 
             {/* score */}
             <div className="flex items-baseline gap-3">
-              <span className="text-xs text-white/30 tracking-wide">
+              <span className="text-xs text-white/60 tracking-wide">
                 round {gameRound} · next +{fibScore(gameRound)} pts
               </span>
               <span className="text-2xl font-bold text-white tabular-nums">{gameScore}</span>
@@ -593,7 +617,7 @@ export default function MundoPage() {
                   <button onClick={startGame} className="text-xs text-white/50 hover:text-white transition-colors tracking-wide">
                     play again
                   </button>
-                  <button onClick={quitGame} className="text-xs text-white/30 hover:text-white/60 transition-colors tracking-wide">
+                  <button onClick={quitGame} className="text-xs text-white/60 hover:text-white transition-colors tracking-wide">
                     quit
                   </button>
                 </div>
@@ -615,7 +639,7 @@ export default function MundoPage() {
                     onChange={e => setGuess(e.target.value)}
                     onKeyDown={e => e.key === 'Enter' && submitGuess()}
                     placeholder="country name…"
-                    className={`bg-transparent border-b border-white/30 focus:border-white/70 outline-none text-white text-sm tracking-wide placeholder:text-white/20 text-right w-40 pb-0.5 transition-colors ${gamePhase === 'wrong' ? 'shake border-red-400' : ''}`}
+                    className={`bg-transparent border-b border-white/30 focus:border-white/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 text-white text-sm tracking-wide placeholder:text-white/40 text-right w-40 pb-0.5 transition-colors ${gamePhase === 'wrong' ? 'shake border-red-400' : ''}`}
                   />
                   <button
                     onClick={submitGuess}
@@ -633,7 +657,7 @@ export default function MundoPage() {
           <div className="flex flex-col items-end gap-1 pointer-events-none">
             {openList ? (
               <>
-                <span className="text-xs text-white/30 tracking-wide mb-1">
+                <span className="text-xs text-white/60 tracking-wide mb-1">
                   {openList === 'visited' ? 'Visited' : 'Planning'}
                 </span>
                 <div className="flex flex-col items-end gap-1 max-h-[60vh] overflow-y-auto pointer-events-auto">
