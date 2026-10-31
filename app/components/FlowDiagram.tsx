@@ -78,6 +78,28 @@ export default function FlowDiagram({ spec, caption }: { spec: FlowSpec; caption
 
   return (
     <figure className="my-8">
+      <div className="relative">
+      {/* same hover-reveal icon as the sports page menu, outside the clipped diagram box */}
+      <span className="group absolute right-3 top-3 z-10 flex items-center">
+        <span
+          tabIndex={0}
+          role="button"
+          aria-label="How the diagram works"
+          className="text-gray-300 transition-colors hover:text-gray-500 focus-visible:text-gray-500"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9.2" />
+            <path d="M12 11v5.2" />
+            <path d="M12 7.6v.1" />
+          </svg>
+        </span>
+        <span
+          role="tooltip"
+          className="pointer-events-none absolute right-0 top-full mt-2 w-max max-w-64 rounded-lg border border-gray-200 bg-white p-2.5 text-left text-xs leading-relaxed text-gray-500 opacity-0 shadow-md transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100"
+        >
+          Click any box to see what it does. Click the background to clear.
+        </span>
+      </span>
       <div
         className="rounded-xl border border-gray-200 bg-gray-50 overflow-hidden"
         style={{ height: spec.height ?? 460 }}
@@ -106,10 +128,10 @@ export default function FlowDiagram({ spec, caption }: { spec: FlowSpec; caption
           <Background gap={18} size={1} color="#d1d5db" />
         </ReactFlow>
       </div>
+      </div>
 
-      <div className="mt-3 min-h-[4.5rem] rounded-xl border border-gray-200 p-4">
-        {detail ? (
-          <>
+      {detail ? (
+        <div className="mt-3 rounded-xl border border-gray-200 p-4">
             <p className="text-sm font-semibold">{detail.title}</p>
             <p className="mt-1 text-sm leading-relaxed text-gray-600">{detail.what}</p>
             {detail.facts?.length ? (
@@ -121,13 +143,8 @@ export default function FlowDiagram({ spec, caption }: { spec: FlowSpec; caption
                 ))}
               </ul>
             ) : null}
-          </>
-        ) : (
-          <p className="text-sm text-gray-400">
-            Click any box to see what it does. Click the background to clear.
-          </p>
-        )}
-      </div>
+        </div>
+      ) : null}
 
       {caption ? (
         <figcaption className="mt-2 text-center text-xs text-gray-400">{caption}</figcaption>

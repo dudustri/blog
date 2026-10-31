@@ -1,5 +1,5 @@
 import { experience, education, languages, techStackGrouped, summary, tagline, extra, others } from "@/app/data/resume";
-import { projects } from "@/app/data/portfolio";
+import { plainText, projects } from "@/app/data/portfolio";
 
 const SITE = "https://eduardo.dk";
 
@@ -46,8 +46,8 @@ export function careerDigest({ compact = false } = {}): string {
   const work = (compact ? shipped.slice(0, 3) : shipped)
     .map((p) =>
       compact
-        ? `- ${p.title}. ${p.description}`
-        : `- ${p.title}. ${p.description} [${p.tech.join(", ")}] ${SITE}/portfolio/${p.slug}`,
+        ? `- ${p.title}. ${plainText(p.description)}`
+        : `- ${p.title}. ${plainText(p.description)} [${p.tech.join(", ")}] ${SITE}/portfolio/${p.slug}`,
     )
     .join("\n");
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { projects } from "@/app/data/portfolio";
+import { plainText, projects } from "@/app/data/portfolio";
 import MatterBackground from "@/app/components/MatterBackground";
 
 export const metadata: Metadata = {
@@ -96,7 +96,7 @@ export default function PortfolioPage() {
                 ) : null}
               </div>
               <p className="flex-1 text-gray-500 text-sm leading-relaxed mb-4">
-                {project.description}
+                {plainText(project.description)}
               </p>
               {/* capped, an unbounded list wrapped to three rows and made one
                   card much taller than its neighbours */}

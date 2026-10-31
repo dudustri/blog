@@ -320,7 +320,8 @@ export type PizzaSummary = {
 };
 
 /** headline pizza numbers for a list, so the tracker can say what the total means */
-export function pizzaSummary(list: Activity[] = activities): PizzaSummary {
+// unit: kcal of one menu item, so the counts follow what is picked on the menu
+export function pizzaSummary(list: Activity[] = activities, unit = PIZZA_KCAL): PizzaSummary {
   const monthly = new Map<string, number>();
   const categories = new Map<Category, number>();
   let calories = 0;
@@ -340,7 +341,7 @@ export function pizzaSummary(list: Activity[] = activities): PizzaSummary {
     const [year, month] = key.split("-");
     best = {
       label: `${MONTH_SHORT[Number(month) - 1]} ${year}`,
-      pizzas: Math.floor(kcal / PIZZA_KCAL),
+      pizzas: Math.floor(kcal / unit),
       calories: kcal,
     };
   }
@@ -353,16 +354,16 @@ export function pizzaSummary(list: Activity[] = activities): PizzaSummary {
         key,
         label: meta.label,
         accent: meta.accent,
-        pizzas: Math.floor(kcal / PIZZA_KCAL),
+        pizzas: Math.floor(kcal / unit),
         share: calories ? kcal / calories : 0,
       };
     });
 
   return {
-    pizzas: Math.floor(calories / PIZZA_KCAL),
+    pizzas: Math.floor(calories / unit),
     calories,
     months: monthly.size,
-    perMonth: monthly.size ? calories / PIZZA_KCAL / monthly.size : 0,
+    perMonth: monthly.size ? calories / unit / monthly.size : 0,
     best,
     byCategory,
   };

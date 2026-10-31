@@ -170,12 +170,9 @@ export default function Home() {
             >
               <p className="card-hint font-semibold text-sm mb-1 transition-colors duration-200">{card.label}</p>
               <p className="text-gray-500 text-xs leading-relaxed">{card.desc}</p>
-              <div className="flex items-baseline justify-between gap-2 mt-4">
-                <span className="card-hint min-w-0 truncate font-mono text-[11px] text-gray-400 transition-colors duration-200">
+              <div className="mt-4">
+                <span className="card-hint block min-w-0 truncate font-mono text-[11px] text-gray-400 transition-colors duration-200">
                   {card.stat}
-                </span>
-                <span className="card-hint flex-shrink-0 font-mono text-[11px] opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0">
-                  →
                 </span>
               </div>
             </Link>
@@ -192,7 +189,7 @@ export default function Home() {
               href="/blog"
               className="text-xs text-gray-400 hover:text-black transition-colors"
             >
-              All posts →
+              See all posts
             </Link>
           </div>
           <ul className="divide-y divide-gray-100 border-y border-gray-100">

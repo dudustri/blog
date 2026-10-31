@@ -14,3 +14,6 @@ export type Project = {
   heroCast?: CastMember[]; // sprites in the hero physics layer, squares when unset
 };
 export const projects = data as Project[];
+
+// project text with [label](url) links reduced to their label, for cards, meta tags and the AI digest
+export const plainText = (s: string) => s.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");

@@ -14,6 +14,9 @@ import {
   formatDate,
   availableYears,
   pizzaSummary,
+  FOOD_MENU,
+  foodKcal,
+  PIZZA_KCAL,
   MONTH_SHORT,
 } from "@/app/data/activities";
 import PizzaTracker from "./PizzaTracker";
@@ -45,7 +48,9 @@ export default function SportsPage() {
   const filtered = filterActivities(year, month);
   const list = filtered.filter((a) => categoryOf(a) === active);
   const stats = statsFor(list);
-  const pizzas = pizzaSummary(filtered);
+  // same kcal per item as the plot and the menu
+  const picked = FOOD_MENU.find((p) => p.name === pizza);
+  const pizzas = pizzaSummary(filtered, picked ? foodKcal(picked) : PIZZA_KCAL);
 
   return (
     <div className="w-full max-w-6xl mx-auto px-6 py-10 select-none">
@@ -179,14 +184,14 @@ export default function SportsPage() {
         <section className="mb-12">
           {/* what the total actually means, the plot alone only shows a count */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-            <StatTile label="Pizzas earned" value={pizzas.pizzas.toLocaleString()} />
+            <StatTile label={`${pizza} earned`} value={pizzas.pizzas.toLocaleString()} />
             <StatTile
               label="Best month"
               value={pizzas.best ? pizzas.best.label : "—"}
-              sub={pizzas.best ? `${pizzas.best.pizzas} pizzas` : undefined}
+              sub={pizzas.best ? `${pizzas.best.pizzas} × ${pizza}` : undefined}
             />
             <StatTile
-              label="Pizzas per month"
+              label={`${pizza} per month`}
               value={pizzas.perMonth.toFixed(1)}
               sub={`over ${pizzas.months} active ${pizzas.months === 1 ? "month" : "months"}`}
             />

@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Press_Start_2P } from "next/font/google";
 import { notFound } from "next/navigation";
-import { projects } from "@/app/data/portfolio";
+import { plainText, projects } from "@/app/data/portfolio";
 import MatterBackground from "@/app/components/MatterBackground";
+import LazyMedia from "@/app/components/LazyMedia";
 import FlowDiagram, { type FlowSpec } from "@/app/components/FlowDiagram";
 import {
   ragnadudsFlow,
@@ -32,11 +33,25 @@ const PIXEL_TITLE = {
   letterSpacing: "0.5px",
 };
 
-// renders **bold** inside a paragraph
+// renders **bold** and [text](https://url) inside a paragraph
 function renderInline(text: string) {
-  return text.split(/(\*\*.*?\*\*)/g).map((part, i) => {
+  return text.split(/(\*\*.*?\*\*|\[[^\]]+\]\(https?:\/\/[^)\s]+\))/g).map((part, i) => {
     if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    const link = part.match(/^\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)$/);
+    if (link) {
+      return (
+        <a
+          key={i}
+          href={link[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-[var(--accent)] underline underline-offset-2 hover:opacity-80"
+        >
+          {link[1]}
+        </a>
+      );
     }
     return part;
   });
@@ -74,6 +89,19 @@ function renderContent(content: string) {
       return <FlowDiagram key={i} spec={FLOWS[flow[1]]} />;
     }
 
+    // highlighted closing line: ::callout <text>
+    const callout = block.match(/^::callout\s+(.+)$/);
+    if (callout) {
+      return (
+        <p
+          key={i}
+          className="mt-10 rounded-xl border-2 border-[var(--accent)] bg-[var(--accent)]/[0.06] px-6 py-5 text-center text-lg font-semibold"
+        >
+          {renderInline(callout[1])}
+        </p>
+      );
+    }
+
     // markdown image block: ![alt](/path). alt becomes the caption
     const img = block.match(/^!\[(.*?)\]\((.*?)\)$/);
     if (img) {
@@ -81,12 +109,7 @@ function renderContent(content: string) {
       return (
         <figure key={i} className="my-6">
           <div className="rounded-xl border border-gray-200 bg-white overflow-x-auto">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`${BASE}${src}`}
-              alt={alt}
-              className="w-full min-w-[640px] h-auto"
-            />
+            <LazyMedia src={`${BASE}${src}`} alt={alt} />
           </div>
           {alt ? (
             <figcaption className="text-xs text-gray-400 mt-2 text-center">{alt}</figcaption>
@@ -166,10 +189,14 @@ export default async function ProjectPage({
           )}
         </div>
       </div>
-      <p className="text-gray-600 mb-3">{project.description}</p>
-      <div className="flex flex-wrap gap-2 mb-8">
+      <p className="text-gray-600 mb-5">{renderInline(project.description)}</p>
+      {/* same chip as a selected skill on the resume */}
+      <div className="flex flex-wrap gap-1.5 mb-10 pb-8 border-b border-gray-200">
         {project.tech.map((t) => (
-          <span key={t} className="text-xs px-2 py-0.5 bg-gray-100 rounded-full text-gray-600">
+          <span
+            key={t}
+            className="whitespace-nowrap px-2 py-[3px] text-[12.5px] rounded bg-[var(--accent-fill)] text-[var(--on-accent)]"
+          >
             {t}
           </span>
         ))}
@@ -208,19 +235,19 @@ export async function generateMetadata({
 
   return {
     title: project.title,
-    description: project.description,
+    description: plainText(project.description),
     alternates: { canonical: `/portfolio/${project.slug}` },
     openGraph: {
       type: "article",
       title: project.title,
-      description: project.description,
+      description: plainText(project.description),
       url: `/portfolio/${project.slug}`,
       images: [{ url: image, alt: project.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: project.title,
-      description: project.description,
+      description: plainText(project.description),
       images: [image],
     },
   };
