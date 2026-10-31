@@ -42,8 +42,12 @@ export default function LazyMedia({ src, alt }: { src: string; alt: string }) {
             muted
             loop
             playsInline
+            // plays like a gif: no picture in picture, casting or hover controls
+            disablePictureInPicture
+            disableRemotePlayback
+            controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
             onLoadedData={() => setReady(true)}
-            className={`${media} ${ready ? "opacity-100" : "opacity-0"}`}
+            className={`${media} pointer-events-none ${ready ? "opacity-100" : "opacity-0"}`}
           />
         ) : (
           // eslint-disable-next-line @next/next/no-img-element

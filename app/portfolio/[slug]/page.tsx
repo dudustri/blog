@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { plainText, projects } from "@/app/data/portfolio";
 import MatterBackground from "@/app/components/MatterBackground";
 import LazyMedia from "@/app/components/LazyMedia";
+import { renderInline } from "@/app/components/InlineText";
 import FlowDiagram, { type FlowSpec } from "@/app/components/FlowDiagram";
 import {
   ragnadudsFlow,
@@ -33,29 +34,6 @@ const PIXEL_TITLE = {
   letterSpacing: "0.5px",
 };
 
-// renders **bold** and [text](https://url) inside a paragraph
-function renderInline(text: string) {
-  return text.split(/(\*\*.*?\*\*|\[[^\]]+\]\(https?:\/\/[^)\s]+\))/g).map((part, i) => {
-    if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
-      return <strong key={i}>{part.slice(2, -2)}</strong>;
-    }
-    const link = part.match(/^\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)$/);
-    if (link) {
-      return (
-        <a
-          key={i}
-          href={link[2]}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-medium text-[var(--accent)] underline underline-offset-2 hover:opacity-80"
-        >
-          {link[1]}
-        </a>
-      );
-    }
-    return part;
-  });
-}
 
 function renderContent(content: string) {
   return content.split("\n\n").map((block, i) => {
@@ -134,9 +112,8 @@ export default async function ProjectPage({
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
-  // "Name - what it is" splits into the wordmark and the line under it
-  const [wordmark, ...restOfTitle] = project.title.split(" - ");
-  const tagline = restOfTitle.join(" - ");
+  // "Name - what it is": the hero shows only the name, the full title stays for cards and meta tags
+  const wordmark = project.title.split(" - ")[0];
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-10">
@@ -175,14 +152,6 @@ export default async function ProjectPage({
               >
                 {wordmark}
               </h1>
-              {tagline ? (
-                <p
-                  className="mt-4 text-sm md:text-base font-semibold"
-                  style={{ color: "#f6ecd2", textShadow: "2px 2px 0 #000" }}
-                >
-                  {tagline}
-                </p>
-              ) : null}
             </>
           ) : (
             <h1 className="text-2xl md:text-3xl font-bold tracking-tight">{project.title}</h1>

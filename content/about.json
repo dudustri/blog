@@ -1,36 +1,103 @@
 {
-  "intro": "Italian and Brazilian, living in Copenhagen. I like things that touch the physical world, whether that is a wind turbine, a guitar string, or a mountain pass at five thousand metres.",
+  "intro": "Hey! I have no idea why you want to read about me, but I hope you're doing well, healthy and sexy. I spend most of my days working with digital things, so in my free time I go after the physical world, learning random new things, how they work under the hood and how people live and see life.",
   "now": [
     {
-      "date": "28-09-2026",
+      "date": "31-10-2026",
       "entries": [
-        "Building fast data acquisition and edge controls for wind and solar plants.",
-        "Learning John Mayer songs on the acoustic, slowly and badly.",
-        "Reading my way through the books my dad left behind.",
-        "Rebuilding this site, one argument with myself at a time."
+        "Learning Belief's intro, live in LA, making an ugly face at every bend.",
+        "Reading Confesso que vivi by Pablo Neruda, in Portuguese.",
+        "Getting the wireless system working on my [MMH-MP](https://github.com/dudustri/magic-mayer-home-made-pedal) guitar pedal.",
+        "Writing a [Game Boy Color emulator](https://github.com/dudustri/rustboy-color) in Rust, and it already plays games.",
+        "Building fast data acquisition and edge controls for wind and solar plants."
+      ]
+    },
+    {
+      "date": "20-10-2026",
+      "entries": [
+        "Running [RagnaDuds](/portfolio/ragnaduds), our private Ragnarok Online server, now also playable in the browser.",
+        "Building [CS Duds](/portfolio/cs-duds), Counter-Strike 1.6 in a browser tab for the same crew."
       ]
     }
   ],
   "sections": [
     {
       "title": "Where I come from",
-      "body": "Two passports, three countries. Born and raised in Brazil, Italian by descent, Danish by postcode. Most of what I find interesting sits somewhere in the overlap, in the gap between how things are supposed to work and how they actually behave once they are outdoors and it is raining."
+      "body": "I was born and raised in Porto Alegre, the capital of Rio Grande do Sul, the southernmost state of Brazil, a land of famous and important [people](#people). Down there we are [gaúchos](#gauchos), so we share a lot of habits with our Uruguayan and Argentinian neighbours, sometimes more than with the rest of Brazil. I feel too introverted for an average Brazilian but too extroverted for a Nordic resident. I drink chimarrão, our bitter mate tea sipped all day long from a gourd (cuia) through a metal straw (bomba). Winters there are the coldest in Brazil, humid and windy, and nothing beats a hot chimarrão on a freezing morning. I also support Grêmio Foot-Ball Porto Alegrense and love a nice churrasco. And let's not forget about xisssssss, the gaúcho giant pressed sandwich/burger. Hard to explain, you just have to feel it!"
     },
     {
-      "title": "Guitar",
-      "body": "Acoustic, mostly. I am working through John Mayer, which is a humbling way to spend an evening. Progress is measured in how few times I have to stop."
+      "title": "Music and related stuff",
+      "body": "I recently bought an electric guitar and damn, it is amazing! Acoustic is still mostly my thing, but the bends, wowwwww, the bends are nicer on the electric. As you know, I'm a big fan of Johnny Salami, better known as John Mayer, and I've been putting some effort into learning most of his songs and techniques, and into improving my improvisation with different scales and the CAGED system. As for drums, well, I used to play more often when I lived closer to the rehearsal room I rented on weekends, but I still have the swing (I hope). At some point I want to study music theory properly and learn to read sheet music, mostly because one day I want to learn the cello. I enjoy listening to all sorts of things, so if you have any weird recommendation, please share it with me [here](/contact)!"
     },
     {
-      "title": "Mountains",
-      "body": "The hardest thing I have done is the Ausangate circuit in Peru, five days around a mountain with two Italians who somehow spoke Portuguese. There is a post about it on the blog. I would do it again tomorrow."
+      "title": "The mountains and the sea",
+      "body": "A very good friend once asked me if I'm a mountain or a sea guy. I confess I still think about it, and I believe the answer is neither. I enjoy pretty much any kind of nature and escaping the city from time to time, from forests to deserts and from mountains to the sea. For some reason, different weather and uncomfortable situations bring me peace of mind. That's also why protecting the environment matters so much to me. One day I want to have my own sailing boat and a motorcycle, and explore the coasts by sea and the roads inland, wherever they lead."
     },
     {
-      "title": "Keeping score",
-      "body": "Creatine every morning, an X on the calendar hanging off a single screw on the electrical panel in my kitchen. The Sports page counts the rest, in pizzas."
+      "title": "Exercise",
+      "body": "Creatine every morning, and at least one activity a day as a goal. I'm aiming to go back to swimming regularly and to start cycling ~when I get a road bike again~, since lately it has mainly been the gym and running. I once dreamed of doing an Ironman 70.3, but honestly it costs too much money on top of the training effort lol. Maybe I'll still do the distances on my own at some point, because I'm definitely not paying for it. Current bench press PR is 80 kg, just so you know. Everything I log ends up on the [Sports](/sports) page, counted in pizzas."
     },
     {
-      "title": "Ragnarok",
-      "body": "The game of my childhood, and now a server I run for friends split between Denmark and Brazil. It is in the portfolio, because the game was never the hard part."
+      "title": "Nostalgia and games",
+      "body": "It's definitely the age and I can't deny it. I've been working on many games I used to play as a kid, for the good memories. So far I've built dedicated servers, clients and mods for [Ragnarok](/portfolio/ragnaduds) and [Counter-Strike 1.6](/portfolio/cs-duds), and even a [Game Boy Color emulator](/portfolio/rustboy-color) to play the Pokémon games of my childhood! A few of them are still in progress, but you get the idea. Not all the nostalgia is on purpose, though. Some of my parents' weird habits have started showing up in my own day to day, the ones I used to make fun of as a kid. Might be genetic lol, life is funny. Still on nostalgia, I've been listening to a lot of 2000s songs."
+    },
+    {
+      "title": "Traveller spirit",
+      "body": "If I could, I would travel 24/7, but I have a wife and bills to pay. There is nothing better to me than exploring without a plan and figuring out what to do as I go. I travel ~cheap~ on purpose, because staying simple and getting close to the locals shows me much more of how people really live than any tour would. I like to learn from people, how they eat, work and see the world, and every trip changes a little bit of how I see my own life. Some of my favourite memories so far are the Ausangate trek in Peru and the mountains of North Vietnam, close to the Chinese border. I keep track of where I have been, and where I still want to go, on the [Mundo](/mundo) page."
     }
-  ]
+  ],
+  "notes": {
+    "people": [
+      [
+        "Ronaldinho Gaúcho",
+        "Porto Alegre",
+        "Ballon d'Or 2005, the ball did whatever he wanted"
+      ],
+      [
+        "Rafinha",
+        "Porto Alegre",
+        "Barcelona winger and Brazil international"
+      ],
+      [
+        "Elis Regina",
+        "Porto Alegre",
+        "one of the greatest voices in Brazilian music"
+      ],
+      [
+        "Yamandu Costa",
+        "Passo Fundo",
+        "virtuoso of the seven string guitar"
+      ],
+      [
+        "Gisele Bündchen",
+        "Horizontina",
+        "the supermodel"
+      ],
+      [
+        "Renato Portaluppi",
+        "Guaporé",
+        "Grêmio idol, as a player and as a coach"
+      ],
+      [
+        "Felipão",
+        "Passo Fundo",
+        "coached Brazil to the 2002 World Cup"
+      ],
+      [
+        "Getúlio Vargas",
+        "São Borja",
+        "the president who shaped modern Brazil"
+      ],
+      [
+        "Erico Verissimo",
+        "Cruz Alta",
+        "novelist, O Tempo e o Vento"
+      ],
+      [
+        "Mario Quintana",
+        "Alegrete",
+        "poet of Porto Alegre's streets"
+      ]
+    ],
+    "gauchos": "The name comes from the horsemen of the Pampas, the huge grasslands of cattle ranches that run across southern Brazil, Uruguay and Argentina, and their culture of mate, barbecue, ponchos and horses still shapes the whole region. The borders there moved a lot, too. Uruguay was even part of Brazil for a few years in the 1820s, as the Cisplatina province, until a war made it independent."
+  }
 }

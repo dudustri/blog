@@ -35,6 +35,35 @@
     ]
   },
   {
+    "slug": "cs-duds",
+    "title": "CS Duds - Counter-Strike 1.6 in the browser",
+    "description": "Self-hosted Counter-Strike 1.6 that runs in a browser tab, with no install and no Steam account. The engine runs in WebAssembly, a Go backend handles the lobby and relays game traffic over WebRTC to one game server per room, all shipped as one Docker bundle.",
+    "tech": [
+      "Go",
+      "WebAssembly",
+      "WebRTC",
+      "Docker",
+      "Caddy",
+      "C"
+    ],
+    "image": null,
+    "content": "",
+    "wip": true
+  },
+  {
+    "slug": "rustboy-color",
+    "title": "rustboy-color - Game Boy Color emulator",
+    "description": "A Game Boy Color emulator written in Rust. The same core runs as a desktop app on x86_64 and aarch64 and in the browser through WebAssembly. It already plays games.",
+    "tech": [
+      "Rust",
+      "WebAssembly",
+      "wasm-pack"
+    ],
+    "image": null,
+    "content": "",
+    "wip": true
+  },
+  {
     "slug": "personal-blog",
     "title": "Personal Blog & Portfolio",
     "description": "This very site. A statically exported Next.js app with an interactive resume, a 3D travel globe, an activity tracker, physics banners and a JSON-driven blog.",

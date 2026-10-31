@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { intro, now, sections } from "@/app/data/about";
+import { intro, notes, now, sections } from "@/app/data/about";
 import { formatDate } from "@/app/data/blog";
+import { renderInline } from "@/app/components/InlineText";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const TITLE = "About";
 const DESCRIPTION =
   "Who Eduardo Sfreddo Trindade is away from the resume, and what he is up to right now.";
@@ -18,68 +20,91 @@ export default function AboutPage() {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-6 py-10">
-      <h1 className="text-3xl font-bold tracking-tight mb-3">About</h1>
-      <p className="text-gray-500 text-[15px] leading-relaxed max-w-xl mb-12">{intro}</p>
-
-      {/* the /now convention, a dated snapshot rather than a timeless bio */}
-      {current ? (
-        <section className="mb-12">
-          <div className="flex items-baseline justify-between gap-4 mb-4">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-400">
-              Right now
-            </h2>
-            <time className="font-mono text-[11px] text-gray-400">
-              {formatDate(current.date)}
-            </time>
-          </div>
-          <ul className="space-y-2.5 border-y border-gray-100 py-5">
-            {current.entries.map((e) => (
-              <li key={e} className="flex gap-3 text-[15px] leading-relaxed text-gray-700">
-                <span
-                  aria-hidden="true"
-                  className="mt-[9px] h-1 w-1 flex-shrink-0 rounded-full"
-                  style={{ background: "#3e6b89" }}
-                />
-                <span>{e}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
+      {/* intro and the current snapshot on the left, the photo beside them */}
+      <div className="mb-12 flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-10">
+        <div className="min-w-0 flex-1">
+          <h1 className="text-3xl font-bold tracking-tight mb-3">About</h1>
+          <p className="text-gray-500 text-[15px] leading-relaxed">
+            {renderInline(intro)}
+          </p>
+          {current ? (
+            <p className="mt-3 text-xs text-gray-400">
+              Last updated: <time>{formatDate(current.date)}</time>
+            </p>
+          ) : null}
+          {/* the /now convention, a dated snapshot rather than a timeless bio */}
+          {current ? (
+            <section className="mt-8">
+              <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+                Currently
+              </h2>
+              <ul className="space-y-2.5 border-y border-gray-100 py-5">
+                {current.entries.map((e) => (
+                  <li
+                    key={e}
+                    className="flex gap-3 text-[15px] leading-relaxed text-gray-700"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-[9px] h-1 w-1 flex-shrink-0 rounded-full bg-[var(--accent)]"
+                    />
+                    <span>{renderInline(e)}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+          {/* old snapshots stay readable, that is the interesting part a year later */}
+          {archive.length > 0 ? (
+            <section className="mt-8">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent)] mb-4">
+                Previously
+              </h2>
+              <div className="divide-y divide-gray-100 border-y border-gray-100">
+                {archive.map((entry) => (
+                  <div key={entry.date} className="py-5">
+                    <ul className="space-y-2.5">
+                      {entry.entries.map((e) => (
+                        <li
+                          key={e}
+                          className="flex gap-3 text-[15px] leading-relaxed text-gray-700"
+                        >
+                          <span
+                            aria-hidden="true"
+                            className="mt-[9px] h-1 w-1 flex-shrink-0 rounded-full bg-[var(--accent)]"
+                          />
+                          <span>{renderInline(e)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : null}
+        </div>
+        <figure className="w-full max-w-md flex-shrink-0 sm:w-80">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`${BASE}/images/about.jpg`}
+            alt="Eduardo standing in front of an indoor waterfall surrounded by plants"
+            width={640}
+            height={1203}
+            className="w-full rounded-xl object-cover"
+          />
+        </figure>
+      </div>
 
       <section className="mb-12 grid gap-8 sm:grid-cols-2">
         {sections.map((s) => (
           <div key={s.title}>
             <h2 className="font-semibold mb-1.5">{s.title}</h2>
-            <p className="text-gray-600 text-[15px] leading-relaxed">{s.body}</p>
+            <p className="text-gray-600 text-[15px] leading-relaxed">
+              {renderInline(s.body, notes)}
+            </p>
           </div>
         ))}
       </section>
-
-      {/* old snapshots stay readable, that is the interesting part a year later */}
-      {archive.length > 0 ? (
-        <section>
-          <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-400 mb-5">
-            Previously
-          </h2>
-          <div className="divide-y divide-gray-100 border-t border-gray-100">
-            {archive.map((entry) => (
-              <div key={entry.date} className="py-5">
-                <time className="font-mono text-[11px] text-gray-400">
-                  {formatDate(entry.date)}
-                </time>
-                <ul className="mt-2 space-y-1.5">
-                  {entry.entries.map((e) => (
-                    <li key={e} className="text-sm leading-relaxed text-gray-500">
-                      {e}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-      ) : null}
     </div>
   );
 }
