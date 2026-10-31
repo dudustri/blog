@@ -160,7 +160,7 @@ export default function Header() {
             isMundo ? 'border-white/10 bg-black/80 backdrop-blur-md' : 'border-gray-100 bg-white'
           }`}
         >
-          <div className="max-w-6xl mx-auto px-6 py-3 flex flex-col">
+          <div className="max-w-6xl mx-auto px-6 py-4 grid grid-cols-3 gap-2">
             {navLinks.map(({ href, label, exact }) => {
               const active = exact ? pathname === href : pathname.startsWith(href);
               return (
@@ -168,14 +168,14 @@ export default function Header() {
                   key={href}
                   href={href}
                   onClick={() => setMenuOpen(false)}
-                  className={`py-2.5 text-sm transition-colors ${
+                  className={`rounded-lg border py-3 text-center text-sm transition-colors ${
                     active
                       ? isMundo
-                        ? 'text-white font-medium'
-                        : 'text-black font-medium'
+                        ? 'border-white/40 text-white font-medium'
+                        : 'border-[var(--accent)] text-[var(--accent)] font-medium'
                       : isMundo
-                        ? 'text-white/60 hover:text-white'
-                        : 'text-gray-500 hover:text-black'
+                        ? 'border-white/10 text-white/60 hover:text-white'
+                        : 'border-gray-200 text-gray-500 hover:text-black'
                   }`}
                 >
                   {label}

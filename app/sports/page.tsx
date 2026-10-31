@@ -11,7 +11,7 @@ import {
   statsFor,
   formatDuration,
   formatPace,
-  formatDate,
+  formatIsoDate,
   availableYears,
   pizzaSummary,
   FOOD_MENU,
@@ -68,7 +68,7 @@ export default function SportsPage() {
           All my recorded activities since I got my Garmin watch.
         </p>
         <p className="text-xs text-gray-400 mt-3">
-          Last updated: {formatDate(activitiesMeta.generatedAt)}{" "}
+          Last updated: {formatIsoDate(activitiesMeta.generatedAt)}{" "}
           <span className="italic">
             (manually updated, I&apos;m not paying Strava for the API o.O)
           </span>
@@ -320,7 +320,7 @@ export default function SportsPage() {
                           {a.name}
                         </p>
                         <p className="text-xs text-gray-400 mt-0.5">
-                          {formatDate(a.date)} · {a.type}
+                          {formatIsoDate(a.date)} · {a.type}
                           {a.avgHeartrate ? ` · ${a.avgHeartrate} bpm` : ""}
                         </p>
                       </div>

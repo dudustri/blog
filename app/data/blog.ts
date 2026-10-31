@@ -14,7 +14,7 @@ export function isoDate(date: string) {
 }
 
 // "19-09-2026" → "19 September 2026"
-export function formatDate(date: string) {
+export function formatDmyDate(date: string) {
   const [day, month, year] = date.split("-");
   return new Date(+year, +month - 1, +day).toLocaleDateString("en-GB", {
     day: "numeric",

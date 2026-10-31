@@ -12,7 +12,7 @@ bun dev
 ## Build
 
 ```bash
-bun build
+bun run build
 ```
 
 ## Stack

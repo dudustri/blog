@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { posts, formatDate } from "@/app/data/blog";
+import { posts, formatDmyDate } from "@/app/data/blog";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -73,7 +73,7 @@ export default function BlogPage() {
                       {post.title}
                     </h2>
                     <time className="text-gray-400 text-sm whitespace-nowrap">
-                      {formatDate(post.date)}
+                      {formatDmyDate(post.date)}
                     </time>
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed">{post.excerpt}</p>

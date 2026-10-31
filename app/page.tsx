@@ -4,10 +4,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import MatterBanner from "@/app/components/MatterBanner";
 import { projects } from "@/app/data/portfolio";
-import { posts, formatDate } from "@/app/data/blog";
+import { posts, formatDmyDate } from "@/app/data/blog";
 import { experience, education } from "@/app/data/resume";
 import { countries } from "@/app/data/mundo";
 import { activities, statsFor } from "@/app/data/activities";
+import { now } from "@/app/data/about";
 
 // live micro-stats from the same data the individual pages use, so each card
 // shows one real number instead of an empty arrow
@@ -18,6 +19,7 @@ const published = posts.filter((p) => !p.draft);
 const recentPosts = published.slice(0, 3);
 
 const cards = [
+  { href: "/about", label: "About", desc: "Who I am away from the resume", stat: `${now[0]?.entries.length ?? 0} things going on right now` },
   { href: "/resume", label: "Resume", desc: "Skills, experience & education", stat: `${companyCount} companies · ${degreeCount} degrees` },
   { href: "/portfolio", label: "Portfolio", desc: "Projects I've built or aiming to build", stat: `${projects.length} projects (WIP)` },
   { href: "/mundo", label: "Mundo", desc: "Places I have been hanging around ", stat: `${countries.length} countries visited` },
@@ -208,7 +210,7 @@ export default function Home() {
                     </span>
                   </span>
                   <time className="flex-shrink-0 font-mono text-[11px] text-gray-400">
-                    {formatDate(post.date)}
+                    {formatDmyDate(post.date)}
                   </time>
                 </Link>
               </li>

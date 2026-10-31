@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { posts, formatDate, isoDate } from "@/app/data/blog";
+import { posts, formatDmyDate, isoDate } from "@/app/data/blog";
 import { commentsFor } from "@/app/data/comments";
 import Comments from "@/app/components/Comments";
 import JsonLd from "@/app/components/JsonLd";
@@ -236,7 +236,7 @@ export default async function BlogPost({
       )}
 
       <h1 className="text-3xl font-bold tracking-tight mb-1">{post.title}</h1>
-      <p className="text-gray-400 text-sm mb-8">{formatDate(post.date)}</p>
+      <p className="text-gray-400 text-sm mb-8">{formatDmyDate(post.date)}</p>
 
       <div className="space-y-4">{renderContent(post.content)}</div>
 

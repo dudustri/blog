@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
-import { formatDate } from "@/app/data/blog";
+import { formatDmyDate } from "@/app/data/blog";
 import type { Comment } from "@/app/data/comments";
 
 // must match the worker name in cloudflare, see workers/README.md
@@ -145,7 +145,7 @@ export default function Comments({
               <div className="flex items-baseline gap-2 mb-1">
                 <span className="text-sm font-medium text-black">{comment.name}</span>
                 {comment.date && (
-                  <span className="text-xs text-gray-400">{formatDate(comment.date)}</span>
+                  <span className="text-xs text-gray-400">{formatDmyDate(comment.date)}</span>
                 )}
               </div>
               {/* plain text on purpose, never the post markup renderer */}

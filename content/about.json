@@ -7,14 +7,15 @@
         "Learning Belief's intro, live in LA, making an ugly face at every bend.",
         "Reading Confesso que vivi by Pablo Neruda, in Portuguese.",
         "Getting the wireless system working on my [MMH-MP](https://github.com/dudustri/magic-mayer-home-made-pedal) guitar pedal.",
-        "Writing a [Game Boy Color emulator](https://github.com/dudustri/rustboy-color) in Rust, and it already plays games.",
+        "Writing a [Game Boy Color emulator](https://github.com/dudustri/rustboy-color) in Rust to play Pokémon FireRed in the future.",
+        "Timing my commute daily and tweaking the route to find the optimal path.",
         "Building fast data acquisition and edge controls for wind and solar plants."
       ]
     },
     {
       "date": "20-10-2026",
       "entries": [
-        "Running [RagnaDuds](/portfolio/ragnaduds), our private Ragnarok Online server, now also playable in the browser.",
+        "Fine tuning [RagnaDuds](/portfolio/ragnaduds), now also playable in the browser.",
         "Building [CS Duds](/portfolio/cs-duds), Counter-Strike 1.6 in a browser tab for the same crew."
       ]
     }

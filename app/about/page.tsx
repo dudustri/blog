@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { intro, notes, now, sections } from "@/app/data/about";
-import { formatDate } from "@/app/data/blog";
+import { formatDmyDate } from "@/app/data/blog";
 import { renderInline } from "@/app/components/InlineText";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -21,7 +21,7 @@ export default function AboutPage() {
   return (
     <div className="w-full max-w-6xl mx-auto px-6 py-10">
       {/* intro and the current snapshot on the left, the photo beside them */}
-      <div className="mb-12 flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-10">
+      <div className="mb-12 flex flex-col gap-8 lg:flex-row lg:items-stretch lg:gap-10">
         <div className="min-w-0 flex-1">
           <h1 className="text-3xl font-bold tracking-tight mb-3">About</h1>
           <p className="text-gray-500 text-[15px] leading-relaxed">
@@ -29,7 +29,7 @@ export default function AboutPage() {
           </p>
           {current ? (
             <p className="mt-3 text-xs text-gray-400">
-              Last updated: <time>{formatDate(current.date)}</time>
+              Last updated: <time>{formatDmyDate(current.date)}</time>
             </p>
           ) : null}
           {/* the /now convention, a dated snapshot rather than a timeless bio */}
@@ -83,14 +83,15 @@ export default function AboutPage() {
             </section>
           ) : null}
         </div>
-        <figure className="w-full max-w-md flex-shrink-0 sm:w-80">
+        {/* stretches to the text column, ending level with the Previously divider */}
+        <figure className="w-full max-w-md flex-shrink-0 lg:flex lg:w-80 lg:flex-col">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={`${BASE}/images/about.jpg`}
             alt="Eduardo standing in front of an indoor waterfall surrounded by plants"
             width={640}
             height={1203}
-            className="w-full rounded-xl object-cover"
+            className="w-full rounded-xl object-cover lg:h-0 lg:flex-grow"
           />
         </figure>
       </div>

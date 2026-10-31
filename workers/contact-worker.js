@@ -3,7 +3,20 @@
  *
  * vars:    TO_EMAIL (inbox, kept out of this file)
  * secrets: TURNSTILE_SECRET, RESEND_API_KEY
+ * binding: RATE_LIMITER (optional)
  */
+
+// one plain address, no spaces or line breaks, so it cannot break the email headers
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// cap length, drop control characters, keep line breaks only where asked (same idea as the comments worker)
+function clean(input, max, allowNewlines = false) {
+  if (typeof input !== "string") return "";
+  let out = input.normalize("NFC").replace(/\r\n?/g, "\n");
+  out = [...out].map((ch) => (ch === "\n" ? (allowNewlines ? ch : " ") : ch.codePointAt(0) >= 32 && ch !== "\x7f" ? ch : "")).join("");
+  out = allowNewlines ? out.replace(/\n{3,}/g, "\n\n") : out.replace(/\s+/g, " ");
+  return out.trim().slice(0, max);
+}
 
 export default {
   async fetch(request, env) {
@@ -53,9 +66,24 @@ export default {
       return new Response("Method not allowed", { status: 405, headers: corsHeaders });
     }
 
+    if (env.RATE_LIMITER) {
+      const { success } = await env.RATE_LIMITER.limit({ key: request.headers.get("CF-Connecting-IP") ?? "unknown" });
+      if (!success) {
+        return new Response(JSON.stringify({ success: false, error: "rate_limited" }),
+          { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+      }
+    }
+
     try {
       const body = await request.json();
-      const { turnstileToken, name, email, message } = body;
+      const turnstileToken = typeof body.turnstileToken === "string" ? body.turnstileToken : "";
+      const name = clean(body.name, 80);
+      const email = clean(body.email, 200);
+      const message = clean(body.message, 5000, true);
+      if (!name || !message || !EMAIL_RE.test(email)) {
+        return new Response(JSON.stringify({ success: false, error: "invalid_fields" }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+      }
       const secret = env.TURNSTILE_SECRET;
       const resendKey = env.RESEND_API_KEY;
       const toEmail = env.TO_EMAIL;
@@ -90,7 +118,7 @@ export default {
       );
       const verifyData = await verifyRes.json();
       if (!verifyData.success) {
-        return new Response(JSON.stringify({ success: false, stage: "siteverify", error: "Bot check failed", details: verifyData }),
+        return new Response(JSON.stringify({ success: false, stage: "siteverify", error: "Bot check failed" }),
           { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
       }
 
@@ -128,7 +156,8 @@ export default {
       try { resendData = JSON.parse(resendText); } catch { resendData = { raw: resendText }; }
 
       if (!resendRes.ok) {
-        return new Response(JSON.stringify({ success: false, stage: "resend", status: resendRes.status, details: resendData }),
+        console.error("resend failed", resendRes.status, resendText);
+        return new Response(JSON.stringify({ success: false, stage: "resend" }),
           { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } });
       }
 
@@ -137,7 +166,8 @@ export default {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     } catch (err) {
-      return new Response(JSON.stringify({ success: false, stage: "outer", error: String(err) }),
+      console.error("contact failed", err instanceof Error ? err.message : err);
+      return new Response(JSON.stringify({ success: false, stage: "outer" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
   },

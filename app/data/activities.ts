@@ -67,7 +67,7 @@ export type CategoryStats = {
 
 export const activities: Activity[] = (data as Activity[])
   .slice()
-  .sort((a, b) => +new Date(b.date) - +new Date(a.date));
+  .sort((a, b) => b.date.localeCompare(a.date));
 
 export function activitiesByCategory(category: Category): Activity[] {
   return activities.filter((a) => categoryOf(a) === category);
@@ -102,8 +102,10 @@ export function formatPace(distanceKm: number, movingTimeSec: number): string {
   return `${m}:${s.toString().padStart(2, "0")} /km`;
 }
 
-export function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("en-GB", {
+// "YYYY-MM-DD" read as local midnight, plain new Date() would read it as UTC and shift
+// the day for visitors west of Greenwich
+export function formatIsoDate(iso: string): string {
+  return new Date(iso.length === 10 ? `${iso}T00:00` : iso).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "short",
     year: "numeric",
@@ -196,7 +198,7 @@ export const MONTH_SHORT = [
 /** distinct years in the data, newest first */
 export function availableYears(list: Activity[] = activities): number[] {
   const years = new Set<number>();
-  for (const a of list) years.add(new Date(a.date).getFullYear());
+  for (const a of list) years.add(+a.date.slice(0, 4));
   return [...years].sort((a, b) => b - a);
 }
 
@@ -207,9 +209,9 @@ export function filterActivities(
   list: Activity[] = activities,
 ): Activity[] {
   return list.filter((a) => {
-    const d = new Date(a.date);
-    if (year !== "all" && d.getFullYear() !== year) return false;
-    if (month !== "all" && d.getMonth() !== month) return false;
+    // compared on the text, the same way the plot buckets them, so no time zone can shift a day
+    if (year !== "all" && +a.date.slice(0, 4) !== year) return false;
+    if (month !== "all" && +a.date.slice(5, 7) - 1 !== month) return false;
     return true;
   });
 }
@@ -259,7 +261,7 @@ export function caloriesTimeline(
   let prevMonth = "";
   const runningByCategory = new Map<Category, number>();
   return [...buckets.entries()]
-    .sort(([a], [b]) => +new Date(a) - +new Date(b))
+    .sort(([a], [b]) => a.localeCompare(b))
     .map(([key, acts]) => {
       const calories = acts.reduce((s, a) => s + caloriesFor(a), 0);
       cumulative += calories;
