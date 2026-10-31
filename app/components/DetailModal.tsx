@@ -275,12 +275,14 @@ export default function DetailModal({
                 return (
                   <span
                     key={tech}
-                    className="px-2.5 py-1 text-xs rounded border"
-                    style={{
-                      borderColor: active ? BLUE : `${BLUE}33`,
-                      background: active ? BLUE : `${BLUE}0d`,
-                      color: active ? "#fff" : BLUE,
-                    }}
+                    // same chip as the stack sections, so the popup does not
+                    // introduce a second chip style
+                    className="whitespace-nowrap px-2 py-[3px] text-[12.5px] rounded border border-gray-200 text-gray-700"
+                    style={
+                      active
+                        ? { borderColor: BLUE, background: BLUE, color: "#fff" }
+                        : undefined
+                    }
                   >
                     {tech}
                   </span>

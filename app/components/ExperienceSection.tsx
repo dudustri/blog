@@ -2,16 +2,10 @@
 
 import { useState, useEffect } from "react";
 import DetailModal, { type Detail } from "./DetailModal";
-import { jobHasTech, type Experience } from "@/app/data/resume";
+import { jobMatches, type Experience } from "@/app/data/resume";
 
 const BLUE = "#3e6b89";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-
-// a job matches when no tech is selected, or when it uses any selected one
-// (union). `jobHasTech` handles coupled labels like "C / C++"
-function jobMatches(job: Experience, activeTechs: string[]): boolean {
-  return activeTechs.length === 0 || activeTechs.some((t) => jobHasTech(job.stack, t));
-}
 
 // maps an Experience record to the generic Detail the shared popup renders
 const CARD_HIGHLIGHTS = 3;
@@ -58,8 +52,8 @@ export default function ExperienceSection({
     return () => observer.disconnect();
   }, []);
 
-  // hover: theme-adaptive neutral overlay (darkens on light, lightens on dark), no border/ring
-  const hoverBg = dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.04)";
+  // hover: faint blue tint on light, light overlay on dark, no border/ring
+  const hoverBg = dark ? "rgba(255,255,255,0.06)" : "rgba(62,107,137,0.05)";
 
   return (
     <>

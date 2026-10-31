@@ -51,11 +51,11 @@ export const companyLogos: CompanyLogo[] = Array.from(
 // scanning. order here is display order, anything unlisted falls into Other
 const TECH_GROUPS: { label: string; items: string[] }[] = [
   { label: "Languages", items: ["C / C++", "C#", "Java", "Python", "Golang", "Rust", "TypeScript", "Bash"] },
-  { label: "Databases", items: ["SQL", "NoSQL", "PostgreSQL", "MySQL", "MongoDB"] },
-  { label: "Services", items: ["Node", "React", "REST", "GraphQL", "gRPC"] },
-  { label: "Platform", items: ["Docker", "Kubernetes", "Linux", "Nginx", "Git", "GitHub Actions", "CI/CD", "Make"] },
-  { label: "Cloud", items: ["AWS", "GCP", "Azure"] },
-  { label: "Observability", items: ["Grafana"] },
+  { label: "Databases", items: ["SQL", "NoSQL", "PostgreSQL", "MySQL", "MongoDB", "Redis", "ArangoDB", "Elasticsearch"] },
+  { label: "Services", items: ["Node", "React", "REST", "GraphQL", "gRPC", "WebRTC", "WebSockets", "SSE", "SignalR", "Webhooks", "WASM"] },
+  { label: "Platform", items: ["Docker", "Kubernetes", "Linux", "Nginx", "Git", "GitHub Actions", "Jenkins", "CI/CD", "Make"] },
+  { label: "Cloud", items: ["AWS", "GCP", "Azure", "Oracle Cloud"] },
+  { label: "Observability", items: ["Grafana", "Prometheus", "Kibana"] },
 ];
 
 // the engineering half of the stack, same chip and filter mechanism
@@ -92,6 +92,12 @@ export function techParts(tech: string): string[] {
 
 export function jobHasTech(stack: string[] | undefined, tech: string): boolean {
   return techParts(tech).some((p) => stack?.includes(p) ?? false);
+}
+
+// a job matches when no tech is selected, or when it uses any selected one
+// (union). `jobHasTech` handles coupled labels like "C / C++"
+export function jobMatches(job: Experience, activeTechs: string[]): boolean {
+  return activeTechs.length === 0 || activeTechs.some((t) => jobHasTech(job.stack, t));
 }
 
 export function chipMatchesSelected(chip: string, selected: string[]): boolean {
