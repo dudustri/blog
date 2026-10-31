@@ -177,6 +177,11 @@ html.dark .hover\:text-white:hover  { color: #ffffff !important; }
 }
 
 /* Matter.js banner, gravity + cursor-repelling squares (home page). */
+/* justified copy without hyphens opens rivers, worst on narrow screens */
+.text-justify {
+  hyphens: auto;
+}
+
 .matter-stage {
   overflow: hidden;
 }
@@ -215,15 +220,59 @@ html.dark .hover\:text-white:hover  { color: #ffffff !important; }
 }
 
 
-/* Landing nav-card hover accent: apple green, matching the resume tech stack
-   highlight. !important beats the html.dark .text-gray-400 override. */
+/* gradient eyebrow above the page titles. the light ramp measures about
+   2.5:1 on the dark background, under the 4.5:1 AA floor, so dark mode gets a
+   lighter one */
+.eyebrow {
+  background: linear-gradient(90deg, #2a5a7a, #3e6b89);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+html.dark .eyebrow {
+  background: linear-gradient(90deg, #7cc4ff, #a5d8ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* card title accent on hover and keyboard focus. !important beats the
+   html.dark .text-gray-400 override. */
 .card-hint {
   transition: color 0.2s ease;
 }
-.group:hover .card-hint {
-  color: #5c9c08 !important;
+.group:hover .card-hint,
+.group:focus-visible .card-hint {
+  color: #3e6b89 !important;
 }
-html.dark .group:hover .card-hint {
+html.dark .group:hover .card-hint,
+html.dark .group:focus-visible .card-hint {
   color: #a3e635 !important;
+}
+
+/* landing nav card. hover and focus-visible share one rule so keyboard users
+   get the same highlight the mouse does */
+.nav-card {
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+.nav-card:hover,
+.nav-card:focus-visible {
+  border-color: #9ca3af;
+  background-color: #f9fafb;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  transform: translateY(-2px);
+}
+html.dark .nav-card:hover,
+html.dark .nav-card:focus-visible {
+  border-color: #555 !important;
+  background-color: #252525 !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+.nav-card:focus-visible {
+  outline: 2px solid #3e6b89;
+  outline-offset: 2px;
 }
 

@@ -157,7 +157,10 @@ export default function MatterBackground({
         }
         stage.appendChild(el);
         const x = w + Math.random() * Math.max(1, W - 2 * w);
-        const y = h + Math.random() * Math.max(1, H - 3 * h);
+        // spawn in the lower band, so the opening fall does not sweep straight
+        // through the banner's title and subtitle
+        const top = Math.max(h, H * 0.35);
+        const y = top + Math.random() * Math.max(1, H - top - h);
         const body = Bodies.rectangle(x, y, w, h, {
           friction: 0.4,
           frictionStatic: 0.6,
