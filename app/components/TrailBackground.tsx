@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { useIsDark } from "@/app/components/useIsDark";
 
 // cursor-trail background layer: as pointer moves over parent, small squares
 // appear where cursor is and linger a few seconds before fading out. no
@@ -19,15 +20,7 @@ const PALETTE_DARK = ["#3a3a3a", "#474747", "#565656", "#6b6b6b", "#4d7ea0"];
 
 export default function TrailBackground() {
   const stageRef = useRef<HTMLDivElement>(null);
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    const check = () => setDark(document.documentElement.classList.contains("dark"));
-    check();
-    const observer = new MutationObserver(check);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
+  const dark = useIsDark();
 
   useEffect(() => {
     if (typeof window === "undefined") return;

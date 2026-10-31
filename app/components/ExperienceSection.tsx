@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import DetailModal, { type Detail } from "./DetailModal";
 import { jobMatches, type Experience } from "@/app/data/resume";
 
@@ -43,19 +42,6 @@ export default function ExperienceSection({
   onJobSelect,
   onModalClose,
 }: Props) {
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    const check = () => setDark(document.documentElement.classList.contains("dark"));
-    check();
-    const observer = new MutationObserver(check);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
-
-  // hover: faint tint of the accent in both themes, no border/ring
-  const hoverBg = dark ? "rgba(111,159,192,0.08)" : "rgba(62,107,137,0.05)";
-
   return (
     <>
       <div className={`space-y-0${selectedJob ? " pointer-events-none select-none" : ""}`}>
@@ -66,16 +52,15 @@ export default function ExperienceSection({
             <div
               key={job.id}
               id={job.id}
-              className="group scroll-mt-24 cursor-pointer rounded-xl p-5 -mx-5"
+              // hover tint only on roles that match the selected skills, colours in globals.css
+              className={`group scroll-mt-24 cursor-pointer rounded-xl p-5 -mx-5${matched ? " job-hover" : ""}`}
               style={{
                 opacity: matched ? 1 : 0.2,
                 borderLeft: matched && anySelected ? `3px solid ${BLUE}` : "3px solid transparent",
                 transition:
                   "opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease",
               }}
-              onMouseEnter={(e) => { if (matched) (e.currentTarget as HTMLElement).style.backgroundColor = hoverBg; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = ""; }}
-              onClick={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = ""; onJobSelect(job); }}
+              onClick={() => onJobSelect(job)}
             >
               <div className="flex items-start mb-2">
                 {job.logo ? (

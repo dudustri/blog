@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { useIsDark } from "@/app/components/useIsDark";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -70,15 +71,7 @@ export default function MatterBackground({
   // serialized so a fresh array literal each render does not rebuild the sim
   const castKey = JSON.stringify(cast ?? null);
   const stageRef = useRef<HTMLDivElement>(null);
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    const check = () => setDark(document.documentElement.classList.contains("dark"));
-    check();
-    const observer = new MutationObserver(check);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-    return () => observer.disconnect();
-  }, []);
+  const dark = useIsDark();
 
   useEffect(() => {
     if (typeof window === "undefined") return;

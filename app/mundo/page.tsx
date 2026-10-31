@@ -177,7 +177,8 @@ function confettiShape(shape: number, color: string, size: number) {
 }
 
 function Confetti() {
-  const pieces = useRef(
+  // built once on mount, a useRef(...) argument would be rebuilt and thrown away on every render
+  const [pieces] = useState(() =>
     Array.from({ length: 120 }, (_, i) => {
       const color = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
       const size  = 5 + Math.random() * 9;
@@ -197,7 +198,7 @@ function Confetti() {
         drift:    (Math.random() - 0.5) * 80,  // horizontal drift px
       };
     })
-  ).current;
+  );
 
   // build per-piece keyframes so each piece has its own drift + rotation
   const styles = pieces.map(p =>
@@ -266,6 +267,12 @@ export default function MundoPage() {
   const [skippedCountry, setSkippedCountry] = useState<string | null>(null);
   const [highScore,      setHighScore]      = useState(0);
   const currentCountryRef             = useRef<string | null>(null);
+  // the same answer as state, for what the quiz shows; the ref stays for handlers that need it right away
+  const [answerShown, setAnswerShown] = useState<string | null>(null);
+  // pending round timers, cleared on quit, restart and unmount so a finished game cannot come back
+  const roundTimersRef                = useRef<number[]>([]);
+  const clearRoundTimers = () => { roundTimersRef.current.forEach(clearTimeout); roundTimersRef.current = []; };
+  useEffect(() => () => roundTimersRef.current.forEach(clearTimeout), []);
   const inputRef                      = useRef<HTMLInputElement>(null);
 
   const TOO_SMALL_SPAN = 0.5; // degrees, only truly tiny countries (Monaco, Singapore, Vatican…)
@@ -297,6 +304,7 @@ export default function MundoPage() {
   function handlePickedRandom({ name, iso: isoFromGlobe, lat, lng, span }: { name: string; iso: string | null; lat: number; lng: number; span: number }) {
     if (gamePhase === 'guessing' || gamePhase === 'correct') {
       currentCountryRef.current = name;
+      setAnswerShown(name);
       setSelection({ name, iso: isoFromGlobe ?? NAME_ISO[name] ?? null, source: 'random' });
       setFocusTarget({ name, lat, lng });
       setIsTooSmall(span < TOO_SMALL_SPAN);
@@ -311,6 +319,7 @@ export default function MundoPage() {
   }
 
   function startGame() {
+    clearRoundTimers();
     setGamePhase('guessing');
     setGameRound(1);
     setGameScore(0);
@@ -320,10 +329,12 @@ export default function MundoPage() {
     setIsTooSmall(false);
     setGuess('');
     currentCountryRef.current = null;
+    setAnswerShown(null);
     setPickNonce(n => n + 1);
   }
 
   function quitGame() {
+    clearRoundTimers();
     setHighScore(h => Math.max(h, gameScore));
     setGamePhase('idle');
     setGameRound(0);
@@ -337,6 +348,7 @@ export default function MundoPage() {
     setSelection(null);
     setFocusTarget(null);
     currentCountryRef.current = null;
+    setAnswerShown(null);
   }
 
   function showSkipped(name: string) {
@@ -370,17 +382,17 @@ export default function MundoPage() {
       const points = fibScore(gameRound);
       setGameScore(s => s + points);
       setGamePhase('correct');
-      setTimeout(() => {
+      roundTimersRef.current.push(window.setTimeout(() => {
         setGameRound(r => r + 1);
         setPickNonce(n => n + 1);
-      }, 1800);
+      }, 1800));
     } else {
       setHighScore(h => Math.max(h, gameScore));
       setWrongFlash(true);
       setShakeKey(k => k + 1);
       setTimeout(() => setWrongFlash(false), 600);
       setGamePhase('wrong');
-      setTimeout(() => setGamePhase('ended'), 900);
+      roundTimersRef.current.push(window.setTimeout(() => setGamePhase('ended'), 900));
     }
   }, [guess, gamePhase, gameRound, gameScore]);
 
@@ -608,7 +620,7 @@ export default function MundoPage() {
             {gamePhase === 'ended' ? (
               <div className="flex flex-col items-end gap-2">
                 <span className="text-sm text-red-400 font-semibold tracking-wide">
-                  wrong, it was {currentCountryRef.current}
+                  wrong, it was {answerShown}
                 </span>
                 <span className="text-xs text-white/40">
                   final: {gameScore}{highScore > gameScore ? ` · best: ${highScore}` : ' · new best!'}
@@ -624,7 +636,7 @@ export default function MundoPage() {
               </div>
             ) : gamePhase === 'correct' ? (
               <span className="text-sm text-green-400 font-semibold tracking-wide animate-bounce">
-                ✓ {currentCountryRef.current}
+                ✓ {answerShown}
               </span>
             ) : (
               <div className="flex flex-col items-end gap-1.5">

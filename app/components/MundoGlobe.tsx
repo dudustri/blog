@@ -322,8 +322,9 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
 
       controls.addEventListener('start', () => { pendingFocusRef.current = null; });
 
-      const visited  = new Set(visitedCountries);
-      const wantToGo = new Set(wantToGoCountries);
+      // read through the refs, the scene is built once and the lists stay current there
+      const visited  = visitedSetRef.current;
+      const wantToGo = wantToGoSetRef.current;
 
       fetch(GEOJSON_URL)
         .then(r => r.json())
@@ -366,7 +367,7 @@ scene.add(new THREE.AmbientLight(0xffffff, Math.PI * 0.55));
 
             const candidates: GeoFeature[] = [];
 
-            for (const hit of raycaster.intersectObjects([globe as any], true)) {
+            for (const hit of raycaster.intersectObjects([globe as unknown as InstanceType<typeof THREE.Object3D>], true)) {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               let obj: any = hit.object;
               while (obj && obj.__globeObjType === undefined) obj = obj.parent;
