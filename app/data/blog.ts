@@ -2,10 +2,13 @@ import data from "@/content/blog.json";
 
 export type Post = (typeof data)[0];
 
-export const posts = [...data].sort((a, b) => {
-  const parse = (d: string) => { const [day, month, year] = d.split("-"); return new Date(+year, +month - 1, +day).getTime(); };
-  return parse(b.date) - parse(a.date);
-});
+// "19-09-2026" → its local midnight in ms, the one parser for posts and About snapshots
+export function dmyTime(date: string) {
+  const [day, month, year] = date.split("-");
+  return new Date(+year, +month - 1, +day).getTime();
+}
+
+export const posts = [...data].sort((a, b) => dmyTime(b.date) - dmyTime(a.date));
 
 // "19-09-2026" → "2026-09-19", for machine readable dates in metadata
 export function isoDate(date: string) {
@@ -15,8 +18,7 @@ export function isoDate(date: string) {
 
 // "19-09-2026" → "19 September 2026"
 export function formatDmyDate(date: string) {
-  const [day, month, year] = date.split("-");
-  return new Date(+year, +month - 1, +day).toLocaleDateString("en-GB", {
+  return new Date(dmyTime(date)).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
     year: "numeric",

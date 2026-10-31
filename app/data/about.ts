@@ -1,17 +1,12 @@
 import data from "@/content/about.json";
+import { dmyTime } from "@/app/data/blog";
 
 export type NowEntry = { date: string; entries: string[] };
 export type AboutSection = { title: string; body: string };
 
 export const intro: string = data.intro;
 // newest first, the rest becomes the archive
-export const now: NowEntry[] = [...data.now].sort((a, b) => {
-  const parse = (d: string) => {
-    const [day, month, year] = d.split("-");
-    return new Date(+year, +month - 1, +day).getTime();
-  };
-  return parse(b.date) - parse(a.date);
-});
+export const now: NowEntry[] = [...data.now].sort((a, b) => dmyTime(b.date) - dmyTime(a.date));
 export const sections: AboutSection[] = data.sections;
 // hover asides inside the text, [label](#key): a short paragraph or a list of [name, place, one line]
 export type Note = string | [string, string, string][];

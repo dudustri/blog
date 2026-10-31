@@ -8,7 +8,7 @@ const SITE = "https://eduardo.dk";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["", "/resume", "/portfolio", "/blog", "/mundo", "/sports", "/contact"].map(
+  const pages = ["", "/about", "/resume", "/portfolio", "/blog", "/mundo", "/sports", "/contact"].map(
     (path) => ({
       url: `${SITE}${path}`,
       changeFrequency: "monthly" as const,

@@ -271,7 +271,8 @@ export default async function BlogPost({
 }
 
 export async function generateStaticParams() {
-  return posts.map((post) => ({ slug: post.slug }));
+  // drafts get no page at all, a guessed or shared link must not show an unfinished post
+  return posts.filter((post) => !post.draft).map((post) => ({ slug: post.slug }));
 }
 
 // per-post share card, so a shared link shows the post and not the site blurb
