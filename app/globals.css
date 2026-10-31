@@ -4,6 +4,9 @@
 :root { --accent: #3e6b89; --accent-fill: #3e6b89; --on-accent: #fff; }
 /* lighter accent so highlights read on the dark background */
 html.dark { --accent: #6f9fc0; --accent-fill: #4a7a9c; --on-accent: #fff; }
+/* portfolio diagrams (FlowDiagram): boxes stay readable in both themes */
+:root { --flow-box: #ffffff; --flow-text: #1f2937; --flow-muted: #6b7280; --flow-line: #d1d5db; --flow-edge: #9ca3af; --flow-dots: #d1d5db; --flow-label-bg: #f9fafb; --flow-accent-bg: #edf3f7; }
+html.dark { --flow-box: #2a2a2a; --flow-text: #e5e5e5; --flow-muted: #a3a3a3; --flow-line: #444; --flow-edge: #777; --flow-dots: #3a3a3a; --flow-label-bg: #222; --flow-accent-bg: #23303a; }
 
 html {
   scrollbar-width: none;

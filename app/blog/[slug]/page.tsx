@@ -6,6 +6,7 @@ import { posts, formatDmyDate, isoDate } from "@/app/data/blog";
 import { commentsFor } from "@/app/data/comments";
 import Comments from "@/app/components/Comments";
 import JsonLd from "@/app/components/JsonLd";
+import { renderInline } from "@/app/components/InlineText";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -14,17 +15,6 @@ const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const EFFECTS: Record<string, CSSProperties> = {
   fade: { animation: "fadeDecay 4s ease-in forwards" },
 };
-
-// renders inline markup in a paragraph
-// supported: **bold** → <strong>
-function renderInline(text: string) {
-  return text.split(/(\*\*.*?\*\*)/g).map((part, i) => {
-    if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
-      return <strong key={i}>{part.slice(2, -2)}</strong>;
-    }
-    return part;
-  });
-}
 
 // renders a content block
 // block types (separated by \n\n in JSON):
@@ -35,7 +25,7 @@ function renderInline(text: string) {
 //   > quote          → centered citation (see below)
 //   ---              → section break (· · ·)
 //   -- Name          → sign-off, paragraph with extra space above
-//   anything else    → paragraph (inline **bold** works)
+//   anything else    → paragraph (inline **bold** and [links](url) work)
 const PARAGRAPH =
   "text-gray-700 leading-relaxed text-justify indent-8";
 

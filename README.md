@@ -25,3 +25,7 @@ bun run build
 - Matter.js
 - Cloudflare Workers
 - GitHub Page/Actions
+
+## Credits
+
+Food icons in `public/images/food/` are [Fluent Emoji](https://github.com/microsoft/fluentui-emoji) by Microsoft, MIT licensed.

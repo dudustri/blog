@@ -51,7 +51,7 @@ export default function FlowDiagram({ spec, caption }: { spec: FlowSpec; caption
           ...n.style,
           opacity: selected && selected !== n.id ? 0.35 : 1,
           transition: "opacity 0.2s ease, box-shadow 0.2s ease",
-          boxShadow: selected === n.id ? "0 0 0 2px #3e6b89" : undefined,
+          boxShadow: selected === n.id ? "0 0 0 2px var(--accent)" : undefined,
         },
       })),
     );
@@ -61,14 +61,14 @@ export default function FlowDiagram({ spec, caption }: { spec: FlowSpec; caption
         return {
           ...e,
           style: {
-            stroke: "#9ca3af",
+            stroke: "var(--flow-edge)",
             strokeWidth: 1.5,
             ...e.style,
             opacity: touches ? 1 : 0.15,
             transition: "opacity 0.2s ease",
           },
-          labelStyle: { fontSize: 10, fill: "#6b7280" },
-          labelBgStyle: { fill: "#f9fafb" },
+          labelStyle: { fontSize: 10, fill: "var(--flow-muted)" },
+          labelBgStyle: { fill: "var(--flow-label-bg)" },
         };
       }),
     );
@@ -125,7 +125,7 @@ export default function FlowDiagram({ spec, caption }: { spec: FlowSpec; caption
           edgesFocusable={false}
           autoPanOnNodeFocus={false}
         >
-          <Background gap={18} size={1} color="#d1d5db" />
+          <Background gap={18} size={1} color="var(--flow-dots)" />
         </ReactFlow>
       </div>
       </div>

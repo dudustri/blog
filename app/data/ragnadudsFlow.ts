@@ -4,13 +4,15 @@ import type { FlowSpec } from "@/app/components/FlowDiagram";
 const BOX = {
   padding: 10,
   borderRadius: 10,
-  border: "1px solid #d1d5db",
-  background: "#ffffff",
+  // colours are css variables from globals.css so the diagram follows dark mode
+  border: "1px solid var(--flow-line)",
+  background: "var(--flow-box)",
+  color: "var(--flow-text)",
   fontSize: 12,
   width: 190,
   textAlign: "center" as const,
 };
-const ACCENT = { ...BOX, border: "1.5px solid #3e6b89", background: "#edf3f7", color: "#3e6b89" };
+const ACCENT = { ...BOX, border: "1.5px solid var(--accent)", background: "var(--flow-accent-bg)", color: "var(--accent)" };
 // label pinned top-left, centred it collided with the incoming edge label
 const GROUP = {
   borderRadius: 12,
@@ -18,10 +20,10 @@ const GROUP = {
   verticalAlign: "top" as const,
   paddingLeft: 14,
   paddingTop: 8,
-  border: "1px dashed #d1d5db",
+  border: "1px dashed var(--flow-line)",
   background: "transparent",
   fontSize: 11,
-  color: "#6b7280",
+  color: "var(--flow-muted)",
 };
 
 // plain language on purpose. a reader should learn what the thing does, not
