@@ -1,7 +1,7 @@
 [
   {
     "slug": "ragnaduds",
-    "title": "RagnaDuds - Private Ragnarok Online Server",
+    "title": "RagnaDuds - Ragnarok Online Server",
     "description": "A rathena server built for friends split between Denmark and Brazil. Multi-arch Docker images on an ARM cloud VM, a patched and translated 32 bit game client, installers for Windows and Linux, and a retro website with live server stats. You can check it live [here](https://ragnaduds.duckdns.org)!",
     "tech": [
       "Docker",
@@ -36,7 +36,7 @@
   },
   {
     "slug": "cs-duds",
-    "title": "CS Duds - Counter-Strike 1.6 in the browser",
+    "title": "CS Duds 1.6 in the browser",
     "description": "Self-hosted Counter-Strike 1.6 that runs in a browser tab, with no install and no Steam account. The engine runs in WebAssembly, a Go backend handles the lobby and relays game traffic over WebRTC to one game server per room, all shipped as one Docker bundle.",
     "tech": [
       "Go",
@@ -52,7 +52,7 @@
   },
   {
     "slug": "rustboy-color",
-    "title": "rustboy-color - Game Boy Color emulator",
+    "title": "rustboy-color GBC emulator",
     "description": "A Game Boy Color emulator written in Rust. The same core runs as a desktop app on x86_64 and aarch64 and in the browser through WebAssembly. It already plays games.",
     "tech": [
       "Rust",
@@ -78,7 +78,7 @@
   },
   {
     "slug": "beam-v1-smart-grid-interface",
-    "title": "Smart Grid Interface - BEAM v1",
+    "title": "Smart Grid Interface and IoT Device - BEAM v1",
     "description": "First generation of Bodil's in-home energy platform, the bridge between a constrained ESP32 device and a cloud backend that can simulate and act on its data.",
     "tech": [
       "C",
