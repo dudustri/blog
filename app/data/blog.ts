@@ -7,6 +7,12 @@ export const posts = [...data].sort((a, b) => {
   return parse(b.date) - parse(a.date);
 });
 
+// "19-09-2026" → "2026-09-19", for machine readable dates in metadata
+export function isoDate(date: string) {
+  const [day, month, year] = date.split("-");
+  return `${year}-${month}-${day}`;
+}
+
 // "19-09-2026" → "19 September 2026"
 export function formatDate(date: string) {
   const [day, month, year] = date.split("-");

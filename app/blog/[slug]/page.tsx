@@ -1,9 +1,11 @@
 import type { CSSProperties } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { posts, formatDate } from "@/app/data/blog";
+import { posts, formatDate, isoDate } from "@/app/data/blog";
 import { commentsFor } from "@/app/data/comments";
 import Comments from "@/app/components/Comments";
+import JsonLd from "@/app/components/JsonLd";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -177,6 +179,19 @@ export default async function BlogPost({
 
   const comments = commentsFor(post.id);
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: isoDate(post.date),
+    author: { "@type": "Person", name: "Eduardo Sfreddo Trindade", url: "https://eduardo.dk" },
+    mainEntityOfPage: `https://eduardo.dk/blog/${post.slug}`,
+    ...("headImage" in post
+      ? { image: `https://eduardo.dk${(post.headImage as string).split("#")[0]}` }
+      : {}),
+  };
+
   const headImageRaw =
     "headImage" in post ? (post.headImage as string) : null;
   // optional crop via #hash on src, e.g. "/img.jpg#15%"
@@ -226,6 +241,7 @@ export default async function BlogPost({
       <div className="space-y-4">{renderContent(post.content)}</div>
 
       <Comments slug={post.slug} comments={comments} />
+      <JsonLd data={articleSchema} />
 
       {/* prev/next, at the end, so readers can keep going */}
       {(prevPost || nextPost) && (
@@ -256,4 +272,39 @@ export default async function BlogPost({
 
 export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
+}
+
+// per-post share card, so a shared link shows the post and not the site blurb
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = posts.find((p) => p.slug === slug);
+  if (!post) return {};
+
+  // headImage carries an optional #crop hint that is not part of the path
+  const head = "headImage" in post ? (post.headImage as string).split("#")[0] : null;
+  const image = head ?? "/images/og.png";
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url: `/blog/${post.slug}`,
+      publishedTime: isoDate(post.date),
+      images: [{ url: image, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [image],
+    },
+  };
 }
