@@ -125,6 +125,57 @@ const MET_BY_CATEGORY: Record<Category, number> = {
 const BODY_WEIGHT_KG = 72;
 
 /** one whole pizza ≈ this many kcal. cross it and you've "earned" a pizza */
+// --- the pizza menu ----------------------------------------------------------
+// energy density is the cited part. sizes and weights are a stated assumption,
+// not a database figure, so the page says so rather than dressing a guess up
+export const PIZZA_SOURCE = {
+  label: "USDA FoodData Central",
+  url: "https://fdc.nal.usda.gov/",
+};
+
+export const KJ_PER_KCAL = 4.184;
+
+export type MenuItem = {
+  name: string;
+  emoji: string;
+  grams: number;
+  per100: number; // kcal per 100 g
+  note: string;
+  icon: string; // emoji codepoint, the png the plot rains down
+  cm?: number; // pizzas only, they all share one size
+  flash?: string; // joke image that pops up for half a second when picked
+};
+
+// every pizza is the same size, so only the topping moves the number. items
+// that land on the same figure are merged rather than listed twice
+export const PIZZA_CM = 32;
+export const PIZZA_GRAMS = 420;
+
+export const FOOD_MENU: MenuItem[] = [
+  { name: "Margherita", emoji: "🍕", icon: "1f355", cm: PIZZA_CM, grams: PIZZA_GRAMS, per100: 268, note: "the mama pizza" },
+  { name: "Peppepepepperoni", emoji: "🍕", icon: "1f355", cm: PIZZA_CM, grams: PIZZA_GRAMS, per100: 274, note: "worth every extra syllable", flash: "/images/pepperoni-elmo.jpg" },
+  { name: "Kebab pizza", emoji: "🍕", icon: "1f355", cm: PIZZA_CM, grams: PIZZA_GRAMS, per100: 276, note: "Danish classic, do not ask" },
+  { name: "Kebab", emoji: "🥙", icon: "1f959", grams: 400, per100: 215, note: "400 g, best after midnight" },
+  { name: "Burger", emoji: "🍔", icon: "1f354", grams: 250, per100: 295, note: "250 g, one honest patty" },
+  { name: "Haribo", emoji: "🍬", icon: "1f36c", grams: 175, per100: 333, note: "175 g bag, much regret" },
+];
+
+export function foodKcal(item: MenuItem): number {
+  return Math.round((item.grams * item.per100) / 100);
+}
+
+export function foodKj(item: MenuItem): number {
+  return Math.round(foodKcal(item) * KJ_PER_KCAL);
+}
+
+/** what a calorie total buys, menu order kept so the list does not jump */
+export function foodMenuFor(calories: number) {
+  return FOOD_MENU.map((item) => {
+    const kcal = foodKcal(item);
+    return { ...item, kcal, kj: foodKj(item), earned: Math.floor(calories / kcal) };
+  });
+}
+
 export const PIZZA_KCAL = 1000;
 
 /** estimated calories burned for one activity */
@@ -170,7 +221,10 @@ export type TimelinePoint = {
   calories: number; // kcal burned in this bucket
   cumulative: number; // running total up to and including this bucket
   accent: string; // colour of the bucket's dominant category
-  accents: string[]; // every category's colour, most calories first (for cycling)
+  accents: string[]; // every category's colour, most calories first
+  // cumulative share per sport at this bucket, always in CATEGORY_META order so
+  // a stacked bar keeps the same segment order from left to right
+  stack: { key: Category; accent: string; fraction: number }[];
 };
 
 /** accent colour of each category in the bucket, biggest burn first */
@@ -203,6 +257,7 @@ export function caloriesTimeline(
 
   let cumulative = 0;
   let prevMonth = "";
+  const runningByCategory = new Map<Category, number>();
   return [...buckets.entries()]
     .sort(([a], [b]) => +new Date(a) - +new Date(b))
     .map(([key, acts]) => {
@@ -213,6 +268,17 @@ export function caloriesTimeline(
       prevMonth = month;
       const monthIdx = Number(key.slice(5, 7)) - 1;
       const accents = bucketAccents(acts);
+
+      for (const a of acts) {
+        const cat = categoryOf(a);
+        runningByCategory.set(cat, (runningByCategory.get(cat) ?? 0) + caloriesFor(a));
+      }
+      const stack = CATEGORY_META.flatMap((meta) => {
+        const kcal = runningByCategory.get(meta.key) ?? 0;
+        if (kcal <= 0) return [];
+        return [{ key: meta.key, accent: meta.accent, fraction: kcal / cumulative }];
+      });
+
       return {
         key,
         monthShort: MONTH_SHORT[monthIdx] ?? "",
@@ -221,6 +287,7 @@ export function caloriesTimeline(
         cumulative,
         accent: accents[0],
         accents,
+        stack,
       };
     });
 }
@@ -231,14 +298,72 @@ export type PizzaMilestone = {
 };
 
 /** bucket index where each successive PIZZA_KCAL threshold is crossed */
-export function pizzaMilestones(points: TimelinePoint[]): PizzaMilestone[] {
+export function pizzaMilestones(points: TimelinePoint[], size = PIZZA_KCAL): PizzaMilestone[] {
   const out: PizzaMilestone[] = [];
-  let next = PIZZA_KCAL;
+  let next = size;
   points.forEach((p, i) => {
     while (p.cumulative >= next) {
       out.push({ index: out.length + 1, pointIndex: i });
-      next += PIZZA_KCAL;
+      next += size;
     }
   });
   return out;
+}
+
+export type PizzaSummary = {
+  pizzas: number;
+  calories: number;
+  months: number;
+  perMonth: number; // pizzas per month, over months that had any activity
+  best: { label: string; pizzas: number; calories: number } | null;
+  byCategory: { key: Category; label: string; accent: string; pizzas: number; share: number }[];
+};
+
+/** headline pizza numbers for a list, so the tracker can say what the total means */
+export function pizzaSummary(list: Activity[] = activities): PizzaSummary {
+  const monthly = new Map<string, number>();
+  const categories = new Map<Category, number>();
+  let calories = 0;
+
+  for (const a of list) {
+    const kcal = caloriesFor(a);
+    calories += kcal;
+    const key = a.date.slice(0, 7);
+    monthly.set(key, (monthly.get(key) ?? 0) + kcal);
+    const cat = categoryOf(a);
+    categories.set(cat, (categories.get(cat) ?? 0) + kcal);
+  }
+
+  let best: PizzaSummary["best"] = null;
+  for (const [key, kcal] of monthly) {
+    if (best && kcal <= best.calories) continue;
+    const [year, month] = key.split("-");
+    best = {
+      label: `${MONTH_SHORT[Number(month) - 1]} ${year}`,
+      pizzas: Math.floor(kcal / PIZZA_KCAL),
+      calories: kcal,
+    };
+  }
+
+  const byCategory = [...categories.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([key, kcal]) => {
+      const meta = CATEGORY_META.find((m) => m.key === key)!;
+      return {
+        key,
+        label: meta.label,
+        accent: meta.accent,
+        pizzas: Math.floor(kcal / PIZZA_KCAL),
+        share: calories ? kcal / calories : 0,
+      };
+    });
+
+  return {
+    pizzas: Math.floor(calories / PIZZA_KCAL),
+    calories,
+    months: monthly.size,
+    perMonth: monthly.size ? calories / PIZZA_KCAL / monthly.size : 0,
+    best,
+    byCategory,
+  };
 }
