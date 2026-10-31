@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { chipMatchesSelected } from "@/app/data/resume";
 
-const BLUE = "#3e6b89";
+// site accent, lighter in dark mode (globals.css)
+const BLUE = "var(--accent)";
 // two-tier keyword highlight, each shade tuned per theme:
 //  - tech   = tools and languages (what I used), warm so it separates cleanly
 //             from the two blues already on the page
@@ -18,7 +19,7 @@ const BLUE = "#3e6b89";
 const GREEN_LIGHT = "#047857"; // emerald, 5.6:1. chroma does the work here
 const GREEN_DARK = "#a3e635";
 const ACCENT_LIGHT = "#075985"; // 7.6:1, matches the body weight exactly
-const ACCENT_DARK = "#7dd3fc";
+const ACCENT_DARK = "#6f9fc0"; // same as the site accent in dark (--accent)
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 // tech tools and languages -> green
@@ -275,12 +276,13 @@ export default function DetailModal({
                 return (
                   <span
                     key={tech}
-                    // same chip as the stack sections, so the popup does not
-                    // introduce a second chip style
-                    className="whitespace-nowrap px-2 py-[3px] text-[12.5px] rounded border border-gray-200 text-gray-700"
+                    // same chip as the stack sections, grey classes only when inactive (dark overrides are !important)
+                    className={`whitespace-nowrap px-2 py-[3px] text-[12.5px] rounded border ${
+                      active ? "" : "border-gray-200 text-gray-700"
+                    }`}
                     style={
                       active
-                        ? { borderColor: BLUE, background: BLUE, color: "#fff" }
+                        ? { borderColor: "var(--accent-fill)", background: "var(--accent-fill)", color: "var(--on-accent)" }
                         : undefined
                     }
                   >

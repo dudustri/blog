@@ -3,7 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Experience } from "@/app/data/resume";
 
-const BLUE = "#3e6b89";
+// site accent, lighter in dark mode (globals.css)
+const BLUE = "var(--accent)";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const ICON_PALETTE = [

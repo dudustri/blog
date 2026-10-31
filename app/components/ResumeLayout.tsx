@@ -27,7 +27,7 @@ export default function ResumeLayout() {
   const showTab = (id: string, tab: number) => setStackTabs((p) => ({ ...p, [id]: tab }));
   const tabClass = (on: boolean) =>
     `border-b-2 px-2.5 py-2 text-xs transition-colors ${
-      on ? "border-[#3e6b89] font-semibold text-[#3e6b89]" : "border-transparent text-gray-500 hover:text-[#3e6b89]"
+      on ? "border-[var(--accent)] font-semibold text-[var(--accent)]" : "border-transparent text-gray-500 hover:text-[var(--accent)]"
     }`;
 
   const chip = (tech: string) => {
@@ -39,9 +39,9 @@ export default function ResumeLayout() {
         aria-pressed={active}
         className="whitespace-nowrap px-2 py-[3px] text-[12.5px] skill-chip rounded transition-all duration-200 cursor-pointer"
         style={{
-          borderColor: active ? "#3e6b89" : undefined,
-          background: active ? "#3e6b89" : undefined,
-          color: active ? "#fff" : undefined,
+          borderColor: active ? "var(--accent-fill)" : undefined,
+          background: active ? "var(--accent-fill)" : undefined,
+          color: active ? "var(--on-accent)" : undefined,
         }}
       >
         {tech}
@@ -96,7 +96,7 @@ export default function ResumeLayout() {
                 aria-pressed={on}
                 onClick={() => setStackRows((p) => ({ ...p, [id]: v === "Rows" }))}
                 className={`px-2 py-1 transition-colors ${
-                  on ? "bg-[#3e6b89] text-white" : "text-gray-400 hover:text-[#3e6b89]"
+                  on ? "bg-[var(--accent-fill)] text-[var(--on-accent)]" : "text-gray-400 hover:text-[var(--accent)]"
                 }`}
               >
                 {v}
@@ -115,7 +115,7 @@ export default function ResumeLayout() {
             {experience.length === 1 ? "role" : "roles"} ·{" "}
             <button
               onClick={() => setActiveTechs((prev) => prev.filter((t) => !sectionPicks(groups).includes(t)))}
-              className="underline underline-offset-2 transition-colors hover:text-[#3e6b89]"
+              className="transition-colors hover:text-[var(--accent)]"
             >
               Clear
             </button>
@@ -145,7 +145,7 @@ export default function ResumeLayout() {
               return (
                 <button key={group.label} role="tab" aria-selected={on} onClick={() => showTab(id, k)} className={tabClass(on)}>
                   {group.label}
-                  {picked > 0 && <span className="ml-1 text-[10px] font-semibold text-[#3e6b89]">· {picked}</span>}
+                  {picked > 0 && <span className="ml-1 text-[10px] font-semibold text-[var(--accent)]">· {picked}</span>}
                 </button>
               );
             })}

@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 
+:root { --accent: #3e6b89; --accent-fill: #3e6b89; --on-accent: #fff; }
+/* lighter accent so highlights read on the dark background */
+html.dark { --accent: #6f9fc0; --accent-fill: #4a7a9c; --on-accent: #fff; }
+
 html {
   scrollbar-width: none;
 }
@@ -123,7 +127,7 @@ html.dark .outline-box { background-color: #222; border-color: transparent; }
 .skill-chip:hover { color: #3e6b89; border-color: currentColor; background-color: rgba(62, 107, 137, 0.06); }
 html.dark .skill-chip { border-color: #333; background-color: #1a1a1a; color: #bbb; }
 html.dark .skill-chip:hover { color: #6f9fc0; border-color: currentColor; background-color: rgba(111, 159, 192, 0.08); }
-html.dark .resume-card:hover { background-color: rgba(255, 255, 255, 0.06); }
+html.dark .resume-card:hover { background-color: rgba(111, 159, 192, 0.08); }
 
 /* Dark mode hover overrides */
 html.dark .hover\:bg-gray-50:hover  { background-color: #252525 !important; }

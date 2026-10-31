@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import DetailModal, { type Detail } from "./DetailModal";
 import { jobMatches, type Experience } from "@/app/data/resume";
 
-const BLUE = "#3e6b89";
+// site accent, lighter in dark mode (globals.css)
+const BLUE = "var(--accent)";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 // maps an Experience record to the generic Detail the shared popup renders
@@ -52,8 +53,8 @@ export default function ExperienceSection({
     return () => observer.disconnect();
   }, []);
 
-  // hover: faint blue tint on light, light overlay on dark, no border/ring
-  const hoverBg = dark ? "rgba(255,255,255,0.06)" : "rgba(62,107,137,0.05)";
+  // hover: faint tint of the accent in both themes, no border/ring
+  const hoverBg = dark ? "rgba(111,159,192,0.08)" : "rgba(62,107,137,0.05)";
 
   return (
     <>
