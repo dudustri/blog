@@ -17,7 +17,7 @@ const MAX_MESSAGE = 2000;
 type FormState = "idle" | "verifying" | "sending" | "success" | "error";
 
 const inputClass =
-  "w-full border-b border-gray-200 py-3 bg-transparent outline-none text-sm placeholder-gray-400 transition-colors duration-200 focus:border-black";
+  "w-full border-b border-gray-200 py-3 bg-transparent text-sm placeholder-gray-400 transition-colors duration-200 focus:border-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3e6b89]";
 
 // rejects a message that is only punctuation, emoji or whitespace
 function hasWords(text: string) {
