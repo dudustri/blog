@@ -1,0 +1,36 @@
+{
+  "intro": "Italian and Brazilian, living in Copenhagen. I like things that touch the physical world, whether that is a wind turbine, a guitar string, or a mountain pass at five thousand metres.",
+  "now": [
+    {
+      "date": "28-09-2026",
+      "entries": [
+        "Building fast data acquisition and edge controls for wind and solar plants.",
+        "Learning John Mayer songs on the acoustic, slowly and badly.",
+        "Reading my way through the books my dad left behind.",
+        "Rebuilding this site, one argument with myself at a time."
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "title": "Where I come from",
+      "body": "Two passports, three countries. Born and raised in Brazil, Italian by descent, Danish by postcode. Most of what I find interesting sits somewhere in the overlap, in the gap between how things are supposed to work and how they actually behave once they are outdoors and it is raining."
+    },
+    {
+      "title": "Guitar",
+      "body": "Acoustic, mostly. I am working through John Mayer, which is a humbling way to spend an evening. Progress is measured in how few times I have to stop."
+    },
+    {
+      "title": "Mountains",
+      "body": "The hardest thing I have done is the Ausangate circuit in Peru, five days around a mountain with two Italians who somehow spoke Portuguese. There is a post about it on the blog. I would do it again tomorrow."
+    },
+    {
+      "title": "Keeping score",
+      "body": "Creatine every morning, an X on the calendar hanging off a single screw on the electrical panel in my kitchen. The Sports page counts the rest, in pizzas."
+    },
+    {
+      "title": "Ragnarok",
+      "body": "The game of my childhood, and now a server I run for friends split between Denmark and Brazil. It is in the portfolio, because the game was never the hard part."
+    }
+  ]
+}
