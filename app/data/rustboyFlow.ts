@@ -1,17 +1,5 @@
 import type { FlowSpec } from "@/app/components/FlowDiagram";
-
-const BOX = {
-  padding: 10,
-  borderRadius: 10,
-  // css variables from globals.css so the diagram follows dark mode
-  border: "1px solid var(--flow-line)",
-  background: "var(--flow-box)",
-  color: "var(--flow-text)",
-  fontSize: 12,
-  width: 190,
-  textAlign: "center" as const,
-};
-const ACCENT = { ...BOX, border: "1.5px solid var(--accent)", background: "var(--flow-accent-bg)", color: "var(--accent)" };
+import { ACCENT, BOX } from "@/app/data/ragnadudsFlow";
 
 // an arrow means "is needed by", the way cargo sees it
 export const rustboyCrates: FlowSpec = {
@@ -44,7 +32,7 @@ export const rustboyCrates: FlowSpec = {
     frontend: {
       title: "The loop both apps share",
       what: "A tiny trait says what a platform must do: tell the time, give a buffer to paint, show it. Everything else, like when to show the title screen or when to write a save, lives here once.",
-      facts: ["Host trait", "saves 1 s after the game stops writing"],
+      facts: ["Host trait", "saves 1 s after the first write"],
     },
     desktop: {
       title: "The desktop app",

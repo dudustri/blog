@@ -1,7 +1,7 @@
 import { Position } from "@xyflow/react";
 import type { FlowSpec } from "@/app/components/FlowDiagram";
 
-const BOX = {
+export const BOX = {
   padding: 10,
   borderRadius: 10,
   // colours are css variables from globals.css so the diagram follows dark mode
@@ -12,9 +12,9 @@ const BOX = {
   width: 190,
   textAlign: "center" as const,
 };
-const ACCENT = { ...BOX, border: "1.5px solid var(--accent)", background: "var(--flow-accent-bg)", color: "var(--accent)" };
+export const ACCENT = { ...BOX, border: "1.5px solid var(--accent)", background: "var(--flow-accent-bg)", color: "var(--accent)" };
 // label pinned top-left, centred it collided with the incoming edge label
-const GROUP = {
+export const GROUP = {
   borderRadius: 12,
   textAlign: "left" as const,
   verticalAlign: "top" as const,
