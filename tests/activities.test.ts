@@ -205,9 +205,9 @@ describe("formatting", () => {
     expect(formatPace(0, 600)).toBe("-");
   });
 
-  // bug: rounding seconds up to 60 is not carried into the minute
-  test.todo("rounding never shows 60 seconds or 60 minutes", () => {
+  test("rounding never shows 60 seconds or 60 minutes", () => {
     expect(formatPace(1, 359.6)).toBe("6:00 /km");
     expect(formatDuration(7199)).toBe("2h 00m");
+    expect(formatDuration(3599)).toBe("1h 00m");
   });
 });

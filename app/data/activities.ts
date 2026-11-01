@@ -88,17 +88,18 @@ export function statsFor(list: Activity[]): CategoryStats {
 // --- formatting helpers (shared by the page) ---------------------------------
 
 export function formatDuration(totalSec: number): string {
-  const h = Math.floor(totalSec / 3600);
-  const m = Math.round((totalSec % 3600) / 60);
+  const totalMin = Math.round(totalSec / 60);
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
   if (h === 0) return `${m}m`;
   return `${h}h ${m.toString().padStart(2, "0")}m`;
 }
 
 export function formatPace(distanceKm: number, movingTimeSec: number): string {
   if (distanceKm <= 0) return "-";
-  const secPerKm = movingTimeSec / distanceKm;
+  const secPerKm = Math.round(movingTimeSec / distanceKm);
   const m = Math.floor(secPerKm / 60);
-  const s = Math.round(secPerKm % 60);
+  const s = secPerKm % 60;
   return `${m}:${s.toString().padStart(2, "0")} /km`;
 }
 

@@ -57,8 +57,7 @@ test.describe("accessibility smoke", () => {
     });
   }
 
-  test.fixme("/mundo has one h1", async ({ page }) => {
-    // bug: the mundo page has no h1, its title is a span
+  test("/mundo has one h1", async ({ page }) => {
     await page.goto("/mundo");
     await expect(page.locator("h1")).toHaveCount(1);
   });
