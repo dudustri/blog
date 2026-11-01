@@ -65,13 +65,13 @@ export const csdudsFlow: FlowSpec = {
 export const csdudsRoom: FlowSpec = {
   height: 640,
   nodes: [
-    { id: "create", position: { x: 0, y: 0 }, data: { label: "Create server" }, width: 220, height: 40, style: ACCENT },
-    { id: "starting", position: { x: 0, y: 110 }, data: { label: "Starting" }, width: 220, height: 40, style: BOX },
-    { id: "ready", position: { x: 0, y: 220 }, data: { label: "Ready and listed" }, width: 220, height: 40, style: ACCENT },
+    { id: "create", position: { x: 180, y: 0 }, data: { label: "Create server" }, width: 220, height: 40, style: ACCENT },
+    { id: "starting", position: { x: 180, y: 110 }, data: { label: "Starting" }, width: 220, height: 40, style: BOX },
+    { id: "ready", position: { x: 180, y: 220 }, data: { label: "Ready and listed" }, width: 220, height: 40, style: ACCENT },
     { id: "playing", position: { x: 0, y: 330 }, data: { label: "Playing" }, width: 220, height: 40, style: BOX },
-    { id: "stopping", position: { x: 0, y: 440 }, data: { label: "Stopping" }, width: 220, height: 40, style: BOX },
+    { id: "stopping", position: { x: 180, y: 440 }, data: { label: "Stopping" }, width: 220, height: 40, style: BOX },
     { id: "gone", position: { x: 180, y: 560 }, data: { label: "Gone, port free again" }, width: 220, height: 40, style: BOX },
-    { id: "failed", position: { x: 360, y: 220 }, data: { label: "Start failed" }, width: 220, height: 40, style: BOX },
+    { id: "failed", position: { x: 500, y: 220 }, data: { label: "Start failed" }, width: 220, height: 40, style: BOX },
   ],
   edges: [
     { id: "l1", source: "create", target: "starting", label: "port reserved" },
@@ -79,6 +79,7 @@ export const csdudsRoom: FlowSpec = {
     { id: "l3", source: "starting", target: "failed", label: "crash or 30 s timeout" },
     { id: "l4", source: "ready", target: "playing", label: "someone joins" },
     { id: "l5", source: "playing", target: "stopping", label: "1 h empty, host or admin" },
+    { id: "l8", source: "ready", target: "stopping", label: "nobody joined for 1 h" },
     { id: "l6", source: "stopping", target: "gone" },
     { id: "l7", source: "failed", target: "gone", animated: false },
   ],
