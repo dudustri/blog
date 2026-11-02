@@ -14,6 +14,7 @@ import {
   blogArchitecture,
 } from "@/app/data/ragnadudsFlow";
 import { csdudsFlow, csdudsRoom, csdudsBuild } from "@/app/data/csdudsFlow";
+import { rustboyCrates, rustboyLoop } from "@/app/data/rustboyFlow";
 
 // interactive diagrams a project's content can embed with "::flow <name>"
 const FLOWS: Record<string, FlowSpec> = {
@@ -24,6 +25,8 @@ const FLOWS: Record<string, FlowSpec> = {
   "cs-duds": csdudsFlow,
   "cs-duds-room": csdudsRoom,
   "cs-duds-build": csdudsBuild,
+  "rustboy-crates": rustboyCrates,
+  "rustboy-loop": rustboyLoop,
 };
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
