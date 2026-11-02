@@ -70,7 +70,7 @@ export const csdudsRoom: FlowSpec = {
     { id: "ready", position: { x: 180, y: 220 }, data: { label: "Ready and listed" }, width: 220, height: 40, style: ACCENT },
     { id: "playing", position: { x: 0, y: 330 }, data: { label: "Playing" }, width: 220, height: 40, style: BOX },
     { id: "stopping", position: { x: 180, y: 440 }, data: { label: "Stopping" }, width: 220, height: 40, style: BOX },
-    { id: "gone", position: { x: 180, y: 560 }, data: { label: "Gone, port free again" }, width: 220, height: 40, style: BOX },
+    { id: "gone", position: { x: 420, y: 560 }, data: { label: "Gone, port free again" }, width: 220, height: 40, style: BOX },
     { id: "failed", position: { x: 500, y: 220 }, data: { label: "Start failed" }, width: 220, height: 40, style: BOX },
   ],
   edges: [
