@@ -27,9 +27,9 @@ export default function LazyMedia({ src, alt }: { src: string; alt: string }) {
     return () => io.disconnect();
   }, []);
 
-  const media = "w-full min-w-[640px] h-auto transition-opacity duration-300";
+  const media = "w-full h-auto transition-opacity duration-300";
   return (
-    <div ref={box} className="relative min-h-48">
+    <div ref={box} className={`relative ${ready ? "" : "min-h-48"}`}>
       {failed ? (
         <p className="absolute inset-0 flex items-center justify-center p-6 text-center text-sm text-gray-400">{alt}</p>
       ) : !ready ? (

@@ -100,7 +100,7 @@ export default function AboutPage() {
         {sections.map((s) => (
           <div key={s.title}>
             <h2 className="font-semibold mb-1.5">{s.title}</h2>
-            <p className="text-gray-600 text-[15px] leading-relaxed">
+            <p className="relative text-gray-600 text-[15px] leading-relaxed">
               {renderInline(s.body, notes)}
             </p>
           </div>
