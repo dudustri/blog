@@ -101,9 +101,10 @@ export default function FlowDiagram({ spec, caption }: { spec: FlowSpec; caption
         </span>
       </span>
       <div
-        className="rounded-xl border border-gray-200 bg-gray-50 overflow-hidden"
-        style={{ height: spec.height ?? 460 }}
+        className="rounded-xl border border-gray-200 bg-gray-50 overflow-x-auto"
       >
+        {/* boxes keep a readable size on a phone, the figure scrolls sideways instead of shrinking */}
+        <div className="min-w-[720px]" style={{ height: spec.height ?? 460 }}>
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -127,6 +128,7 @@ export default function FlowDiagram({ spec, caption }: { spec: FlowSpec; caption
         >
           <Background gap={18} size={1} color="var(--flow-dots)" />
         </ReactFlow>
+        </div>
       </div>
       </div>
 

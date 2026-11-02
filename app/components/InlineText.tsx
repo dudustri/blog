@@ -7,13 +7,14 @@ export type Note = string | [string, string, string][];
 // a word that reveals an aside on hover or tap, same hover-reveal as the info icons
 function Aside({ label, note }: { label: string; note: Note }) {
   return (
-    <span className="group relative inline-block">
+    <span className="group inline-block lg:relative">
       <span tabIndex={0} className="cursor-default font-medium text-[var(--accent)] outline-none">
         {label}
       </span>
       <span
         role="tooltip"
-        className="pointer-events-none absolute left-0 top-full z-20 mt-1.5 w-72 rounded-lg border border-gray-200 bg-white p-3 text-left text-xs leading-relaxed text-gray-500 opacity-0 shadow-md transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100"
+        // below lg it spans the paragraph, anchored to the word it would run off the screen
+        className="pointer-events-none absolute inset-x-0 z-20 mt-7 lg:right-auto lg:left-0 lg:top-full lg:mt-1.5 lg:w-72 rounded-lg border border-gray-200 bg-white p-3 text-left text-xs leading-relaxed text-gray-500 opacity-0 shadow-md transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100"
       >
         {typeof note === "string" ? (
           note
