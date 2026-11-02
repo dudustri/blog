@@ -13,6 +13,7 @@ import {
   ragnadudsClient,
   blogArchitecture,
 } from "@/app/data/ragnadudsFlow";
+import { csdudsFlow, csdudsRoom, csdudsBuild } from "@/app/data/csdudsFlow";
 
 // interactive diagrams a project's content can embed with "::flow <name>"
 const FLOWS: Record<string, FlowSpec> = {
@@ -20,6 +21,9 @@ const FLOWS: Record<string, FlowSpec> = {
   "ragnaduds-release": ragnadudsRelease,
   "ragnaduds-client": ragnadudsClient,
   "blog-architecture": blogArchitecture,
+  "cs-duds": csdudsFlow,
+  "cs-duds-room": csdudsRoom,
+  "cs-duds-build": csdudsBuild,
 };
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
