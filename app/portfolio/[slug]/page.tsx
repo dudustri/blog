@@ -86,7 +86,7 @@ function renderContent(content: string) {
       const [, alt, src] = img;
       return (
         <figure key={i} className="my-6">
-          <div className="rounded-xl border border-gray-200 bg-white overflow-x-auto">
+          <div className="rounded-xl border border-gray-200 bg-white overflow-hidden">
             <LazyMedia src={`${BASE}${src}`} alt={alt} />
           </div>
           {alt ? (
@@ -116,7 +116,7 @@ export default async function ProjectPage({
   const wordmark = project.title.split(" - ")[0];
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10">
+    <div className="w-full max-w-4xl mx-auto px-6 py-10">
       <Link
         href="/portfolio"
         className="text-sm text-gray-500 hover:text-black mb-8 inline-block"

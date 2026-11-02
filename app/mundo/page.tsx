@@ -685,11 +685,11 @@ export default function MundoPage() {
                 </div>
               </>
             ) : (
-              <span className="text-3xl font-bold tracking-tight text-white">
+              <h1 className="text-3xl font-bold tracking-tight text-white">
                 {selection?.name
                   ? <>{flagFor(selection.name, selection.iso) && <span className="mr-2">{flagFor(selection.name, selection.iso)}</span>}{selection.name}</>
                   : 'Mundo'}
-              </span>
+              </h1>
             )}
           </div>
         )}

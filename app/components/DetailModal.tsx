@@ -130,6 +130,7 @@ export default function DetailModal({
 
   return (
     <div
+      data-testid="detail-modal"
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 select-none cursor-default"
       style={{ background: "rgba(0,0,0,0.45)", backdropFilter: "blur(2px)" }}
       onClick={onClose}
